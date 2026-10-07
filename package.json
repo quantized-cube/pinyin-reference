@@ -1,0 +1,22 @@
+{
+  "name": "pinyin-reference",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "普通話のピンイン・IPA・発音リファレンス",
+  "scripts": {
+    "typecheck": "tsc --noEmit -p tsconfig.json && tsc --noEmit -p tsconfig.tools.json",
+    "build": "tsc -p tsconfig.tools.json && node .build/scripts/build.js",
+    "prestart": "npm run build",
+    "start": "node .build/scripts/server.js",
+    "test": "npm run build && node --test .build/tests/data.test.js .build/tests/examples.test.js .build/tests/speech.test.js .build/tests/third-tone.test.js",
+    "data:refresh": "python scripts/build_examples.py && npm run build"
+  },
+  "engines": {
+    "node": ">=20"
+  },
+  "devDependencies": {
+    "@types/node": "20.19.43",
+    "typescript": "7.0.2"
+  }
+}

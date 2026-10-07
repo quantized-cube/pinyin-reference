@@ -1,0 +1,12625 @@
+{
+  "meta": {
+    "source": "CC-CEDICT / MDBG",
+    "url": "https://www.mdbg.net/chinese/export/cedict/cedict_1_0_ts_utf-8_mdbg.txt.gz",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "retrieved": "2026-10-07",
+    "sha256": "00e6c188df0056c42c0448386d0b4f532aa805d9fdd87aef139f72b421ace2f4",
+    "changes": "Selected simplified headwords and readings; definitions omitted; example ranking, curated overrides and third-tone comparison words added."
+  },
+  "examples": {
+    "a1": {
+      "text": "阿们",
+      "tokens": [
+        "a1",
+        "men5"
+      ],
+      "target": 0
+    },
+    "a5": {
+      "text": "天啊",
+      "tokens": [
+        "tian1",
+        "a5"
+      ],
+      "target": 1
+    },
+    "ai1": {
+      "text": "挨不上",
+      "tokens": [
+        "ai1",
+        "bu4",
+        "shang4"
+      ],
+      "target": 0
+    },
+    "ai2": {
+      "text": "挨说",
+      "tokens": [
+        "ai2",
+        "shuo1"
+      ],
+      "target": 0
+    },
+    "ai3": {
+      "text": "矮黑人",
+      "tokens": [
+        "ai3",
+        "hei1",
+        "ren2"
+      ],
+      "target": 0
+    },
+    "ai4": {
+      "text": "爱国者",
+      "tokens": [
+        "ai4",
+        "guo2",
+        "zhe3"
+      ],
+      "target": 0
+    },
+    "ai5": {
+      "text": "爱爱",
+      "tokens": [
+        "ai4",
+        "ai5"
+      ],
+      "target": 1
+    },
+    "an1": {
+      "text": "不安分",
+      "tokens": [
+        "bu4",
+        "an1",
+        "fen5"
+      ],
+      "target": 1
+    },
+    "an2": {
+      "text": "啽",
+      "tokens": [
+        "an2"
+      ],
+      "target": 0
+    },
+    "an3": {
+      "text": "埯",
+      "tokens": [
+        "an3"
+      ],
+      "target": 0
+    },
+    "an4": {
+      "text": "暗地里",
+      "tokens": [
+        "an4",
+        "di4",
+        "li5"
+      ],
+      "target": 0
+    },
+    "ang1": {
+      "text": "肮",
+      "tokens": [
+        "ang1"
+      ],
+      "target": 0
+    },
+    "ang2": {
+      "text": "昂然",
+      "tokens": [
+        "ang2",
+        "ran2"
+      ],
+      "target": 0
+    },
+    "ang4": {
+      "text": "盎然",
+      "tokens": [
+        "ang4",
+        "ran2"
+      ],
+      "target": 0
+    },
+    "ao1": {
+      "text": "凹进",
+      "tokens": [
+        "ao1",
+        "jin4"
+      ],
+      "target": 0
+    },
+    "ao2": {
+      "text": "鏖战",
+      "tokens": [
+        "ao2",
+        "zhan4"
+      ],
+      "target": 0
+    },
+    "ao3": {
+      "text": "袄子",
+      "tokens": [
+        "ao3",
+        "zi5"
+      ],
+      "target": 0
+    },
+    "ao4": {
+      "text": "傲人",
+      "tokens": [
+        "ao4",
+        "ren2"
+      ],
+      "target": 0
+    },
+    "ba1": {
+      "text": "八",
+      "tokens": [
+        "ba1"
+      ],
+      "target": 0
+    },
+    "ba2": {
+      "text": "拔",
+      "tokens": [
+        "ba2"
+      ],
+      "target": 0
+    },
+    "ba3": {
+      "text": "把",
+      "tokens": [
+        "ba3"
+      ],
+      "target": 0
+    },
+    "ba4": {
+      "text": "爸",
+      "tokens": [
+        "ba4"
+      ],
+      "target": 0
+    },
+    "ba5": {
+      "text": "爸爸",
+      "tokens": [
+        "ba4",
+        "ba5"
+      ],
+      "target": 1
+    },
+    "bai1": {
+      "text": "掰开",
+      "tokens": [
+        "bai1",
+        "kai1"
+      ],
+      "target": 0
+    },
+    "bai2": {
+      "text": "白",
+      "tokens": [
+        "bai2"
+      ],
+      "target": 0
+    },
+    "bai3": {
+      "text": "一百一",
+      "tokens": [
+        "yi1",
+        "bai3",
+        "yi1"
+      ],
+      "target": 1
+    },
+    "bai4": {
+      "text": "败家子",
+      "tokens": [
+        "bai4",
+        "jia1",
+        "zi3"
+      ],
+      "target": 0
+    },
+    "bai5": {
+      "text": "明白",
+      "tokens": [
+        "ming2",
+        "bai5"
+      ],
+      "target": 1
+    },
+    "ban1": {
+      "text": "一般人",
+      "tokens": [
+        "yi1",
+        "ban1",
+        "ren2"
+      ],
+      "target": 1
+    },
+    "ban3": {
+      "text": "出版者",
+      "tokens": [
+        "chu1",
+        "ban3",
+        "zhe3"
+      ],
+      "target": 1
+    },
+    "ban4": {
+      "text": "一个半",
+      "tokens": [
+        "yi1",
+        "ge5",
+        "ban4"
+      ],
+      "target": 2
+    },
+    "ban5": {
+      "text": "打扮",
+      "tokens": [
+        "da3",
+        "ban5"
+      ],
+      "target": 1
+    },
+    "bang1": {
+      "text": "外邦人",
+      "tokens": [
+        "wai4",
+        "bang1",
+        "ren2"
+      ],
+      "target": 1
+    },
+    "bang3": {
+      "text": "上榜",
+      "tokens": [
+        "shang4",
+        "bang3"
+      ],
+      "target": 1
+    },
+    "bang4": {
+      "text": "棒子面",
+      "tokens": [
+        "bang4",
+        "zi5",
+        "mian4"
+      ],
+      "target": 0
+    },
+    "bang5": {
+      "text": "帮帮忙",
+      "tokens": [
+        "bang1",
+        "bang5",
+        "mang2"
+      ],
+      "target": 1
+    },
+    "bao1": {
+      "text": "公事包",
+      "tokens": [
+        "gong1",
+        "shi4",
+        "bao1"
+      ],
+      "target": 2
+    },
+    "bao2": {
+      "text": "雹子",
+      "tokens": [
+        "bao2",
+        "zi5"
+      ],
+      "target": 0
+    },
+    "bao3": {
+      "text": "不饱和",
+      "tokens": [
+        "bu4",
+        "bao3",
+        "he2"
+      ],
+      "target": 1
+    },
+    "bao4": {
+      "text": "发报人",
+      "tokens": [
+        "fa1",
+        "bao4",
+        "ren2"
+      ],
+      "target": 1
+    },
+    "bao5": {
+      "text": "宝宝",
+      "tokens": [
+        "bao3",
+        "bao5"
+      ],
+      "target": 1
+    },
+    "bei1": {
+      "text": "杯子",
+      "tokens": [
+        "bei1",
+        "zi5"
+      ],
+      "target": 0
+    },
+    "bei3": {
+      "text": "北",
+      "tokens": [
+        "bei3"
+      ],
+      "target": 0
+    },
+    "bei4": {
+      "text": "被",
+      "tokens": [
+        "bei4"
+      ],
+      "target": 0
+    },
+    "bei5": {
+      "text": "胳臂",
+      "tokens": [
+        "ge1",
+        "bei5"
+      ],
+      "target": 1
+    },
+    "ben1": {
+      "text": "出奔",
+      "tokens": [
+        "chu1",
+        "ben1"
+      ],
+      "target": 1
+    },
+    "ben3": {
+      "text": "本",
+      "tokens": [
+        "ben3"
+      ],
+      "target": 0
+    },
+    "ben4": {
+      "text": "笨人",
+      "tokens": [
+        "ben4",
+        "ren2"
+      ],
+      "target": 0
+    },
+    "beng1": {
+      "text": "绷子",
+      "tokens": [
+        "beng1",
+        "zi5"
+      ],
+      "target": 0
+    },
+    "beng2": {
+      "text": "甭管",
+      "tokens": [
+        "beng2",
+        "guan3"
+      ],
+      "target": 0
+    },
+    "beng3": {
+      "text": "埲",
+      "tokens": [
+        "beng3"
+      ],
+      "target": 0
+    },
+    "beng4": {
+      "text": "蹦出来",
+      "tokens": [
+        "beng4",
+        "chu1",
+        "lai5"
+      ],
+      "target": 0
+    },
+    "bi1": {
+      "text": "逼人",
+      "tokens": [
+        "bi1",
+        "ren2"
+      ],
+      "target": 0
+    },
+    "bi2": {
+      "text": "老鼻子",
+      "tokens": [
+        "lao3",
+        "bi2",
+        "zi5"
+      ],
+      "target": 1
+    },
+    "bi3": {
+      "text": "比不了",
+      "tokens": [
+        "bi3",
+        "bu4",
+        "liao3"
+      ],
+      "target": 0
+    },
+    "bi4": {
+      "text": "避而不",
+      "tokens": [
+        "bi4",
+        "er2",
+        "bu4"
+      ],
+      "target": 0
+    },
+    "bian1": {
+      "text": "一边",
+      "tokens": [
+        "yi1",
+        "bian1"
+      ],
+      "target": 1
+    },
+    "bian3": {
+      "text": "看扁",
+      "tokens": [
+        "kan4",
+        "bian3"
+      ],
+      "target": 1
+    },
+    "bian4": {
+      "text": "不方便",
+      "tokens": [
+        "bu4",
+        "fang1",
+        "bian4"
+      ],
+      "target": 2
+    },
+    "bian5": {
+      "text": "上边",
+      "tokens": [
+        "shang4",
+        "bian5"
+      ],
+      "target": 1
+    },
+    "biao1": {
+      "text": "彪个子",
+      "tokens": [
+        "biao1",
+        "ge4",
+        "zi5"
+      ],
+      "target": 0
+    },
+    "biao3": {
+      "text": "发表会",
+      "tokens": [
+        "fa1",
+        "biao3",
+        "hui4"
+      ],
+      "target": 1
+    },
+    "biao4": {
+      "text": "鱼鳔",
+      "tokens": [
+        "yu2",
+        "biao4"
+      ],
+      "target": 1
+    },
+    "bie1": {
+      "text": "地鳖",
+      "tokens": [
+        "di4",
+        "bie1"
+      ],
+      "target": 1
+    },
+    "bie2": {
+      "text": "顺性别",
+      "tokens": [
+        "shun4",
+        "xing4",
+        "bie2"
+      ],
+      "target": 2
+    },
+    "bie3": {
+      "text": "瘪",
+      "tokens": [
+        "bie3"
+      ],
+      "target": 0
+    },
+    "bie4": {
+      "text": "别嘴",
+      "tokens": [
+        "bie4",
+        "zui3"
+      ],
+      "target": 0
+    },
+    "bin1": {
+      "text": "动宾式",
+      "tokens": [
+        "dong4",
+        "bin1",
+        "shi4"
+      ],
+      "target": 1
+    },
+    "bin4": {
+      "text": "出殡",
+      "tokens": [
+        "chu1",
+        "bin4"
+      ],
+      "target": 1
+    },
+    "bing1": {
+      "text": "上等兵",
+      "tokens": [
+        "shang4",
+        "deng3",
+        "bing1"
+      ],
+      "target": 2
+    },
+    "bing3": {
+      "text": "大饼",
+      "tokens": [
+        "da4",
+        "bing3"
+      ],
+      "target": 1
+    },
+    "bing4": {
+      "text": "中二病",
+      "tokens": [
+        "zhong1",
+        "er4",
+        "bing4"
+      ],
+      "target": 2
+    },
+    "bing5": {
+      "text": "烧饼",
+      "tokens": [
+        "shao1",
+        "bing5"
+      ],
+      "target": 1
+    },
+    "bo1": {
+      "text": "波动性",
+      "tokens": [
+        "bo1",
+        "dong4",
+        "xing4"
+      ],
+      "target": 0
+    },
+    "bo2": {
+      "text": "驳面子",
+      "tokens": [
+        "bo2",
+        "mian4",
+        "zi5"
+      ],
+      "target": 0
+    },
+    "bo3": {
+      "text": "跛子",
+      "tokens": [
+        "bo3",
+        "zi5"
+      ],
+      "target": 0
+    },
+    "bo4": {
+      "text": "擘开",
+      "tokens": [
+        "bo4",
+        "kai1"
+      ],
+      "target": 0
+    },
+    "bo5": {
+      "text": "萝卜",
+      "tokens": [
+        "luo2",
+        "bo5"
+      ],
+      "target": 1
+    },
+    "bu1": {
+      "text": "晡",
+      "tokens": [
+        "bu1"
+      ],
+      "target": 0
+    },
+    "bu2": {
+      "text": "赔不是",
+      "tokens": [
+        "pei2",
+        "bu2",
+        "shi5"
+      ],
+      "target": 1
+    },
+    "bu3": {
+      "text": "国补",
+      "tokens": [
+        "guo2",
+        "bu3"
+      ],
+      "target": 1
+    },
+    "bu4": {
+      "text": "不",
+      "tokens": [
+        "bu4"
+      ],
+      "target": 0
+    },
+    "bu5": {
+      "text": "这不",
+      "tokens": [
+        "zhe4",
+        "bu5"
+      ],
+      "target": 1
+    },
+    "ca1": {
+      "text": "擦子",
+      "tokens": [
+        "ca1",
+        "zi5"
+      ],
+      "target": 0
+    },
+    "ca3": {
+      "text": "礤",
+      "tokens": [
+        "ca3"
+      ],
+      "target": 0
+    },
+    "cai1": {
+      "text": "猜中",
+      "tokens": [
+        "cai1",
+        "zhong4"
+      ],
+      "target": 0
+    },
+    "cai2": {
+      "text": "不成材",
+      "tokens": [
+        "bu4",
+        "cheng2",
+        "cai2"
+      ],
+      "target": 2
+    },
+    "cai3": {
+      "text": "中彩",
+      "tokens": [
+        "zhong4",
+        "cai3"
+      ],
+      "target": 1
+    },
+    "cai4": {
+      "text": "大白菜",
+      "tokens": [
+        "da4",
+        "bai2",
+        "cai4"
+      ],
+      "target": 2
+    },
+    "cai5": {
+      "text": "云彩",
+      "tokens": [
+        "yun2",
+        "cai5"
+      ],
+      "target": 1
+    },
+    "can1": {
+      "text": "参与者",
+      "tokens": [
+        "can1",
+        "yu4",
+        "zhe3"
+      ],
+      "target": 0
+    },
+    "can2": {
+      "text": "蚕子",
+      "tokens": [
+        "can2",
+        "zi3"
+      ],
+      "target": 0
+    },
+    "can3": {
+      "text": "惨事",
+      "tokens": [
+        "can3",
+        "shi4"
+      ],
+      "target": 0
+    },
+    "can4": {
+      "text": "粲然",
+      "tokens": [
+        "can4",
+        "ran2"
+      ],
+      "target": 0
+    },
+    "cang1": {
+      "text": "二等舱",
+      "tokens": [
+        "er4",
+        "deng3",
+        "cang1"
+      ],
+      "target": 2
+    },
+    "cang2": {
+      "text": "藏家",
+      "tokens": [
+        "cang2",
+        "jia1"
+      ],
+      "target": 0
+    },
+    "cao1": {
+      "text": "操作者",
+      "tokens": [
+        "cao1",
+        "zuo4",
+        "zhe3"
+      ],
+      "target": 0
+    },
+    "cao2": {
+      "text": "曹白鱼",
+      "tokens": [
+        "cao2",
+        "bai2",
+        "yu2"
+      ],
+      "target": 0
+    },
+    "cao3": {
+      "text": "长草区",
+      "tokens": [
+        "chang2",
+        "cao3",
+        "qu1"
+      ],
+      "target": 1
+    },
+    "cao4": {
+      "text": "我操",
+      "tokens": [
+        "wo3",
+        "cao4"
+      ],
+      "target": 1
+    },
+    "ce4": {
+      "text": "上厕所",
+      "tokens": [
+        "shang4",
+        "ce4",
+        "suo3"
+      ],
+      "target": 1
+    },
+    "cen1": {
+      "text": "参差",
+      "tokens": [
+        "cen1",
+        "ci1"
+      ],
+      "target": 0
+    },
+    "cen2": {
+      "text": "岑",
+      "tokens": [
+        "cen2"
+      ],
+      "target": 0
+    },
+    "ceng1": {
+      "text": "味噌",
+      "tokens": [
+        "wei4",
+        "ceng1"
+      ],
+      "target": 1
+    },
+    "ceng2": {
+      "text": "自然层",
+      "tokens": [
+        "zi4",
+        "ran2",
+        "ceng2"
+      ],
+      "target": 2
+    },
+    "ceng4": {
+      "text": "蹭",
+      "tokens": [
+        "ceng4"
+      ],
+      "target": 0
+    },
+    "ceng5": {
+      "text": "磨蹭",
+      "tokens": [
+        "mo2",
+        "ceng5"
+      ],
+      "target": 1
+    },
+    "cha1": {
+      "text": "开高叉",
+      "tokens": [
+        "kai1",
+        "gao1",
+        "cha1"
+      ],
+      "target": 2
+    },
+    "cha2": {
+      "text": "定点茶",
+      "tokens": [
+        "ding4",
+        "dian3",
+        "cha2"
+      ],
+      "target": 2
+    },
+    "cha3": {
+      "text": "蹅",
+      "tokens": [
+        "cha3"
+      ],
+      "target": 0
+    },
+    "cha4": {
+      "text": "一刹那",
+      "tokens": [
+        "yi1",
+        "cha4",
+        "na4"
+      ],
+      "target": 1
+    },
+    "cha5": {
+      "text": "喳喳",
+      "tokens": [
+        "cha1",
+        "cha5"
+      ],
+      "target": 1
+    },
+    "chai1": {
+      "text": "出大差",
+      "tokens": [
+        "chu1",
+        "da4",
+        "chai1"
+      ],
+      "target": 2
+    },
+    "chai2": {
+      "text": "同侪",
+      "tokens": [
+        "tong2",
+        "chai2"
+      ],
+      "target": 1
+    },
+    "chai4": {
+      "text": "囆",
+      "tokens": [
+        "chai4"
+      ],
+      "target": 0
+    },
+    "chai5": {
+      "text": "劈柴",
+      "tokens": [
+        "pi3",
+        "chai5"
+      ],
+      "target": 1
+    },
+    "chan1": {
+      "text": "掺和",
+      "tokens": [
+        "chan1",
+        "huo5"
+      ],
+      "target": 0
+    },
+    "chan2": {
+      "text": "馋人",
+      "tokens": [
+        "chan2",
+        "ren2"
+      ],
+      "target": 0
+    },
+    "chan3": {
+      "text": "生产者",
+      "tokens": [
+        "sheng1",
+        "chan3",
+        "zhe3"
+      ],
+      "target": 1
+    },
+    "chan4": {
+      "text": "去颤",
+      "tokens": [
+        "qu4",
+        "chan4"
+      ],
+      "target": 1
+    },
+    "chan5": {
+      "text": "盘缠",
+      "tokens": [
+        "pan2",
+        "chan5"
+      ],
+      "target": 1
+    },
+    "chang1": {
+      "text": "娼家",
+      "tokens": [
+        "chang1",
+        "jia1"
+      ],
+      "target": 0
+    },
+    "chang2": {
+      "text": "常",
+      "tokens": [
+        "chang2"
+      ],
+      "target": 0
+    },
+    "chang3": {
+      "text": "分会场",
+      "tokens": [
+        "fen1",
+        "hui4",
+        "chang3"
+      ],
+      "target": 2
+    },
+    "chang4": {
+      "text": "唱作人",
+      "tokens": [
+        "chang4",
+        "zuo4",
+        "ren2"
+      ],
+      "target": 0
+    },
+    "chang5": {
+      "text": "下场",
+      "tokens": [
+        "xia4",
+        "chang5"
+      ],
+      "target": 1
+    },
+    "chao1": {
+      "text": "超自然",
+      "tokens": [
+        "chao1",
+        "zi4",
+        "ran2"
+      ],
+      "target": 0
+    },
+    "chao2": {
+      "text": "性高潮",
+      "tokens": [
+        "xing4",
+        "gao1",
+        "chao2"
+      ],
+      "target": 2
+    },
+    "chao3": {
+      "text": "炒家",
+      "tokens": [
+        "chao3",
+        "jia1"
+      ],
+      "target": 0
+    },
+    "chao4": {
+      "text": "耖",
+      "tokens": [
+        "chao4"
+      ],
+      "target": 0
+    },
+    "chao5": {
+      "text": "吵吵",
+      "tokens": [
+        "chao1",
+        "chao5"
+      ],
+      "target": 1
+    },
+    "che1": {
+      "text": "车行道",
+      "tokens": [
+        "che1",
+        "xing2",
+        "dao4"
+      ],
+      "target": 0
+    },
+    "che3": {
+      "text": "扯家常",
+      "tokens": [
+        "che3",
+        "jia1",
+        "chang2"
+      ],
+      "target": 0
+    },
+    "che4": {
+      "text": "撤出",
+      "tokens": [
+        "che4",
+        "chu1"
+      ],
+      "target": 0
+    },
+    "che5": {
+      "text": "拉扯大",
+      "tokens": [
+        "la1",
+        "che5",
+        "da4"
+      ],
+      "target": 1
+    },
+    "chen1": {
+      "text": "嗔着",
+      "tokens": [
+        "chen1",
+        "zhe5"
+      ],
+      "target": 0
+    },
+    "chen2": {
+      "text": "陈",
+      "tokens": [
+        "chen2"
+      ],
+      "target": 0
+    },
+    "chen3": {
+      "text": "碜",
+      "tokens": [
+        "chen3"
+      ],
+      "target": 0
+    },
+    "chen4": {
+      "text": "不对称",
+      "tokens": [
+        "bu4",
+        "dui4",
+        "chen4"
+      ],
+      "target": 2
+    },
+    "chen5": {
+      "text": "时辰",
+      "tokens": [
+        "shi2",
+        "chen5"
+      ],
+      "target": 1
+    },
+    "cheng1": {
+      "text": "称之为",
+      "tokens": [
+        "cheng1",
+        "zhi1",
+        "wei2"
+      ],
+      "target": 0
+    },
+    "cheng2": {
+      "text": "成",
+      "tokens": [
+        "cheng2"
+      ],
+      "target": 0
+    },
+    "cheng3": {
+      "text": "得逞",
+      "tokens": [
+        "de2",
+        "cheng3"
+      ],
+      "target": 1
+    },
+    "cheng4": {
+      "text": "过秤",
+      "tokens": [
+        "guo4",
+        "cheng4"
+      ],
+      "target": 1
+    },
+    "cheng5": {
+      "text": "年成",
+      "tokens": [
+        "nian2",
+        "cheng5"
+      ],
+      "target": 1
+    },
+    "chi1": {
+      "text": "吃",
+      "tokens": [
+        "chi1"
+      ],
+      "target": 0
+    },
+    "chi2": {
+      "text": "池",
+      "tokens": [
+        "chi2"
+      ],
+      "target": 0
+    },
+    "chi3": {
+      "text": "尺",
+      "tokens": [
+        "chi3"
+      ],
+      "target": 0
+    },
+    "chi4": {
+      "text": "赤",
+      "tokens": [
+        "chi4"
+      ],
+      "target": 0
+    },
+    "chi5": {
+      "text": "吭哧",
+      "tokens": [
+        "keng1",
+        "chi5"
+      ],
+      "target": 1
+    },
+    "chong1": {
+      "text": "性冲动",
+      "tokens": [
+        "xing4",
+        "chong1",
+        "dong4"
+      ],
+      "target": 1
+    },
+    "chong2": {
+      "text": "多重性",
+      "tokens": [
+        "duo1",
+        "chong2",
+        "xing4"
+      ],
+      "target": 1
+    },
+    "chong3": {
+      "text": "得宠",
+      "tokens": [
+        "de2",
+        "chong3"
+      ],
+      "target": 1
+    },
+    "chong4": {
+      "text": "揰",
+      "tokens": [
+        "chong4"
+      ],
+      "target": 0
+    },
+    "chong5": {
+      "text": "长虫",
+      "tokens": [
+        "chang2",
+        "chong5"
+      ],
+      "target": 1
+    },
+    "chou1": {
+      "text": "抽中",
+      "tokens": [
+        "chou1",
+        "zhong4"
+      ],
+      "target": 0
+    },
+    "chou2": {
+      "text": "运筹学",
+      "tokens": [
+        "yun4",
+        "chou2",
+        "xue2"
+      ],
+      "target": 1
+    },
+    "chou3": {
+      "text": "丑时",
+      "tokens": [
+        "chou3",
+        "shi2"
+      ],
+      "target": 0
+    },
+    "chou4": {
+      "text": "臭老九",
+      "tokens": [
+        "chou4",
+        "lao3",
+        "jiu3"
+      ],
+      "target": 0
+    },
+    "chou5": {
+      "text": "应酬",
+      "tokens": [
+        "ying4",
+        "chou5"
+      ],
+      "target": 1
+    },
+    "chu1": {
+      "text": "出",
+      "tokens": [
+        "chu1"
+      ],
+      "target": 0
+    },
+    "chu2": {
+      "text": "被除数",
+      "tokens": [
+        "bei4",
+        "chu2",
+        "shu4"
+      ],
+      "target": 1
+    },
+    "chu3": {
+      "text": "处理者",
+      "tokens": [
+        "chu3",
+        "li3",
+        "zhe3"
+      ],
+      "target": 0
+    },
+    "chu4": {
+      "text": "人事处",
+      "tokens": [
+        "ren2",
+        "shi4",
+        "chu4"
+      ],
+      "target": 2
+    },
+    "chu5": {
+      "text": "好处",
+      "tokens": [
+        "hao3",
+        "chu5"
+      ],
+      "target": 1
+    },
+    "chuai1": {
+      "text": "搋子",
+      "tokens": [
+        "chuai1",
+        "zi5"
+      ],
+      "target": 0
+    },
+    "chuai3": {
+      "text": "揣想",
+      "tokens": [
+        "chuai3",
+        "xiang3"
+      ],
+      "target": 0
+    },
+    "chuai4": {
+      "text": "膪",
+      "tokens": [
+        "chuai4"
+      ],
+      "target": 0
+    },
+    "chuan1": {
+      "text": "天穿日",
+      "tokens": [
+        "tian1",
+        "chuan1",
+        "ri4"
+      ],
+      "target": 1
+    },
+    "chuan2": {
+      "text": "人传人",
+      "tokens": [
+        "ren2",
+        "chuan2",
+        "ren2"
+      ],
+      "target": 1
+    },
+    "chuan3": {
+      "text": "喘不过",
+      "tokens": [
+        "chuan3",
+        "bu5",
+        "guo4"
+      ],
+      "target": 0
+    },
+    "chuan4": {
+      "text": "串行",
+      "tokens": [
+        "chuan4",
+        "hang2"
+      ],
+      "target": 0
+    },
+    "chuang1": {
+      "text": "开天窗",
+      "tokens": [
+        "kai1",
+        "tian1",
+        "chuang1"
+      ],
+      "target": 2
+    },
+    "chuang2": {
+      "text": "上下床",
+      "tokens": [
+        "shang4",
+        "xia4",
+        "chuang2"
+      ],
+      "target": 2
+    },
+    "chuang3": {
+      "text": "闯过",
+      "tokens": [
+        "chuang3",
+        "guo4"
+      ],
+      "target": 0
+    },
+    "chuang4": {
+      "text": "创作者",
+      "tokens": [
+        "chuang4",
+        "zuo4",
+        "zhe3"
+      ],
+      "target": 0
+    },
+    "chui1": {
+      "text": "吹了",
+      "tokens": [
+        "chui1",
+        "le5"
+      ],
+      "target": 0
+    },
+    "chui2": {
+      "text": "大锤",
+      "tokens": [
+        "da4",
+        "chui2"
+      ],
+      "target": 1
+    },
+    "chun1": {
+      "text": "春",
+      "tokens": [
+        "chun1"
+      ],
+      "target": 0
+    },
+    "chun2": {
+      "text": "唇",
+      "tokens": [
+        "chun2"
+      ],
+      "target": 0
+    },
+    "chun3": {
+      "text": "蠢",
+      "tokens": [
+        "chun3"
+      ],
+      "target": 0
+    },
+    "chuo1": {
+      "text": "戳子",
+      "tokens": [
+        "chuo1",
+        "zi5"
+      ],
+      "target": 0
+    },
+    "chuo4": {
+      "text": "不辍",
+      "tokens": [
+        "bu4",
+        "chuo4"
+      ],
+      "target": 1
+    },
+    "chuo5": {
+      "text": "宽绰",
+      "tokens": [
+        "kuan1",
+        "chuo5"
+      ],
+      "target": 1
+    },
+    "ci1": {
+      "text": "偨",
+      "tokens": [
+        "ci1"
+      ],
+      "target": 0
+    },
+    "ci2": {
+      "text": "词",
+      "tokens": [
+        "ci2"
+      ],
+      "target": 0
+    },
+    "ci3": {
+      "text": "此",
+      "tokens": [
+        "ci3"
+      ],
+      "target": 0
+    },
+    "ci4": {
+      "text": "次",
+      "tokens": [
+        "ci4"
+      ],
+      "target": 0
+    },
+    "cong1": {
+      "text": "小聪明",
+      "tokens": [
+        "xiao3",
+        "cong1",
+        "ming5"
+      ],
+      "target": 1
+    },
+    "cong2": {
+      "text": "从不",
+      "tokens": [
+        "cong2",
+        "bu4"
+      ],
+      "target": 0
+    },
+    "cou4": {
+      "text": "凑成",
+      "tokens": [
+        "cou4",
+        "cheng2"
+      ],
+      "target": 0
+    },
+    "cu1": {
+      "text": "大老粗",
+      "tokens": [
+        "da4",
+        "lao3",
+        "cu1"
+      ],
+      "target": 2
+    },
+    "cu2": {
+      "text": "徂",
+      "tokens": [
+        "cu2"
+      ],
+      "target": 0
+    },
+    "cu4": {
+      "text": "卒中",
+      "tokens": [
+        "cu4",
+        "zhong4"
+      ],
+      "target": 0
+    },
+    "cuan1": {
+      "text": "镩子",
+      "tokens": [
+        "cuan1",
+        "zi5"
+      ],
+      "target": 0
+    },
+    "cuan2": {
+      "text": "拼攒",
+      "tokens": [
+        "pin1",
+        "cuan2"
+      ],
+      "target": 1
+    },
+    "cuan4": {
+      "text": "点窜",
+      "tokens": [
+        "dian3",
+        "cuan4"
+      ],
+      "target": 1
+    },
+    "cui1": {
+      "text": "催生者",
+      "tokens": [
+        "cui1",
+        "sheng1",
+        "zhe3"
+      ],
+      "target": 0
+    },
+    "cui3": {
+      "text": "漼",
+      "tokens": [
+        "cui3"
+      ],
+      "target": 0
+    },
+    "cui4": {
+      "text": "国粹",
+      "tokens": [
+        "guo2",
+        "cui4"
+      ],
+      "target": 1
+    },
+    "cun1": {
+      "text": "村子",
+      "tokens": [
+        "cun1",
+        "zi5"
+      ],
+      "target": 0
+    },
+    "cun2": {
+      "text": "存在",
+      "tokens": [
+        "cun2",
+        "zai4"
+      ],
+      "target": 0
+    },
+    "cun3": {
+      "text": "自忖",
+      "tokens": [
+        "zi4",
+        "cun3"
+      ],
+      "target": 1
+    },
+    "cun4": {
+      "text": "没分寸",
+      "tokens": [
+        "mei2",
+        "fen1",
+        "cun4"
+      ],
+      "target": 2
+    },
+    "cun5": {
+      "text": "分寸",
+      "tokens": [
+        "fen1",
+        "cun5"
+      ],
+      "target": 1
+    },
+    "cuo1": {
+      "text": "一小撮",
+      "tokens": [
+        "yi1",
+        "xiao3",
+        "cuo1"
+      ],
+      "target": 2
+    },
+    "cuo2": {
+      "text": "嵯",
+      "tokens": [
+        "cuo2"
+      ],
+      "target": 0
+    },
+    "cuo3": {
+      "text": "脞",
+      "tokens": [
+        "cuo3"
+      ],
+      "target": 0
+    },
+    "cuo4": {
+      "text": "不错",
+      "tokens": [
+        "bu4",
+        "cuo4"
+      ],
+      "target": 1
+    },
+    "cuo5": {
+      "text": "揉搓",
+      "tokens": [
+        "rou2",
+        "cuo5"
+      ],
+      "target": 1
+    },
+    "da1": {
+      "text": "搭",
+      "tokens": [
+        "da1"
+      ],
+      "target": 0
+    },
+    "da2": {
+      "text": "答",
+      "tokens": [
+        "da2"
+      ],
+      "target": 0
+    },
+    "da3": {
+      "text": "打",
+      "tokens": [
+        "da3"
+      ],
+      "target": 0
+    },
+    "da4": {
+      "text": "大",
+      "tokens": [
+        "da4"
+      ],
+      "target": 0
+    },
+    "da5": {
+      "text": "面疙瘩",
+      "tokens": [
+        "mian4",
+        "ge1",
+        "da5"
+      ],
+      "target": 2
+    },
+    "dai1": {
+      "text": "天然呆",
+      "tokens": [
+        "tian1",
+        "ran2",
+        "dai1"
+      ],
+      "target": 2
+    },
+    "dai3": {
+      "text": "歹人",
+      "tokens": [
+        "dai3",
+        "ren2"
+      ],
+      "target": 0
+    },
+    "dai4": {
+      "text": "不待说",
+      "tokens": [
+        "bu4",
+        "dai4",
+        "shuo1"
+      ],
+      "target": 1
+    },
+    "dai5": {
+      "text": "脑袋",
+      "tokens": [
+        "nao3",
+        "dai5"
+      ],
+      "target": 1
+    },
+    "dan1": {
+      "text": "单行道",
+      "tokens": [
+        "dan1",
+        "xing2",
+        "dao4"
+      ],
+      "target": 0
+    },
+    "dan3": {
+      "text": "大胆",
+      "tokens": [
+        "da4",
+        "dan3"
+      ],
+      "target": 1
+    },
+    "dan4": {
+      "text": "中子弹",
+      "tokens": [
+        "zhong1",
+        "zi3",
+        "dan4"
+      ],
+      "target": 2
+    },
+    "dan5": {
+      "text": "扁担",
+      "tokens": [
+        "bian3",
+        "dan5"
+      ],
+      "target": 1
+    },
+    "dang1": {
+      "text": "当中",
+      "tokens": [
+        "dang1",
+        "zhong1"
+      ],
+      "target": 0
+    },
+    "dang3": {
+      "text": "行进挡",
+      "tokens": [
+        "xing2",
+        "jin4",
+        "dang3"
+      ],
+      "target": 2
+    },
+    "dang4": {
+      "text": "不当",
+      "tokens": [
+        "bu4",
+        "dang4"
+      ],
+      "target": 1
+    },
+    "dang5": {
+      "text": "行当",
+      "tokens": [
+        "hang2",
+        "dang5"
+      ],
+      "target": 1
+    },
+    "dao1": {
+      "text": "大刀会",
+      "tokens": [
+        "da4",
+        "dao1",
+        "hui4"
+      ],
+      "target": 1
+    },
+    "dao2": {
+      "text": "捯",
+      "tokens": [
+        "dao2"
+      ],
+      "target": 0
+    },
+    "dao3": {
+      "text": "一面倒",
+      "tokens": [
+        "yi1",
+        "mian4",
+        "dao3"
+      ],
+      "target": 2
+    },
+    "dao4": {
+      "text": "到",
+      "tokens": [
+        "dao4"
+      ],
+      "target": 0
+    },
+    "dao5": {
+      "text": "说道",
+      "tokens": [
+        "shuo1",
+        "dao5"
+      ],
+      "target": 1
+    },
+    "de1": {
+      "text": "嘚啵",
+      "tokens": [
+        "de1",
+        "bo5"
+      ],
+      "target": 0
+    },
+    "de2": {
+      "text": "不得",
+      "tokens": [
+        "bu4",
+        "de2"
+      ],
+      "target": 1
+    },
+    "de5": {
+      "text": "有的",
+      "tokens": [
+        "you3",
+        "de5"
+      ],
+      "target": 1
+    },
+    "dei3": {
+      "text": "得要",
+      "tokens": [
+        "dei3",
+        "yao4"
+      ],
+      "target": 0
+    },
+    "den4": {
+      "text": "扽",
+      "tokens": [
+        "den4"
+      ],
+      "target": 0
+    },
+    "deng1": {
+      "text": "登出来",
+      "tokens": [
+        "deng1",
+        "chu1",
+        "lai2"
+      ],
+      "target": 0
+    },
+    "deng3": {
+      "text": "等",
+      "tokens": [
+        "deng3"
+      ],
+      "target": 0
+    },
+    "deng4": {
+      "text": "凳子",
+      "tokens": [
+        "deng4",
+        "zi5"
+      ],
+      "target": 0
+    },
+    "di1": {
+      "text": "面的",
+      "tokens": [
+        "mian4",
+        "di1"
+      ],
+      "target": 1
+    },
+    "di2": {
+      "text": "的士高",
+      "tokens": [
+        "di2",
+        "shi4",
+        "gao1"
+      ],
+      "target": 0
+    },
+    "di3": {
+      "text": "说到底",
+      "tokens": [
+        "shuo1",
+        "dao4",
+        "di3"
+      ],
+      "target": 2
+    },
+    "di4": {
+      "text": "中的",
+      "tokens": [
+        "zhong4",
+        "di4"
+      ],
+      "target": 1
+    },
+    "di5": {
+      "text": "弟弟",
+      "tokens": [
+        "di4",
+        "di5"
+      ],
+      "target": 1
+    },
+    "dia3": {
+      "text": "嗲",
+      "tokens": [
+        "dia3"
+      ],
+      "target": 0
+    },
+    "dian1": {
+      "text": "发癫",
+      "tokens": [
+        "fa1",
+        "dian1"
+      ],
+      "target": 1
+    },
+    "dian3": {
+      "text": "点",
+      "tokens": [
+        "dian3"
+      ],
+      "target": 0
+    },
+    "dian4": {
+      "text": "电子人",
+      "tokens": [
+        "dian4",
+        "zi3",
+        "ren2"
+      ],
+      "target": 0
+    },
+    "dian5": {
+      "text": "打点",
+      "tokens": [
+        "da3",
+        "dian5"
+      ],
+      "target": 1
+    },
+    "diao1": {
+      "text": "老雕",
+      "tokens": [
+        "lao3",
+        "diao1"
+      ],
+      "target": 1
+    },
+    "diao4": {
+      "text": "定调子",
+      "tokens": [
+        "ding4",
+        "diao4",
+        "zi5"
+      ],
+      "target": 1
+    },
+    "die1": {
+      "text": "大跌",
+      "tokens": [
+        "da4",
+        "die1"
+      ],
+      "target": 1
+    },
+    "die2": {
+      "text": "大鲽鱼",
+      "tokens": [
+        "da4",
+        "die2",
+        "yu2"
+      ],
+      "target": 1
+    },
+    "die5": {
+      "text": "爹爹",
+      "tokens": [
+        "die1",
+        "die5"
+      ],
+      "target": 1
+    },
+    "ding1": {
+      "text": "一丁点",
+      "tokens": [
+        "yi1",
+        "ding1",
+        "dian3"
+      ],
+      "target": 1
+    },
+    "ding3": {
+      "text": "顶上",
+      "tokens": [
+        "ding3",
+        "shang4"
+      ],
+      "target": 0
+    },
+    "ding4": {
+      "text": "定",
+      "tokens": [
+        "ding4"
+      ],
+      "target": 0
+    },
+    "ding5": {
+      "text": "补丁",
+      "tokens": [
+        "bu3",
+        "ding5"
+      ],
+      "target": 1
+    },
+    "diu1": {
+      "text": "丢到家",
+      "tokens": [
+        "diu1",
+        "dao4",
+        "jia1"
+      ],
+      "target": 0
+    },
+    "dong1": {
+      "text": "东",
+      "tokens": [
+        "dong1"
+      ],
+      "target": 0
+    },
+    "dong3": {
+      "text": "看不懂",
+      "tokens": [
+        "kan4",
+        "bu5",
+        "dong3"
+      ],
+      "target": 2
+    },
+    "dong4": {
+      "text": "动",
+      "tokens": [
+        "dong4"
+      ],
+      "target": 0
+    },
+    "dou1": {
+      "text": "大都",
+      "tokens": [
+        "da4",
+        "dou1"
+      ],
+      "target": 1
+    },
+    "dou3": {
+      "text": "斗大",
+      "tokens": [
+        "dou3",
+        "da4"
+      ],
+      "target": 0
+    },
+    "dou4": {
+      "text": "斗地主",
+      "tokens": [
+        "dou4",
+        "di4",
+        "zhu3"
+      ],
+      "target": 0
+    },
+    "dou5": {
+      "text": "兜兜",
+      "tokens": [
+        "dou1",
+        "dou5"
+      ],
+      "target": 1
+    },
+    "du1": {
+      "text": "大都",
+      "tokens": [
+        "da4",
+        "du1"
+      ],
+      "target": 1
+    },
+    "du2": {
+      "text": "独生子",
+      "tokens": [
+        "du2",
+        "sheng1",
+        "zi3"
+      ],
+      "target": 0
+    },
+    "du3": {
+      "text": "一睹",
+      "tokens": [
+        "yi1",
+        "du3"
+      ],
+      "target": 1
+    },
+    "du4": {
+      "text": "一肚子",
+      "tokens": [
+        "yi1",
+        "du4",
+        "zi5"
+      ],
+      "target": 1
+    },
+    "du5": {
+      "text": "兜肚",
+      "tokens": [
+        "dou1",
+        "du5"
+      ],
+      "target": 1
+    },
+    "duan1": {
+      "text": "端的",
+      "tokens": [
+        "duan1",
+        "di4"
+      ],
+      "target": 0
+    },
+    "duan3": {
+      "text": "短发",
+      "tokens": [
+        "duan3",
+        "fa4"
+      ],
+      "target": 0
+    },
+    "duan4": {
+      "text": "小段子",
+      "tokens": [
+        "xiao3",
+        "duan4",
+        "zi5"
+      ],
+      "target": 1
+    },
+    "dui1": {
+      "text": "一堆",
+      "tokens": [
+        "yi1",
+        "dui1"
+      ],
+      "target": 1
+    },
+    "dui4": {
+      "text": "对",
+      "tokens": [
+        "dui4"
+      ],
+      "target": 0
+    },
+    "dun1": {
+      "text": "蹲",
+      "tokens": [
+        "dun1"
+      ],
+      "target": 0
+    },
+    "dun3": {
+      "text": "盹",
+      "tokens": [
+        "dun3"
+      ],
+      "target": 0
+    },
+    "dun4": {
+      "text": "顿",
+      "tokens": [
+        "dun4"
+      ],
+      "target": 0
+    },
+    "duo1": {
+      "text": "多大",
+      "tokens": [
+        "duo1",
+        "da4"
+      ],
+      "target": 0
+    },
+    "duo2": {
+      "text": "夺得",
+      "tokens": [
+        "duo2",
+        "de2"
+      ],
+      "target": 0
+    },
+    "duo3": {
+      "text": "躲年",
+      "tokens": [
+        "duo3",
+        "nian2"
+      ],
+      "target": 0
+    },
+    "duo4": {
+      "text": "驮子",
+      "tokens": [
+        "duo4",
+        "zi5"
+      ],
+      "target": 0
+    },
+    "duo5": {
+      "text": "花骨朵",
+      "tokens": [
+        "hua1",
+        "gu1",
+        "duo5"
+      ],
+      "target": 2
+    },
+    "e1": {
+      "text": "山阿",
+      "tokens": [
+        "shan1",
+        "e1"
+      ],
+      "target": 1
+    },
+    "e2": {
+      "text": "大天鹅",
+      "tokens": [
+        "da4",
+        "tian1",
+        "e2"
+      ],
+      "target": 2
+    },
+    "e3": {
+      "text": "恶心",
+      "tokens": [
+        "e3",
+        "xin1"
+      ],
+      "target": 0
+    },
+    "e4": {
+      "text": "性恶论",
+      "tokens": [
+        "xing4",
+        "e4",
+        "lun4"
+      ],
+      "target": 1
+    },
+    "ei1": {
+      "text": "工口",
+      "tokens": [
+        "ei1",
+        "luo2"
+      ],
+      "target": 0
+    },
+    "en1": {
+      "text": "恩人",
+      "tokens": [
+        "en1",
+        "ren2"
+      ],
+      "target": 0
+    },
+    "en4": {
+      "text": "摁",
+      "tokens": [
+        "en4"
+      ],
+      "target": 0
+    },
+    "en5": {
+      "text": "嗯哼",
+      "tokens": [
+        "en5",
+        "heng1"
+      ],
+      "target": 0
+    },
+    "eng1": {
+      "text": "鞥",
+      "tokens": [
+        "eng1"
+      ],
+      "target": 0
+    },
+    "er2": {
+      "text": "而",
+      "tokens": [
+        "er2"
+      ],
+      "target": 0
+    },
+    "er3": {
+      "text": "外耳道",
+      "tokens": [
+        "wai4",
+        "er3",
+        "dao4"
+      ],
+      "target": 1
+    },
+    "er4": {
+      "text": "一二",
+      "tokens": [
+        "yi1",
+        "er4"
+      ],
+      "target": 1
+    },
+    "fa1": {
+      "text": "一发",
+      "tokens": [
+        "yi1",
+        "fa1"
+      ],
+      "target": 1
+    },
+    "fa2": {
+      "text": "北伐军",
+      "tokens": [
+        "bei3",
+        "fa2",
+        "jun1"
+      ],
+      "target": 1
+    },
+    "fa3": {
+      "text": "法",
+      "tokens": [
+        "fa3"
+      ],
+      "target": 0
+    },
+    "fa4": {
+      "text": "长发",
+      "tokens": [
+        "chang2",
+        "fa4"
+      ],
+      "target": 1
+    },
+    "fa5": {
+      "text": "说法",
+      "tokens": [
+        "shuo1",
+        "fa5"
+      ],
+      "target": 1
+    },
+    "fan1": {
+      "text": "翻过来",
+      "tokens": [
+        "fan1",
+        "guo4",
+        "lai2"
+      ],
+      "target": 0
+    },
+    "fan2": {
+      "text": "烦心事",
+      "tokens": [
+        "fan2",
+        "xin1",
+        "shi4"
+      ],
+      "target": 0
+    },
+    "fan3": {
+      "text": "反过来",
+      "tokens": [
+        "fan3",
+        "guo5",
+        "lai2"
+      ],
+      "target": 0
+    },
+    "fan4": {
+      "text": "犯不上",
+      "tokens": [
+        "fan4",
+        "bu5",
+        "shang4"
+      ],
+      "target": 0
+    },
+    "fan5": {
+      "text": "麻烦",
+      "tokens": [
+        "ma2",
+        "fan5"
+      ],
+      "target": 1
+    },
+    "fang1": {
+      "text": "方",
+      "tokens": [
+        "fang1"
+      ],
+      "target": 0
+    },
+    "fang2": {
+      "text": "公事房",
+      "tokens": [
+        "gong1",
+        "shi4",
+        "fang2"
+      ],
+      "target": 2
+    },
+    "fang3": {
+      "text": "来访者",
+      "tokens": [
+        "lai2",
+        "fang3",
+        "zhe3"
+      ],
+      "target": 1
+    },
+    "fang4": {
+      "text": "放不下",
+      "tokens": [
+        "fang4",
+        "bu5",
+        "xia4"
+      ],
+      "target": 0
+    },
+    "fang5": {
+      "text": "大方",
+      "tokens": [
+        "da4",
+        "fang5"
+      ],
+      "target": 1
+    },
+    "fei1": {
+      "text": "非小说",
+      "tokens": [
+        "fei1",
+        "xiao3",
+        "shuo1"
+      ],
+      "target": 0
+    },
+    "fei2": {
+      "text": "肥大",
+      "tokens": [
+        "fei2",
+        "da4"
+      ],
+      "target": 0
+    },
+    "fei3": {
+      "text": "不菲",
+      "tokens": [
+        "bu4",
+        "fei3"
+      ],
+      "target": 1
+    },
+    "fei4": {
+      "text": "不费事",
+      "tokens": [
+        "bu4",
+        "fei4",
+        "shi4"
+      ],
+      "target": 1
+    },
+    "fen1": {
+      "text": "分为",
+      "tokens": [
+        "fen1",
+        "wei2"
+      ],
+      "target": 0
+    },
+    "fen2": {
+      "text": "上坟",
+      "tokens": [
+        "shang4",
+        "fen2"
+      ],
+      "target": 1
+    },
+    "fen3": {
+      "text": "自发粉",
+      "tokens": [
+        "zi4",
+        "fa1",
+        "fen3"
+      ],
+      "target": 2
+    },
+    "fen4": {
+      "text": "分子",
+      "tokens": [
+        "fen4",
+        "zi3"
+      ],
+      "target": 0
+    },
+    "fen5": {
+      "text": "生分",
+      "tokens": [
+        "sheng1",
+        "fen5"
+      ],
+      "target": 1
+    },
+    "feng1": {
+      "text": "人来疯",
+      "tokens": [
+        "ren2",
+        "lai2",
+        "feng1"
+      ],
+      "target": 2
+    },
+    "feng2": {
+      "text": "手缝",
+      "tokens": [
+        "shou3",
+        "feng2"
+      ],
+      "target": 1
+    },
+    "feng3": {
+      "text": "唪",
+      "tokens": [
+        "feng3"
+      ],
+      "target": 0
+    },
+    "feng4": {
+      "text": "中缝",
+      "tokens": [
+        "zhong1",
+        "feng4"
+      ],
+      "target": 1
+    },
+    "feng5": {
+      "text": "眯缝",
+      "tokens": [
+        "mi1",
+        "feng5"
+      ],
+      "target": 1
+    },
+    "fo2": {
+      "text": "成佛",
+      "tokens": [
+        "cheng2",
+        "fo2"
+      ],
+      "target": 1
+    },
+    "fou2": {
+      "text": "紑",
+      "tokens": [
+        "fou2"
+      ],
+      "target": 0
+    },
+    "fou3": {
+      "text": "是否",
+      "tokens": [
+        "shi4",
+        "fou3"
+      ],
+      "target": 1
+    },
+    "fu1": {
+      "text": "如夫人",
+      "tokens": [
+        "ru2",
+        "fu1",
+        "ren5"
+      ],
+      "target": 1
+    },
+    "fu2": {
+      "text": "不服",
+      "tokens": [
+        "bu4",
+        "fu2"
+      ],
+      "target": 1
+    },
+    "fu3": {
+      "text": "甫一",
+      "tokens": [
+        "fu3",
+        "yi1"
+      ],
+      "target": 0
+    },
+    "fu4": {
+      "text": "老妇人",
+      "tokens": [
+        "lao3",
+        "fu4",
+        "ren2"
+      ],
+      "target": 1
+    },
+    "fu5": {
+      "text": "衣服",
+      "tokens": [
+        "yi1",
+        "fu5"
+      ],
+      "target": 1
+    },
+    "ga1": {
+      "text": "嘎然",
+      "tokens": [
+        "ga1",
+        "ran2"
+      ],
+      "target": 0
+    },
+    "ga2": {
+      "text": "噶伦",
+      "tokens": [
+        "ga2",
+        "lun2"
+      ],
+      "target": 0
+    },
+    "ga3": {
+      "text": "二尕子",
+      "tokens": [
+        "er4",
+        "ga3",
+        "zi5"
+      ],
+      "target": 1
+    },
+    "ga4": {
+      "text": "尬",
+      "tokens": [
+        "ga4"
+      ],
+      "target": 0
+    },
+    "ga5": {
+      "text": "尜尜",
+      "tokens": [
+        "ga2",
+        "ga5"
+      ],
+      "target": 1
+    },
+    "gai1": {
+      "text": "不该",
+      "tokens": [
+        "bu4",
+        "gai1"
+      ],
+      "target": 1
+    },
+    "gai3": {
+      "text": "改为",
+      "tokens": [
+        "gai3",
+        "wei2"
+      ],
+      "target": 0
+    },
+    "gai4": {
+      "text": "盖然性",
+      "tokens": [
+        "gai4",
+        "ran2",
+        "xing4"
+      ],
+      "target": 0
+    },
+    "gai5": {
+      "text": "铺盖",
+      "tokens": [
+        "pu1",
+        "gai5"
+      ],
+      "target": 1
+    },
+    "gan1": {
+      "text": "不甘于",
+      "tokens": [
+        "bu4",
+        "gan1",
+        "yu2"
+      ],
+      "target": 1
+    },
+    "gan3": {
+      "text": "赶不上",
+      "tokens": [
+        "gan3",
+        "bu4",
+        "shang4"
+      ],
+      "target": 0
+    },
+    "gan4": {
+      "text": "对着干",
+      "tokens": [
+        "dui4",
+        "zhe5",
+        "gan4"
+      ],
+      "target": 2
+    },
+    "gang1": {
+      "text": "刚一",
+      "tokens": [
+        "gang1",
+        "yi1"
+      ],
+      "target": 0
+    },
+    "gang3": {
+      "text": "在岗",
+      "tokens": [
+        "zai4",
+        "gang3"
+      ],
+      "target": 1
+    },
+    "gang4": {
+      "text": "杠上",
+      "tokens": [
+        "gang4",
+        "shang4"
+      ],
+      "target": 0
+    },
+    "gang5": {
+      "text": "刚刚",
+      "tokens": [
+        "gang1",
+        "gang5"
+      ],
+      "target": 1
+    },
+    "gao1": {
+      "text": "高",
+      "tokens": [
+        "gao1"
+      ],
+      "target": 0
+    },
+    "gao3": {
+      "text": "搞不好",
+      "tokens": [
+        "gao3",
+        "bu5",
+        "hao3"
+      ],
+      "target": 0
+    },
+    "gao4": {
+      "text": "被告人",
+      "tokens": [
+        "bei4",
+        "gao4",
+        "ren2"
+      ],
+      "target": 1
+    },
+    "gao5": {
+      "text": "央告",
+      "tokens": [
+        "yang1",
+        "gao5"
+      ],
+      "target": 1
+    },
+    "ge1": {
+      "text": "哥",
+      "tokens": [
+        "ge1"
+      ],
+      "target": 0
+    },
+    "ge2": {
+      "text": "所有格",
+      "tokens": [
+        "suo3",
+        "you3",
+        "ge2"
+      ],
+      "target": 2
+    },
+    "ge3": {
+      "text": "公合",
+      "tokens": [
+        "gong1",
+        "ge3"
+      ],
+      "target": 1
+    },
+    "ge4": {
+      "text": "个人",
+      "tokens": [
+        "ge4",
+        "ren2"
+      ],
+      "target": 0
+    },
+    "ge5": {
+      "text": "哥哥",
+      "tokens": [
+        "ge1",
+        "ge5"
+      ],
+      "target": 1
+    },
+    "gei1": {
+      "text": "假掰",
+      "tokens": [
+        "gei1",
+        "bai1"
+      ],
+      "target": 0
+    },
+    "gei3": {
+      "text": "给以",
+      "tokens": [
+        "gei3",
+        "yi3"
+      ],
+      "target": 0
+    },
+    "gen1": {
+      "text": "跟不上",
+      "tokens": [
+        "gen1",
+        "bu5",
+        "shang4"
+      ],
+      "target": 0
+    },
+    "gen2": {
+      "text": "抓哏",
+      "tokens": [
+        "zhua1",
+        "gen2"
+      ],
+      "target": 1
+    },
+    "gen4": {
+      "text": "亘",
+      "tokens": [
+        "gen4"
+      ],
+      "target": 0
+    },
+    "geng1": {
+      "text": "一更",
+      "tokens": [
+        "yi1",
+        "geng1"
+      ],
+      "target": 1
+    },
+    "geng3": {
+      "text": "埂子",
+      "tokens": [
+        "geng3",
+        "zi5"
+      ],
+      "target": 0
+    },
+    "geng4": {
+      "text": "更是",
+      "tokens": [
+        "geng4",
+        "shi4"
+      ],
+      "target": 0
+    },
+    "gong1": {
+      "text": "公",
+      "tokens": [
+        "gong1"
+      ],
+      "target": 0
+    },
+    "gong3": {
+      "text": "拱道",
+      "tokens": [
+        "gong3",
+        "dao4"
+      ],
+      "target": 0
+    },
+    "gong4": {
+      "text": "共和国",
+      "tokens": [
+        "gong4",
+        "he2",
+        "guo2"
+      ],
+      "target": 0
+    },
+    "gong5": {
+      "text": "公公",
+      "tokens": [
+        "gong1",
+        "gong5"
+      ],
+      "target": 1
+    },
+    "gou1": {
+      "text": "勾人",
+      "tokens": [
+        "gou1",
+        "ren2"
+      ],
+      "target": 0
+    },
+    "gou3": {
+      "text": "看家狗",
+      "tokens": [
+        "kan1",
+        "jia1",
+        "gou3"
+      ],
+      "target": 2
+    },
+    "gou4": {
+      "text": "够不着",
+      "tokens": [
+        "gou4",
+        "bu5",
+        "zhao2"
+      ],
+      "target": 0
+    },
+    "gu1": {
+      "text": "小姑子",
+      "tokens": [
+        "xiao3",
+        "gu1",
+        "zi5"
+      ],
+      "target": 1
+    },
+    "gu3": {
+      "text": "一股子",
+      "tokens": [
+        "yi1",
+        "gu3",
+        "zi5"
+      ],
+      "target": 1
+    },
+    "gu4": {
+      "text": "顾不上",
+      "tokens": [
+        "gu4",
+        "bu5",
+        "shang4"
+      ],
+      "target": 0
+    },
+    "gu5": {
+      "text": "世故",
+      "tokens": [
+        "shi4",
+        "gu5"
+      ],
+      "target": 1
+    },
+    "gua1": {
+      "text": "地瓜面",
+      "tokens": [
+        "di4",
+        "gua1",
+        "mian4"
+      ],
+      "target": 1
+    },
+    "gua3": {
+      "text": "寡人",
+      "tokens": [
+        "gua3",
+        "ren2"
+      ],
+      "target": 0
+    },
+    "gua4": {
+      "text": "同一挂",
+      "tokens": [
+        "tong2",
+        "yi1",
+        "gua4"
+      ],
+      "target": 2
+    },
+    "gua5": {
+      "text": "矮冬瓜",
+      "tokens": [
+        "ai3",
+        "dong1",
+        "gua5"
+      ],
+      "target": 2
+    },
+    "guai1": {
+      "text": "学乖",
+      "tokens": [
+        "xue2",
+        "guai1"
+      ],
+      "target": 1
+    },
+    "guai3": {
+      "text": "大拐",
+      "tokens": [
+        "da4",
+        "guai3"
+      ],
+      "target": 1
+    },
+    "guai4": {
+      "text": "怪不得",
+      "tokens": [
+        "guai4",
+        "bu5",
+        "de5"
+      ],
+      "target": 0
+    },
+    "guai5": {
+      "text": "乖乖",
+      "tokens": [
+        "guai1",
+        "guai5"
+      ],
+      "target": 1
+    },
+    "guan1": {
+      "text": "关",
+      "tokens": [
+        "guan1"
+      ],
+      "target": 0
+    },
+    "guan3": {
+      "text": "管他的",
+      "tokens": [
+        "guan3",
+        "ta1",
+        "de5"
+      ],
+      "target": 0
+    },
+    "guan4": {
+      "text": "看不惯",
+      "tokens": [
+        "kan4",
+        "bu5",
+        "guan4"
+      ],
+      "target": 2
+    },
+    "guang1": {
+      "text": "可见光",
+      "tokens": [
+        "ke3",
+        "jian4",
+        "guang1"
+      ],
+      "target": 2
+    },
+    "guang3": {
+      "text": "广为",
+      "tokens": [
+        "guang3",
+        "wei2"
+      ],
+      "target": 0
+    },
+    "guang4": {
+      "text": "逛",
+      "tokens": [
+        "guang4"
+      ],
+      "target": 0
+    },
+    "guang5": {
+      "text": "逛逛",
+      "tokens": [
+        "guang4",
+        "guang5"
+      ],
+      "target": 1
+    },
+    "gui1": {
+      "text": "归",
+      "tokens": [
+        "gui1"
+      ],
+      "target": 0
+    },
+    "gui3": {
+      "text": "鬼",
+      "tokens": [
+        "gui3"
+      ],
+      "target": 0
+    },
+    "gui4": {
+      "text": "贵",
+      "tokens": [
+        "gui4"
+      ],
+      "target": 0
+    },
+    "gui5": {
+      "text": "玫瑰茄",
+      "tokens": [
+        "mei2",
+        "gui5",
+        "qie2"
+      ],
+      "target": 1
+    },
+    "gun3": {
+      "text": "滚子",
+      "tokens": [
+        "gun3",
+        "zi5"
+      ],
+      "target": 0
+    },
+    "gun4": {
+      "text": "棍子",
+      "tokens": [
+        "gun4",
+        "zi5"
+      ],
+      "target": 0
+    },
+    "guo1": {
+      "text": "大锅",
+      "tokens": [
+        "da4",
+        "guo1"
+      ],
+      "target": 1
+    },
+    "guo2": {
+      "text": "国",
+      "tokens": [
+        "guo2"
+      ],
+      "target": 0
+    },
+    "guo3": {
+      "text": "如果说",
+      "tokens": [
+        "ru2",
+        "guo3",
+        "shuo1"
+      ],
+      "target": 1
+    },
+    "guo4": {
+      "text": "不过",
+      "tokens": [
+        "bu4",
+        "guo4"
+      ],
+      "target": 1
+    },
+    "guo5": {
+      "text": "反过来",
+      "tokens": [
+        "fan3",
+        "guo5",
+        "lai2"
+      ],
+      "target": 1
+    },
+    "ha1": {
+      "text": "哈里发",
+      "tokens": [
+        "ha1",
+        "li3",
+        "fa1"
+      ],
+      "target": 0
+    },
+    "ha2": {
+      "text": "蛤蟆",
+      "tokens": [
+        "ha2",
+        "ma5"
+      ],
+      "target": 0
+    },
+    "ha3": {
+      "text": "哈达",
+      "tokens": [
+        "ha3",
+        "da2"
+      ],
+      "target": 0
+    },
+    "ha4": {
+      "text": "嘎拉哈",
+      "tokens": [
+        "ga1",
+        "la1",
+        "ha4"
+      ],
+      "target": 2
+    },
+    "ha5": {
+      "text": "打哈哈",
+      "tokens": [
+        "da3",
+        "ha1",
+        "ha5"
+      ],
+      "target": 2
+    },
+    "hai1": {
+      "text": "咍",
+      "tokens": [
+        "hai1"
+      ],
+      "target": 0
+    },
+    "hai2": {
+      "text": "孩",
+      "tokens": [
+        "hai2"
+      ],
+      "target": 0
+    },
+    "hai3": {
+      "text": "地中海",
+      "tokens": [
+        "di4",
+        "zhong1",
+        "hai3"
+      ],
+      "target": 2
+    },
+    "hai4": {
+      "text": "被害人",
+      "tokens": [
+        "bei4",
+        "hai4",
+        "ren2"
+      ],
+      "target": 1
+    },
+    "hai5": {
+      "text": "厉害",
+      "tokens": [
+        "li4",
+        "hai5"
+      ],
+      "target": 1
+    },
+    "han1": {
+      "text": "蚶子",
+      "tokens": [
+        "han1",
+        "zi5"
+      ],
+      "target": 0
+    },
+    "han2": {
+      "text": "函人",
+      "tokens": [
+        "han2",
+        "ren2"
+      ],
+      "target": 0
+    },
+    "han3": {
+      "text": "罕有",
+      "tokens": [
+        "han3",
+        "you3"
+      ],
+      "target": 0
+    },
+    "han4": {
+      "text": "汉学家",
+      "tokens": [
+        "han4",
+        "xue2",
+        "jia1"
+      ],
+      "target": 0
+    },
+    "han5": {
+      "text": "包涵",
+      "tokens": [
+        "bao1",
+        "han5"
+      ],
+      "target": 1
+    },
+    "hang1": {
+      "text": "夯实",
+      "tokens": [
+        "hang1",
+        "shi2"
+      ],
+      "target": 0
+    },
+    "hang2": {
+      "text": "在行",
+      "tokens": [
+        "zai4",
+        "hang2"
+      ],
+      "target": 1
+    },
+    "hang4": {
+      "text": "沆",
+      "tokens": [
+        "hang4"
+      ],
+      "target": 0
+    },
+    "hao1": {
+      "text": "好好儿",
+      "tokens": [
+        "hao3",
+        "hao1",
+        "r5"
+      ],
+      "target": 1
+    },
+    "hao2": {
+      "text": "毫不",
+      "tokens": [
+        "hao2",
+        "bu4"
+      ],
+      "target": 0
+    },
+    "hao3": {
+      "text": "不好",
+      "tokens": [
+        "bu4",
+        "hao3"
+      ],
+      "target": 1
+    },
+    "hao4": {
+      "text": "好事",
+      "tokens": [
+        "hao4",
+        "shi4"
+      ],
+      "target": 0
+    },
+    "hao5": {
+      "text": "字号",
+      "tokens": [
+        "zi4",
+        "hao5"
+      ],
+      "target": 1
+    },
+    "he1": {
+      "text": "诃子",
+      "tokens": [
+        "he1",
+        "zi3"
+      ],
+      "target": 0
+    },
+    "he2": {
+      "text": "不和",
+      "tokens": [
+        "bu4",
+        "he2"
+      ],
+      "target": 1
+    },
+    "he4": {
+      "text": "马赫数",
+      "tokens": [
+        "ma3",
+        "he4",
+        "shu4"
+      ],
+      "target": 1
+    },
+    "he5": {
+      "text": "凑合",
+      "tokens": [
+        "cou4",
+        "he5"
+      ],
+      "target": 1
+    },
+    "hei1": {
+      "text": "黑",
+      "tokens": [
+        "hei1"
+      ],
+      "target": 0
+    },
+    "hen2": {
+      "text": "无痕",
+      "tokens": [
+        "wu2",
+        "hen2"
+      ],
+      "target": 1
+    },
+    "hen3": {
+      "text": "很",
+      "tokens": [
+        "hen3"
+      ],
+      "target": 0
+    },
+    "hen4": {
+      "text": "恨不得",
+      "tokens": [
+        "hen4",
+        "bu5",
+        "de5"
+      ],
+      "target": 0
+    },
+    "heng1": {
+      "text": "大亨",
+      "tokens": [
+        "da4",
+        "heng1"
+      ],
+      "target": 1
+    },
+    "heng2": {
+      "text": "马来鸻",
+      "tokens": [
+        "ma3",
+        "lai2",
+        "heng2"
+      ],
+      "target": 2
+    },
+    "heng4": {
+      "text": "堼",
+      "tokens": [
+        "heng4"
+      ],
+      "target": 0
+    },
+    "hong1": {
+      "text": "哄然",
+      "tokens": [
+        "hong1",
+        "ran2"
+      ],
+      "target": 0
+    },
+    "hong2": {
+      "text": "红人",
+      "tokens": [
+        "hong2",
+        "ren2"
+      ],
+      "target": 0
+    },
+    "hong3": {
+      "text": "哄劝",
+      "tokens": [
+        "hong3",
+        "quan4"
+      ],
+      "target": 0
+    },
+    "hong4": {
+      "text": "起哄",
+      "tokens": [
+        "qi3",
+        "hong4"
+      ],
+      "target": 1
+    },
+    "hou2": {
+      "text": "知了猴",
+      "tokens": [
+        "zhi1",
+        "liao3",
+        "hou2"
+      ],
+      "target": 2
+    },
+    "hou3": {
+      "text": "吼",
+      "tokens": [
+        "hou3"
+      ],
+      "target": 0
+    },
+    "hou4": {
+      "text": "后",
+      "tokens": [
+        "hou4"
+      ],
+      "target": 0
+    },
+    "hou5": {
+      "text": "时候",
+      "tokens": [
+        "shi2",
+        "hou5"
+      ],
+      "target": 1
+    },
+    "hu1": {
+      "text": "于是乎",
+      "tokens": [
+        "yu2",
+        "shi4",
+        "hu1"
+      ],
+      "target": 2
+    },
+    "hu2": {
+      "text": "地和",
+      "tokens": [
+        "di4",
+        "hu2"
+      ],
+      "target": 1
+    },
+    "hu3": {
+      "text": "唬人",
+      "tokens": [
+        "hu3",
+        "ren2"
+      ],
+      "target": 0
+    },
+    "hu4": {
+      "text": "在户外",
+      "tokens": [
+        "zai4",
+        "hu4",
+        "wai4"
+      ],
+      "target": 1
+    },
+    "hu5": {
+      "text": "不在乎",
+      "tokens": [
+        "bu4",
+        "zai4",
+        "hu5"
+      ],
+      "target": 2
+    },
+    "hua1": {
+      "text": "花",
+      "tokens": [
+        "hua1"
+      ],
+      "target": 0
+    },
+    "hua2": {
+      "text": "划不来",
+      "tokens": [
+        "hua2",
+        "bu5",
+        "lai2"
+      ],
+      "target": 0
+    },
+    "hua4": {
+      "text": "不是话",
+      "tokens": [
+        "bu4",
+        "shi4",
+        "hua4"
+      ],
+      "target": 2
+    },
+    "hua5": {
+      "text": "棉花",
+      "tokens": [
+        "mian2",
+        "hua5"
+      ],
+      "target": 1
+    },
+    "huai2": {
+      "text": "国槐树",
+      "tokens": [
+        "guo2",
+        "huai2",
+        "shu4"
+      ],
+      "target": 1
+    },
+    "huai4": {
+      "text": "坏分子",
+      "tokens": [
+        "huai4",
+        "fen4",
+        "zi3"
+      ],
+      "target": 0
+    },
+    "huan1": {
+      "text": "欢心",
+      "tokens": [
+        "huan1",
+        "xin1"
+      ],
+      "target": 0
+    },
+    "huan2": {
+      "text": "生还",
+      "tokens": [
+        "sheng1",
+        "huan2"
+      ],
+      "target": 1
+    },
+    "huan3": {
+      "text": "和缓",
+      "tokens": [
+        "he2",
+        "huan3"
+      ],
+      "target": 1
+    },
+    "huan4": {
+      "text": "无患子",
+      "tokens": [
+        "wu2",
+        "huan4",
+        "zi3"
+      ],
+      "target": 1
+    },
+    "huan5": {
+      "text": "丫环",
+      "tokens": [
+        "ya1",
+        "huan5"
+      ],
+      "target": 1
+    },
+    "huang1": {
+      "text": "北大荒",
+      "tokens": [
+        "bei3",
+        "da4",
+        "huang1"
+      ],
+      "target": 2
+    },
+    "huang2": {
+      "text": "黄种人",
+      "tokens": [
+        "huang2",
+        "zhong3",
+        "ren2"
+      ],
+      "target": 0
+    },
+    "huang3": {
+      "text": "说谎者",
+      "tokens": [
+        "shuo1",
+        "huang3",
+        "zhe3"
+      ],
+      "target": 1
+    },
+    "huang4": {
+      "text": "晃动",
+      "tokens": [
+        "huang4",
+        "dong4"
+      ],
+      "target": 0
+    },
+    "hui1": {
+      "text": "挥发性",
+      "tokens": [
+        "hui1",
+        "fa1",
+        "xing4"
+      ],
+      "target": 0
+    },
+    "hui2": {
+      "text": "一回事",
+      "tokens": [
+        "yi1",
+        "hui2",
+        "shi4"
+      ],
+      "target": 1
+    },
+    "hui3": {
+      "text": "悔过书",
+      "tokens": [
+        "hui3",
+        "guo4",
+        "shu1"
+      ],
+      "target": 0
+    },
+    "hui4": {
+      "text": "一会",
+      "tokens": [
+        "yi1",
+        "hui4"
+      ],
+      "target": 1
+    },
+    "hui5": {
+      "text": "待会",
+      "tokens": [
+        "dai1",
+        "hui5"
+      ],
+      "target": 1
+    },
+    "hun1": {
+      "text": "昏过去",
+      "tokens": [
+        "hun1",
+        "guo5",
+        "qu5"
+      ],
+      "target": 0
+    },
+    "hun2": {
+      "text": "浑天说",
+      "tokens": [
+        "hun2",
+        "tian1",
+        "shuo1"
+      ],
+      "target": 0
+    },
+    "hun4": {
+      "text": "混日子",
+      "tokens": [
+        "hun4",
+        "ri4",
+        "zi5"
+      ],
+      "target": 0
+    },
+    "hun5": {
+      "text": "搅混",
+      "tokens": [
+        "jiao3",
+        "hun5"
+      ],
+      "target": 1
+    },
+    "huo1": {
+      "text": "豁出去",
+      "tokens": [
+        "huo1",
+        "chu5",
+        "qu5"
+      ],
+      "target": 0
+    },
+    "huo2": {
+      "text": "和面",
+      "tokens": [
+        "huo2",
+        "mian4"
+      ],
+      "target": 0
+    },
+    "huo3": {
+      "text": "着火点",
+      "tokens": [
+        "zhao2",
+        "huo3",
+        "dian3"
+      ],
+      "target": 1
+    },
+    "huo4": {
+      "text": "获得者",
+      "tokens": [
+        "huo4",
+        "de2",
+        "zhe3"
+      ],
+      "target": 0
+    },
+    "huo5": {
+      "text": "快活",
+      "tokens": [
+        "kuai4",
+        "huo5"
+      ],
+      "target": 1
+    },
+    "ji1": {
+      "text": "鸡",
+      "tokens": [
+        "ji1"
+      ],
+      "target": 0
+    },
+    "ji2": {
+      "text": "急",
+      "tokens": [
+        "ji2"
+      ],
+      "target": 0
+    },
+    "ji3": {
+      "text": "几",
+      "tokens": [
+        "ji3"
+      ],
+      "target": 0
+    },
+    "ji4": {
+      "text": "记",
+      "tokens": [
+        "ji4"
+      ],
+      "target": 0
+    },
+    "ji5": {
+      "text": "里脊",
+      "tokens": [
+        "li3",
+        "ji5"
+      ],
+      "target": 1
+    },
+    "jia1": {
+      "text": "家",
+      "tokens": [
+        "jia1"
+      ],
+      "target": 0
+    },
+    "jia2": {
+      "text": "铗子",
+      "tokens": [
+        "jia2",
+        "zi5"
+      ],
+      "target": 0
+    },
+    "jia3": {
+      "text": "一甲子",
+      "tokens": [
+        "yi1",
+        "jia3",
+        "zi3"
+      ],
+      "target": 1
+    },
+    "jia4": {
+      "text": "不二价",
+      "tokens": [
+        "bu4",
+        "er4",
+        "jia4"
+      ],
+      "target": 2
+    },
+    "jia5": {
+      "text": "人家",
+      "tokens": [
+        "ren2",
+        "jia5"
+      ],
+      "target": 1
+    },
+    "jian1": {
+      "text": "中间人",
+      "tokens": [
+        "zhong1",
+        "jian1",
+        "ren2"
+      ],
+      "target": 1
+    },
+    "jian3": {
+      "text": "公检法",
+      "tokens": [
+        "gong1",
+        "jian3",
+        "fa3"
+      ],
+      "target": 1
+    },
+    "jian4": {
+      "text": "不见",
+      "tokens": [
+        "bu4",
+        "jian4"
+      ],
+      "target": 1
+    },
+    "jian5": {
+      "text": "待见",
+      "tokens": [
+        "dai4",
+        "jian5"
+      ],
+      "target": 1
+    },
+    "jiang1": {
+      "text": "将来",
+      "tokens": [
+        "jiang1",
+        "lai2"
+      ],
+      "target": 0
+    },
+    "jiang3": {
+      "text": "大奖",
+      "tokens": [
+        "da4",
+        "jiang3"
+      ],
+      "target": 1
+    },
+    "jiang4": {
+      "text": "大将",
+      "tokens": [
+        "da4",
+        "jiang4"
+      ],
+      "target": 1
+    },
+    "jiang5": {
+      "text": "瓦匠",
+      "tokens": [
+        "wa3",
+        "jiang5"
+      ],
+      "target": 1
+    },
+    "jiao1": {
+      "text": "外交家",
+      "tokens": [
+        "wai4",
+        "jiao1",
+        "jia1"
+      ],
+      "target": 1
+    },
+    "jiao2": {
+      "text": "嚼子",
+      "tokens": [
+        "jiao2",
+        "zi5"
+      ],
+      "target": 0
+    },
+    "jiao3": {
+      "text": "三角法",
+      "tokens": [
+        "san1",
+        "jiao3",
+        "fa3"
+      ],
+      "target": 1
+    },
+    "jiao4": {
+      "text": "大主教",
+      "tokens": [
+        "da4",
+        "zhu3",
+        "jiao4"
+      ],
+      "target": 2
+    },
+    "jiao5": {
+      "text": "垫脚",
+      "tokens": [
+        "dian4",
+        "jiao5"
+      ],
+      "target": 1
+    },
+    "jie1": {
+      "text": "接下来",
+      "tokens": [
+        "jie1",
+        "xia4",
+        "lai2"
+      ],
+      "target": 0
+    },
+    "jie2": {
+      "text": "中国结",
+      "tokens": [
+        "zhong1",
+        "guo2",
+        "jie2"
+      ],
+      "target": 2
+    },
+    "jie3": {
+      "text": "姐",
+      "tokens": [
+        "jie3"
+      ],
+      "target": 0
+    },
+    "jie4": {
+      "text": "中介所",
+      "tokens": [
+        "zhong1",
+        "jie4",
+        "suo3"
+      ],
+      "target": 1
+    },
+    "jie5": {
+      "text": "姐姐",
+      "tokens": [
+        "jie3",
+        "jie5"
+      ],
+      "target": 1
+    },
+    "jin1": {
+      "text": "禁不起",
+      "tokens": [
+        "jin1",
+        "bu5",
+        "qi3"
+      ],
+      "target": 0
+    },
+    "jin3": {
+      "text": "不要紧",
+      "tokens": [
+        "bu4",
+        "yao4",
+        "jin3"
+      ],
+      "target": 2
+    },
+    "jin4": {
+      "text": "进",
+      "tokens": [
+        "jin4"
+      ],
+      "target": 0
+    },
+    "jing1": {
+      "text": "经",
+      "tokens": [
+        "jing1"
+      ],
+      "target": 0
+    },
+    "jing3": {
+      "text": "红景天",
+      "tokens": [
+        "hong2",
+        "jing3",
+        "tian1"
+      ],
+      "target": 1
+    },
+    "jing4": {
+      "text": "行人径",
+      "tokens": [
+        "xing2",
+        "ren2",
+        "jing4"
+      ],
+      "target": 2
+    },
+    "jing5": {
+      "text": "眼睛",
+      "tokens": [
+        "yan3",
+        "jing5"
+      ],
+      "target": 1
+    },
+    "jiong1": {
+      "text": "冂",
+      "tokens": [
+        "jiong1"
+      ],
+      "target": 0
+    },
+    "jiong3": {
+      "text": "发窘",
+      "tokens": [
+        "fa1",
+        "jiong3"
+      ],
+      "target": 1
+    },
+    "jiu1": {
+      "text": "揪出",
+      "tokens": [
+        "jiu1",
+        "chu1"
+      ],
+      "target": 0
+    },
+    "jiu3": {
+      "text": "久",
+      "tokens": [
+        "jiu3"
+      ],
+      "target": 0
+    },
+    "jiu4": {
+      "text": "就",
+      "tokens": [
+        "jiu4"
+      ],
+      "target": 0
+    },
+    "jiu5": {
+      "text": "将就",
+      "tokens": [
+        "jiang1",
+        "jiu5"
+      ],
+      "target": 1
+    },
+    "ju1": {
+      "text": "人居",
+      "tokens": [
+        "ren2",
+        "ju1"
+      ],
+      "target": 1
+    },
+    "ju2": {
+      "text": "局",
+      "tokens": [
+        "ju2"
+      ],
+      "target": 0
+    },
+    "ju3": {
+      "text": "举",
+      "tokens": [
+        "ju3"
+      ],
+      "target": 0
+    },
+    "ju4": {
+      "text": "巨",
+      "tokens": [
+        "ju4"
+      ],
+      "target": 0
+    },
+    "ju5": {
+      "text": "规矩",
+      "tokens": [
+        "gui1",
+        "ju5"
+      ],
+      "target": 1
+    },
+    "juan1": {
+      "text": "捐生",
+      "tokens": [
+        "juan1",
+        "sheng1"
+      ],
+      "target": 0
+    },
+    "juan3": {
+      "text": "自来卷",
+      "tokens": [
+        "zi4",
+        "lai2",
+        "juan3"
+      ],
+      "target": 2
+    },
+    "juan4": {
+      "text": "不倦",
+      "tokens": [
+        "bu4",
+        "juan4"
+      ],
+      "target": 1
+    },
+    "jue1": {
+      "text": "撅",
+      "tokens": [
+        "jue1"
+      ],
+      "target": 0
+    },
+    "jue2": {
+      "text": "有决心",
+      "tokens": [
+        "you3",
+        "jue2",
+        "xin1"
+      ],
+      "target": 1
+    },
+    "jue3": {
+      "text": "尥蹶子",
+      "tokens": [
+        "liao4",
+        "jue3",
+        "zi5"
+      ],
+      "target": 1
+    },
+    "jue4": {
+      "text": "倔头",
+      "tokens": [
+        "jue4",
+        "tou2"
+      ],
+      "target": 0
+    },
+    "jun1": {
+      "text": "军",
+      "tokens": [
+        "jun1"
+      ],
+      "target": 0
+    },
+    "jun4": {
+      "text": "俊",
+      "tokens": [
+        "jun4"
+      ],
+      "target": 0
+    },
+    "ka1": {
+      "text": "大咖",
+      "tokens": [
+        "da4",
+        "ka1"
+      ],
+      "target": 1
+    },
+    "ka3": {
+      "text": "生日卡",
+      "tokens": [
+        "sheng1",
+        "ri4",
+        "ka3"
+      ],
+      "target": 2
+    },
+    "kai1": {
+      "text": "开",
+      "tokens": [
+        "kai1"
+      ],
+      "target": 0
+    },
+    "kai3": {
+      "text": "正楷",
+      "tokens": [
+        "zheng4",
+        "kai3"
+      ],
+      "target": 1
+    },
+    "kai4": {
+      "text": "忾",
+      "tokens": [
+        "kai4"
+      ],
+      "target": 0
+    },
+    "kai5": {
+      "text": "撩开",
+      "tokens": [
+        "liao1",
+        "kai5"
+      ],
+      "target": 1
+    },
+    "kan1": {
+      "text": "看家",
+      "tokens": [
+        "kan1",
+        "jia1"
+      ],
+      "target": 0
+    },
+    "kan3": {
+      "text": "侃大山",
+      "tokens": [
+        "kan3",
+        "da4",
+        "shan1"
+      ],
+      "target": 0
+    },
+    "kan4": {
+      "text": "看在",
+      "tokens": [
+        "kan4",
+        "zai4"
+      ],
+      "target": 0
+    },
+    "kan5": {
+      "text": "看看",
+      "tokens": [
+        "kan4",
+        "kan5"
+      ],
+      "target": 1
+    },
+    "kang1": {
+      "text": "小康",
+      "tokens": [
+        "xiao3",
+        "kang1"
+      ],
+      "target": 1
+    },
+    "kang2": {
+      "text": "扛把子",
+      "tokens": [
+        "kang2",
+        "ba3",
+        "zi5"
+      ],
+      "target": 0
+    },
+    "kang4": {
+      "text": "对抗者",
+      "tokens": [
+        "dui4",
+        "kang4",
+        "zhe3"
+      ],
+      "target": 1
+    },
+    "kao1": {
+      "text": "尻",
+      "tokens": [
+        "kao1"
+      ],
+      "target": 0
+    },
+    "kao3": {
+      "text": "大考",
+      "tokens": [
+        "da4",
+        "kao3"
+      ],
+      "target": 1
+    },
+    "kao4": {
+      "text": "可靠性",
+      "tokens": [
+        "ke3",
+        "kao4",
+        "xing4"
+      ],
+      "target": 1
+    },
+    "ke1": {
+      "text": "科学家",
+      "tokens": [
+        "ke1",
+        "xue2",
+        "jia1"
+      ],
+      "target": 0
+    },
+    "ke2": {
+      "text": "外壳",
+      "tokens": [
+        "wai4",
+        "ke2"
+      ],
+      "target": 1
+    },
+    "ke3": {
+      "text": "可是",
+      "tokens": [
+        "ke3",
+        "shi4"
+      ],
+      "target": 0
+    },
+    "ke4": {
+      "text": "理中客",
+      "tokens": [
+        "li3",
+        "zhong1",
+        "ke4"
+      ],
+      "target": 2
+    },
+    "kei1": {
+      "text": "剋",
+      "tokens": [
+        "kei1"
+      ],
+      "target": 0
+    },
+    "ken3": {
+      "text": "中肯",
+      "tokens": [
+        "zhong4",
+        "ken3"
+      ],
+      "target": 1
+    },
+    "ken4": {
+      "text": "掯",
+      "tokens": [
+        "ken4"
+      ],
+      "target": 0
+    },
+    "keng1": {
+      "text": "坑人",
+      "tokens": [
+        "keng1",
+        "ren2"
+      ],
+      "target": 0
+    },
+    "kong1": {
+      "text": "空对地",
+      "tokens": [
+        "kong1",
+        "dui4",
+        "di4"
+      ],
+      "target": 0
+    },
+    "kong3": {
+      "text": "多孔性",
+      "tokens": [
+        "duo1",
+        "kong3",
+        "xing4"
+      ],
+      "target": 1
+    },
+    "kong4": {
+      "text": "实控人",
+      "tokens": [
+        "shi2",
+        "kong4",
+        "ren2"
+      ],
+      "target": 1
+    },
+    "kou1": {
+      "text": "老抠",
+      "tokens": [
+        "lao3",
+        "kou1"
+      ],
+      "target": 1
+    },
+    "kou3": {
+      "text": "人口学",
+      "tokens": [
+        "ren2",
+        "kou3",
+        "xue2"
+      ],
+      "target": 1
+    },
+    "kou4": {
+      "text": "扣上",
+      "tokens": [
+        "kou4",
+        "shang4"
+      ],
+      "target": 0
+    },
+    "kou5": {
+      "text": "牙口",
+      "tokens": [
+        "ya2",
+        "kou5"
+      ],
+      "target": 1
+    },
+    "ku1": {
+      "text": "大哭",
+      "tokens": [
+        "da4",
+        "ku1"
+      ],
+      "target": 1
+    },
+    "ku3": {
+      "text": "苦日子",
+      "tokens": [
+        "ku3",
+        "ri4",
+        "zi5"
+      ],
+      "target": 0
+    },
+    "ku4": {
+      "text": "内衣裤",
+      "tokens": [
+        "nei4",
+        "yi1",
+        "ku4"
+      ],
+      "target": 2
+    },
+    "kua1": {
+      "text": "夸大",
+      "tokens": [
+        "kua1",
+        "da4"
+      ],
+      "target": 0
+    },
+    "kua3": {
+      "text": "侉子",
+      "tokens": [
+        "kua3",
+        "zi5"
+      ],
+      "target": 0
+    },
+    "kua4": {
+      "text": "跨地区",
+      "tokens": [
+        "kua4",
+        "di4",
+        "qu1"
+      ],
+      "target": 0
+    },
+    "kuai3": {
+      "text": "蒯",
+      "tokens": [
+        "kuai3"
+      ],
+      "target": 0
+    },
+    "kuai4": {
+      "text": "快中子",
+      "tokens": [
+        "kuai4",
+        "zhong1",
+        "zi3"
+      ],
+      "target": 0
+    },
+    "kuai5": {
+      "text": "松快",
+      "tokens": [
+        "song1",
+        "kuai5"
+      ],
+      "target": 1
+    },
+    "kuan1": {
+      "text": "东西宽",
+      "tokens": [
+        "dong1",
+        "xi1",
+        "kuan1"
+      ],
+      "target": 2
+    },
+    "kuan3": {
+      "text": "的款",
+      "tokens": [
+        "di2",
+        "kuan3"
+      ],
+      "target": 1
+    },
+    "kuang1": {
+      "text": "匡正",
+      "tokens": [
+        "kuang1",
+        "zheng4"
+      ],
+      "target": 0
+    },
+    "kuang2": {
+      "text": "自大狂",
+      "tokens": [
+        "zi4",
+        "da4",
+        "kuang2"
+      ],
+      "target": 2
+    },
+    "kuang3": {
+      "text": "夼",
+      "tokens": [
+        "kuang3"
+      ],
+      "target": 0
+    },
+    "kuang4": {
+      "text": "看情况",
+      "tokens": [
+        "kan4",
+        "qing2",
+        "kuang4"
+      ],
+      "target": 2
+    },
+    "kuang5": {
+      "text": "框框",
+      "tokens": [
+        "kuang4",
+        "kuang5"
+      ],
+      "target": 1
+    },
+    "kui1": {
+      "text": "亏心事",
+      "tokens": [
+        "kui1",
+        "xin1",
+        "shi4"
+      ],
+      "target": 0
+    },
+    "kui2": {
+      "text": "葵花子",
+      "tokens": [
+        "kui2",
+        "hua1",
+        "zi3"
+      ],
+      "target": 0
+    },
+    "kui3": {
+      "text": "煃",
+      "tokens": [
+        "kui3"
+      ],
+      "target": 0
+    },
+    "kui4": {
+      "text": "不匮",
+      "tokens": [
+        "bu4",
+        "kui4"
+      ],
+      "target": 1
+    },
+    "kun1": {
+      "text": "昆玉",
+      "tokens": [
+        "kun1",
+        "yu4"
+      ],
+      "target": 0
+    },
+    "kun3": {
+      "text": "壸",
+      "tokens": [
+        "kun3"
+      ],
+      "target": 0
+    },
+    "kun4": {
+      "text": "发困",
+      "tokens": [
+        "fa1",
+        "kun4"
+      ],
+      "target": 1
+    },
+    "kuo4": {
+      "text": "阔人",
+      "tokens": [
+        "kuo4",
+        "ren2"
+      ],
+      "target": 0
+    },
+    "la1": {
+      "text": "拉",
+      "tokens": [
+        "la1"
+      ],
+      "target": 0
+    },
+    "la2": {
+      "text": "旯",
+      "tokens": [
+        "la2"
+      ],
+      "target": 0
+    },
+    "la3": {
+      "text": "喇叭花",
+      "tokens": [
+        "la3",
+        "ba5",
+        "hua1"
+      ],
+      "target": 0
+    },
+    "la4": {
+      "text": "辣",
+      "tokens": [
+        "la4"
+      ],
+      "target": 0
+    },
+    "la5": {
+      "text": "乌拉",
+      "tokens": [
+        "wu4",
+        "la5"
+      ],
+      "target": 1
+    },
+    "lai2": {
+      "text": "来",
+      "tokens": [
+        "lai2"
+      ],
+      "target": 0
+    },
+    "lai4": {
+      "text": "有赖于",
+      "tokens": [
+        "you3",
+        "lai4",
+        "yu2"
+      ],
+      "target": 1
+    },
+    "lai5": {
+      "text": "出来",
+      "tokens": [
+        "chu5",
+        "lai5"
+      ],
+      "target": 1
+    },
+    "lan2": {
+      "text": "白兰地",
+      "tokens": [
+        "bai2",
+        "lan2",
+        "di4"
+      ],
+      "target": 1
+    },
+    "lan3": {
+      "text": "一揽子",
+      "tokens": [
+        "yi1",
+        "lan3",
+        "zi5"
+      ],
+      "target": 1
+    },
+    "lan4": {
+      "text": "滥好人",
+      "tokens": [
+        "lan4",
+        "hao3",
+        "ren2"
+      ],
+      "target": 0
+    },
+    "lan5": {
+      "text": "苤蓝",
+      "tokens": [
+        "pie3",
+        "lan5"
+      ],
+      "target": 1
+    },
+    "lang1": {
+      "text": "当啷",
+      "tokens": [
+        "dang1",
+        "lang1"
+      ],
+      "target": 1
+    },
+    "lang2": {
+      "text": "中郎将",
+      "tokens": [
+        "zhong1",
+        "lang2",
+        "jiang4"
+      ],
+      "target": 1
+    },
+    "lang3": {
+      "text": "明朗",
+      "tokens": [
+        "ming2",
+        "lang3"
+      ],
+      "target": 1
+    },
+    "lang4": {
+      "text": "流浪者",
+      "tokens": [
+        "liu2",
+        "lang4",
+        "zhe3"
+      ],
+      "target": 1
+    },
+    "lang5": {
+      "text": "马槟榔",
+      "tokens": [
+        "ma3",
+        "bing1",
+        "lang5"
+      ],
+      "target": 2
+    },
+    "lao1": {
+      "text": "捞一把",
+      "tokens": [
+        "lao1",
+        "yi1",
+        "ba3"
+      ],
+      "target": 0
+    },
+    "lao2": {
+      "text": "劳动者",
+      "tokens": [
+        "lao2",
+        "dong4",
+        "zhe3"
+      ],
+      "target": 0
+    },
+    "lao3": {
+      "text": "老是",
+      "tokens": [
+        "lao3",
+        "shi5"
+      ],
+      "target": 0
+    },
+    "lao4": {
+      "text": "落子",
+      "tokens": [
+        "lao4",
+        "zi5"
+      ],
+      "target": 0
+    },
+    "lao5": {
+      "text": "叨唠",
+      "tokens": [
+        "dao1",
+        "lao5"
+      ],
+      "target": 1
+    },
+    "le4": {
+      "text": "同乐会",
+      "tokens": [
+        "tong2",
+        "le4",
+        "hui4"
+      ],
+      "target": 1
+    },
+    "le5": {
+      "text": "不了",
+      "tokens": [
+        "bu4",
+        "le5"
+      ],
+      "target": 1
+    },
+    "lei1": {
+      "text": "勒脖子",
+      "tokens": [
+        "lei1",
+        "bo2",
+        "zi5"
+      ],
+      "target": 0
+    },
+    "lei2": {
+      "text": "地雷",
+      "tokens": [
+        "di4",
+        "lei2"
+      ],
+      "target": 1
+    },
+    "lei3": {
+      "text": "对垒",
+      "tokens": [
+        "dui4",
+        "lei3"
+      ],
+      "target": 1
+    },
+    "lei4": {
+      "text": "人类学",
+      "tokens": [
+        "ren2",
+        "lei4",
+        "xue2"
+      ],
+      "target": 1
+    },
+    "lei5": {
+      "text": "连累",
+      "tokens": [
+        "lian2",
+        "lei5"
+      ],
+      "target": 1
+    },
+    "leng1": {
+      "text": "扑棱",
+      "tokens": [
+        "pu1",
+        "leng1"
+      ],
+      "target": 1
+    },
+    "leng2": {
+      "text": "塄",
+      "tokens": [
+        "leng2"
+      ],
+      "target": 0
+    },
+    "leng3": {
+      "text": "大冷天",
+      "tokens": [
+        "da4",
+        "leng3",
+        "tian1"
+      ],
+      "target": 1
+    },
+    "leng4": {
+      "text": "愣说",
+      "tokens": [
+        "leng4",
+        "shuo1"
+      ],
+      "target": 0
+    },
+    "leng5": {
+      "text": "扑棱",
+      "tokens": [
+        "pu1",
+        "leng5"
+      ],
+      "target": 1
+    },
+    "li2": {
+      "text": "不大离",
+      "tokens": [
+        "bu4",
+        "da4",
+        "li2"
+      ],
+      "target": 2
+    },
+    "li3": {
+      "text": "里",
+      "tokens": [
+        "li3"
+      ],
+      "target": 0
+    },
+    "li4": {
+      "text": "力",
+      "tokens": [
+        "li4"
+      ],
+      "target": 0
+    },
+    "li5": {
+      "text": "那里",
+      "tokens": [
+        "na4",
+        "li5"
+      ],
+      "target": 1
+    },
+    "lia3": {
+      "text": "哥俩",
+      "tokens": [
+        "ge1",
+        "lia3"
+      ],
+      "target": 1
+    },
+    "lian2": {
+      "text": "有关联",
+      "tokens": [
+        "you3",
+        "guan1",
+        "lian2"
+      ],
+      "target": 2
+    },
+    "lian3": {
+      "text": "不要脸",
+      "tokens": [
+        "bu4",
+        "yao4",
+        "lian3"
+      ],
+      "target": 2
+    },
+    "lian4": {
+      "text": "同性恋",
+      "tokens": [
+        "tong2",
+        "xing4",
+        "lian4"
+      ],
+      "target": 2
+    },
+    "lian5": {
+      "text": "褡裢",
+      "tokens": [
+        "da1",
+        "lian5"
+      ],
+      "target": 1
+    },
+    "liang2": {
+      "text": "不良人",
+      "tokens": [
+        "bu4",
+        "liang2",
+        "ren2"
+      ],
+      "target": 1
+    },
+    "liang3": {
+      "text": "两下子",
+      "tokens": [
+        "liang3",
+        "xia4",
+        "zi5"
+      ],
+      "target": 0
+    },
+    "liang4": {
+      "text": "不自量",
+      "tokens": [
+        "bu4",
+        "zi4",
+        "liang4"
+      ],
+      "target": 2
+    },
+    "liang5": {
+      "text": "漂亮",
+      "tokens": [
+        "piao4",
+        "liang5"
+      ],
+      "target": 1
+    },
+    "liao1": {
+      "text": "撩起",
+      "tokens": [
+        "liao1",
+        "qi3"
+      ],
+      "target": 0
+    },
+    "liao2": {
+      "text": "撩人",
+      "tokens": [
+        "liao2",
+        "ren2"
+      ],
+      "target": 0
+    },
+    "liao3": {
+      "text": "不了",
+      "tokens": [
+        "bu4",
+        "liao3"
+      ],
+      "target": 1
+    },
+    "liao4": {
+      "text": "不料",
+      "tokens": [
+        "bu4",
+        "liao4"
+      ],
+      "target": 1
+    },
+    "lie3": {
+      "text": "咧嘴",
+      "tokens": [
+        "lie3",
+        "zui3"
+      ],
+      "target": 0
+    },
+    "lie4": {
+      "text": "二分裂",
+      "tokens": [
+        "er4",
+        "fen1",
+        "lie4"
+      ],
+      "target": 2
+    },
+    "lin1": {
+      "text": "拎起",
+      "tokens": [
+        "lin1",
+        "qi3"
+      ],
+      "target": 0
+    },
+    "lin2": {
+      "text": "人工林",
+      "tokens": [
+        "ren2",
+        "gong1",
+        "lin2"
+      ],
+      "target": 2
+    },
+    "lin3": {
+      "text": "僯",
+      "tokens": [
+        "lin3"
+      ],
+      "target": 0
+    },
+    "lin4": {
+      "text": "不吝",
+      "tokens": [
+        "bu4",
+        "lin4"
+      ],
+      "target": 1
+    },
+    "ling1": {
+      "text": "昤",
+      "tokens": [
+        "ling1"
+      ],
+      "target": 0
+    },
+    "ling2": {
+      "text": "同龄人",
+      "tokens": [
+        "tong2",
+        "ling2",
+        "ren2"
+      ],
+      "target": 1
+    },
+    "ling3": {
+      "text": "领有",
+      "tokens": [
+        "ling3",
+        "you3"
+      ],
+      "target": 0
+    },
+    "ling4": {
+      "text": "行酒令",
+      "tokens": [
+        "xing2",
+        "jiu3",
+        "ling4"
+      ],
+      "target": 2
+    },
+    "ling5": {
+      "text": "机灵",
+      "tokens": [
+        "ji1",
+        "ling5"
+      ],
+      "target": 1
+    },
+    "liu1": {
+      "text": "溜",
+      "tokens": [
+        "liu1"
+      ],
+      "target": 0
+    },
+    "liu2": {
+      "text": "流",
+      "tokens": [
+        "liu2"
+      ],
+      "target": 0
+    },
+    "liu3": {
+      "text": "柳",
+      "tokens": [
+        "liu3"
+      ],
+      "target": 0
+    },
+    "liu4": {
+      "text": "六",
+      "tokens": [
+        "liu4"
+      ],
+      "target": 0
+    },
+    "liu5": {
+      "text": "出溜",
+      "tokens": [
+        "chu1",
+        "liu5"
+      ],
+      "target": 1
+    },
+    "long1": {
+      "text": "轰隆",
+      "tokens": [
+        "hong1",
+        "long1"
+      ],
+      "target": 1
+    },
+    "long2": {
+      "text": "人龙",
+      "tokens": [
+        "ren2",
+        "long2"
+      ],
+      "target": 1
+    },
+    "long3": {
+      "text": "地垄",
+      "tokens": [
+        "di4",
+        "long3"
+      ],
+      "target": 1
+    },
+    "long4": {
+      "text": "里弄",
+      "tokens": [
+        "li3",
+        "long4"
+      ],
+      "target": 1
+    },
+    "long5": {
+      "text": "窟窿",
+      "tokens": [
+        "ku1",
+        "long5"
+      ],
+      "target": 1
+    },
+    "lou1": {
+      "text": "搂钱",
+      "tokens": [
+        "lou1",
+        "qian2"
+      ],
+      "target": 0
+    },
+    "lou2": {
+      "text": "出娄子",
+      "tokens": [
+        "chu1",
+        "lou2",
+        "zi5"
+      ],
+      "target": 1
+    },
+    "lou3": {
+      "text": "篓子",
+      "tokens": [
+        "lou3",
+        "zi5"
+      ],
+      "target": 0
+    },
+    "lou4": {
+      "text": "出漏子",
+      "tokens": [
+        "chu1",
+        "lou4",
+        "zi5"
+      ],
+      "target": 1
+    },
+    "lou5": {
+      "text": "扒搂",
+      "tokens": [
+        "pa2",
+        "lou5"
+      ],
+      "target": 1
+    },
+    "lu1": {
+      "text": "噜",
+      "tokens": [
+        "lu1"
+      ],
+      "target": 0
+    },
+    "lu2": {
+      "text": "新出炉",
+      "tokens": [
+        "xin1",
+        "chu1",
+        "lu2"
+      ],
+      "target": 2
+    },
+    "lu3": {
+      "text": "卤水",
+      "tokens": [
+        "lu3",
+        "shui3"
+      ],
+      "target": 0
+    },
+    "lu4": {
+      "text": "一路来",
+      "tokens": [
+        "yi1",
+        "lu4",
+        "lai2"
+      ],
+      "target": 1
+    },
+    "lu5": {
+      "text": "一骨碌",
+      "tokens": [
+        "yi1",
+        "gu1",
+        "lu5"
+      ],
+      "target": 2
+    },
+    "luan2": {
+      "text": "孪生",
+      "tokens": [
+        "luan2",
+        "sheng1"
+      ],
+      "target": 0
+    },
+    "luan3": {
+      "text": "卵子",
+      "tokens": [
+        "luan3",
+        "zi3"
+      ],
+      "target": 0
+    },
+    "luan4": {
+      "text": "出乱子",
+      "tokens": [
+        "chu1",
+        "luan4",
+        "zi5"
+      ],
+      "target": 1
+    },
+    "lun1": {
+      "text": "胡抡",
+      "tokens": [
+        "hu2",
+        "lun1"
+      ],
+      "target": 1
+    },
+    "lun2": {
+      "text": "轮",
+      "tokens": [
+        "lun2"
+      ],
+      "target": 0
+    },
+    "lun4": {
+      "text": "不论",
+      "tokens": [
+        "bu4",
+        "lun4"
+      ],
+      "target": 1
+    },
+    "luo1": {
+      "text": "捋袖子",
+      "tokens": [
+        "luo1",
+        "xiu4",
+        "zi5"
+      ],
+      "target": 0
+    },
+    "luo2": {
+      "text": "骡子",
+      "tokens": [
+        "luo2",
+        "zi5"
+      ],
+      "target": 0
+    },
+    "luo3": {
+      "text": "裸地",
+      "tokens": [
+        "luo3",
+        "di4"
+      ],
+      "target": 0
+    },
+    "luo4": {
+      "text": "洛可可",
+      "tokens": [
+        "luo4",
+        "ke3",
+        "ke3"
+      ],
+      "target": 0
+    },
+    "luo5": {
+      "text": "数落",
+      "tokens": [
+        "shu3",
+        "luo5"
+      ],
+      "target": 1
+    },
+    "lü2": {
+      "text": "驴",
+      "tokens": [
+        "lü2"
+      ],
+      "target": 0
+    },
+    "lü3": {
+      "text": "吕",
+      "tokens": [
+        "lü3"
+      ],
+      "target": 0
+    },
+    "lü4": {
+      "text": "绿",
+      "tokens": [
+        "lü4"
+      ],
+      "target": 0
+    },
+    "lüe4": {
+      "text": "略",
+      "tokens": [
+        "lüe4"
+      ],
+      "target": 0
+    },
+    "ma1": {
+      "text": "妈",
+      "tokens": [
+        "ma1"
+      ],
+      "target": 0
+    },
+    "ma2": {
+      "text": "麻",
+      "tokens": [
+        "ma2"
+      ],
+      "target": 0
+    },
+    "ma3": {
+      "text": "马",
+      "tokens": [
+        "ma3"
+      ],
+      "target": 0
+    },
+    "ma4": {
+      "text": "骂",
+      "tokens": [
+        "ma4"
+      ],
+      "target": 0
+    },
+    "ma5": {
+      "text": "妈妈",
+      "tokens": [
+        "ma1",
+        "ma5"
+      ],
+      "target": 1
+    },
+    "mai2": {
+      "text": "埋没",
+      "tokens": [
+        "mai2",
+        "mo4"
+      ],
+      "target": 0
+    },
+    "mai3": {
+      "text": "买不起",
+      "tokens": [
+        "mai3",
+        "bu5",
+        "qi3"
+      ],
+      "target": 0
+    },
+    "mai4": {
+      "text": "卖面子",
+      "tokens": [
+        "mai4",
+        "mian4",
+        "zi5"
+      ],
+      "target": 0
+    },
+    "mai5": {
+      "text": "买卖",
+      "tokens": [
+        "mai3",
+        "mai5"
+      ],
+      "target": 1
+    },
+    "man1": {
+      "text": "颟",
+      "tokens": [
+        "man1"
+      ],
+      "target": 0
+    },
+    "man2": {
+      "text": "瞒不过",
+      "tokens": [
+        "man2",
+        "bu4",
+        "guo4"
+      ],
+      "target": 0
+    },
+    "man3": {
+      "text": "满当当",
+      "tokens": [
+        "man3",
+        "dang1",
+        "dang1"
+      ],
+      "target": 0
+    },
+    "man4": {
+      "text": "慢行道",
+      "tokens": [
+        "man4",
+        "xing2",
+        "dao4"
+      ],
+      "target": 0
+    },
+    "mang1": {
+      "text": "牤牛",
+      "tokens": [
+        "mang1",
+        "niu2"
+      ],
+      "target": 0
+    },
+    "mang2": {
+      "text": "大忙人",
+      "tokens": [
+        "da4",
+        "mang2",
+        "ren2"
+      ],
+      "target": 1
+    },
+    "mang3": {
+      "text": "花蟒",
+      "tokens": [
+        "hua1",
+        "mang3"
+      ],
+      "target": 1
+    },
+    "mao1": {
+      "text": "大山猫",
+      "tokens": [
+        "da4",
+        "shan1",
+        "mao1"
+      ],
+      "target": 2
+    },
+    "mao2": {
+      "text": "老毛子",
+      "tokens": [
+        "lao3",
+        "mao2",
+        "zi5"
+      ],
+      "target": 1
+    },
+    "mao3": {
+      "text": "卯起来",
+      "tokens": [
+        "mao3",
+        "qi3",
+        "lai5"
+      ],
+      "target": 0
+    },
+    "mao4": {
+      "text": "冒出来",
+      "tokens": [
+        "mao4",
+        "chu1",
+        "lai2"
+      ],
+      "target": 0
+    },
+    "mao5": {
+      "text": "毛毛雨",
+      "tokens": [
+        "mao2",
+        "mao5",
+        "yu3"
+      ],
+      "target": 1
+    },
+    "me5": {
+      "text": "什么",
+      "tokens": [
+        "shen2",
+        "me5"
+      ],
+      "target": 1
+    },
+    "mei2": {
+      "text": "没了",
+      "tokens": [
+        "mei2",
+        "le5"
+      ],
+      "target": 0
+    },
+    "mei3": {
+      "text": "大美人",
+      "tokens": [
+        "da4",
+        "mei3",
+        "ren2"
+      ],
+      "target": 1
+    },
+    "mei4": {
+      "text": "妹",
+      "tokens": [
+        "mei4"
+      ],
+      "target": 0
+    },
+    "mei5": {
+      "text": "妹妹",
+      "tokens": [
+        "mei4",
+        "mei5"
+      ],
+      "target": 1
+    },
+    "men1": {
+      "text": "胸闷",
+      "tokens": [
+        "xiong1",
+        "men1"
+      ],
+      "target": 1
+    },
+    "men2": {
+      "text": "看门人",
+      "tokens": [
+        "kan1",
+        "men2",
+        "ren2"
+      ],
+      "target": 1
+    },
+    "men4": {
+      "text": "懑然",
+      "tokens": [
+        "men4",
+        "ran2"
+      ],
+      "target": 0
+    },
+    "men5": {
+      "text": "我们",
+      "tokens": [
+        "wo3",
+        "men5"
+      ],
+      "target": 1
+    },
+    "meng1": {
+      "text": "蒙蒙黑",
+      "tokens": [
+        "meng1",
+        "meng1",
+        "hei1"
+      ],
+      "target": 0
+    },
+    "meng2": {
+      "text": "同盟国",
+      "tokens": [
+        "tong2",
+        "meng2",
+        "guo2"
+      ],
+      "target": 1
+    },
+    "meng3": {
+      "text": "猛一看",
+      "tokens": [
+        "meng3",
+        "yi1",
+        "kan4"
+      ],
+      "target": 0
+    },
+    "meng4": {
+      "text": "梦想家",
+      "tokens": [
+        "meng4",
+        "xiang3",
+        "jia1"
+      ],
+      "target": 0
+    },
+    "mi1": {
+      "text": "咪",
+      "tokens": [
+        "mi1"
+      ],
+      "target": 0
+    },
+    "mi2": {
+      "text": "迷人",
+      "tokens": [
+        "mi2",
+        "ren2"
+      ],
+      "target": 0
+    },
+    "mi3": {
+      "text": "他他米",
+      "tokens": [
+        "ta1",
+        "ta1",
+        "mi3"
+      ],
+      "target": 2
+    },
+    "mi4": {
+      "text": "外分泌",
+      "tokens": [
+        "wai4",
+        "fen1",
+        "mi4"
+      ],
+      "target": 2
+    },
+    "mi5": {
+      "text": "妈咪",
+      "tokens": [
+        "ma1",
+        "mi5"
+      ],
+      "target": 1
+    },
+    "mian2": {
+      "text": "绵子",
+      "tokens": [
+        "mian2",
+        "zi5"
+      ],
+      "target": 0
+    },
+    "mian3": {
+      "text": "免不了",
+      "tokens": [
+        "mian3",
+        "bu4",
+        "liao3"
+      ],
+      "target": 0
+    },
+    "mian4": {
+      "text": "面",
+      "tokens": [
+        "mian4"
+      ],
+      "target": 0
+    },
+    "mian5": {
+      "text": "后面",
+      "tokens": [
+        "hou4",
+        "mian5"
+      ],
+      "target": 1
+    },
+    "miao1": {
+      "text": "喵",
+      "tokens": [
+        "miao1"
+      ],
+      "target": 0
+    },
+    "miao2": {
+      "text": "实生苗",
+      "tokens": [
+        "shi2",
+        "sheng1",
+        "miao2"
+      ],
+      "target": 2
+    },
+    "miao3": {
+      "text": "渺子",
+      "tokens": [
+        "miao3",
+        "zi3"
+      ],
+      "target": 0
+    },
+    "miao4": {
+      "text": "不妙",
+      "tokens": [
+        "bu4",
+        "miao4"
+      ],
+      "target": 1
+    },
+    "mie1": {
+      "text": "咩",
+      "tokens": [
+        "mie1"
+      ],
+      "target": 0
+    },
+    "mie4": {
+      "text": "灭国",
+      "tokens": [
+        "mie4",
+        "guo2"
+      ],
+      "target": 0
+    },
+    "min2": {
+      "text": "居民点",
+      "tokens": [
+        "ju1",
+        "min2",
+        "dian3"
+      ],
+      "target": 1
+    },
+    "min3": {
+      "text": "一抿子",
+      "tokens": [
+        "yi1",
+        "min3",
+        "zi5"
+      ],
+      "target": 1
+    },
+    "ming2": {
+      "text": "明",
+      "tokens": [
+        "ming2"
+      ],
+      "target": 0
+    },
+    "ming3": {
+      "text": "酩",
+      "tokens": [
+        "ming3"
+      ],
+      "target": 0
+    },
+    "ming4": {
+      "text": "出人命",
+      "tokens": [
+        "chu1",
+        "ren2",
+        "ming4"
+      ],
+      "target": 2
+    },
+    "ming5": {
+      "text": "小聪明",
+      "tokens": [
+        "xiao3",
+        "cong1",
+        "ming5"
+      ],
+      "target": 2
+    },
+    "miu4": {
+      "text": "谬种",
+      "tokens": [
+        "miu4",
+        "zhong3"
+      ],
+      "target": 0
+    },
+    "mo1": {
+      "text": "摸不着",
+      "tokens": [
+        "mo1",
+        "bu5",
+        "zhao2"
+      ],
+      "target": 0
+    },
+    "mo2": {
+      "text": "模式种",
+      "tokens": [
+        "mo2",
+        "shi4",
+        "zhong3"
+      ],
+      "target": 0
+    },
+    "mo3": {
+      "text": "抹去",
+      "tokens": [
+        "mo3",
+        "qu4"
+      ],
+      "target": 0
+    },
+    "mo4": {
+      "text": "出没",
+      "tokens": [
+        "chu1",
+        "mo4"
+      ],
+      "target": 1
+    },
+    "mo5": {
+      "text": "约莫",
+      "tokens": [
+        "yue1",
+        "mo5"
+      ],
+      "target": 1
+    },
+    "mou1": {
+      "text": "哞",
+      "tokens": [
+        "mou1"
+      ],
+      "target": 0
+    },
+    "mou2": {
+      "text": "眸子",
+      "tokens": [
+        "mou2",
+        "zi5"
+      ],
+      "target": 0
+    },
+    "mou3": {
+      "text": "某地",
+      "tokens": [
+        "mou3",
+        "di4"
+      ],
+      "target": 0
+    },
+    "mu2": {
+      "text": "模子",
+      "tokens": [
+        "mu2",
+        "zi5"
+      ],
+      "target": 0
+    },
+    "mu3": {
+      "text": "先大母",
+      "tokens": [
+        "xian1",
+        "da4",
+        "mu3"
+      ],
+      "target": 2
+    },
+    "mu4": {
+      "text": "目的地",
+      "tokens": [
+        "mu4",
+        "di4",
+        "di4"
+      ],
+      "target": 0
+    },
+    "mu5": {
+      "text": "大拇指",
+      "tokens": [
+        "da4",
+        "mu5",
+        "zhi3"
+      ],
+      "target": 1
+    },
+    "na2": {
+      "text": "拿",
+      "tokens": [
+        "na2"
+      ],
+      "target": 0
+    },
+    "na3": {
+      "text": "哪",
+      "tokens": [
+        "na3"
+      ],
+      "target": 0
+    },
+    "na4": {
+      "text": "那",
+      "tokens": [
+        "na4"
+      ],
+      "target": 0
+    },
+    "na5": {
+      "text": "在那儿",
+      "tokens": [
+        "zai4",
+        "na5",
+        "r5"
+      ],
+      "target": 1
+    },
+    "nai3": {
+      "text": "乃是",
+      "tokens": [
+        "nai3",
+        "shi4"
+      ],
+      "target": 0
+    },
+    "nai4": {
+      "text": "耐水性",
+      "tokens": [
+        "nai4",
+        "shui3",
+        "xing4"
+      ],
+      "target": 0
+    },
+    "nai5": {
+      "text": "奶奶的",
+      "tokens": [
+        "nai3",
+        "nai5",
+        "de5"
+      ],
+      "target": 1
+    },
+    "nan1": {
+      "text": "囡",
+      "tokens": [
+        "nan1"
+      ],
+      "target": 0
+    },
+    "nan2": {
+      "text": "男",
+      "tokens": [
+        "nan2"
+      ],
+      "target": 0
+    },
+    "nan3": {
+      "text": "赧然",
+      "tokens": [
+        "nan3",
+        "ran2"
+      ],
+      "target": 0
+    },
+    "nan4": {
+      "text": "大难",
+      "tokens": [
+        "da4",
+        "nan4"
+      ],
+      "target": 1
+    },
+    "nan5": {
+      "text": "困难",
+      "tokens": [
+        "kun4",
+        "nan5"
+      ],
+      "target": 1
+    },
+    "nang1": {
+      "text": "乪",
+      "tokens": [
+        "nang1"
+      ],
+      "target": 0
+    },
+    "nang2": {
+      "text": "行囊",
+      "tokens": [
+        "xing2",
+        "nang2"
+      ],
+      "target": 1
+    },
+    "nang3": {
+      "text": "攮",
+      "tokens": [
+        "nang3"
+      ],
+      "target": 0
+    },
+    "nang4": {
+      "text": "齉",
+      "tokens": [
+        "nang4"
+      ],
+      "target": 0
+    },
+    "nang5": {
+      "text": "嘟囔",
+      "tokens": [
+        "du1",
+        "nang5"
+      ],
+      "target": 1
+    },
+    "nao1": {
+      "text": "孬种",
+      "tokens": [
+        "nao1",
+        "zhong3"
+      ],
+      "target": 0
+    },
+    "nao2": {
+      "text": "挠率",
+      "tokens": [
+        "nao2",
+        "lü4"
+      ],
+      "target": 0
+    },
+    "nao3": {
+      "text": "脑神经",
+      "tokens": [
+        "nao3",
+        "shen2",
+        "jing1"
+      ],
+      "target": 0
+    },
+    "nao4": {
+      "text": "大闹",
+      "tokens": [
+        "da4",
+        "nao4"
+      ],
+      "target": 1
+    },
+    "nao5": {
+      "text": "看热闹",
+      "tokens": [
+        "kan4",
+        "re4",
+        "nao5"
+      ],
+      "target": 2
+    },
+    "ne4": {
+      "text": "疒",
+      "tokens": [
+        "ne4"
+      ],
+      "target": 0
+    },
+    "ne5": {
+      "text": "着呢",
+      "tokens": [
+        "zhe5",
+        "ne5"
+      ],
+      "target": 1
+    },
+    "nei3": {
+      "text": "自馁",
+      "tokens": [
+        "zi4",
+        "nei3"
+      ],
+      "target": 1
+    },
+    "nei4": {
+      "text": "内",
+      "tokens": [
+        "nei4"
+      ],
+      "target": 0
+    },
+    "nei5": {
+      "text": "内内",
+      "tokens": [
+        "nei4",
+        "nei5"
+      ],
+      "target": 1
+    },
+    "nen4": {
+      "text": "嫩主",
+      "tokens": [
+        "nen4",
+        "zhu3"
+      ],
+      "target": 0
+    },
+    "nen5": {
+      "text": "娇嫩",
+      "tokens": [
+        "jiao1",
+        "nen5"
+      ],
+      "target": 1
+    },
+    "neng2": {
+      "text": "能",
+      "tokens": [
+        "neng2"
+      ],
+      "target": 0
+    },
+    "ni2": {
+      "text": "水泥地",
+      "tokens": [
+        "shui3",
+        "ni2",
+        "di4"
+      ],
+      "target": 1
+    },
+    "ni3": {
+      "text": "你",
+      "tokens": [
+        "ni3"
+      ],
+      "target": 0
+    },
+    "ni4": {
+      "text": "不可逆",
+      "tokens": [
+        "bu4",
+        "ke3",
+        "ni4"
+      ],
+      "target": 2
+    },
+    "nian1": {
+      "text": "发蔫",
+      "tokens": [
+        "fa1",
+        "nian1"
+      ],
+      "target": 1
+    },
+    "nian2": {
+      "text": "年",
+      "tokens": [
+        "nian2"
+      ],
+      "target": 0
+    },
+    "nian3": {
+      "text": "碾子",
+      "tokens": [
+        "nian3",
+        "zi5"
+      ],
+      "target": 0
+    },
+    "nian4": {
+      "text": "可念",
+      "tokens": [
+        "ke3",
+        "nian4"
+      ],
+      "target": 1
+    },
+    "nian5": {
+      "text": "记念",
+      "tokens": [
+        "ji4",
+        "nian5"
+      ],
+      "target": 1
+    },
+    "niang2": {
+      "text": "他娘的",
+      "tokens": [
+        "ta1",
+        "niang2",
+        "de5"
+      ],
+      "target": 1
+    },
+    "niang4": {
+      "text": "酿成",
+      "tokens": [
+        "niang4",
+        "cheng2"
+      ],
+      "target": 0
+    },
+    "niang5": {
+      "text": "姑娘",
+      "tokens": [
+        "gu1",
+        "niang5"
+      ],
+      "target": 1
+    },
+    "niao3": {
+      "text": "看鸟人",
+      "tokens": [
+        "kan4",
+        "niao3",
+        "ren2"
+      ],
+      "target": 1
+    },
+    "niao4": {
+      "text": "尿道",
+      "tokens": [
+        "niao4",
+        "dao4"
+      ],
+      "target": 0
+    },
+    "nie1": {
+      "text": "捏",
+      "tokens": [
+        "nie1"
+      ],
+      "target": 0
+    },
+    "nie2": {
+      "text": "苶",
+      "tokens": [
+        "nie2"
+      ],
+      "target": 0
+    },
+    "nie4": {
+      "text": "自作孽",
+      "tokens": [
+        "zi4",
+        "zuo4",
+        "nie4"
+      ],
+      "target": 2
+    },
+    "nie5": {
+      "text": "扭捏",
+      "tokens": [
+        "niu3",
+        "nie5"
+      ],
+      "target": 1
+    },
+    "nin2": {
+      "text": "您好",
+      "tokens": [
+        "nin2",
+        "hao3"
+      ],
+      "target": 0
+    },
+    "ning2": {
+      "text": "男凝",
+      "tokens": [
+        "nan2",
+        "ning2"
+      ],
+      "target": 1
+    },
+    "ning3": {
+      "text": "拧开",
+      "tokens": [
+        "ning3",
+        "kai1"
+      ],
+      "target": 0
+    },
+    "ning4": {
+      "text": "不佞",
+      "tokens": [
+        "bu4",
+        "ning4"
+      ],
+      "target": 1
+    },
+    "niu1": {
+      "text": "妞",
+      "tokens": [
+        "niu1"
+      ],
+      "target": 0
+    },
+    "niu2": {
+      "text": "牛人",
+      "tokens": [
+        "niu2",
+        "ren2"
+      ],
+      "target": 0
+    },
+    "niu3": {
+      "text": "起动钮",
+      "tokens": [
+        "qi3",
+        "dong4",
+        "niu3"
+      ],
+      "target": 2
+    },
+    "niu4": {
+      "text": "拗不过",
+      "tokens": [
+        "niu4",
+        "bu5",
+        "guo4"
+      ],
+      "target": 0
+    },
+    "niu5": {
+      "text": "别扭",
+      "tokens": [
+        "bie4",
+        "niu5"
+      ],
+      "target": 1
+    },
+    "nong2": {
+      "text": "农人",
+      "tokens": [
+        "nong2",
+        "ren2"
+      ],
+      "target": 0
+    },
+    "nong4": {
+      "text": "弄到手",
+      "tokens": [
+        "nong4",
+        "dao4",
+        "shou3"
+      ],
+      "target": 0
+    },
+    "nong5": {
+      "text": "倒弄",
+      "tokens": [
+        "dao3",
+        "nong5"
+      ],
+      "target": 1
+    },
+    "nou4": {
+      "text": "獳",
+      "tokens": [
+        "nou4"
+      ],
+      "target": 0
+    },
+    "nu2": {
+      "text": "奴家",
+      "tokens": [
+        "nu2",
+        "jia1"
+      ],
+      "target": 0
+    },
+    "nu3": {
+      "text": "努出",
+      "tokens": [
+        "nu3",
+        "chu1"
+      ],
+      "target": 0
+    },
+    "nu4": {
+      "text": "大怒",
+      "tokens": [
+        "da4",
+        "nu4"
+      ],
+      "target": 1
+    },
+    "nuan3": {
+      "text": "和暖",
+      "tokens": [
+        "he2",
+        "nuan3"
+      ],
+      "target": 1
+    },
+    "nun2": {
+      "text": "黁",
+      "tokens": [
+        "nun2"
+      ],
+      "target": 0
+    },
+    "nuo2": {
+      "text": "挪用",
+      "tokens": [
+        "nuo2",
+        "yong4"
+      ],
+      "target": 0
+    },
+    "nuo4": {
+      "text": "搦战",
+      "tokens": [
+        "nuo4",
+        "zhan4"
+      ],
+      "target": 0
+    },
+    "nü3": {
+      "text": "女",
+      "tokens": [
+        "nü3"
+      ],
+      "target": 0
+    },
+    "nü4": {
+      "text": "恧",
+      "tokens": [
+        "nü4"
+      ],
+      "target": 0
+    },
+    "nü5": {
+      "text": "闺女",
+      "tokens": [
+        "gui1",
+        "nü5"
+      ],
+      "target": 1
+    },
+    "nüe4": {
+      "text": "虐",
+      "tokens": [
+        "nüe4"
+      ],
+      "target": 0
+    },
+    "o1": {
+      "text": "噢",
+      "tokens": [
+        "o1"
+      ],
+      "target": 0
+    },
+    "o4": {
+      "text": "哦买嘎",
+      "tokens": [
+        "o4",
+        "mai3",
+        "ga1"
+      ],
+      "target": 0
+    },
+    "ou1": {
+      "text": "欧了",
+      "tokens": [
+        "ou1",
+        "le5"
+      ],
+      "target": 0
+    },
+    "ou2": {
+      "text": "吽牙",
+      "tokens": [
+        "ou2",
+        "ya2"
+      ],
+      "target": 0
+    },
+    "ou3": {
+      "text": "对偶性",
+      "tokens": [
+        "dui4",
+        "ou3",
+        "xing4"
+      ],
+      "target": 1
+    },
+    "ou4": {
+      "text": "怄",
+      "tokens": [
+        "ou4"
+      ],
+      "target": 0
+    },
+    "pa1": {
+      "text": "趴",
+      "tokens": [
+        "pa1"
+      ],
+      "target": 0
+    },
+    "pa2": {
+      "text": "爬",
+      "tokens": [
+        "pa2"
+      ],
+      "target": 0
+    },
+    "pa4": {
+      "text": "怕",
+      "tokens": [
+        "pa4"
+      ],
+      "target": 0
+    },
+    "pa5": {
+      "text": "琵琶鱼",
+      "tokens": [
+        "pi2",
+        "pa5",
+        "yu2"
+      ],
+      "target": 1
+    },
+    "pai1": {
+      "text": "拍子",
+      "tokens": [
+        "pai1",
+        "zi5"
+      ],
+      "target": 0
+    },
+    "pai2": {
+      "text": "有排面",
+      "tokens": [
+        "you3",
+        "pai2",
+        "mian4"
+      ],
+      "target": 1
+    },
+    "pai3": {
+      "text": "地排车",
+      "tokens": [
+        "di4",
+        "pai3",
+        "che1"
+      ],
+      "target": 1
+    },
+    "pai4": {
+      "text": "派出所",
+      "tokens": [
+        "pai4",
+        "chu1",
+        "suo3"
+      ],
+      "target": 0
+    },
+    "pai5": {
+      "text": "招牌",
+      "tokens": [
+        "zhao1",
+        "pai5"
+      ],
+      "target": 1
+    },
+    "pan1": {
+      "text": "攀山家",
+      "tokens": [
+        "pan1",
+        "shan1",
+        "jia1"
+      ],
+      "target": 0
+    },
+    "pan2": {
+      "text": "不对盘",
+      "tokens": [
+        "bu4",
+        "dui4",
+        "pan2"
+      ],
+      "target": 2
+    },
+    "pan4": {
+      "text": "地西泮",
+      "tokens": [
+        "di4",
+        "xi1",
+        "pan4"
+      ],
+      "target": 2
+    },
+    "pang1": {
+      "text": "乓",
+      "tokens": [
+        "pang1"
+      ],
+      "target": 0
+    },
+    "pang2": {
+      "text": "旁听生",
+      "tokens": [
+        "pang2",
+        "ting1",
+        "sheng1"
+      ],
+      "target": 0
+    },
+    "pang3": {
+      "text": "耪",
+      "tokens": [
+        "pang3"
+      ],
+      "target": 0
+    },
+    "pang4": {
+      "text": "胖人",
+      "tokens": [
+        "pang4",
+        "ren2"
+      ],
+      "target": 0
+    },
+    "pang5": {
+      "text": "蹄膀",
+      "tokens": [
+        "ti2",
+        "pang5"
+      ],
+      "target": 1
+    },
+    "pao1": {
+      "text": "泡子",
+      "tokens": [
+        "pao1",
+        "zi5"
+      ],
+      "target": 0
+    },
+    "pao2": {
+      "text": "大红袍",
+      "tokens": [
+        "da4",
+        "hong2",
+        "pao2"
+      ],
+      "target": 2
+    },
+    "pao3": {
+      "text": "中长跑",
+      "tokens": [
+        "zhong1",
+        "chang2",
+        "pao3"
+      ],
+      "target": 2
+    },
+    "pao4": {
+      "text": "马后炮",
+      "tokens": [
+        "ma3",
+        "hou4",
+        "pao4"
+      ],
+      "target": 2
+    },
+    "pao5": {
+      "text": "泡泡",
+      "tokens": [
+        "pao4",
+        "pao5"
+      ],
+      "target": 1
+    },
+    "pei1": {
+      "text": "呸",
+      "tokens": [
+        "pei1"
+      ],
+      "target": 0
+    },
+    "pei2": {
+      "text": "赔不是",
+      "tokens": [
+        "pei2",
+        "bu2",
+        "shi5"
+      ],
+      "target": 0
+    },
+    "pei4": {
+      "text": "配方法",
+      "tokens": [
+        "pei4",
+        "fang1",
+        "fa3"
+      ],
+      "target": 0
+    },
+    "pen1": {
+      "text": "喷出",
+      "tokens": [
+        "pen1",
+        "chu1"
+      ],
+      "target": 0
+    },
+    "pen2": {
+      "text": "盆地",
+      "tokens": [
+        "pen2",
+        "di4"
+      ],
+      "target": 0
+    },
+    "pen4": {
+      "text": "喷香",
+      "tokens": [
+        "pen4",
+        "xiang1"
+      ],
+      "target": 0
+    },
+    "pen5": {
+      "text": "嚏喷",
+      "tokens": [
+        "ti4",
+        "pen5"
+      ],
+      "target": 1
+    },
+    "peng1": {
+      "text": "怦然",
+      "tokens": [
+        "peng1",
+        "ran2"
+      ],
+      "target": 0
+    },
+    "peng2": {
+      "text": "朋",
+      "tokens": [
+        "peng2"
+      ],
+      "target": 0
+    },
+    "peng3": {
+      "text": "捧上天",
+      "tokens": [
+        "peng3",
+        "shang4",
+        "tian1"
+      ],
+      "target": 0
+    },
+    "peng4": {
+      "text": "对对碰",
+      "tokens": [
+        "dui4",
+        "dui4",
+        "peng4"
+      ],
+      "target": 2
+    },
+    "peng5": {
+      "text": "帐篷",
+      "tokens": [
+        "zhang4",
+        "peng5"
+      ],
+      "target": 1
+    },
+    "pi1": {
+      "text": "批流年",
+      "tokens": [
+        "pi1",
+        "liu2",
+        "nian2"
+      ],
+      "target": 0
+    },
+    "pi2": {
+      "text": "生啤酒",
+      "tokens": [
+        "sheng1",
+        "pi2",
+        "jiu3"
+      ],
+      "target": 1
+    },
+    "pi3": {
+      "text": "匹马力",
+      "tokens": [
+        "pi3",
+        "ma3",
+        "li4"
+      ],
+      "target": 0
+    },
+    "pi4": {
+      "text": "譬如说",
+      "tokens": [
+        "pi4",
+        "ru2",
+        "shuo1"
+      ],
+      "target": 0
+    },
+    "pi5": {
+      "text": "俏皮",
+      "tokens": [
+        "qiao4",
+        "pi5"
+      ],
+      "target": 1
+    },
+    "pian1": {
+      "text": "老三篇",
+      "tokens": [
+        "lao3",
+        "san1",
+        "pian1"
+      ],
+      "target": 2
+    },
+    "pian2": {
+      "text": "楩",
+      "tokens": [
+        "pian2"
+      ],
+      "target": 0
+    },
+    "pian4": {
+      "text": "动作片",
+      "tokens": [
+        "dong4",
+        "zuo4",
+        "pian4"
+      ],
+      "target": 2
+    },
+    "piao1": {
+      "text": "漂流者",
+      "tokens": [
+        "piao1",
+        "liu2",
+        "zhe3"
+      ],
+      "target": 0
+    },
+    "piao2": {
+      "text": "开瓢",
+      "tokens": [
+        "kai1",
+        "piao2"
+      ],
+      "target": 1
+    },
+    "piao3": {
+      "text": "漂白水",
+      "tokens": [
+        "piao3",
+        "bai2",
+        "shui3"
+      ],
+      "target": 0
+    },
+    "piao4": {
+      "text": "得票率",
+      "tokens": [
+        "de2",
+        "piao4",
+        "lü4"
+      ],
+      "target": 1
+    },
+    "pie1": {
+      "text": "一瞥",
+      "tokens": [
+        "yi1",
+        "pie1"
+      ],
+      "target": 1
+    },
+    "pie3": {
+      "text": "丿",
+      "tokens": [
+        "pie3"
+      ],
+      "target": 0
+    },
+    "pin1": {
+      "text": "有一拼",
+      "tokens": [
+        "you3",
+        "yi1",
+        "pin1"
+      ],
+      "target": 2
+    },
+    "pin2": {
+      "text": "贫道",
+      "tokens": [
+        "pin2",
+        "dao4"
+      ],
+      "target": 0
+    },
+    "pin3": {
+      "text": "出品人",
+      "tokens": [
+        "chu1",
+        "pin3",
+        "ren2"
+      ],
+      "target": 1
+    },
+    "pin4": {
+      "text": "下聘",
+      "tokens": [
+        "xia4",
+        "pin4"
+      ],
+      "target": 1
+    },
+    "ping1": {
+      "text": "乒",
+      "tokens": [
+        "ping1"
+      ],
+      "target": 0
+    },
+    "ping2": {
+      "text": "平天下",
+      "tokens": [
+        "ping2",
+        "tian1",
+        "xia4"
+      ],
+      "target": 0
+    },
+    "po1": {
+      "text": "颇为",
+      "tokens": [
+        "po1",
+        "wei2"
+      ],
+      "target": 0
+    },
+    "po2": {
+      "text": "大老婆",
+      "tokens": [
+        "da4",
+        "lao3",
+        "po2"
+      ],
+      "target": 2
+    },
+    "po3": {
+      "text": "叵",
+      "tokens": [
+        "po3"
+      ],
+      "target": 0
+    },
+    "po4": {
+      "text": "破的",
+      "tokens": [
+        "po4",
+        "di4"
+      ],
+      "target": 0
+    },
+    "po5": {
+      "text": "婆婆",
+      "tokens": [
+        "po2",
+        "po5"
+      ],
+      "target": 1
+    },
+    "pou1": {
+      "text": "剖面",
+      "tokens": [
+        "pou1",
+        "mian4"
+      ],
+      "target": 0
+    },
+    "pou2": {
+      "text": "垺",
+      "tokens": [
+        "pou2"
+      ],
+      "target": 0
+    },
+    "pou3": {
+      "text": "咅",
+      "tokens": [
+        "pou3"
+      ],
+      "target": 0
+    },
+    "pu1": {
+      "text": "起扑",
+      "tokens": [
+        "qi3",
+        "pu1"
+      ],
+      "target": 1
+    },
+    "pu2": {
+      "text": "仆人",
+      "tokens": [
+        "pu2",
+        "ren2"
+      ],
+      "target": 0
+    },
+    "pu3": {
+      "text": "普天下",
+      "tokens": [
+        "pu3",
+        "tian1",
+        "xia4"
+      ],
+      "target": 0
+    },
+    "pu4": {
+      "text": "上下铺",
+      "tokens": [
+        "shang4",
+        "xia4",
+        "pu4"
+      ],
+      "target": 2
+    },
+    "qi1": {
+      "text": "七",
+      "tokens": [
+        "qi1"
+      ],
+      "target": 0
+    },
+    "qi2": {
+      "text": "旗",
+      "tokens": [
+        "qi2"
+      ],
+      "target": 0
+    },
+    "qi3": {
+      "text": "起",
+      "tokens": [
+        "qi3"
+      ],
+      "target": 0
+    },
+    "qi4": {
+      "text": "气",
+      "tokens": [
+        "qi4"
+      ],
+      "target": 0
+    },
+    "qi5": {
+      "text": "起来",
+      "tokens": [
+        "qi5",
+        "lai5"
+      ],
+      "target": 0
+    },
+    "qia1": {
+      "text": "葜",
+      "tokens": [
+        "qia1"
+      ],
+      "target": 0
+    },
+    "qia2": {
+      "text": "拤",
+      "tokens": [
+        "qia2"
+      ],
+      "target": 0
+    },
+    "qia3": {
+      "text": "卡子",
+      "tokens": [
+        "qia3",
+        "zi5"
+      ],
+      "target": 0
+    },
+    "qia4": {
+      "text": "自洽性",
+      "tokens": [
+        "zi4",
+        "qia4",
+        "xing4"
+      ],
+      "target": 1
+    },
+    "qian1": {
+      "text": "出老千",
+      "tokens": [
+        "chu1",
+        "lao3",
+        "qian1"
+      ],
+      "target": 2
+    },
+    "qian2": {
+      "text": "前",
+      "tokens": [
+        "qian2"
+      ],
+      "target": 0
+    },
+    "qian3": {
+      "text": "浅说",
+      "tokens": [
+        "qian3",
+        "shuo1"
+      ],
+      "target": 0
+    },
+    "qian4": {
+      "text": "地堑",
+      "tokens": [
+        "di4",
+        "qian4"
+      ],
+      "target": 1
+    },
+    "qian5": {
+      "text": "跟前",
+      "tokens": [
+        "gen1",
+        "qian5"
+      ],
+      "target": 1
+    },
+    "qiang1": {
+      "text": "当枪使",
+      "tokens": [
+        "dang1",
+        "qiang1",
+        "shi3"
+      ],
+      "target": 1
+    },
+    "qiang2": {
+      "text": "强作用",
+      "tokens": [
+        "qiang2",
+        "zuo4",
+        "yong4"
+      ],
+      "target": 0
+    },
+    "qiang3": {
+      "text": "强使",
+      "tokens": [
+        "qiang3",
+        "shi3"
+      ],
+      "target": 0
+    },
+    "qiang4": {
+      "text": "炝",
+      "tokens": [
+        "qiang4"
+      ],
+      "target": 0
+    },
+    "qiao1": {
+      "text": "雀子",
+      "tokens": [
+        "qiao1",
+        "zi5"
+      ],
+      "target": 0
+    },
+    "qiao2": {
+      "text": "瞧不起",
+      "tokens": [
+        "qiao2",
+        "bu4",
+        "qi3"
+      ],
+      "target": 0
+    },
+    "qiao3": {
+      "text": "不巧",
+      "tokens": [
+        "bu4",
+        "qiao3"
+      ],
+      "target": 1
+    },
+    "qiao4": {
+      "text": "不开窍",
+      "tokens": [
+        "bu4",
+        "kai1",
+        "qiao4"
+      ],
+      "target": 2
+    },
+    "qiao5": {
+      "text": "悄悄话",
+      "tokens": [
+        "qiao1",
+        "qiao5",
+        "hua4"
+      ],
+      "target": 1
+    },
+    "qie1": {
+      "text": "黑白切",
+      "tokens": [
+        "hei1",
+        "bai2",
+        "qie1"
+      ],
+      "target": 2
+    },
+    "qie2": {
+      "text": "茄子",
+      "tokens": [
+        "qie2",
+        "zi5"
+      ],
+      "target": 0
+    },
+    "qie3": {
+      "text": "且不说",
+      "tokens": [
+        "qie3",
+        "bu4",
+        "shuo1"
+      ],
+      "target": 0
+    },
+    "qie4": {
+      "text": "怯生生",
+      "tokens": [
+        "qie4",
+        "sheng1",
+        "sheng1"
+      ],
+      "target": 0
+    },
+    "qie5": {
+      "text": "打趔趄",
+      "tokens": [
+        "da3",
+        "lie4",
+        "qie5"
+      ],
+      "target": 2
+    },
+    "qin1": {
+      "text": "亲和性",
+      "tokens": [
+        "qin1",
+        "he2",
+        "xing4"
+      ],
+      "target": 0
+    },
+    "qin2": {
+      "text": "后勤学",
+      "tokens": [
+        "hou4",
+        "qin2",
+        "xue2"
+      ],
+      "target": 1
+    },
+    "qin3": {
+      "text": "就寝",
+      "tokens": [
+        "jiu4",
+        "qin3"
+      ],
+      "target": 1
+    },
+    "qin4": {
+      "text": "吣",
+      "tokens": [
+        "qin4"
+      ],
+      "target": 0
+    },
+    "qin5": {
+      "text": "胡琴",
+      "tokens": [
+        "hu2",
+        "qin5"
+      ],
+      "target": 1
+    },
+    "qing1": {
+      "text": "年轻人",
+      "tokens": [
+        "nian2",
+        "qing1",
+        "ren2"
+      ],
+      "target": 1
+    },
+    "qing2": {
+      "text": "情",
+      "tokens": [
+        "qing2"
+      ],
+      "target": 0
+    },
+    "qing3": {
+      "text": "顷之",
+      "tokens": [
+        "qing3",
+        "zhi1"
+      ],
+      "target": 0
+    },
+    "qing4": {
+      "text": "国庆日",
+      "tokens": [
+        "guo2",
+        "qing4",
+        "ri4"
+      ],
+      "target": 1
+    },
+    "qing5": {
+      "text": "事情",
+      "tokens": [
+        "shi4",
+        "qing5"
+      ],
+      "target": 1
+    },
+    "qiong1": {
+      "text": "銎",
+      "tokens": [
+        "qiong1"
+      ],
+      "target": 0
+    },
+    "qiong2": {
+      "text": "无穷大",
+      "tokens": [
+        "wu2",
+        "qiong2",
+        "da4"
+      ],
+      "target": 1
+    },
+    "qiu1": {
+      "text": "秋分点",
+      "tokens": [
+        "qiu1",
+        "fen1",
+        "dian3"
+      ],
+      "target": 0
+    },
+    "qiu2": {
+      "text": "不求人",
+      "tokens": [
+        "bu4",
+        "qiu2",
+        "ren2"
+      ],
+      "target": 1
+    },
+    "qiu3": {
+      "text": "出糗",
+      "tokens": [
+        "chu1",
+        "qiu3"
+      ],
+      "target": 1
+    },
+    "qiu5": {
+      "text": "泥鳅",
+      "tokens": [
+        "ni2",
+        "qiu5"
+      ],
+      "target": 1
+    },
+    "qu1": {
+      "text": "中区",
+      "tokens": [
+        "zhong1",
+        "qu1"
+      ],
+      "target": 1
+    },
+    "qu2": {
+      "text": "渠道",
+      "tokens": [
+        "qu2",
+        "dao4"
+      ],
+      "target": 0
+    },
+    "qu3": {
+      "text": "取",
+      "tokens": [
+        "qu3"
+      ],
+      "target": 0
+    },
+    "qu4": {
+      "text": "去",
+      "tokens": [
+        "qu4"
+      ],
+      "target": 0
+    },
+    "qu5": {
+      "text": "过去",
+      "tokens": [
+        "guo4",
+        "qu5"
+      ],
+      "target": 1
+    },
+    "quan1": {
+      "text": "圈内人",
+      "tokens": [
+        "quan1",
+        "nei4",
+        "ren2"
+      ],
+      "target": 0
+    },
+    "quan2": {
+      "text": "全",
+      "tokens": [
+        "quan2"
+      ],
+      "target": 0
+    },
+    "quan3": {
+      "text": "上犬式",
+      "tokens": [
+        "shang4",
+        "quan3",
+        "shi4"
+      ],
+      "target": 1
+    },
+    "quan4": {
+      "text": "劝说",
+      "tokens": [
+        "quan4",
+        "shuo1"
+      ],
+      "target": 0
+    },
+    "quan5": {
+      "text": "圈圈",
+      "tokens": [
+        "quan1",
+        "quan5"
+      ],
+      "target": 1
+    },
+    "que1": {
+      "text": "出缺",
+      "tokens": [
+        "chu1",
+        "que1"
+      ],
+      "target": 1
+    },
+    "que2": {
+      "text": "瘸子",
+      "tokens": [
+        "que2",
+        "zi5"
+      ],
+      "target": 0
+    },
+    "que4": {
+      "text": "不明确",
+      "tokens": [
+        "bu4",
+        "ming2",
+        "que4"
+      ],
+      "target": 2
+    },
+    "qun1": {
+      "text": "踆",
+      "tokens": [
+        "qun1"
+      ],
+      "target": 0
+    },
+    "qun2": {
+      "text": "人群",
+      "tokens": [
+        "ren2",
+        "qun2"
+      ],
+      "target": 1
+    },
+    "r5": {
+      "text": "我这儿",
+      "tokens": [
+        "wo3",
+        "zhe5",
+        "r5"
+      ],
+      "target": 2
+    },
+    "ran2": {
+      "text": "然",
+      "tokens": [
+        "ran2"
+      ],
+      "target": 0
+    },
+    "ran3": {
+      "text": "染上",
+      "tokens": [
+        "ran3",
+        "shang4"
+      ],
+      "target": 0
+    },
+    "rang1": {
+      "text": "嚷嚷",
+      "tokens": [
+        "rang1",
+        "rang5"
+      ],
+      "target": 0
+    },
+    "rang2": {
+      "text": "勷",
+      "tokens": [
+        "rang2"
+      ],
+      "target": 0
+    },
+    "rang3": {
+      "text": "攘外",
+      "tokens": [
+        "rang3",
+        "wai4"
+      ],
+      "target": 0
+    },
+    "rang4": {
+      "text": "红不让",
+      "tokens": [
+        "hong2",
+        "bu4",
+        "rang4"
+      ],
+      "target": 2
+    },
+    "rang5": {
+      "text": "嚷嚷",
+      "tokens": [
+        "rang1",
+        "rang5"
+      ],
+      "target": 1
+    },
+    "rao2": {
+      "text": "饶了",
+      "tokens": [
+        "rao2",
+        "le5"
+      ],
+      "target": 0
+    },
+    "rao3": {
+      "text": "扰动",
+      "tokens": [
+        "rao3",
+        "dong4"
+      ],
+      "target": 0
+    },
+    "rao4": {
+      "text": "绕地",
+      "tokens": [
+        "rao4",
+        "di4"
+      ],
+      "target": 0
+    },
+    "re3": {
+      "text": "惹不起",
+      "tokens": [
+        "re3",
+        "bu5",
+        "qi3"
+      ],
+      "target": 0
+    },
+    "re4": {
+      "text": "热中子",
+      "tokens": [
+        "re4",
+        "zhong1",
+        "zi3"
+      ],
+      "target": 0
+    },
+    "ren2": {
+      "text": "人",
+      "tokens": [
+        "ren2"
+      ],
+      "target": 0
+    },
+    "ren3": {
+      "text": "不忍心",
+      "tokens": [
+        "bu4",
+        "ren3",
+        "xin1"
+      ],
+      "target": 1
+    },
+    "ren4": {
+      "text": "任一个",
+      "tokens": [
+        "ren4",
+        "yi1",
+        "ge5"
+      ],
+      "target": 0
+    },
+    "ren5": {
+      "text": "大人",
+      "tokens": [
+        "da4",
+        "ren5"
+      ],
+      "target": 1
+    },
+    "reng1": {
+      "text": "扔下",
+      "tokens": [
+        "reng1",
+        "xia4"
+      ],
+      "target": 0
+    },
+    "reng2": {
+      "text": "仍然",
+      "tokens": [
+        "reng2",
+        "ran2"
+      ],
+      "target": 0
+    },
+    "reng4": {
+      "text": "芿",
+      "tokens": [
+        "reng4"
+      ],
+      "target": 0
+    },
+    "ri4": {
+      "text": "日",
+      "tokens": [
+        "ri4"
+      ],
+      "target": 0
+    },
+    "rong2": {
+      "text": "容不得",
+      "tokens": [
+        "rong2",
+        "bu5",
+        "de2"
+      ],
+      "target": 0
+    },
+    "rong3": {
+      "text": "冗长",
+      "tokens": [
+        "rong3",
+        "chang2"
+      ],
+      "target": 0
+    },
+    "rou2": {
+      "text": "揉和",
+      "tokens": [
+        "rou2",
+        "he2"
+      ],
+      "target": 0
+    },
+    "rou4": {
+      "text": "小牛肉",
+      "tokens": [
+        "xiao3",
+        "niu2",
+        "rou4"
+      ],
+      "target": 2
+    },
+    "ru2": {
+      "text": "如",
+      "tokens": [
+        "ru2"
+      ],
+      "target": 0
+    },
+    "ru3": {
+      "text": "下乳",
+      "tokens": [
+        "xia4",
+        "ru3"
+      ],
+      "target": 1
+    },
+    "ru4": {
+      "text": "入关学",
+      "tokens": [
+        "ru4",
+        "guan1",
+        "xue2"
+      ],
+      "target": 0
+    },
+    "ruan2": {
+      "text": "堧",
+      "tokens": [
+        "ruan2"
+      ],
+      "target": 0
+    },
+    "ruan3": {
+      "text": "软实力",
+      "tokens": [
+        "ruan3",
+        "shi2",
+        "li4"
+      ],
+      "target": 0
+    },
+    "rui2": {
+      "text": "緌",
+      "tokens": [
+        "rui2"
+      ],
+      "target": 0
+    },
+    "rui3": {
+      "text": "花蕊",
+      "tokens": [
+        "hua1",
+        "rui3"
+      ],
+      "target": 1
+    },
+    "rui4": {
+      "text": "人瑞",
+      "tokens": [
+        "ren2",
+        "rui4"
+      ],
+      "target": 1
+    },
+    "run2": {
+      "text": "犉",
+      "tokens": [
+        "run2"
+      ],
+      "target": 0
+    },
+    "run4": {
+      "text": "闰年",
+      "tokens": [
+        "run4",
+        "nian2"
+      ],
+      "target": 0
+    },
+    "ruo2": {
+      "text": "捼",
+      "tokens": [
+        "ruo2"
+      ],
+      "target": 0
+    },
+    "ruo4": {
+      "text": "弱作用",
+      "tokens": [
+        "ruo4",
+        "zuo4",
+        "yong4"
+      ],
+      "target": 0
+    },
+    "sa1": {
+      "text": "撒然",
+      "tokens": [
+        "sa1",
+        "ran2"
+      ],
+      "target": 0
+    },
+    "sa3": {
+      "text": "撒种",
+      "tokens": [
+        "sa3",
+        "zhong3"
+      ],
+      "target": 0
+    },
+    "sa4": {
+      "text": "萨其马",
+      "tokens": [
+        "sa4",
+        "qi2",
+        "ma3"
+      ],
+      "target": 0
+    },
+    "sa5": {
+      "text": "弥撒",
+      "tokens": [
+        "mi2",
+        "sa5"
+      ],
+      "target": 1
+    },
+    "sai1": {
+      "text": "塞子",
+      "tokens": [
+        "sai1",
+        "zi5"
+      ],
+      "target": 0
+    },
+    "sai4": {
+      "text": "个人赛",
+      "tokens": [
+        "ge4",
+        "ren2",
+        "sai4"
+      ],
+      "target": 2
+    },
+    "san1": {
+      "text": "三",
+      "tokens": [
+        "san1"
+      ],
+      "target": 0
+    },
+    "san3": {
+      "text": "和散那",
+      "tokens": [
+        "he2",
+        "san3",
+        "na4"
+      ],
+      "target": 1
+    },
+    "san4": {
+      "text": "分散式",
+      "tokens": [
+        "fen1",
+        "san4",
+        "shi4"
+      ],
+      "target": 1
+    },
+    "san5": {
+      "text": "松散",
+      "tokens": [
+        "song1",
+        "san5"
+      ],
+      "target": 1
+    },
+    "sang1": {
+      "text": "妈妈桑",
+      "tokens": [
+        "ma1",
+        "ma5",
+        "sang1"
+      ],
+      "target": 2
+    },
+    "sang3": {
+      "text": "大嗓",
+      "tokens": [
+        "da4",
+        "sang3"
+      ],
+      "target": 1
+    },
+    "sang4": {
+      "text": "丧生",
+      "tokens": [
+        "sang4",
+        "sheng1"
+      ],
+      "target": 0
+    },
+    "sang5": {
+      "text": "号丧",
+      "tokens": [
+        "hao2",
+        "sang5"
+      ],
+      "target": 1
+    },
+    "sao1": {
+      "text": "发骚",
+      "tokens": [
+        "fa1",
+        "sao1"
+      ],
+      "target": 1
+    },
+    "sao3": {
+      "text": "大嫂",
+      "tokens": [
+        "da4",
+        "sao3"
+      ],
+      "target": 1
+    },
+    "sao4": {
+      "text": "扫把",
+      "tokens": [
+        "sao4",
+        "ba3"
+      ],
+      "target": 0
+    },
+    "sao5": {
+      "text": "嫂嫂",
+      "tokens": [
+        "sao3",
+        "sao5"
+      ],
+      "target": 1
+    },
+    "se4": {
+      "text": "老三色",
+      "tokens": [
+        "lao3",
+        "san1",
+        "se4"
+      ],
+      "target": 2
+    },
+    "sei2": {
+      "text": "没谁了",
+      "tokens": [
+        "mei2",
+        "sei2",
+        "le5"
+      ],
+      "target": 1
+    },
+    "sen1": {
+      "text": "森",
+      "tokens": [
+        "sen1"
+      ],
+      "target": 0
+    },
+    "seng1": {
+      "text": "僧人",
+      "tokens": [
+        "seng1",
+        "ren2"
+      ],
+      "target": 0
+    },
+    "sha1": {
+      "text": "天杀的",
+      "tokens": [
+        "tian1",
+        "sha1",
+        "de5"
+      ],
+      "target": 1
+    },
+    "sha3": {
+      "text": "傻大个",
+      "tokens": [
+        "sha3",
+        "da4",
+        "ge4"
+      ],
+      "target": 0
+    },
+    "sha4": {
+      "text": "一霎时",
+      "tokens": [
+        "yi1",
+        "sha4",
+        "shi2"
+      ],
+      "target": 1
+    },
+    "shai1": {
+      "text": "分子筛",
+      "tokens": [
+        "fen1",
+        "zi3",
+        "shai1"
+      ],
+      "target": 2
+    },
+    "shai3": {
+      "text": "上色",
+      "tokens": [
+        "shang4",
+        "shai3"
+      ],
+      "target": 1
+    },
+    "shai4": {
+      "text": "晒黑",
+      "tokens": [
+        "shai4",
+        "hei1"
+      ],
+      "target": 0
+    },
+    "shan1": {
+      "text": "山",
+      "tokens": [
+        "shan1"
+      ],
+      "target": 0
+    },
+    "shan3": {
+      "text": "闪人",
+      "tokens": [
+        "shan3",
+        "ren2"
+      ],
+      "target": 0
+    },
+    "shan4": {
+      "text": "不善",
+      "tokens": [
+        "bu4",
+        "shan4"
+      ],
+      "target": 1
+    },
+    "shan5": {
+      "text": "扑扇",
+      "tokens": [
+        "pu1",
+        "shan5"
+      ],
+      "target": 1
+    },
+    "shang1": {
+      "text": "发行商",
+      "tokens": [
+        "fa1",
+        "xing2",
+        "shang1"
+      ],
+      "target": 2
+    },
+    "shang3": {
+      "text": "上声",
+      "tokens": [
+        "shang3",
+        "sheng1"
+      ],
+      "target": 0
+    },
+    "shang4": {
+      "text": "为上",
+      "tokens": [
+        "wei2",
+        "shang4"
+      ],
+      "target": 1
+    },
+    "shang5": {
+      "text": "晚上",
+      "tokens": [
+        "wan3",
+        "shang5"
+      ],
+      "target": 1
+    },
+    "shao1": {
+      "text": "发烧友",
+      "tokens": [
+        "fa1",
+        "shao1",
+        "you3"
+      ],
+      "target": 1
+    },
+    "shao2": {
+      "text": "勺子",
+      "tokens": [
+        "shao2",
+        "zi5"
+      ],
+      "target": 0
+    },
+    "shao3": {
+      "text": "少不了",
+      "tokens": [
+        "shao3",
+        "bu5",
+        "liao3"
+      ],
+      "target": 0
+    },
+    "shao4": {
+      "text": "少年人",
+      "tokens": [
+        "shao4",
+        "nian2",
+        "ren2"
+      ],
+      "target": 0
+    },
+    "shao5": {
+      "text": "多少",
+      "tokens": [
+        "duo1",
+        "shao5"
+      ],
+      "target": 1
+    },
+    "she1": {
+      "text": "奢",
+      "tokens": [
+        "she1"
+      ],
+      "target": 0
+    },
+    "she2": {
+      "text": "白花蛇",
+      "tokens": [
+        "bai2",
+        "hua1",
+        "she2"
+      ],
+      "target": 2
+    },
+    "she3": {
+      "text": "舍不得",
+      "tokens": [
+        "she3",
+        "bu5",
+        "de5"
+      ],
+      "target": 0
+    },
+    "she4": {
+      "text": "社工人",
+      "tokens": [
+        "she4",
+        "gong1",
+        "ren2"
+      ],
+      "target": 0
+    },
+    "she5": {
+      "text": "摆设",
+      "tokens": [
+        "bai3",
+        "she5"
+      ],
+      "target": 1
+    },
+    "shei2": {
+      "text": "谁",
+      "tokens": [
+        "shei2"
+      ],
+      "target": 0
+    },
+    "shen1": {
+      "text": "其自身",
+      "tokens": [
+        "qi2",
+        "zi4",
+        "shen1"
+      ],
+      "target": 2
+    },
+    "shen2": {
+      "text": "神",
+      "tokens": [
+        "shen2"
+      ],
+      "target": 0
+    },
+    "shen3": {
+      "text": "听审会",
+      "tokens": [
+        "ting1",
+        "shen3",
+        "hui4"
+      ],
+      "target": 1
+    },
+    "shen4": {
+      "text": "甚是",
+      "tokens": [
+        "shen4",
+        "shi4"
+      ],
+      "target": 0
+    },
+    "shen5": {
+      "text": "精神",
+      "tokens": [
+        "jing1",
+        "shen5"
+      ],
+      "target": 1
+    },
+    "sheng1": {
+      "text": "生",
+      "tokens": [
+        "sheng1"
+      ],
+      "target": 0
+    },
+    "sheng2": {
+      "text": "绳子",
+      "tokens": [
+        "sheng2",
+        "zi5"
+      ],
+      "target": 0
+    },
+    "sheng3": {
+      "text": "玉红省",
+      "tokens": [
+        "yu4",
+        "hong2",
+        "sheng3"
+      ],
+      "target": 2
+    },
+    "sheng4": {
+      "text": "盛行率",
+      "tokens": [
+        "sheng4",
+        "xing2",
+        "lü4"
+      ],
+      "target": 0
+    },
+    "sheng5": {
+      "text": "学生",
+      "tokens": [
+        "xue2",
+        "sheng5"
+      ],
+      "target": 1
+    },
+    "shi1": {
+      "text": "诗",
+      "tokens": [
+        "shi1"
+      ],
+      "target": 0
+    },
+    "shi2": {
+      "text": "十",
+      "tokens": [
+        "shi2"
+      ],
+      "target": 0
+    },
+    "shi3": {
+      "text": "使",
+      "tokens": [
+        "shi3"
+      ],
+      "target": 0
+    },
+    "shi4": {
+      "text": "是",
+      "tokens": [
+        "shi4"
+      ],
+      "target": 0
+    },
+    "shi5": {
+      "text": "不是",
+      "tokens": [
+        "bu4",
+        "shi5"
+      ],
+      "target": 1
+    },
+    "shou1": {
+      "text": "收留所",
+      "tokens": [
+        "shou1",
+        "liu2",
+        "suo3"
+      ],
+      "target": 0
+    },
+    "shou2": {
+      "text": "混熟",
+      "tokens": [
+        "hun4",
+        "shou2"
+      ],
+      "target": 1
+    },
+    "shou3": {
+      "text": "手",
+      "tokens": [
+        "shou3"
+      ],
+      "target": 0
+    },
+    "shou4": {
+      "text": "受不了",
+      "tokens": [
+        "shou4",
+        "bu4",
+        "liao3"
+      ],
+      "target": 0
+    },
+    "shou5": {
+      "text": "把手",
+      "tokens": [
+        "ba3",
+        "shou5"
+      ],
+      "target": 1
+    },
+    "shu1": {
+      "text": "书",
+      "tokens": [
+        "shu1"
+      ],
+      "target": 0
+    },
+    "shu2": {
+      "text": "自来熟",
+      "tokens": [
+        "zi4",
+        "lai2",
+        "shu2"
+      ],
+      "target": 2
+    },
+    "shu3": {
+      "text": "数出",
+      "tokens": [
+        "shu3",
+        "chu1"
+      ],
+      "target": 0
+    },
+    "shu4": {
+      "text": "树",
+      "tokens": [
+        "shu4"
+      ],
+      "target": 0
+    },
+    "shu5": {
+      "text": "寿数",
+      "tokens": [
+        "shou4",
+        "shu5"
+      ],
+      "target": 1
+    },
+    "shua1": {
+      "text": "刷新率",
+      "tokens": [
+        "shua1",
+        "xin1",
+        "lü4"
+      ],
+      "target": 0
+    },
+    "shua3": {
+      "text": "耍子",
+      "tokens": [
+        "shua3",
+        "zi5"
+      ],
+      "target": 0
+    },
+    "shuai1": {
+      "text": "不衰",
+      "tokens": [
+        "bu4",
+        "shuai1"
+      ],
+      "target": 1
+    },
+    "shuai3": {
+      "text": "甩上",
+      "tokens": [
+        "shuai3",
+        "shang4"
+      ],
+      "target": 0
+    },
+    "shuai4": {
+      "text": "率然",
+      "tokens": [
+        "shuai4",
+        "ran2"
+      ],
+      "target": 0
+    },
+    "shuan1": {
+      "text": "栓子",
+      "tokens": [
+        "shuan1",
+        "zi5"
+      ],
+      "target": 0
+    },
+    "shuan4": {
+      "text": "开涮",
+      "tokens": [
+        "kai1",
+        "shuan4"
+      ],
+      "target": 1
+    },
+    "shuang1": {
+      "text": "双面人",
+      "tokens": [
+        "shuang1",
+        "mian4",
+        "ren2"
+      ],
+      "target": 0
+    },
+    "shuang3": {
+      "text": "不爽",
+      "tokens": [
+        "bu4",
+        "shuang3"
+      ],
+      "target": 1
+    },
+    "shui2": {
+      "text": "阿谁",
+      "tokens": [
+        "a1",
+        "shui2"
+      ],
+      "target": 1
+    },
+    "shui3": {
+      "text": "水",
+      "tokens": [
+        "shui3"
+      ],
+      "target": 0
+    },
+    "shui4": {
+      "text": "睡",
+      "tokens": [
+        "shui4"
+      ],
+      "target": 0
+    },
+    "shui5": {
+      "text": "下水",
+      "tokens": [
+        "xia4",
+        "shui5"
+      ],
+      "target": 1
+    },
+    "shun3": {
+      "text": "吮",
+      "tokens": [
+        "shun3"
+      ],
+      "target": 0
+    },
+    "shun4": {
+      "text": "顺",
+      "tokens": [
+        "shun4"
+      ],
+      "target": 0
+    },
+    "shuo1": {
+      "text": "一说",
+      "tokens": [
+        "yi1",
+        "shuo1"
+      ],
+      "target": 1
+    },
+    "shuo4": {
+      "text": "硕大",
+      "tokens": [
+        "shuo4",
+        "da4"
+      ],
+      "target": 0
+    },
+    "shuo5": {
+      "text": "说说",
+      "tokens": [
+        "shuo1",
+        "shuo5"
+      ],
+      "target": 1
+    },
+    "si1": {
+      "text": "思",
+      "tokens": [
+        "si1"
+      ],
+      "target": 0
+    },
+    "si3": {
+      "text": "死",
+      "tokens": [
+        "si3"
+      ],
+      "target": 0
+    },
+    "si4": {
+      "text": "四",
+      "tokens": [
+        "si4"
+      ],
+      "target": 0
+    },
+    "si5": {
+      "text": "上司",
+      "tokens": [
+        "shang4",
+        "si5"
+      ],
+      "target": 1
+    },
+    "song1": {
+      "text": "松子",
+      "tokens": [
+        "song1",
+        "zi3"
+      ],
+      "target": 0
+    },
+    "song2": {
+      "text": "认怂",
+      "tokens": [
+        "ren4",
+        "song2"
+      ],
+      "target": 1
+    },
+    "song3": {
+      "text": "悚然",
+      "tokens": [
+        "song3",
+        "ran2"
+      ],
+      "target": 0
+    },
+    "song4": {
+      "text": "不送",
+      "tokens": [
+        "bu4",
+        "song4"
+      ],
+      "target": 1
+    },
+    "sou1": {
+      "text": "情搜",
+      "tokens": [
+        "qing2",
+        "sou1"
+      ],
+      "target": 1
+    },
+    "sou3": {
+      "text": "叟",
+      "tokens": [
+        "sou3"
+      ],
+      "target": 0
+    },
+    "sou4": {
+      "text": "嗽",
+      "tokens": [
+        "sou4"
+      ],
+      "target": 0
+    },
+    "sou5": {
+      "text": "咳嗽",
+      "tokens": [
+        "ke2",
+        "sou5"
+      ],
+      "target": 1
+    },
+    "su1": {
+      "text": "苏生",
+      "tokens": [
+        "su1",
+        "sheng1"
+      ],
+      "target": 0
+    },
+    "su2": {
+      "text": "不俗",
+      "tokens": [
+        "bu4",
+        "su2"
+      ],
+      "target": 1
+    },
+    "su4": {
+      "text": "得来速",
+      "tokens": [
+        "de2",
+        "lai2",
+        "su4"
+      ],
+      "target": 2
+    },
+    "su5": {
+      "text": "告诉",
+      "tokens": [
+        "gao4",
+        "su5"
+      ],
+      "target": 1
+    },
+    "suan1": {
+      "text": "酸种",
+      "tokens": [
+        "suan1",
+        "zhong3"
+      ],
+      "target": 0
+    },
+    "suan3": {
+      "text": "匴",
+      "tokens": [
+        "suan3"
+      ],
+      "target": 0
+    },
+    "suan4": {
+      "text": "算不了",
+      "tokens": [
+        "suan4",
+        "bu4",
+        "liao3"
+      ],
+      "target": 0
+    },
+    "sui1": {
+      "text": "虽是",
+      "tokens": [
+        "sui1",
+        "shi4"
+      ],
+      "target": 0
+    },
+    "sui2": {
+      "text": "续随子",
+      "tokens": [
+        "xu4",
+        "sui2",
+        "zi5"
+      ],
+      "target": 1
+    },
+    "sui3": {
+      "text": "红玉髓",
+      "tokens": [
+        "hong2",
+        "yu4",
+        "sui3"
+      ],
+      "target": 2
+    },
+    "sui4": {
+      "text": "不遂",
+      "tokens": [
+        "bu4",
+        "sui4"
+      ],
+      "target": 1
+    },
+    "sui5": {
+      "text": "杂碎",
+      "tokens": [
+        "za2",
+        "sui5"
+      ],
+      "target": 1
+    },
+    "sun1": {
+      "text": "外孙子",
+      "tokens": [
+        "wai4",
+        "sun1",
+        "zi5"
+      ],
+      "target": 1
+    },
+    "sun3": {
+      "text": "损人",
+      "tokens": [
+        "sun3",
+        "ren2"
+      ],
+      "target": 0
+    },
+    "suo1": {
+      "text": "梭子鱼",
+      "tokens": [
+        "suo1",
+        "zi5",
+        "yu2"
+      ],
+      "target": 0
+    },
+    "suo3": {
+      "text": "所",
+      "tokens": [
+        "suo3"
+      ],
+      "target": 0
+    },
+    "suo5": {
+      "text": "利索",
+      "tokens": [
+        "li4",
+        "suo5"
+      ],
+      "target": 1
+    },
+    "ta1": {
+      "text": "他",
+      "tokens": [
+        "ta1"
+      ],
+      "target": 0
+    },
+    "ta3": {
+      "text": "塔",
+      "tokens": [
+        "ta3"
+      ],
+      "target": 0
+    },
+    "ta4": {
+      "text": "踏",
+      "tokens": [
+        "ta4"
+      ],
+      "target": 0
+    },
+    "ta5": {
+      "text": "疲沓",
+      "tokens": [
+        "pi2",
+        "ta5"
+      ],
+      "target": 1
+    },
+    "tai1": {
+      "text": "有了胎",
+      "tokens": [
+        "you3",
+        "le5",
+        "tai1"
+      ],
+      "target": 2
+    },
+    "tai2": {
+      "text": "二人台",
+      "tokens": [
+        "er4",
+        "ren2",
+        "tai2"
+      ],
+      "target": 2
+    },
+    "tai4": {
+      "text": "不太好",
+      "tokens": [
+        "bu4",
+        "tai4",
+        "hao3"
+      ],
+      "target": 1
+    },
+    "tai5": {
+      "text": "小太太",
+      "tokens": [
+        "xiao3",
+        "tai4",
+        "tai5"
+      ],
+      "target": 2
+    },
+    "tan1": {
+      "text": "地摊",
+      "tokens": [
+        "di4",
+        "tan1"
+      ],
+      "target": 1
+    },
+    "tan2": {
+      "text": "谈不上",
+      "tokens": [
+        "tan2",
+        "bu5",
+        "shang4"
+      ],
+      "target": 0
+    },
+    "tan3": {
+      "text": "红地毯",
+      "tokens": [
+        "hong2",
+        "di4",
+        "tan3"
+      ],
+      "target": 2
+    },
+    "tan4": {
+      "text": "碳中和",
+      "tokens": [
+        "tan4",
+        "zhong1",
+        "he2"
+      ],
+      "target": 0
+    },
+    "tan5": {
+      "text": "动弹",
+      "tokens": [
+        "dong4",
+        "tan5"
+      ],
+      "target": 1
+    },
+    "tang1": {
+      "text": "汤力水",
+      "tokens": [
+        "tang1",
+        "li4",
+        "shui3"
+      ],
+      "target": 0
+    },
+    "tang2": {
+      "text": "语法糖",
+      "tokens": [
+        "yu3",
+        "fa3",
+        "tang2"
+      ],
+      "target": 2
+    },
+    "tang3": {
+      "text": "淌下",
+      "tokens": [
+        "tang3",
+        "xia4"
+      ],
+      "target": 0
+    },
+    "tang4": {
+      "text": "发烫",
+      "tokens": [
+        "fa1",
+        "tang4"
+      ],
+      "target": 1
+    },
+    "tang5": {
+      "text": "名堂",
+      "tokens": [
+        "ming2",
+        "tang5"
+      ],
+      "target": 1
+    },
+    "tao1": {
+      "text": "绦子",
+      "tokens": [
+        "tao1",
+        "zi5"
+      ],
+      "target": 0
+    },
+    "tao2": {
+      "text": "逃不出",
+      "tokens": [
+        "tao2",
+        "bu4",
+        "chu1"
+      ],
+      "target": 0
+    },
+    "tao3": {
+      "text": "讨论会",
+      "tokens": [
+        "tao3",
+        "lun4",
+        "hui4"
+      ],
+      "target": 0
+    },
+    "tao4": {
+      "text": "有一套",
+      "tokens": [
+        "you3",
+        "yi1",
+        "tao4"
+      ],
+      "target": 2
+    },
+    "tao5": {
+      "text": "山核桃",
+      "tokens": [
+        "shan1",
+        "he2",
+        "tao5"
+      ],
+      "target": 2
+    },
+    "te4": {
+      "text": "特发性",
+      "tokens": [
+        "te4",
+        "fa1",
+        "xing4"
+      ],
+      "target": 0
+    },
+    "teng1": {
+      "text": "鼟",
+      "tokens": [
+        "teng1"
+      ],
+      "target": 0
+    },
+    "teng2": {
+      "text": "腾出手",
+      "tokens": [
+        "teng2",
+        "chu1",
+        "shou3"
+      ],
+      "target": 0
+    },
+    "teng5": {
+      "text": "倒腾",
+      "tokens": [
+        "dao3",
+        "teng5"
+      ],
+      "target": 1
+    },
+    "ti1": {
+      "text": "人梯",
+      "tokens": [
+        "ren2",
+        "ti1"
+      ],
+      "target": 1
+    },
+    "ti2": {
+      "text": "大前提",
+      "tokens": [
+        "da4",
+        "qian2",
+        "ti2"
+      ],
+      "target": 2
+    },
+    "ti3": {
+      "text": "大体上",
+      "tokens": [
+        "da4",
+        "ti3",
+        "shang4"
+      ],
+      "target": 1
+    },
+    "ti4": {
+      "text": "三屉桌",
+      "tokens": [
+        "san1",
+        "ti4",
+        "zhuo1"
+      ],
+      "target": 1
+    },
+    "ti5": {
+      "text": "抽屉",
+      "tokens": [
+        "chou1",
+        "ti5"
+      ],
+      "target": 1
+    },
+    "tian1": {
+      "text": "天",
+      "tokens": [
+        "tian1"
+      ],
+      "target": 0
+    },
+    "tian2": {
+      "text": "恬和",
+      "tokens": [
+        "tian2",
+        "he2"
+      ],
+      "target": 0
+    },
+    "tian3": {
+      "text": "忝",
+      "tokens": [
+        "tian3"
+      ],
+      "target": 0
+    },
+    "tian4": {
+      "text": "掭",
+      "tokens": [
+        "tian4"
+      ],
+      "target": 0
+    },
+    "tiao1": {
+      "text": "挑山工",
+      "tokens": [
+        "tiao1",
+        "shan1",
+        "gong1"
+      ],
+      "target": 0
+    },
+    "tiao2": {
+      "text": "不调和",
+      "tokens": [
+        "bu4",
+        "tiao2",
+        "he2"
+      ],
+      "target": 1
+    },
+    "tiao3": {
+      "text": "高挑子",
+      "tokens": [
+        "gao1",
+        "tiao3",
+        "zi5"
+      ],
+      "target": 1
+    },
+    "tiao4": {
+      "text": "跳大神",
+      "tokens": [
+        "tiao4",
+        "da4",
+        "shen2"
+      ],
+      "target": 0
+    },
+    "tiao5": {
+      "text": "苗条",
+      "tokens": [
+        "miao2",
+        "tiao5"
+      ],
+      "target": 1
+    },
+    "tie1": {
+      "text": "贴生",
+      "tokens": [
+        "tie1",
+        "sheng1"
+      ],
+      "target": 0
+    },
+    "tie3": {
+      "text": "铁了心",
+      "tokens": [
+        "tie3",
+        "le5",
+        "xin1"
+      ],
+      "target": 0
+    },
+    "tie4": {
+      "text": "餮",
+      "tokens": [
+        "tie4"
+      ],
+      "target": 0
+    },
+    "tie5": {
+      "text": "烙铁",
+      "tokens": [
+        "lao4",
+        "tie5"
+      ],
+      "target": 1
+    },
+    "ting1": {
+      "text": "听来",
+      "tokens": [
+        "ting1",
+        "lai2"
+      ],
+      "target": 0
+    },
+    "ting2": {
+      "text": "停下来",
+      "tokens": [
+        "ting2",
+        "xia4",
+        "lai2"
+      ],
+      "target": 0
+    },
+    "ting3": {
+      "text": "挺好",
+      "tokens": [
+        "ting3",
+        "hao3"
+      ],
+      "target": 0
+    },
+    "ting5": {
+      "text": "打听",
+      "tokens": [
+        "da3",
+        "ting5"
+      ],
+      "target": 1
+    },
+    "tong1": {
+      "text": "一大通",
+      "tokens": [
+        "yi1",
+        "da4",
+        "tong1"
+      ],
+      "target": 2
+    },
+    "tong2": {
+      "text": "一同",
+      "tokens": [
+        "yi1",
+        "tong2"
+      ],
+      "target": 1
+    },
+    "tong3": {
+      "text": "大一统",
+      "tokens": [
+        "da4",
+        "yi1",
+        "tong3"
+      ],
+      "target": 2
+    },
+    "tong4": {
+      "text": "神经痛",
+      "tokens": [
+        "shen2",
+        "jing1",
+        "tong4"
+      ],
+      "target": 2
+    },
+    "tong5": {
+      "text": "合同法",
+      "tokens": [
+        "he2",
+        "tong5",
+        "fa3"
+      ],
+      "target": 1
+    },
+    "tou1": {
+      "text": "偷人",
+      "tokens": [
+        "tou1",
+        "ren2"
+      ],
+      "target": 0
+    },
+    "tou2": {
+      "text": "到头来",
+      "tokens": [
+        "dao4",
+        "tou2",
+        "lai2"
+      ],
+      "target": 1
+    },
+    "tou3": {
+      "text": "妵",
+      "tokens": [
+        "tou3"
+      ],
+      "target": 0
+    },
+    "tou4": {
+      "text": "不透明",
+      "tokens": [
+        "bu4",
+        "tou4",
+        "ming2"
+      ],
+      "target": 1
+    },
+    "tou5": {
+      "text": "石头",
+      "tokens": [
+        "shi2",
+        "tou5"
+      ],
+      "target": 1
+    },
+    "tu1": {
+      "text": "神经突",
+      "tokens": [
+        "shen2",
+        "jing1",
+        "tu1"
+      ],
+      "target": 2
+    },
+    "tu2": {
+      "text": "多用途",
+      "tokens": [
+        "duo1",
+        "yong4",
+        "tu2"
+      ],
+      "target": 2
+    },
+    "tu3": {
+      "text": "人为土",
+      "tokens": [
+        "ren2",
+        "wei2",
+        "tu3"
+      ],
+      "target": 2
+    },
+    "tu4": {
+      "text": "兔子",
+      "tokens": [
+        "tu4",
+        "zi5"
+      ],
+      "target": 0
+    },
+    "tu5": {
+      "text": "老糊涂",
+      "tokens": [
+        "lao3",
+        "hu2",
+        "tu5"
+      ],
+      "target": 2
+    },
+    "tuan1": {
+      "text": "湍流",
+      "tokens": [
+        "tuan1",
+        "liu2"
+      ],
+      "target": 0
+    },
+    "tuan2": {
+      "text": "生面团",
+      "tokens": [
+        "sheng1",
+        "mian4",
+        "tuan2"
+      ],
+      "target": 2
+    },
+    "tuan3": {
+      "text": "畽",
+      "tokens": [
+        "tuan3"
+      ],
+      "target": 0
+    },
+    "tuan4": {
+      "text": "彖",
+      "tokens": [
+        "tuan4"
+      ],
+      "target": 0
+    },
+    "tui1": {
+      "text": "外推法",
+      "tokens": [
+        "wai4",
+        "tui1",
+        "fa3"
+      ],
+      "target": 1
+    },
+    "tui2": {
+      "text": "颓然",
+      "tokens": [
+        "tui2",
+        "ran2"
+      ],
+      "target": 0
+    },
+    "tui3": {
+      "text": "有一腿",
+      "tokens": [
+        "you3",
+        "yi1",
+        "tui3"
+      ],
+      "target": 2
+    },
+    "tui4": {
+      "text": "退行性",
+      "tokens": [
+        "tui4",
+        "xing2",
+        "xing4"
+      ],
+      "target": 0
+    },
+    "tun1": {
+      "text": "吞没",
+      "tokens": [
+        "tun1",
+        "mo4"
+      ],
+      "target": 0
+    },
+    "tun2": {
+      "text": "屯子",
+      "tokens": [
+        "tun2",
+        "zi5"
+      ],
+      "target": 0
+    },
+    "tun3": {
+      "text": "氽",
+      "tokens": [
+        "tun3"
+      ],
+      "target": 0
+    },
+    "tun4": {
+      "text": "褪下",
+      "tokens": [
+        "tun4",
+        "xia4"
+      ],
+      "target": 0
+    },
+    "tuo1": {
+      "text": "托老所",
+      "tokens": [
+        "tuo1",
+        "lao3",
+        "suo3"
+      ],
+      "target": 0
+    },
+    "tuo2": {
+      "text": "坨子",
+      "tokens": [
+        "tuo2",
+        "zi5"
+      ],
+      "target": 0
+    },
+    "tuo3": {
+      "text": "不妥",
+      "tokens": [
+        "bu4",
+        "tuo3"
+      ],
+      "target": 1
+    },
+    "tuo4": {
+      "text": "开拓者",
+      "tokens": [
+        "kai1",
+        "tuo4",
+        "zhe3"
+      ],
+      "target": 1
+    },
+    "tuo5": {
+      "text": "洒脱",
+      "tokens": [
+        "sa3",
+        "tuo5"
+      ],
+      "target": 1
+    },
+    "wa1": {
+      "text": "挖人",
+      "tokens": [
+        "wa1",
+        "ren2"
+      ],
+      "target": 0
+    },
+    "wa2": {
+      "text": "外来娃",
+      "tokens": [
+        "wai4",
+        "lai2",
+        "wa2"
+      ],
+      "target": 2
+    },
+    "wa3": {
+      "text": "十瓦",
+      "tokens": [
+        "shi2",
+        "wa3"
+      ],
+      "target": 1
+    },
+    "wa4": {
+      "text": "袜子",
+      "tokens": [
+        "wa4",
+        "zi5"
+      ],
+      "target": 0
+    },
+    "wa5": {
+      "text": "娃娃生",
+      "tokens": [
+        "wa2",
+        "wa5",
+        "sheng1"
+      ],
+      "target": 1
+    },
+    "wai1": {
+      "text": "歪点子",
+      "tokens": [
+        "wai1",
+        "dian3",
+        "zi5"
+      ],
+      "target": 0
+    },
+    "wai3": {
+      "text": "崴子",
+      "tokens": [
+        "wai3",
+        "zi5"
+      ],
+      "target": 0
+    },
+    "wai4": {
+      "text": "外",
+      "tokens": [
+        "wai4"
+      ],
+      "target": 0
+    },
+    "wai5": {
+      "text": "腻歪",
+      "tokens": [
+        "ni4",
+        "wai5"
+      ],
+      "target": 1
+    },
+    "wan1": {
+      "text": "弯子",
+      "tokens": [
+        "wan1",
+        "zi5"
+      ],
+      "target": 0
+    },
+    "wan2": {
+      "text": "说着玩",
+      "tokens": [
+        "shuo1",
+        "zhe5",
+        "wan2"
+      ],
+      "target": 2
+    },
+    "wan3": {
+      "text": "大晚上",
+      "tokens": [
+        "da4",
+        "wan3",
+        "shang5"
+      ],
+      "target": 1
+    },
+    "wan4": {
+      "text": "手腕子",
+      "tokens": [
+        "shou3",
+        "wan4",
+        "zi5"
+      ],
+      "target": 1
+    },
+    "wang1": {
+      "text": "尢",
+      "tokens": [
+        "wang1"
+      ],
+      "target": 0
+    },
+    "wang2": {
+      "text": "大王",
+      "tokens": [
+        "da4",
+        "wang2"
+      ],
+      "target": 1
+    },
+    "wang3": {
+      "text": "上网本",
+      "tokens": [
+        "shang4",
+        "wang3",
+        "ben3"
+      ],
+      "target": 1
+    },
+    "wang4": {
+      "text": "忘不了",
+      "tokens": [
+        "wang4",
+        "bu5",
+        "liao3"
+      ],
+      "target": 0
+    },
+    "wang5": {
+      "text": "大王",
+      "tokens": [
+        "dai4",
+        "wang5"
+      ],
+      "target": 1
+    },
+    "wei1": {
+      "text": "中微子",
+      "tokens": [
+        "zhong1",
+        "wei1",
+        "zi3"
+      ],
+      "target": 1
+    },
+    "wei2": {
+      "text": "为人",
+      "tokens": [
+        "wei2",
+        "ren2"
+      ],
+      "target": 0
+    },
+    "wei3": {
+      "text": "大不韪",
+      "tokens": [
+        "da4",
+        "bu4",
+        "wei3"
+      ],
+      "target": 2
+    },
+    "wei4": {
+      "text": "为了",
+      "tokens": [
+        "wei4",
+        "le5"
+      ],
+      "target": 0
+    },
+    "wei5": {
+      "text": "难为",
+      "tokens": [
+        "nan2",
+        "wei5"
+      ],
+      "target": 1
+    },
+    "wen1": {
+      "text": "温和性",
+      "tokens": [
+        "wen1",
+        "he2",
+        "xing4"
+      ],
+      "target": 0
+    },
+    "wen2": {
+      "text": "上下文",
+      "tokens": [
+        "shang4",
+        "xia4",
+        "wen2"
+      ],
+      "target": 2
+    },
+    "wen3": {
+      "text": "不稳性",
+      "tokens": [
+        "bu4",
+        "wen3",
+        "xing4"
+      ],
+      "target": 1
+    },
+    "wen4": {
+      "text": "有学问",
+      "tokens": [
+        "you3",
+        "xue2",
+        "wen4"
+      ],
+      "target": 2
+    },
+    "weng1": {
+      "text": "主人翁",
+      "tokens": [
+        "zhu3",
+        "ren2",
+        "weng1"
+      ],
+      "target": 2
+    },
+    "weng3": {
+      "text": "奣",
+      "tokens": [
+        "weng3"
+      ],
+      "target": 0
+    },
+    "weng4": {
+      "text": "瓮",
+      "tokens": [
+        "weng4"
+      ],
+      "target": 0
+    },
+    "wo1": {
+      "text": "倭人",
+      "tokens": [
+        "wo1",
+        "ren2"
+      ],
+      "target": 0
+    },
+    "wo3": {
+      "text": "我",
+      "tokens": [
+        "wo3"
+      ],
+      "target": 0
+    },
+    "wo4": {
+      "text": "无把握",
+      "tokens": [
+        "wu2",
+        "ba3",
+        "wo4"
+      ],
+      "target": 2
+    },
+    "wo5": {
+      "text": "被卧",
+      "tokens": [
+        "bei4",
+        "wo5"
+      ],
+      "target": 1
+    },
+    "wu1": {
+      "text": "乌鱼子",
+      "tokens": [
+        "wu1",
+        "yu2",
+        "zi3"
+      ],
+      "target": 0
+    },
+    "wu2": {
+      "text": "不无",
+      "tokens": [
+        "bu4",
+        "wu2"
+      ],
+      "target": 1
+    },
+    "wu3": {
+      "text": "下午好",
+      "tokens": [
+        "xia4",
+        "wu3",
+        "hao3"
+      ],
+      "target": 1
+    },
+    "wu4": {
+      "text": "所有物",
+      "tokens": [
+        "suo3",
+        "you3",
+        "wu4"
+      ],
+      "target": 2
+    },
+    "wu5": {
+      "text": "任务",
+      "tokens": [
+        "ren4",
+        "wu5"
+      ],
+      "target": 1
+    },
+    "xi1": {
+      "text": "西",
+      "tokens": [
+        "xi1"
+      ],
+      "target": 0
+    },
+    "xi2": {
+      "text": "习",
+      "tokens": [
+        "xi2"
+      ],
+      "target": 0
+    },
+    "xi3": {
+      "text": "洗",
+      "tokens": [
+        "xi3"
+      ],
+      "target": 0
+    },
+    "xi4": {
+      "text": "戏",
+      "tokens": [
+        "xi4"
+      ],
+      "target": 0
+    },
+    "xi5": {
+      "text": "东西",
+      "tokens": [
+        "dong1",
+        "xi5"
+      ],
+      "target": 1
+    },
+    "xia1": {
+      "text": "大明虾",
+      "tokens": [
+        "da4",
+        "ming2",
+        "xia1"
+      ],
+      "target": 2
+    },
+    "xia2": {
+      "text": "黑匣子",
+      "tokens": [
+        "hei1",
+        "xia2",
+        "zi5"
+      ],
+      "target": 1
+    },
+    "xia4": {
+      "text": "下",
+      "tokens": [
+        "xia4"
+      ],
+      "target": 0
+    },
+    "xia5": {
+      "text": "年下",
+      "tokens": [
+        "nian2",
+        "xia5"
+      ],
+      "target": 1
+    },
+    "xian1": {
+      "text": "先",
+      "tokens": [
+        "xian1"
+      ],
+      "target": 0
+    },
+    "xian2": {
+      "text": "三和弦",
+      "tokens": [
+        "san1",
+        "he2",
+        "xian2"
+      ],
+      "target": 2
+    },
+    "xian3": {
+      "text": "外显子",
+      "tokens": [
+        "wai4",
+        "xian3",
+        "zi3"
+      ],
+      "target": 1
+    },
+    "xian4": {
+      "text": "到现在",
+      "tokens": [
+        "dao4",
+        "xian4",
+        "zai4"
+      ],
+      "target": 1
+    },
+    "xian5": {
+      "text": "黏涎",
+      "tokens": [
+        "nian2",
+        "xian5"
+      ],
+      "target": 1
+    },
+    "xiang1": {
+      "text": "乡下人",
+      "tokens": [
+        "xiang1",
+        "xia4",
+        "ren2"
+      ],
+      "target": 0
+    },
+    "xiang2": {
+      "text": "发祥地",
+      "tokens": [
+        "fa1",
+        "xiang2",
+        "di4"
+      ],
+      "target": 1
+    },
+    "xiang3": {
+      "text": "想",
+      "tokens": [
+        "xiang3"
+      ],
+      "target": 0
+    },
+    "xiang4": {
+      "text": "成人向",
+      "tokens": [
+        "cheng2",
+        "ren2",
+        "xiang4"
+      ],
+      "target": 2
+    },
+    "xiang5": {
+      "text": "来项",
+      "tokens": [
+        "lai2",
+        "xiang5"
+      ],
+      "target": 1
+    },
+    "xiao1": {
+      "text": "行销长",
+      "tokens": [
+        "xing2",
+        "xiao1",
+        "zhang3"
+      ],
+      "target": 1
+    },
+    "xiao2": {
+      "text": "淆乱",
+      "tokens": [
+        "xiao2",
+        "luan4"
+      ],
+      "target": 0
+    },
+    "xiao3": {
+      "text": "小",
+      "tokens": [
+        "xiao3"
+      ],
+      "target": 0
+    },
+    "xiao4": {
+      "text": "时效法",
+      "tokens": [
+        "shi2",
+        "xiao4",
+        "fa3"
+      ],
+      "target": 1
+    },
+    "xie1": {
+      "text": "有一些",
+      "tokens": [
+        "you3",
+        "yi1",
+        "xie1"
+      ],
+      "target": 2
+    },
+    "xie2": {
+      "text": "和谐性",
+      "tokens": [
+        "he2",
+        "xie2",
+        "xing4"
+      ],
+      "target": 1
+    },
+    "xie3": {
+      "text": "大写",
+      "tokens": [
+        "da4",
+        "xie3"
+      ],
+      "target": 1
+    },
+    "xie4": {
+      "text": "不用谢",
+      "tokens": [
+        "bu4",
+        "yong4",
+        "xie4"
+      ],
+      "target": 2
+    },
+    "xie5": {
+      "text": "乜斜",
+      "tokens": [
+        "mie1",
+        "xie5"
+      ],
+      "target": 1
+    },
+    "xin1": {
+      "text": "心",
+      "tokens": [
+        "xin1"
+      ],
+      "target": 0
+    },
+    "xin3": {
+      "text": "伈",
+      "tokens": [
+        "xin3"
+      ],
+      "target": 0
+    },
+    "xin4": {
+      "text": "信不过",
+      "tokens": [
+        "xin4",
+        "bu4",
+        "guo4"
+      ],
+      "target": 0
+    },
+    "xin5": {
+      "text": "点心",
+      "tokens": [
+        "dian3",
+        "xin5"
+      ],
+      "target": 1
+    },
+    "xing1": {
+      "text": "中子星",
+      "tokens": [
+        "zhong1",
+        "zi3",
+        "xing1"
+      ],
+      "target": 2
+    },
+    "xing2": {
+      "text": "一行",
+      "tokens": [
+        "yi1",
+        "xing2"
+      ],
+      "target": 1
+    },
+    "xing3": {
+      "text": "自然醒",
+      "tokens": [
+        "zi4",
+        "ran2",
+        "xing3"
+      ],
+      "target": 2
+    },
+    "xing4": {
+      "text": "性",
+      "tokens": [
+        "xing4"
+      ],
+      "target": 0
+    },
+    "xing5": {
+      "text": "长记性",
+      "tokens": [
+        "zhang3",
+        "ji4",
+        "xing5"
+      ],
+      "target": 2
+    },
+    "xiong1": {
+      "text": "行凶者",
+      "tokens": [
+        "xing2",
+        "xiong1",
+        "zhe3"
+      ],
+      "target": 1
+    },
+    "xiong2": {
+      "text": "有雄心",
+      "tokens": [
+        "you3",
+        "xiong2",
+        "xin1"
+      ],
+      "target": 1
+    },
+    "xiong4": {
+      "text": "诇",
+      "tokens": [
+        "xiong4"
+      ],
+      "target": 0
+    },
+    "xiong5": {
+      "text": "弟兄",
+      "tokens": [
+        "di4",
+        "xiong5"
+      ],
+      "target": 1
+    },
+    "xiu1": {
+      "text": "修行人",
+      "tokens": [
+        "xiu1",
+        "xing2",
+        "ren2"
+      ],
+      "target": 0
+    },
+    "xiu3": {
+      "text": "三不朽",
+      "tokens": [
+        "san1",
+        "bu4",
+        "xiu3"
+      ],
+      "target": 2
+    },
+    "xiu4": {
+      "text": "工地秀",
+      "tokens": [
+        "gong1",
+        "di4",
+        "xiu4"
+      ],
+      "target": 2
+    },
+    "xu1": {
+      "text": "需",
+      "tokens": [
+        "xu1"
+      ],
+      "target": 0
+    },
+    "xu2": {
+      "text": "徐",
+      "tokens": [
+        "xu2"
+      ],
+      "target": 0
+    },
+    "xu3": {
+      "text": "许",
+      "tokens": [
+        "xu3"
+      ],
+      "target": 0
+    },
+    "xu4": {
+      "text": "续",
+      "tokens": [
+        "xu4"
+      ],
+      "target": 0
+    },
+    "xu5": {
+      "text": "女婿",
+      "tokens": [
+        "nü3",
+        "xu5"
+      ],
+      "target": 1
+    },
+    "xuan1": {
+      "text": "宣",
+      "tokens": [
+        "xuan1"
+      ],
+      "target": 0
+    },
+    "xuan2": {
+      "text": "悬",
+      "tokens": [
+        "xuan2"
+      ],
+      "target": 0
+    },
+    "xuan3": {
+      "text": "选",
+      "tokens": [
+        "xuan3"
+      ],
+      "target": 0
+    },
+    "xuan4": {
+      "text": "炫",
+      "tokens": [
+        "xuan4"
+      ],
+      "target": 0
+    },
+    "xue1": {
+      "text": "靴子",
+      "tokens": [
+        "xue1",
+        "zi5"
+      ],
+      "target": 0
+    },
+    "xue2": {
+      "text": "学",
+      "tokens": [
+        "xue2"
+      ],
+      "target": 0
+    },
+    "xue3": {
+      "text": "雪人",
+      "tokens": [
+        "xue3",
+        "ren2"
+      ],
+      "target": 0
+    },
+    "xue4": {
+      "text": "大出血",
+      "tokens": [
+        "da4",
+        "chu1",
+        "xue4"
+      ],
+      "target": 2
+    },
+    "xun1": {
+      "text": "熏",
+      "tokens": [
+        "xun1"
+      ],
+      "target": 0
+    },
+    "xun2": {
+      "text": "寻",
+      "tokens": [
+        "xun2"
+      ],
+      "target": 0
+    },
+    "xun4": {
+      "text": "训",
+      "tokens": [
+        "xun4"
+      ],
+      "target": 0
+    },
+    "xun5": {
+      "text": "教训",
+      "tokens": [
+        "jiao4",
+        "xun5"
+      ],
+      "target": 1
+    },
+    "ya1": {
+      "text": "水老鸦",
+      "tokens": [
+        "shui3",
+        "lao3",
+        "ya1"
+      ],
+      "target": 2
+    },
+    "ya2": {
+      "text": "牙人",
+      "tokens": [
+        "ya2",
+        "ren2"
+      ],
+      "target": 0
+    },
+    "ya3": {
+      "text": "雅人",
+      "tokens": [
+        "ya3",
+        "ren2"
+      ],
+      "target": 0
+    },
+    "ya4": {
+      "text": "不亚于",
+      "tokens": [
+        "bu4",
+        "ya4",
+        "yu2"
+      ],
+      "target": 1
+    },
+    "ya5": {
+      "text": "天呀",
+      "tokens": [
+        "tian1",
+        "ya5"
+      ],
+      "target": 1
+    },
+    "yan1": {
+      "text": "二手烟",
+      "tokens": [
+        "er4",
+        "shou3",
+        "yan1"
+      ],
+      "target": 2
+    },
+    "yan2": {
+      "text": "发言人",
+      "tokens": [
+        "fa1",
+        "yan2",
+        "ren2"
+      ],
+      "target": 1
+    },
+    "yan3": {
+      "text": "演说者",
+      "tokens": [
+        "yan3",
+        "shuo1",
+        "zhe3"
+      ],
+      "target": 0
+    },
+    "yan4": {
+      "text": "没经验",
+      "tokens": [
+        "mei2",
+        "jing1",
+        "yan4"
+      ],
+      "target": 2
+    },
+    "yan5": {
+      "text": "针眼",
+      "tokens": [
+        "zhen1",
+        "yan5"
+      ],
+      "target": 1
+    },
+    "yang1": {
+      "text": "央人",
+      "tokens": [
+        "yang1",
+        "ren2"
+      ],
+      "target": 0
+    },
+    "yang2": {
+      "text": "洋大人",
+      "tokens": [
+        "yang2",
+        "da4",
+        "ren2"
+      ],
+      "target": 0
+    },
+    "yang3": {
+      "text": "养生法",
+      "tokens": [
+        "yang3",
+        "sheng1",
+        "fa3"
+      ],
+      "target": 0
+    },
+    "yang4": {
+      "text": "不一样",
+      "tokens": [
+        "bu4",
+        "yi1",
+        "yang4"
+      ],
+      "target": 2
+    },
+    "yang5": {
+      "text": "太阳",
+      "tokens": [
+        "tai4",
+        "yang5"
+      ],
+      "target": 1
+    },
+    "yao1": {
+      "text": "要约",
+      "tokens": [
+        "yao1",
+        "yue1"
+      ],
+      "target": 0
+    },
+    "yao2": {
+      "text": "不动摇",
+      "tokens": [
+        "bu4",
+        "dong4",
+        "yao2"
+      ],
+      "target": 2
+    },
+    "yao3": {
+      "text": "舀子",
+      "tokens": [
+        "yao3",
+        "zi5"
+      ],
+      "target": 0
+    },
+    "yao4": {
+      "text": "要是",
+      "tokens": [
+        "yao4",
+        "shi5"
+      ],
+      "target": 0
+    },
+    "yao5": {
+      "text": "膏药",
+      "tokens": [
+        "gao1",
+        "yao5"
+      ],
+      "target": 1
+    },
+    "ye1": {
+      "text": "椰子",
+      "tokens": [
+        "ye1",
+        "zi5"
+      ],
+      "target": 0
+    },
+    "ye2": {
+      "text": "老大爷",
+      "tokens": [
+        "lao3",
+        "da4",
+        "ye2"
+      ],
+      "target": 2
+    },
+    "ye3": {
+      "text": "也",
+      "tokens": [
+        "ye3"
+      ],
+      "target": 0
+    },
+    "ye4": {
+      "text": "上一页",
+      "tokens": [
+        "shang4",
+        "yi1",
+        "ye4"
+      ],
+      "target": 2
+    },
+    "ye5": {
+      "text": "天老爷",
+      "tokens": [
+        "tian1",
+        "lao3",
+        "ye5"
+      ],
+      "target": 2
+    },
+    "yi1": {
+      "text": "一",
+      "tokens": [
+        "yi1"
+      ],
+      "target": 0
+    },
+    "yi2": {
+      "text": "大姨子",
+      "tokens": [
+        "da4",
+        "yi2",
+        "zi5"
+      ],
+      "target": 1
+    },
+    "yi3": {
+      "text": "以",
+      "tokens": [
+        "yi3"
+      ],
+      "target": 0
+    },
+    "yi4": {
+      "text": "不在意",
+      "tokens": [
+        "bu4",
+        "zai4",
+        "yi4"
+      ],
+      "target": 2
+    },
+    "yi5": {
+      "text": "生意经",
+      "tokens": [
+        "sheng1",
+        "yi5",
+        "jing1"
+      ],
+      "target": 1
+    },
+    "yin1": {
+      "text": "公因子",
+      "tokens": [
+        "gong1",
+        "yin1",
+        "zi3"
+      ],
+      "target": 1
+    },
+    "yin2": {
+      "text": "银行家",
+      "tokens": [
+        "yin2",
+        "hang2",
+        "jia1"
+      ],
+      "target": 0
+    },
+    "yin3": {
+      "text": "成瘾性",
+      "tokens": [
+        "cheng2",
+        "yin3",
+        "xing4"
+      ],
+      "target": 1
+    },
+    "yin4": {
+      "text": "地窨子",
+      "tokens": [
+        "di4",
+        "yin4",
+        "zi5"
+      ],
+      "target": 1
+    },
+    "yin5": {
+      "text": "口音",
+      "tokens": [
+        "kou3",
+        "yin5"
+      ],
+      "target": 1
+    },
+    "ying1": {
+      "text": "大树莺",
+      "tokens": [
+        "da4",
+        "shu4",
+        "ying1"
+      ],
+      "target": 2
+    },
+    "ying2": {
+      "text": "经营者",
+      "tokens": [
+        "jing1",
+        "ying2",
+        "zhe3"
+      ],
+      "target": 1
+    },
+    "ying3": {
+      "text": "人影",
+      "tokens": [
+        "ren2",
+        "ying3"
+      ],
+      "target": 1
+    },
+    "ying4": {
+      "text": "来硬的",
+      "tokens": [
+        "lai2",
+        "ying4",
+        "de5"
+      ],
+      "target": 1
+    },
+    "ying5": {
+      "text": "照应",
+      "tokens": [
+        "zhao4",
+        "ying5"
+      ],
+      "target": 1
+    },
+    "yo1": {
+      "text": "哎哟",
+      "tokens": [
+        "ai1",
+        "yo1"
+      ],
+      "target": 1
+    },
+    "yo5": {
+      "text": "啊哟",
+      "tokens": [
+        "a1",
+        "yo5"
+      ],
+      "target": 1
+    },
+    "yong1": {
+      "text": "佣人",
+      "tokens": [
+        "yong1",
+        "ren2"
+      ],
+      "target": 0
+    },
+    "yong2": {
+      "text": "颙",
+      "tokens": [
+        "yong2"
+      ],
+      "target": 0
+    },
+    "yong3": {
+      "text": "永久性",
+      "tokens": [
+        "yong3",
+        "jiu3",
+        "xing4"
+      ],
+      "target": 0
+    },
+    "yong4": {
+      "text": "用",
+      "tokens": [
+        "yong4"
+      ],
+      "target": 0
+    },
+    "yong5": {
+      "text": "受用",
+      "tokens": [
+        "shou4",
+        "yong5"
+      ],
+      "target": 1
+    },
+    "you1": {
+      "text": "优生学",
+      "tokens": [
+        "you1",
+        "sheng1",
+        "xue2"
+      ],
+      "target": 0
+    },
+    "you2": {
+      "text": "不由得",
+      "tokens": [
+        "bu4",
+        "you2",
+        "de5"
+      ],
+      "target": 1
+    },
+    "you3": {
+      "text": "有",
+      "tokens": [
+        "you3"
+      ],
+      "target": 0
+    },
+    "you4": {
+      "text": "又",
+      "tokens": [
+        "you4"
+      ],
+      "target": 0
+    },
+    "you5": {
+      "text": "朋友",
+      "tokens": [
+        "peng2",
+        "you5"
+      ],
+      "target": 1
+    },
+    "yu1": {
+      "text": "迂见",
+      "tokens": [
+        "yu1",
+        "jian4"
+      ],
+      "target": 0
+    },
+    "yu2": {
+      "text": "于",
+      "tokens": [
+        "yu2"
+      ],
+      "target": 0
+    },
+    "yu3": {
+      "text": "与其",
+      "tokens": [
+        "yu3",
+        "qi2"
+      ],
+      "target": 0
+    },
+    "yu4": {
+      "text": "玉",
+      "tokens": [
+        "yu4"
+      ],
+      "target": 0
+    },
+    "yu5": {
+      "text": "言语",
+      "tokens": [
+        "yan2",
+        "yu5"
+      ],
+      "target": 1
+    },
+    "yuan1": {
+      "text": "冤家",
+      "tokens": [
+        "yuan1",
+        "jia5"
+      ],
+      "target": 0
+    },
+    "yuan2": {
+      "text": "元",
+      "tokens": [
+        "yuan2"
+      ],
+      "target": 0
+    },
+    "yuan3": {
+      "text": "远人",
+      "tokens": [
+        "yuan3",
+        "ren2"
+      ],
+      "target": 0
+    },
+    "yuan4": {
+      "text": "院",
+      "tokens": [
+        "yuan4"
+      ],
+      "target": 0
+    },
+    "yue1": {
+      "text": "大约",
+      "tokens": [
+        "da4",
+        "yue1"
+      ],
+      "target": 1
+    },
+    "yue4": {
+      "text": "月",
+      "tokens": [
+        "yue4"
+      ],
+      "target": 0
+    },
+    "yue5": {
+      "text": "干哕",
+      "tokens": [
+        "gan1",
+        "yue5"
+      ],
+      "target": 1
+    },
+    "yun1": {
+      "text": "发晕",
+      "tokens": [
+        "fa1",
+        "yun1"
+      ],
+      "target": 1
+    },
+    "yun2": {
+      "text": "云",
+      "tokens": [
+        "yun2"
+      ],
+      "target": 0
+    },
+    "yun3": {
+      "text": "允",
+      "tokens": [
+        "yun3"
+      ],
+      "target": 0
+    },
+    "yun4": {
+      "text": "运",
+      "tokens": [
+        "yun4"
+      ],
+      "target": 0
+    },
+    "za1": {
+      "text": "匝道",
+      "tokens": [
+        "za1",
+        "dao4"
+      ],
+      "target": 0
+    },
+    "za2": {
+      "text": "杂和面",
+      "tokens": [
+        "za2",
+        "huo5",
+        "mian4"
+      ],
+      "target": 0
+    },
+    "zai1": {
+      "text": "大灾",
+      "tokens": [
+        "da4",
+        "zai1"
+      ],
+      "target": 1
+    },
+    "zai3": {
+      "text": "公仔面",
+      "tokens": [
+        "gong1",
+        "zai3",
+        "mian4"
+      ],
+      "target": 1
+    },
+    "zai4": {
+      "text": "在",
+      "tokens": [
+        "zai4"
+      ],
+      "target": 0
+    },
+    "zai5": {
+      "text": "自在",
+      "tokens": [
+        "zi4",
+        "zai5"
+      ],
+      "target": 1
+    },
+    "zan1": {
+      "text": "发簪",
+      "tokens": [
+        "fa4",
+        "zan1"
+      ],
+      "target": 1
+    },
+    "zan2": {
+      "text": "这咱",
+      "tokens": [
+        "zhe4",
+        "zan2"
+      ],
+      "target": 1
+    },
+    "zan3": {
+      "text": "拶子",
+      "tokens": [
+        "zan3",
+        "zi5"
+      ],
+      "target": 0
+    },
+    "zan4": {
+      "text": "錾子",
+      "tokens": [
+        "zan4",
+        "zi5"
+      ],
+      "target": 0
+    },
+    "zan5": {
+      "text": "那咱",
+      "tokens": [
+        "na4",
+        "zan5"
+      ],
+      "target": 1
+    },
+    "zang1": {
+      "text": "分赃",
+      "tokens": [
+        "fen1",
+        "zang1"
+      ],
+      "target": 1
+    },
+    "zang3": {
+      "text": "驵",
+      "tokens": [
+        "zang3"
+      ],
+      "target": 0
+    },
+    "zang4": {
+      "text": "藏红花",
+      "tokens": [
+        "zang4",
+        "hong2",
+        "hua1"
+      ],
+      "target": 0
+    },
+    "zao1": {
+      "text": "糟了",
+      "tokens": [
+        "zao1",
+        "le5"
+      ],
+      "target": 0
+    },
+    "zao2": {
+      "text": "凿子",
+      "tokens": [
+        "zao2",
+        "zi5"
+      ],
+      "target": 0
+    },
+    "zao3": {
+      "text": "一大早",
+      "tokens": [
+        "yi1",
+        "da4",
+        "zao3"
+      ],
+      "target": 2
+    },
+    "zao4": {
+      "text": "开小灶",
+      "tokens": [
+        "kai1",
+        "xiao3",
+        "zao4"
+      ],
+      "target": 2
+    },
+    "zao5": {
+      "text": "虼蚤",
+      "tokens": [
+        "ge4",
+        "zao5"
+      ],
+      "target": 1
+    },
+    "ze2": {
+      "text": "理则学",
+      "tokens": [
+        "li3",
+        "ze2",
+        "xue2"
+      ],
+      "target": 1
+    },
+    "ze4": {
+      "text": "仄",
+      "tokens": [
+        "ze4"
+      ],
+      "target": 0
+    },
+    "zei2": {
+      "text": "国贼",
+      "tokens": [
+        "guo2",
+        "zei2"
+      ],
+      "target": 1
+    },
+    "zen3": {
+      "text": "怎",
+      "tokens": [
+        "zen3"
+      ],
+      "target": 0
+    },
+    "zen4": {
+      "text": "谮",
+      "tokens": [
+        "zen4"
+      ],
+      "target": 0
+    },
+    "zeng1": {
+      "text": "增长率",
+      "tokens": [
+        "zeng1",
+        "zhang3",
+        "lü4"
+      ],
+      "target": 0
+    },
+    "zeng4": {
+      "text": "赠与者",
+      "tokens": [
+        "zeng4",
+        "yu3",
+        "zhe3"
+      ],
+      "target": 0
+    },
+    "zha1": {
+      "text": "人渣",
+      "tokens": [
+        "ren2",
+        "zha1"
+      ],
+      "target": 1
+    },
+    "zha2": {
+      "text": "进水闸",
+      "tokens": [
+        "jin4",
+        "shui3",
+        "zha2"
+      ],
+      "target": 2
+    },
+    "zha3": {
+      "text": "拃",
+      "tokens": [
+        "zha3"
+      ],
+      "target": 0
+    },
+    "zha4": {
+      "text": "栅子",
+      "tokens": [
+        "zha4",
+        "zi5"
+      ],
+      "target": 0
+    },
+    "zha5": {
+      "text": "饹馇",
+      "tokens": [
+        "ge1",
+        "zha5"
+      ],
+      "target": 1
+    },
+    "zhai1": {
+      "text": "大斋",
+      "tokens": [
+        "da4",
+        "zhai1"
+      ],
+      "target": 1
+    },
+    "zhai2": {
+      "text": "择日子",
+      "tokens": [
+        "zhai2",
+        "ri4",
+        "zi5"
+      ],
+      "target": 0
+    },
+    "zhai3": {
+      "text": "窄小",
+      "tokens": [
+        "zhai3",
+        "xiao3"
+      ],
+      "target": 0
+    },
+    "zhai4": {
+      "text": "人情债",
+      "tokens": [
+        "ren2",
+        "qing2",
+        "zhai4"
+      ],
+      "target": 2
+    },
+    "zhan1": {
+      "text": "三不沾",
+      "tokens": [
+        "san1",
+        "bu4",
+        "zhan1"
+      ],
+      "target": 2
+    },
+    "zhan3": {
+      "text": "发展中",
+      "tokens": [
+        "fa1",
+        "zhan3",
+        "zhong1"
+      ],
+      "target": 1
+    },
+    "zhan4": {
+      "text": "战",
+      "tokens": [
+        "zhan4"
+      ],
+      "target": 0
+    },
+    "zhan5": {
+      "text": "冷战",
+      "tokens": [
+        "leng3",
+        "zhan5"
+      ],
+      "target": 1
+    },
+    "zhang1": {
+      "text": "十三张",
+      "tokens": [
+        "shi2",
+        "san1",
+        "zhang1"
+      ],
+      "target": 2
+    },
+    "zhang3": {
+      "text": "长大",
+      "tokens": [
+        "zhang3",
+        "da4"
+      ],
+      "target": 0
+    },
+    "zhang4": {
+      "text": "老丈人",
+      "tokens": [
+        "lao3",
+        "zhang4",
+        "ren5"
+      ],
+      "target": 1
+    },
+    "zhang5": {
+      "text": "方丈",
+      "tokens": [
+        "fang1",
+        "zhang5"
+      ],
+      "target": 1
+    },
+    "zhao1": {
+      "text": "着法",
+      "tokens": [
+        "zhao1",
+        "fa3"
+      ],
+      "target": 0
+    },
+    "zhao2": {
+      "text": "不着",
+      "tokens": [
+        "bu4",
+        "zhao2"
+      ],
+      "target": 1
+    },
+    "zhao3": {
+      "text": "找不到",
+      "tokens": [
+        "zhao3",
+        "bu5",
+        "dao4"
+      ],
+      "target": 0
+    },
+    "zhao4": {
+      "text": "肇事者",
+      "tokens": [
+        "zhao4",
+        "shi4",
+        "zhe3"
+      ],
+      "target": 0
+    },
+    "zhe1": {
+      "text": "螫中",
+      "tokens": [
+        "zhe1",
+        "zhong4"
+      ],
+      "target": 0
+    },
+    "zhe2": {
+      "text": "哲学家",
+      "tokens": [
+        "zhe2",
+        "xue2",
+        "jia1"
+      ],
+      "target": 0
+    },
+    "zhe3": {
+      "text": "者",
+      "tokens": [
+        "zhe3"
+      ],
+      "target": 0
+    },
+    "zhe4": {
+      "text": "这不",
+      "tokens": [
+        "zhe4",
+        "bu5"
+      ],
+      "target": 0
+    },
+    "zhe5": {
+      "text": "有着",
+      "tokens": [
+        "you3",
+        "zhe5"
+      ],
+      "target": 1
+    },
+    "zhen1": {
+      "text": "真",
+      "tokens": [
+        "zhen1"
+      ],
+      "target": 0
+    },
+    "zhen3": {
+      "text": "疹子",
+      "tokens": [
+        "zhen3",
+        "zi5"
+      ],
+      "target": 0
+    },
+    "zhen4": {
+      "text": "一阵子",
+      "tokens": [
+        "yi1",
+        "zhen4",
+        "zi5"
+      ],
+      "target": 1
+    },
+    "zheng1": {
+      "text": "争面子",
+      "tokens": [
+        "zheng1",
+        "mian4",
+        "zi5"
+      ],
+      "target": 0
+    },
+    "zheng3": {
+      "text": "正整数",
+      "tokens": [
+        "zheng4",
+        "zheng3",
+        "shu4"
+      ],
+      "target": 1
+    },
+    "zheng4": {
+      "text": "正是",
+      "tokens": [
+        "zheng4",
+        "shi4"
+      ],
+      "target": 0
+    },
+    "zheng5": {
+      "text": "风筝",
+      "tokens": [
+        "feng1",
+        "zheng5"
+      ],
+      "target": 1
+    },
+    "zhi1": {
+      "text": "知",
+      "tokens": [
+        "zhi1"
+      ],
+      "target": 0
+    },
+    "zhi2": {
+      "text": "直",
+      "tokens": [
+        "zhi2"
+      ],
+      "target": 0
+    },
+    "zhi3": {
+      "text": "纸",
+      "tokens": [
+        "zhi3"
+      ],
+      "target": 0
+    },
+    "zhi4": {
+      "text": "至",
+      "tokens": [
+        "zhi4"
+      ],
+      "target": 0
+    },
+    "zhi5": {
+      "text": "位置",
+      "tokens": [
+        "wei4",
+        "zhi5"
+      ],
+      "target": 1
+    },
+    "zhong1": {
+      "text": "中人",
+      "tokens": [
+        "zhong1",
+        "ren2"
+      ],
+      "target": 0
+    },
+    "zhong3": {
+      "text": "一种",
+      "tokens": [
+        "yi1",
+        "zhong3"
+      ],
+      "target": 1
+    },
+    "zhong4": {
+      "text": "中的",
+      "tokens": [
+        "zhong4",
+        "di4"
+      ],
+      "target": 0
+    },
+    "zhong5": {
+      "text": "空钟",
+      "tokens": [
+        "kong1",
+        "zhong5"
+      ],
+      "target": 1
+    },
+    "zhou1": {
+      "text": "一周",
+      "tokens": [
+        "yi1",
+        "zhou1"
+      ],
+      "target": 1
+    },
+    "zhou2": {
+      "text": "中轴",
+      "tokens": [
+        "zhong1",
+        "zhou2"
+      ],
+      "target": 1
+    },
+    "zhou3": {
+      "text": "肘子",
+      "tokens": [
+        "zhou3",
+        "zi5"
+      ],
+      "target": 0
+    },
+    "zhou4": {
+      "text": "昼行性",
+      "tokens": [
+        "zhou4",
+        "xing2",
+        "xing4"
+      ],
+      "target": 0
+    },
+    "zhou5": {
+      "text": "扫帚",
+      "tokens": [
+        "sao4",
+        "zhou5"
+      ],
+      "target": 1
+    },
+    "zhu1": {
+      "text": "猪下水",
+      "tokens": [
+        "zhu1",
+        "xia4",
+        "shui3"
+      ],
+      "target": 0
+    },
+    "zhu2": {
+      "text": "开运竹",
+      "tokens": [
+        "kai1",
+        "yun4",
+        "zhu2"
+      ],
+      "target": 2
+    },
+    "zhu3": {
+      "text": "主",
+      "tokens": [
+        "zhu3"
+      ],
+      "target": 0
+    },
+    "zhu4": {
+      "text": "有助于",
+      "tokens": [
+        "you3",
+        "zhu4",
+        "yu2"
+      ],
+      "target": 1
+    },
+    "zhu5": {
+      "text": "守住",
+      "tokens": [
+        "shou3",
+        "zhu5"
+      ],
+      "target": 1
+    },
+    "zhua1": {
+      "text": "一把抓",
+      "tokens": [
+        "yi1",
+        "ba3",
+        "zhua1"
+      ],
+      "target": 2
+    },
+    "zhua3": {
+      "text": "爪子",
+      "tokens": [
+        "zhua3",
+        "zi5"
+      ],
+      "target": 0
+    },
+    "zhuai3": {
+      "text": "跩",
+      "tokens": [
+        "zhuai3"
+      ],
+      "target": 0
+    },
+    "zhuai4": {
+      "text": "拖拽",
+      "tokens": [
+        "tuo1",
+        "zhuai4"
+      ],
+      "target": 1
+    },
+    "zhuan1": {
+      "text": "专一",
+      "tokens": [
+        "zhuan1",
+        "yi1"
+      ],
+      "target": 0
+    },
+    "zhuan3": {
+      "text": "转学生",
+      "tokens": [
+        "zhuan3",
+        "xue2",
+        "sheng5"
+      ],
+      "target": 0
+    },
+    "zhuan4": {
+      "text": "二人转",
+      "tokens": [
+        "er4",
+        "ren2",
+        "zhuan4"
+      ],
+      "target": 2
+    },
+    "zhuan5": {
+      "text": "转转",
+      "tokens": [
+        "zhuan4",
+        "zhuan5"
+      ],
+      "target": 1
+    },
+    "zhuang1": {
+      "text": "装好人",
+      "tokens": [
+        "zhuang1",
+        "hao3",
+        "ren2"
+      ],
+      "target": 0
+    },
+    "zhuang4": {
+      "text": "撞大运",
+      "tokens": [
+        "zhuang4",
+        "da4",
+        "yun4"
+      ],
+      "target": 0
+    },
+    "zhuang5": {
+      "text": "嫁妆",
+      "tokens": [
+        "jia4",
+        "zhuang5"
+      ],
+      "target": 1
+    },
+    "zhui1": {
+      "text": "追上",
+      "tokens": [
+        "zhui1",
+        "shang4"
+      ],
+      "target": 0
+    },
+    "zhui4": {
+      "text": "中缀",
+      "tokens": [
+        "zhong1",
+        "zhui4"
+      ],
+      "target": 1
+    },
+    "zhun1": {
+      "text": "窀",
+      "tokens": [
+        "zhun1"
+      ],
+      "target": 0
+    },
+    "zhun3": {
+      "text": "说不准",
+      "tokens": [
+        "shuo1",
+        "bu4",
+        "zhun3"
+      ],
+      "target": 2
+    },
+    "zhuo1": {
+      "text": "桌",
+      "tokens": [
+        "zhuo1"
+      ],
+      "target": 0
+    },
+    "zhuo2": {
+      "text": "要着",
+      "tokens": [
+        "yao4",
+        "zhuo2"
+      ],
+      "target": 1
+    },
+    "zi1": {
+      "text": "资",
+      "tokens": [
+        "zi1"
+      ],
+      "target": 0
+    },
+    "zi3": {
+      "text": "紫",
+      "tokens": [
+        "zi3"
+      ],
+      "target": 0
+    },
+    "zi4": {
+      "text": "字",
+      "tokens": [
+        "zi4"
+      ],
+      "target": 0
+    },
+    "zi5": {
+      "text": "孩子",
+      "tokens": [
+        "hai2",
+        "zi5"
+      ],
+      "target": 1
+    },
+    "zong1": {
+      "text": "宗主国",
+      "tokens": [
+        "zong1",
+        "zhu3",
+        "guo2"
+      ],
+      "target": 0
+    },
+    "zong3": {
+      "text": "总经理",
+      "tokens": [
+        "zong3",
+        "jing1",
+        "li3"
+      ],
+      "target": 0
+    },
+    "zong4": {
+      "text": "粽子",
+      "tokens": [
+        "zong4",
+        "zi5"
+      ],
+      "target": 0
+    },
+    "zou1": {
+      "text": "驺从",
+      "tokens": [
+        "zou1",
+        "cong2"
+      ],
+      "target": 0
+    },
+    "zou3": {
+      "text": "走为上",
+      "tokens": [
+        "zou3",
+        "wei2",
+        "shang4"
+      ],
+      "target": 0
+    },
+    "zou4": {
+      "text": "揍人",
+      "tokens": [
+        "zou4",
+        "ren2"
+      ],
+      "target": 0
+    },
+    "zu1": {
+      "text": "地租",
+      "tokens": [
+        "di4",
+        "zu1"
+      ],
+      "target": 1
+    },
+    "zu2": {
+      "text": "不足道",
+      "tokens": [
+        "bu4",
+        "zu2",
+        "dao4"
+      ],
+      "target": 1
+    },
+    "zu3": {
+      "text": "工作组",
+      "tokens": [
+        "gong1",
+        "zuo4",
+        "zu3"
+      ],
+      "target": 2
+    },
+    "zuan1": {
+      "text": "钻桌子",
+      "tokens": [
+        "zuan1",
+        "zhuo1",
+        "zi5"
+      ],
+      "target": 0
+    },
+    "zuan3": {
+      "text": "籫",
+      "tokens": [
+        "zuan3"
+      ],
+      "target": 0
+    },
+    "zuan4": {
+      "text": "手钻",
+      "tokens": [
+        "shou3",
+        "zuan4"
+      ],
+      "target": 1
+    },
+    "zui1": {
+      "text": "厜",
+      "tokens": [
+        "zui1"
+      ],
+      "target": 0
+    },
+    "zui3": {
+      "text": "说嘴",
+      "tokens": [
+        "shuo1",
+        "zui3"
+      ],
+      "target": 1
+    },
+    "zui4": {
+      "text": "最好是",
+      "tokens": [
+        "zui4",
+        "hao3",
+        "shi4"
+      ],
+      "target": 0
+    },
+    "zui5": {
+      "text": "得罪",
+      "tokens": [
+        "de2",
+        "zui5"
+      ],
+      "target": 1
+    },
+    "zun1": {
+      "text": "自尊心",
+      "tokens": [
+        "zi4",
+        "zun1",
+        "xin1"
+      ],
+      "target": 1
+    },
+    "zun3": {
+      "text": "僔",
+      "tokens": [
+        "zun3"
+      ],
+      "target": 0
+    },
+    "zun4": {
+      "text": "捘",
+      "tokens": [
+        "zun4"
+      ],
+      "target": 0
+    },
+    "zuo1": {
+      "text": "作坊",
+      "tokens": [
+        "zuo1",
+        "fang5"
+      ],
+      "target": 0
+    },
+    "zuo2": {
+      "text": "昨天",
+      "tokens": [
+        "zuo2",
+        "tian1"
+      ],
+      "target": 0
+    },
+    "zuo3": {
+      "text": "左不过",
+      "tokens": [
+        "zuo3",
+        "bu5",
+        "guo4"
+      ],
+      "target": 0
+    },
+    "zuo4": {
+      "text": "一作",
+      "tokens": [
+        "yi1",
+        "zuo4"
+      ],
+      "target": 1
+    },
+    "zuo5": {
+      "text": "下作",
+      "tokens": [
+        "xia4",
+        "zuo5"
+      ],
+      "target": 1
+    }
+  },
+  "thirdToneExamples": {
+    "dian3": {
+      "full": {
+        "text": "点",
+        "tokens": [
+          "dian3"
+        ],
+        "target": 0
+      },
+      "half": {
+        "text": "点名",
+        "tokens": [
+          "dian3",
+          "ming2"
+        ],
+        "target": 0
+      },
+      "sandhi": {
+        "text": "点火",
+        "tokens": [
+          "dian3",
+          "huo3"
+        ],
+        "target": 0
+      }
+    },
+    "fa3": {
+      "full": {
+        "text": "法",
+        "tokens": [
+          "fa3"
+        ],
+        "target": 0
+      },
+      "half": {
+        "text": "法国",
+        "tokens": [
+          "fa3",
+          "guo2"
+        ],
+        "target": 0
+      },
+      "sandhi": {
+        "text": "法语",
+        "tokens": [
+          "fa3",
+          "yu3"
+        ],
+        "target": 0
+      }
+    },
+    "hao3": {
+      "full": {
+        "text": "好",
+        "tokens": [
+          "hao3"
+        ],
+        "target": 0
+      },
+      "half": {
+        "text": "好吃",
+        "tokens": [
+          "hao3",
+          "chi1"
+        ],
+        "target": 0
+      },
+      "sandhi": {
+        "text": "好友",
+        "tokens": [
+          "hao3",
+          "you3"
+        ],
+        "target": 0
+      }
+    },
+    "ke3": {
+      "full": {
+        "text": "可",
+        "tokens": [
+          "ke3"
+        ],
+        "target": 0
+      },
+      "half": {
+        "text": "可惜",
+        "tokens": [
+          "ke3",
+          "xi1"
+        ],
+        "target": 0
+      },
+      "sandhi": {
+        "text": "可以",
+        "tokens": [
+          "ke3",
+          "yi3"
+        ],
+        "target": 0
+      }
+    },
+    "lao3": {
+      "full": {
+        "text": "老",
+        "tokens": [
+          "lao3"
+        ],
+        "target": 0
+      },
+      "half": {
+        "text": "老师",
+        "tokens": [
+          "lao3",
+          "shi1"
+        ],
+        "target": 0
+      },
+      "sandhi": {
+        "text": "老板",
+        "tokens": [
+          "lao3",
+          "ban3"
+        ],
+        "target": 0
+      }
+    },
+    "li3": {
+      "full": {
+        "text": "理",
+        "tokens": [
+          "li3"
+        ],
+        "target": 0
+      },
+      "half": {
+        "text": "理科",
+        "tokens": [
+          "li3",
+          "ke1"
+        ],
+        "target": 0
+      },
+      "sandhi": {
+        "text": "理解",
+        "tokens": [
+          "li3",
+          "jie3"
+        ],
+        "target": 0
+      }
+    },
+    "ma3": {
+      "full": {
+        "text": "马",
+        "tokens": [
+          "ma3"
+        ],
+        "target": 0
+      },
+      "half": {
+        "text": "马车",
+        "tokens": [
+          "ma3",
+          "che1"
+        ],
+        "target": 0
+      },
+      "sandhi": {
+        "text": "马匹",
+        "tokens": [
+          "ma3",
+          "pi3"
+        ],
+        "target": 0
+      }
+    },
+    "mai3": {
+      "full": {
+        "text": "买",
+        "tokens": [
+          "mai3"
+        ],
+        "target": 0
+      },
+      "half": {
+        "text": "买单",
+        "tokens": [
+          "mai3",
+          "dan1"
+        ],
+        "target": 0
+      },
+      "sandhi": {
+        "text": "买主",
+        "tokens": [
+          "mai3",
+          "zhu3"
+        ],
+        "target": 0
+      }
+    },
+    "ni3": {
+      "full": {
+        "text": "你",
+        "tokens": [
+          "ni3"
+        ],
+        "target": 0
+      },
+      "sandhi": {
+        "text": "你好",
+        "tokens": [
+          "ni3",
+          "hao3"
+        ],
+        "target": 0
+      }
+    },
+    "nü3": {
+      "full": {
+        "text": "女",
+        "tokens": [
+          "nü3"
+        ],
+        "target": 0
+      },
+      "half": {
+        "text": "女生",
+        "tokens": [
+          "nü3",
+          "sheng1"
+        ],
+        "target": 0
+      },
+      "sandhi": {
+        "text": "女子",
+        "tokens": [
+          "nü3",
+          "zi3"
+        ],
+        "target": 0
+      }
+    },
+    "shi3": {
+      "full": {
+        "text": "使",
+        "tokens": [
+          "shi3"
+        ],
+        "target": 0
+      },
+      "half": {
+        "text": "使用",
+        "tokens": [
+          "shi3",
+          "yong4"
+        ],
+        "target": 0
+      },
+      "sandhi": {
+        "text": "使馆",
+        "tokens": [
+          "shi3",
+          "guan3"
+        ],
+        "target": 0
+      }
+    },
+    "shou3": {
+      "full": {
+        "text": "手",
+        "tokens": [
+          "shou3"
+        ],
+        "target": 0
+      },
+      "half": {
+        "text": "手机",
+        "tokens": [
+          "shou3",
+          "ji1"
+        ],
+        "target": 0
+      },
+      "sandhi": {
+        "text": "手表",
+        "tokens": [
+          "shou3",
+          "biao3"
+        ],
+        "target": 0
+      }
+    },
+    "shui3": {
+      "full": {
+        "text": "水",
+        "tokens": [
+          "shui3"
+        ],
+        "target": 0
+      },
+      "half": {
+        "text": "水平",
+        "tokens": [
+          "shui3",
+          "ping2"
+        ],
+        "target": 0
+      },
+      "sandhi": {
+        "text": "水果",
+        "tokens": [
+          "shui3",
+          "guo3"
+        ],
+        "target": 0
+      }
+    },
+    "wan3": {
+      "full": {
+        "text": "晚",
+        "tokens": [
+          "wan3"
+        ],
+        "target": 0
+      },
+      "half": {
+        "text": "晚安",
+        "tokens": [
+          "wan3",
+          "an1"
+        ],
+        "target": 0
+      },
+      "sandhi": {
+        "text": "晚点",
+        "tokens": [
+          "wan3",
+          "dian3"
+        ],
+        "target": 0
+      }
+    },
+    "xiang3": {
+      "full": {
+        "text": "想",
+        "tokens": [
+          "xiang3"
+        ],
+        "target": 0
+      },
+      "half": {
+        "text": "想念",
+        "tokens": [
+          "xiang3",
+          "nian4"
+        ],
+        "target": 0
+      },
+      "sandhi": {
+        "text": "想法",
+        "tokens": [
+          "xiang3",
+          "fa3"
+        ],
+        "target": 0
+      }
+    },
+    "xiao3": {
+      "full": {
+        "text": "小",
+        "tokens": [
+          "xiao3"
+        ],
+        "target": 0
+      },
+      "half": {
+        "text": "小吃",
+        "tokens": [
+          "xiao3",
+          "chi1"
+        ],
+        "target": 0
+      },
+      "sandhi": {
+        "text": "小雨",
+        "tokens": [
+          "xiao3",
+          "yu3"
+        ],
+        "target": 0
+      }
+    },
+    "you3": {
+      "full": {
+        "text": "有",
+        "tokens": [
+          "you3"
+        ],
+        "target": 0
+      },
+      "half": {
+        "text": "有名",
+        "tokens": [
+          "you3",
+          "ming2"
+        ],
+        "target": 0
+      },
+      "sandhi": {
+        "text": "有理",
+        "tokens": [
+          "you3",
+          "li3"
+        ],
+        "target": 0
+      }
+    },
+    "yu3": {
+      "full": {
+        "text": "雨",
+        "tokens": [
+          "yu3"
+        ],
+        "target": 0
+      },
+      "half": {
+        "text": "雨衣",
+        "tokens": [
+          "yu3",
+          "yi1"
+        ],
+        "target": 0
+      },
+      "sandhi": {
+        "text": "雨伞",
+        "tokens": [
+          "yu3",
+          "san3"
+        ],
+        "target": 0
+      }
+    },
+    "zao3": {
+      "full": {
+        "text": "早",
+        "tokens": [
+          "zao3"
+        ],
+        "target": 0
+      },
+      "half": {
+        "text": "早晨",
+        "tokens": [
+          "zao3",
+          "chen2"
+        ],
+        "target": 0
+      },
+      "sandhi": {
+        "text": "早点",
+        "tokens": [
+          "zao3",
+          "dian3"
+        ],
+        "target": 0
+      }
+    },
+    "zhu3": {
+      "full": {
+        "text": "主",
+        "tokens": [
+          "zhu3"
+        ],
+        "target": 0
+      },
+      "half": {
+        "text": "主人",
+        "tokens": [
+          "zhu3",
+          "ren2"
+        ],
+        "target": 0
+      },
+      "sandhi": {
+        "text": "主体",
+        "tokens": [
+          "zhu3",
+          "ti3"
+        ],
+        "target": 0
+      }
+    },
+    "zhun3": {
+      "full": {
+        "text": "准",
+        "tokens": [
+          "zhun3"
+        ],
+        "target": 0
+      },
+      "half": {
+        "text": "准备",
+        "tokens": [
+          "zhun3",
+          "bei4"
+        ],
+        "target": 0
+      },
+      "sandhi": {
+        "text": "准许",
+        "tokens": [
+          "zhun3",
+          "xu3"
+        ],
+        "target": 0
+      }
+    }
+  }
+}

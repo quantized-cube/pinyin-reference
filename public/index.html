@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#174f4a">
+  <meta name="description" content="普通話の声母・韻母・音節を、ピンインとIPAと音声で調べる日本語リファレンス。">
+  <title>Pinyin Atlas — 中国語の音を見つける</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%23174f4a'/%3E%3Ctext x='32' y='46' text-anchor='middle' font-size='44' fill='white'%3E声%3C/text%3E%3C/svg%3E">
+  <link rel="stylesheet" href="styles.css">
+  <script type="module" src="app.js"></script>
+</head>
+<body>
+  <a class="skip" href="#workspace">本文へ移動</a>
+  <header class="masthead">
+    <a class="brand" href="./" aria-label="Pinyin Atlas ホーム"><span class="brand-mark" lang="zh-CN">声</span><span>PINYIN ATLAS<small>普通話 発音リファレンス</small></span></a>
+    <div class="header-note"><span class="dot"></span> 読む・分ける・聞く<span class="edition">LOCAL EDITION / 01</span></div>
+  </header>
+  <main>
+    <section class="intro">
+      <div><p class="eyebrow">A FIELD GUIDE TO MANDARIN SOUNDS</p><h1>綴りの向こうの、<span>音を知る。</span></h1><p>ピンインから発音へ。声母と韻母を組み合わせて、普通話の音を探そう。</p></div>
+      <div class="summary" aria-label="収録数"><div><strong>21</strong><span>声母</span></div><div><strong>40</strong><span>韻母の欄</span></div><div><strong id="total-count">—</strong><span>音節</span></div></div>
+    </section>
+    <section class="search-bar" aria-label="音節検索">
+      <label class="search-field"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6.5"/><path d="m16 16 5 5"/></svg><input id="search" type="search" placeholder="音節・韻母・IPAで検索… 例：xuan / nǚ / ma3 / ɕ" aria-label="音節・韻母・IPAを検索" autocomplete="off" spellcheck="false"><kbd>/</kbd></label>
+      <button id="reset" class="text-button">条件をリセット ↺</button>
+    </section>
+    <div class="quick-links"><span>まずはここから</span><button data-pick="xuan">xuan <small>ü → u</small></button><button data-pick="jun">jun <small>ü の音</small></button><button data-pick="dun">dun <small>uen → un</small></button><button data-pick="liu">liu <small>iou → iu</small></button><button data-pick="zhi">zhi <small>特別な i</small></button><button data-pick="ma">ma <small>声調を聞く</small></button></div>
+    <div class="workspace" id="workspace">
+      <div class="reference">
+        <nav class="tabs" aria-label="リファレンスの種類"><button data-tab="matrix" aria-current="page">音節マトリクス</button><button data-tab="finals">韻母一覧 <small>40</small></button><button data-tab="initials">声母一覧 <small>21</small></button><button data-tab="rules">表記と声調</button></nav>
+        <section class="reference-body" id="reference-body" aria-label="発音表"></section>
+      </div>
+      <aside class="detail" id="detail" aria-label="選択した音節の詳細"></aside>
+    </div>
+    <section class="method-note"><div><span class="eyebrow">HOW TO READ</span><h2>音と綴りを、分けて見る。</h2></div><p>IPA は学習用の代表的な発音です。話者・声調・発話の速さによる変化は一部を注記しています。韻母は単母音だけでなく、わたり音や鼻音を含みます。音声は端末の中国語TTSによる例語の読み上げです。</p></section>
+    <footer><span>PINYIN ATLAS <small>普通話 / 日本語ガイド</small></span><button id="about" class="text-button">収録範囲・出典・音声について ↗</button></footer>
+  </main>
+  <dialog id="about-dialog" aria-labelledby="about-title"><button class="dialog-close" aria-label="閉じる">×</button><p class="eyebrow">ABOUT THIS REFERENCE</p><h2 id="about-title">収録範囲と出典</h2><div id="about-content"></div><button class="primary dialog-done">閉じる</button></dialog>
+  <div class="sr-only" id="announce" role="status" aria-live="polite"></div>
+  <noscript>このアプリはJavaScriptを有効にしてご利用ください。</noscript>
+</body>
+</html>

@@ -1,7 +1,8 @@
 export type SpeechStatus = 'idle' | 'pending' | 'playing' | 'error';
 export interface SpeechRequest {
   readonly text: string;
-  readonly voice: SpeechSynthesisVoice;
+  readonly voice: SpeechSynthesisVoice | undefined;
+  readonly lang: string;
   readonly rate: number;
   readonly onStart: () => void;
   readonly onEnd: () => void;
@@ -27,8 +28,8 @@ class BrowserSpeechEngine implements SpeechEngine {
     const utterance = new SpeechSynthesisUtterance(request.text);
     // Retain the native utterance until completion or cancellation.
     this.utterance = utterance;
-    utterance.voice = request.voice;
-    utterance.lang = request.voice.lang;
+    if (request.voice) utterance.voice = request.voice;
+    utterance.lang = request.lang;
     utterance.rate = request.rate;
     utterance.onstart = request.onStart;
     utterance.onend = () => {
@@ -45,9 +46,18 @@ class BrowserSpeechEngine implements SpeechEngine {
 
 export function isMandarinVoice(voice: Pick<SpeechSynthesisVoice, 'lang' | 'name'>): boolean {
   const lang = voice.lang.toLowerCase().replaceAll('_', '-');
-  return /^(zh($|-cn$|-sg$|-tw$|-hans(?:-|$)|-hant(?:-|$))|cmn(?:-|$))/.test(lang)
+  return /^(zh(?:$|-(?:cn|sg|tw|hans|hant)(?:-|$))|cmn(?:-|$))/.test(lang)
     && !/cantonese|廣東|广东|粵語|粤语|hong kong/i.test(voice.name)
     && !/-hk\b/.test(lang);
+}
+
+function speechErrorMessage(error: string): string {
+  if (['language-unavailable', 'voice-unavailable', 'synthesis-unavailable'].includes(error)) {
+    return '中国語音声を利用できません。「音声が出ないとき」の手順で普通話の音声を追加し、再試行してください。';
+  }
+  if (error === 'not-allowed') return '再生が許可されませんでした。画面の再生ボタンをもう一度押してください。';
+  if (error === 'network') return '音声の通信に失敗しました。接続を確認して再試行してください（network）。';
+  return `音声を再生できませんでした（${error || 'unknown'}）。「音声が出ないとき」を確認してください。`;
 }
 
 interface SpeakerOptions {
@@ -58,6 +68,7 @@ interface SpeakerOptions {
 
 export class Speaker {
   voices: readonly SpeechSynthesisVoice[] = [];
+  message: string | null = null;
   private serial = 0;
   private timer: ReturnType<typeof setTimeout> | undefined;
   private readonly engine: SpeechEngine;
@@ -77,53 +88,58 @@ export class Speaker {
     this.onVoices(this.voices);
   };
   get supported(): boolean { return this.engine.supported; }
+  private report(message: string, status: SpeechStatus): void {
+    this.message = message;
+    this.onStatus(message, status);
+  }
   stop(announce = true): void {
     this.serial++;
     clearTimeout(this.timer);
     this.engine.cancel();
-    if (announce) this.onStatus('再生を停止しました。', 'idle');
+    this.message = null;
+    if (announce) this.report('再生を停止しました。', 'idle');
   }
   speak(text: string, voiceURI: string, rate = 1): boolean {
     this.stop(false);
     if (!this.supported) {
-      this.onStatus('このブラウザは音声合成に対応していません。', 'error');
+      this.report('このブラウザは音声合成に対応していません。', 'error');
       return false;
     }
+    // Re-query inside the tap handler: some engines load voices without an event.
+    this.refresh();
     const voice = this.voices.find(v => v.voiceURI === voiceURI) ?? this.voices[0];
-    if (!voice) {
-      this.onStatus('中国語の音声が見つかりません。端末の言語・音声設定をご確認ください。', 'error');
-      return false;
-    }
     const id = this.serial;
-    this.onStatus('音声を準備中…', 'pending');
+    this.report(voice ? '音声を準備中…' : '中国語（中国本土）を指定して音声を準備中…', 'pending');
     this.timer = setTimeout(() => {
       if (id !== this.serial) return;
       this.stop(false);
-      this.onStatus('音声の開始を確認できませんでした。別の音声で再試行してください。', 'error');
+      this.report('音声の開始を確認できませんでした。「音声が出ないとき」を確認し、もう一度再生してください。', 'error');
     }, 15000);
     try {
       this.engine.speak({
-        text, voice, rate: Math.max(.6, Math.min(1.2, Number(rate) || 1)),
+        // A missing list is not proof that the engine cannot resolve zh-CN.
+        // Keep speak synchronous so the browser retains the user's activation.
+        text, voice, lang: voice?.lang ?? 'zh-CN', rate: Math.max(.6, Math.min(1.2, Number(rate) || 1)),
         onStart: () => {
           if (id !== this.serial) return;
           clearTimeout(this.timer);
-          this.onStatus(`「${text}」を再生中…`, 'playing');
+          this.report(`「${text}」を再生中…`, 'playing');
         },
         onEnd: () => {
           if (id !== this.serial) return;
           clearTimeout(this.timer);
-          this.onStatus('再生しました。', 'idle');
+          this.report('再生しました。', 'idle');
         },
         onError: error => {
           if (id !== this.serial) return;
           clearTimeout(this.timer);
-          this.onStatus(`音声を再生できませんでした（${error || 'unknown'}）。音声を変更して再試行してください。`, 'error');
+          this.report(speechErrorMessage(error), 'error');
         },
       });
       return true;
     } catch {
       clearTimeout(this.timer);
-      this.onStatus('音声の開始に失敗しました。', 'error');
+      this.report('音声の開始に失敗しました。「音声が出ないとき」を確認してください。', 'error');
       return false;
     }
   }

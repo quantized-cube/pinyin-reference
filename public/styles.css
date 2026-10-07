@@ -39,3 +39,5 @@
 
 /* Keep tone marks in one Latin font, including stacked marks on ü / ê. */
 .example .example-pinyin,.tone small,.third-guide-grid small,.search-field input{font-family:var(--pinyin-font)}
+
+.voice-help{margin-top:13px;border-top:1px solid var(--line);padding-top:10px;font-size:11px;color:var(--muted);line-height:1.8}.voice-help summary{cursor:pointer;font-size:11px;color:var(--green)}.voice-help p{margin:9px 0}.voice-help strong{color:var(--ink)}.voice-help ol{padding-left:20px;margin:8px 0}.voice-help li{margin:8px 0}

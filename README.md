@@ -2,6 +2,8 @@
 
 日本語で使う、普通話のピンイン・IPA・発音リファレンス。TypeScript 7.0.2 / strict モードで実装しています。
 
+[公開アプリ](https://pinyin-reference.pages.dev/) · [GitHubリポジトリ](https://github.com/quantized-cube/pinyin-reference)
+
 ## 起動
 
 Windows で `start.cmd` をダブルクリックすると、ローカルサーバーが起動して既定のブラウザが開きます。Node.js 20 以降が必要です。インストール済みの Node.js 24 で確認しました。初回は開発用パッケージを自動インストールし、起動のたびにTypeScriptをビルドします。初回インストールにはネット接続が必要です。

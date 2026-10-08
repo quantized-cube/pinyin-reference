@@ -69,14 +69,14 @@ function renderInitials(){
   $('#reference-body').innerHTML=`<div class="section-heading"><h2>21 の声母</h2><span>${list.length} / 21 声母</span></div><p class="tone-note">発音する場所・音の作り方・息・声帯の振動を表示します。「唇音」「無気音」「鼻音」などでも検索できます。音声は声母を含む例音節です。</p>${renderArticulationGuide()}${list.length?`<div class="card-grid">${list.map(i=>`<button class="sound-card" data-pick="${samples[i.id]}"><div><span class="card-symbol">${i.id}</span><span class="ipa">[${i.ipa}]</span></div>${articulationBadges(i.id)}<p class="note">${i.note}</p><span class="card-foot"><span>例：${samples[i.id]}</span><span>詳細・音声 ↗</span></span></button>`).join('')}</div>`:empty()}`;
 }
 function renderRules(){
-  const rules: [string,string,[string,string][]][]=[
+  const rules: [string,string,[string,string,ToneId?][]][]=[
     ['ü の点は、いつ消える？','j / q / x の後は ü → u。声母がないときは y を前に置き、点を省略します。n / l の後は点を残します。綴りが u でも、舌の位置は ü [y] のままです。',[['ju','j + ü → ju'],['xuan','x + üan → xuan'],['nü','n + ü → nü'],['yuan','üan → yuan']]],
     ['長い韻母を短く書く','声母が前にあると iou → iu、uei → ui、uen → un。jun / qun / xun の un は ün なので、この uen の省略とは別です。',[['liu','l + iou → liu'],['gui','g + uei → gui'],['dun','d + uen → dun'],['jun','j + ün → jun']]],
     ['声母なしの y / w 規則','i 系は yi / ya / ye / yao / you / yan / yin / yang / ying / yong。u 系は wu / wa / wo / wai / wei / wan / wen / wang / weng。ü 系は yu / yue / yuan / yun と書きます。y と w は、この表では声母なしの綴りとして扱います。',[['yi','i → yi'],['you','iou → you'],['wen','uen → wen'],['yun','ün → yun']]],
     ['同じ文字でも、音が違う','ian・üan の a は [ɛ] 系。zi / ci / si と zhi / chi / shi / ri の i は、yi の [i] と区別します。er は独立音節の [ɚ] です。',[['xian','xian [ɕjɛn]'],['zi','zi [tsɹ̩]'],['zhi','zhi [ʈʂɻ̩]'],['er','er [ɚ]']]],
-    ['声調記号はどこに付く？','a → e の順で優先し、ou では o、それ以外は最後の母音に付けます。iu は u（liù）、ui は i（guì）。軽声は記号なしで、数字式では 5 または 0。このアプリはどちらも検索できます。',[['liu','liù'],['gui','guì'],['nü','nǚ']]],
+    ['声調記号はどこに付く？','a → e の順で優先し、ou では o、それ以外は最後の母音に付けます。iu は u（liù）、ui は i（guì）。軽声は記号なしで、数字式では 5 または 0。このアプリはどちらも検索できます。',[['liu','liù',4],['gui','guì',4],['nü','nǚ',3]]],
   ];
-  $('#reference-body').innerHTML=`<div class="section-heading"><h2>綴りのルールをほどく</h2><span>例を選んで確認</span></div><div class="rules-list">${rules.map(([title,note,links],i)=>`<article class="rule-card"><h3><span class="rule-index">0${i+1}</span>${title}</h3><p>${note}</p><div class="rule-examples">${links.map(([s,label])=>`<button data-pick="${s}">${label}</button>`).join('')}</div></article>`).join('')}<article class="rule-card"><h3><span class="rule-index">06</span>4つの声調と軽声</h3><p>図は基本の調形です。第3声の発音形は次の欄で比較できます。数字は高さを低い1〜高い5で示します。</p><div class="tone-guide">${tones.map(t=>`<button data-demo-tone="${t.id}">${t.label}${contour(t,true)}<small>${t.value}</small></button>`).join('')}</div><p>「一」「不」にも変調があります。軽声の高さは直前の声調に依存します。例語TTSでは、表示した基本の調形と実際の発音が異なる場合があります。</p></article>${renderThirdToneGuide()}</div>`;
+  $('#reference-body').innerHTML=`<div class="section-heading"><h2>綴りのルールをほどく</h2><span>例を選んで確認</span></div><div class="rules-list">${rules.map(([title,note,links],i)=>`<article class="rule-card"><h3><span class="rule-index">0${i+1}</span>${title}</h3><p>${note}</p><div class="rule-examples">${links.map(([s,label,tone])=>`<button data-pick="${s}"${tone?` data-pick-tone="${tone}"`:''}>${label}</button>`).join('')}</div></article>`).join('')}<article class="rule-card"><h3><span class="rule-index">06</span>4つの声調と軽声</h3><p>図は基本の調形です。第3声の発音形は次の欄で比較できます。数字は高さを低い1〜高い5で示します。</p><div class="tone-guide">${tones.map(t=>`<button data-demo-tone="${t.id}">${t.label}${contour(t,true)}<small>${t.value}</small></button>`).join('')}</div><p>「一」「不」にも変調があります。軽声の高さは直前の声調に依存します。例語TTSでは、表示した基本の調形と実際の発音が異なる場合があります。</p></article>${renderThirdToneGuide()}</div>`;
 }
 function exampleFor(){return state.tone===3
   ? thirdToneExample(state.selected,state.thirdToneForm,thirdToneExamples,examples)
@@ -113,11 +113,12 @@ function renderDetail(){
 function updateVoices(){
   if(!speaker || !document.querySelector('#voice'))return;
   const voices=speaker.voices;
-  if(voices.length&&!voices.some(v=>v.voiceURI===state.voice))state.voice=voices[0]?.voiceURI||'';
-  $<HTMLSelectElement>('#voice').innerHTML=voices.length?voices.map(v=>`<option value="${esc(v.voiceURI)}" ${v.voiceURI===state.voice?'selected':''}>${esc(v.name)} (${esc(v.lang)})${v.localService?'':' · オンライン'}</option>`).join(''):'<option value="">自動選択（中国語・中国本土）</option>';
+  // Keep the requested voice while the browser loads the rest of its voice list.
+  const selectedVoice=voices.find(v=>v.voiceURI===state.voice)??voices[0];
+  $<HTMLSelectElement>('#voice').innerHTML=voices.length?voices.map(v=>`<option value="${esc(v.voiceURI)}" ${v===selectedVoice?'selected':''}>${esc(v.name)} (${esc(v.lang)})${v.localService?'':' · オンライン'}</option>`).join(''):'<option value="">自動選択（中国語・中国本土）</option>';
   $<HTMLSelectElement>('#voice').disabled=!speaker.supported;
   $<HTMLButtonElement>('#play').disabled=!speaker.supported||!exampleFor();
-  const msg=!speaker.supported?'このブラウザは音声合成に対応していません。':!exampleFor()?(state.tone===3?'この発音形の比較用例語は未収録です。':'例語のある声調を選ぶと再生できます。'):!voices.length?'音声一覧に普通話が表示されていません。再生ボタンで中国語の再生を試せます。音が出ない場合は下の設定手順をご確認ください。':`中国語TTS · ${voices.find(v=>v.voiceURI===state.voice)?.lang || 'zh'}`;
+  const msg=!speaker.supported?'このブラウザは音声合成に対応していません。':!exampleFor()?(state.tone===3?'この発音形の比較用例語は未収録です。':'例語のある声調を選ぶと再生できます。'):!voices.length?'音声一覧に普通話が表示されていません。再生ボタンで中国語の再生を試せます。音が出ない場合は下の設定手順をご確認ください。':`中国語TTS · ${selectedVoice?.lang || 'zh'}`;
   $('#voice-status').textContent=speaker.message??msg;
 }
 speaker=new Speaker({onVoices:()=>{if(speaker)updateVoices();},onStatus:(message,kind)=>{const status=document.querySelector('#voice-status');if(status)status.textContent=message;if(kind==='error'){const help=document.querySelector<HTMLDetailsElement>('#voice-help');if(help)help.open=true;}}});
@@ -130,7 +131,7 @@ document.addEventListener('click',event=>{
   if(isTabId(b.dataset.tab)){state.tab=b.dataset.tab;renderReference();}
   if(isGroupFilter(b.dataset.group)){state.group=b.dataset.group;renderReference();document.querySelector<HTMLElement>(`[data-group="${state.group}"]`)?.focus();}
   if(b.dataset.syllable)select(b.dataset.syllable);
-  if(b.dataset.pick)select(b.dataset.pick,{scroll:true});
+  if(b.dataset.pick)select(b.dataset.pick,{tone:b.dataset.pickTone?toTone(b.dataset.pickTone):undefined,scroll:true});
   if(b.dataset.tone){select(state.selected,{tone:toTone(b.dataset.tone)});document.querySelector<HTMLElement>(`[data-tone="${state.tone}"]`)?.focus();}
   if(b.dataset.demoTone)select('ma',{tone:toTone(b.dataset.demoTone),scroll:true});
   if(isThirdToneFormId(b.dataset.thirdToneForm)){select(state.selected,{tone:3,form:b.dataset.thirdToneForm});document.querySelector<HTMLElement>(`[data-third-tone-form="${state.thirdToneForm}"]`)?.focus();}
@@ -157,7 +158,7 @@ document.addEventListener('input',event=>{if(event.target instanceof HTMLInputEl
 document.addEventListener('keydown',event=>{
   if(!(event.target instanceof Element))return;
   if(event.key==='/'&&!event.target.matches('input,textarea,select')&&!$<HTMLDialogElement>('#about-dialog').open){event.preventDefault();$<HTMLInputElement>('#search').focus();}
-  if(event.key==='Escape'){speaker?.stop(false);if(event.target.id==='search')reset();}
+  if(event.key==='Escape'){speaker?.stop();if(event.target.id==='search')reset();}
   if(event.key==='Enter'&&event.target.id==='search'){const match=findSyllables(state.query,state)[0];if(match)select(match.pinyin,{tone:parseQuery(state.query).tone,scroll:true});}
   const b=event.target.closest<HTMLElement>('[data-syllable]');if(!b||!['ArrowRight','ArrowLeft','ArrowUp','ArrowDown','Home','End'].includes(event.key))return;
   event.preventDefault();const row=Number(b.dataset.row),col=Number(b.dataset.col);const cells=[...document.querySelectorAll<HTMLElement>('[data-syllable]')];let candidates: HTMLElement[]=[];

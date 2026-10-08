@@ -9,14 +9,16 @@
     "build": "tsc -p tsconfig.tools.json && node .build/scripts/build.js",
     "prestart": "npm run build",
     "start": "node .build/scripts/server.js",
-    "test": "npm run build && node --test .build/tests/data.test.js .build/tests/examples.test.js .build/tests/speech.test.js .build/tests/third-tone.test.js",
+    "test": "npm run build && node --experimental-vm-modules --test .build/tests/app.test.js .build/tests/data.test.js .build/tests/examples.test.js .build/tests/speech.test.js .build/tests/third-tone.test.js",
     "data:refresh": "python scripts/build_examples.py && npm run build"
   },
   "engines": {
-    "node": ">=20"
+    "node": "^20.19.0 || ^22.13.0 || >=24.0.0"
   },
   "devDependencies": {
+    "@types/jsdom": "30.0.0",
     "@types/node": "20.19.43",
+    "jsdom": "29.1.1",
     "typescript": "7.0.2"
   }
 }

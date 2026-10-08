@@ -139,12 +139,13 @@ export function rulesFor(s: Syllable): string[] {
   if (s.final.startsWith('-i')) result.push('この i は [i] ではない。直前の子音に対応した舌の位置で音節を作る。');
   if (s.pinyin==='ri') result.push('ri は声母と韻母が連続するため、音節全体を [ɻ̩] とまとめて示す。');
   if (['ian','üan'].includes(s.final)) result.push('a の文字でも、この韻母では [ɛ] 系の母音になる。');
-  if (s.final === 'o' && s.initial) result.push('bo / po / mo / fo の o は [wo] 系。資料によって [o] と簡略に示す。');
+  if (s.final === 'o' && ['b','p','m','f'].includes(s.initial)) result.push('bo / po / mo / fo の o は [wo] 系。資料によって [o] と簡略に示す。');
   return result.length ? result : ['この組み合わせでは、声母と韻母をそのままつなげて書く。'];
 }
 export function findSyllables(query: string, {group='all',initial='all',rare=true}: SearchFilters={}): Syllable[] {
   const {text} = parseQuery(query);
-  return syllables.filter(s => (group==='all' || getFinal(s.final).group===group) && (initial==='all' || s.initial===initial) && (rare || !s.peripheral) && (!text || s.pinyin.includes(text) || s.final.includes(text) || s.ipa.includes(text) || articulationSearchText(s.initial).includes(text)));
+  return syllables.filter(s => (group==='all' || getFinal(s.final).group===group) && (initial==='all' || s.initial===initial) && (rare || !s.peripheral) && (!text || s.pinyin.includes(text) || s.final.includes(text) || s.ipa.includes(text) || articulationSearchText(s.initial).includes(text)))
+    .sort((a,b) => Number(b.pinyin===text)-Number(a.pinyin===text));
 }
 
 export function getInitial(id: InitialId): Initial { return required(initials.find(i => i.id === id), `initial ${id}`); }

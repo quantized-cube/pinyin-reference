@@ -42,6 +42,22 @@ test('search respects tones, IPA, final groups and exclusions',()=>{
   assert.equal(findSyllables('chua',{rare:false}).some(s=>s.pinyin==='chua'),false);
 });
 
+test('exact pinyin ranks first while filters and partial matches still apply',()=>{
+  for(const s of syllables)for(const query of [s.pinyin,s.pinyin+'3',markTone(s.pinyin,3)]){
+    assert.equal(findSyllables(query)[0]?.pinyin,s.pinyin,query);
+  }
+  assert.ok(findSyllables('pa').some(s=>s.pinyin==='ba'));
+  assert.equal(findSyllables('pa',{initial:'b'})[0]?.pinyin,'ba');
+  assert.equal(findSyllables('pa',{initial:'x'}).length,0);
+  assert.equal(findSyllables('chua',{rare:false}).some(s=>s.pinyin==='chua'),false);
+});
+
+test('the labial o explanation is limited to bo, po, mo and fo',()=>{
+  for(const pinyin of ['bo','po','mo','fo'])assert.match(rulesFor(getSyllable(pinyin)).join(' '),/\[wo\]/);
+  for(const pinyin of ['lo','o'])assert.doesNotMatch(rulesFor(getSyllable(pinyin)).join(' '),/bo \/ po \/ mo \/ fo/);
+  assert.equal(getSyllable('lo').ipa,'lo');
+});
+
 test('articulation search distinguishes place, aspiration and voicing',()=>{
   for(const [query,expected] of [
     ['唇音',['b','p','m','f']], ['唇歯音',['f']], ['鼻音',['m','n']],

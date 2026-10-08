@@ -6,7 +6,7 @@
 
 ## 起動
 
-Windows で `start.cmd` をダブルクリックすると、ローカルサーバーが起動して既定のブラウザが開きます。Node.js 20 以降が必要です。インストール済みの Node.js 24 で確認しました。初回は開発用パッケージを自動インストールし、起動のたびにTypeScriptをビルドします。初回インストールにはネット接続が必要です。
+Windows で `start.cmd` をダブルクリックすると、ローカルサーバーが起動して既定のブラウザが開きます。Node.js 24 を推奨します（対応範囲：20.19以降の20系、22.13以降の22系、24以降）。インストール済みの Node.js 24.12.0 で確認しました。初回は開発用パッケージを自動インストールし、起動のたびにTypeScriptをビルドします。初回インストールにはネット接続が必要です。
 
 PowerShell から起動する場合は、プロジェクトのフォルダーで実行します：
 
@@ -139,7 +139,7 @@ scripts/
   build.ts         TypeScriptコンパイル・静的ファイルのコピー
   server.ts        Node.js標準機能だけのローカルサーバー
   build_examples.py  CC-CEDICTから例語を再生成
-tests/            TypeScriptの自動テスト（4ファイル）
+tests/            TypeScriptの自動テスト（5ファイル、画面操作テストを含む）
 tsconfig.json      ブラウザ用・strict設定
 tsconfig.tools.json  サーバー・ビルド・テスト用設定
 package-lock.json  開発用パッケージのバージョン固定
@@ -153,6 +153,10 @@ start.cmd          Windows用起動ファイル
 TypeScript設定は [公式ドキュメント](https://www.typescriptlang.org/docs/handbook/modules/guides/choosing-compiler-options.html) をContext7で確認し、NodeNext・拡張子付きES Modulesを採用しました。
 
 ## 検証・例語再生成
+
+2026-10-09 のレビュー修正：自動テスト33件成功。検索の完全一致優先、声調付きの例ボタン、保存音声の遅延復元、Escape停止表示、`lo`の説明を修正しました。Windows Chromeでも検索確定・3つの声調例・停止表示・`lo`の説明を確認しました。
+
+画面操作テストは [jsdom](https://github.com/jsdom/jsdom) とNode.jsのVM内で、実際のビルド済みアプリを読み込みます。音声一覧・再生イベント・例語取得を模擬し、外部通信や実音声再生は行いません。`npm test` が付ける `--experimental-vm-modules` はテスト専用で、Node.jsの実験的機能の警告が出ることがあります。公開アプリにはテスト用ライブラリを含めません。
 
 2026-10-09 の確認：strict型チェック・ビルド・自動テスト24件成功。発音用語検索、無気／有気の6ペア、無気／無声の区別を検証。Windows Chromeと390px幅の表示で、声母の分類・用語説明・比較例への移動を確認しました。
 

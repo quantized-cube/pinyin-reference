@@ -1,7 +1,8 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import {readFile} from 'node:fs/promises';
-import {initials,finals,syllables,syllableMap,spell,markTone,parseQuery,findSyllables,rulesFor,getSyllable} from '../src/data.js';
+import {initials,finals,syllables,syllableMap,spell,markTone,parseQuery,findSyllables,rulesFor,getSyllable,getInitial} from '../src/data.js';
+import {articulationFor,articulationTerms,aspirationPairs} from '../src/articulation.js';
 import {parseExampleCatalog} from '../src/examples.js';
 import {required} from '../src/types.js';
 const {examples,meta}=parseExampleCatalog(JSON.parse(await readFile(new URL('../../public/examples.json',import.meta.url),'utf8')));
@@ -39,6 +40,35 @@ test('search respects tones, IPA, final groups and exclusions',()=>{
   assert.ok(findSyllables('',{group:'ü',initial:'j'}).every(s=>s.initial==='j'&&s.final.startsWith('ü')));
   assert.equal(findSyllables('not-a-syllable').length,0);
   assert.equal(findSyllables('chua',{rare:false}).some(s=>s.pinyin==='chua'),false);
+});
+
+test('articulation search distinguishes place, aspiration and voicing',()=>{
+  for(const [query,expected] of [
+    ['唇音',['b','p','m','f']], ['唇歯音',['f']], ['鼻音',['m','n']],
+    ['無気音',['b','d','g','j','zh','z']], ['有気音',['p','t','k','q','ch','c']],
+    ['有声音',['m','n','l','r']], ['捲舌音',['zh','ch','sh','r']],
+  ] as const){
+    assert.deepEqual([...new Set(findSyllables(query).map(s=>s.initial))],expected,query);
+  }
+  assert.ok(findSyllables('唇音',{initial:'p'}).every(s=>s.initial==='p'));
+  assert.equal(findSyllables('有気音',{initial:'b'}).length,0);
+});
+
+test('aspiration pairs share place, manner and voicelessness; other manners have no aspiration label',()=>{
+  for(const [a,b,sa,sb] of aspirationPairs){
+    const unaspirated=required(articulationFor(a),a),aspirated=required(articulationFor(b),b);
+    assert.equal(unaspirated.place,aspirated.place);
+    assert.equal(unaspirated.manner,aspirated.manner);
+    assert.equal(unaspirated.voicing,'voiceless');assert.equal(aspirated.voicing,'voiceless');
+    assert.equal(unaspirated.aspiration,'unaspirated');assert.equal(aspirated.aspiration,'aspirated');
+    assert.equal(getInitial(b).ipa,getInitial(a).ipa+'ʰ');
+    assert.equal(getSyllable(sa).initial,a);assert.equal(getSyllable(sb).initial,b);
+  }
+  for(const initial of initials.filter(i=>i.id)){
+    const profile=required(articulationFor(initial.id),initial.id);
+    if(!['plosive','affricate'].includes(profile.manner))assert.equal(profile.aspiration,null,initial.id);
+  }
+  assert.equal(articulationFor(''),undefined);assert.deepEqual(articulationTerms(''),[]);
 });
 test('examples align text, numbered pinyin and target; neutral tones always have context',()=>{
   assert.equal(meta.license,'CC BY-SA 4.0');assert.match(meta.sha256,/^[a-f0-9]{64}$/);

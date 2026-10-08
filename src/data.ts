@@ -1,5 +1,6 @@
 import type { InitialId, FinalId, Initial, Final, GroupFilter, Syllable, Tone, ToneId, SearchFilters } from './types.js';
 import { isToneId, required } from './types.js';
+import { articulationSearchText } from './articulation.js';
 
 // Hand-curated teaching transcription. Sources and transcription choices: README.md.
 export const initials: readonly Initial[] = ([
@@ -143,7 +144,7 @@ export function rulesFor(s: Syllable): string[] {
 }
 export function findSyllables(query: string, {group='all',initial='all',rare=true}: SearchFilters={}): Syllable[] {
   const {text} = parseQuery(query);
-  return syllables.filter(s => (group==='all' || getFinal(s.final).group===group) && (initial==='all' || s.initial===initial) && (rare || !s.peripheral) && (!text || s.pinyin.includes(text) || s.final.includes(text) || s.ipa.includes(text)));
+  return syllables.filter(s => (group==='all' || getFinal(s.final).group===group) && (initial==='all' || s.initial===initial) && (rare || !s.peripheral) && (!text || s.pinyin.includes(text) || s.final.includes(text) || s.ipa.includes(text) || articulationSearchText(s.initial).includes(text)));
 }
 
 export function getInitial(id: InitialId): Initial { return required(initials.find(i => i.id === id), `initial ${id}`); }

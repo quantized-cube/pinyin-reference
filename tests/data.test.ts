@@ -5,7 +5,7 @@ import {initials,finals,syllables,syllableMap,spell,markTone,parseQuery,findSyll
 import {articulationFor,articulationTerms,aspirationPairs} from '../src/articulation.js';
 import {parseExampleCatalog} from '../src/examples.js';
 import {required} from '../src/types.js';
-import {initialSections,finalSections,orderedFinals} from '../src/layout.js';
+import {initialSections,finalSections,orderedFinals,matrixFinals,matrixFinalId} from '../src/layout.js';
 const {examples,meta}=parseExampleCatalog(JSON.parse(await readFile(new URL('../../public/examples.json',import.meta.url),'utf8')));
 
 test('inventory is unique and every cell references a known initial and final',()=>{
@@ -27,6 +27,12 @@ test('display sections partition every initial and final once and begin with the
 test('orthographic fixtures cover dots, contractions and zero initials',()=>{
   const fixtures=[['x','üan','xuan'],['j','ün','jun'],['d','uen','dun'],['l','iou','liu'],['g','uei','gui'],['n','ü','nü'],['l','üe','lüe'],['','üan','yuan'],['','ün','yun'],['','i','yi'],['','iou','you'],['','uen','wen'],['','ueng','weng'],['','u','wu'],['','iong','yong']] as const;
   for(const [i,f,s] of fixtures)assert.equal(spell(i,f),s);
+});
+test('merging the i display column preserves every analytical final and creates no cell collisions',()=>{
+  assert.equal(matrixFinals.length,38);
+  const ids=matrixFinals.flatMap(column=>column.variants.map(final=>final.id));
+  assert.deepEqual(ids.sort(),finals.map(final=>final.id).sort());
+  assert.equal(new Set(syllables.map(s=>`${s.initial}|${matrixFinalId(s.final)}`)).size,syllables.length);
 });
 test('forbidden combinations never appear; contrasting finals stay distinct',()=>{
   for(const s of ['jua','jiou','bong','fian','biang','nüan','shong','ong','wun','juen'])assert.ok(!syllableMap.has(s),s);

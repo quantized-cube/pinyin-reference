@@ -180,8 +180,8 @@ test('matrix shows articulation row groups and final column groups without losin
   assert.match(s.$('[data-initial-section="velar"] .initial-group-title').textContent ?? '',/軟口蓋音/);
   assert.deepEqual([...doc.querySelectorAll('.final-heading th')].slice(0,6).map(el=>el.getAttribute('data-final')),['a','o','e','i','u','ü']);
   const spans=[...doc.querySelectorAll<HTMLTableCellElement>('.final-section-row th[scope="colgroup"]')].map(el=>el.colSpan);
-  assert.deepEqual(spans,[6,13,1,8,8,4]);
-  assert.equal(s.$<HTMLTableCellElement>('.initial-group-row th').colSpan,41);
+  assert.deepEqual(spans,[6,13,1,8,8,2]);
+  assert.equal(s.$<HTMLTableCellElement>('.initial-group-row th').colSpan,39);
   assert.match(s.$('.final-heading [data-final="uei"]').textContent ?? '',/uei \(ui\)/);
 });
 
@@ -219,6 +219,12 @@ test('keyboard movement crosses articulation headings and follows the reordered 
   assert.equal(s.window.document.activeElement?.getAttribute('data-syllable'),'bu');
   s.key('[data-syllable="bu"]','Home');
   assert.equal(s.window.document.activeElement?.getAttribute('data-syllable'),'ba');
+  s.$('[data-syllable="xi"]').focus();
+  s.key('[data-syllable="xi"]','ArrowDown');
+  assert.equal(s.window.document.activeElement?.getAttribute('data-syllable'),'zhi');
+  s.$('[data-syllable="ri"]').focus();
+  s.key('[data-syllable="ri"]','ArrowDown');
+  assert.equal(s.window.document.activeElement?.getAttribute('data-syllable'),'zi');
   assert.equal(s.window.document.querySelectorAll('[data-syllable][tabindex="0"]').length,1);
 });
 
@@ -226,9 +232,62 @@ test('final cards use the same teaching order and omit empty sections when filte
   const s = await setup(t);
   const expected=[...s.window.document.querySelectorAll('.final-heading th')].map(el=>el.getAttribute('data-final'));
   s.$('[data-tab="finals"]').click();
-  assert.deepEqual([...s.window.document.querySelectorAll('.sound-card')].map(el=>el.getAttribute('data-final')),expected);
+  const cardIds=[...s.window.document.querySelectorAll('.sound-card')].map(el=>el.getAttribute('data-final'));
+  assert.equal(cardIds.length,40);
+  assert.deepEqual(cardIds.filter(id=>id!=='-i(z)'&&id!=='-i(zh)'),expected);
   assert.equal(s.window.document.querySelectorAll('[data-final-section]').length,6);
   s.$('[data-group="ü"]').click();
   assert.deepEqual([...s.window.document.querySelectorAll('.sound-card')].map(el=>el.getAttribute('data-final')),['ü','üe','ün','üan']);
   assert.equal(s.window.document.querySelectorAll('[data-final-section]').length,3);
+});
+
+test('one i header lists all three sounds while cells and details keep the correct pronunciation', async t => {
+  const s = await setup(t);
+  assert.equal(s.window.document.querySelectorAll('.final-heading th').length,38);
+  assert.equal(s.$('.final-heading [data-final="i"] small').textContent,'[i / ɹ̩ / ɻ̩]');
+  assert.equal(s.window.document.querySelectorAll('.final-heading [data-final^="-i"]').length,0);
+  s.$('#show-ipa').click();
+  const column=s.$('[data-syllable="yi"]').getAttribute('data-col');
+  for (const [pinyin,ipa,rime,context] of [
+    ['yi','i','i',''], ['mi','mi','i',''], ['ji','tɕi','i',''],
+    ['zi','tsɹ̩','ɹ̩','zi・ci・si 系'], ['ci','tsʰɹ̩','ɹ̩','zi・ci・si 系'], ['si','sɹ̩','ɹ̩','zi・ci・si 系'],
+    ['zhi','ʈʂɻ̩','ɻ̩','zhi・chi・shi・ri 系'], ['chi','ʈʂʰɻ̩','ɻ̩','zhi・chi・shi・ri 系'],
+    ['shi','ʂɻ̩','ɻ̩','zhi・chi・shi・ri 系'], ['ri','ɻ̩','ɻ̩','zhi・chi・shi・ri 系'],
+  ] as const) {
+    const cell=s.$(`[data-syllable="${pinyin}"]`);
+    assert.equal(cell.getAttribute('data-col'),column);
+    assert.ok(cell.parentElement?.getAttribute('headers')?.split(' ').includes('final-i'));
+    assert.equal(cell.querySelector('.cell-ipa')?.textContent,`[${ipa}]`);
+    cell.click();
+    assert.equal(s.$('.decomposition>div:last-child strong').textContent,'i');
+    assert.equal(s.$('.decomposition>div:last-child .ipa').textContent,`[${rime}]`);
+    assert.ok(s.$('.decomposition>div:last-child').textContent?.includes(context));
+  }
+  s.$('#show-ipa').click();
+  assert.equal(s.window.document.querySelectorAll('.cell-ipa').length,0);
+  assert.equal(s.$('.final-heading [data-final="i"] small').textContent,'[i / ɹ̩ / ɻ̩]');
+});
+
+test('merged i searches and filters show only matching syllables without extra columns', async t => {
+  const s = await setup(t);
+  const shown=()=>[...s.window.document.querySelectorAll('[data-syllable]')].map(el=>el.getAttribute('data-syllable'));
+  for (const [query,expected] of [['ɹ̩',['zi','ci','si']],['ɻ̩',['zhi','chi','shi','ri']]] as const) {
+    s.input(query);
+    assert.deepEqual(shown(),expected);
+    assert.equal(s.window.document.querySelectorAll('.final-heading th').length,1);
+    assert.equal(s.$('.final-heading th').getAttribute('data-final'),'i');
+    assert.equal(s.$<HTMLTableCellElement>('.final-section-row th[scope="colgroup"]').colSpan,1);
+  }
+  s.input('');
+  s.$('[data-group="special"]').click();
+  assert.ok(shown().includes('zi')&&shown().includes('zhi'));
+  assert.ok(!shown().includes('yi'));
+  s.$('[data-group="i"]').click();
+  assert.ok(shown().includes('yi'));
+  assert.ok(!shown().includes('zi')&&!shown().includes('zhi'));
+  s.$('[data-group="all"]').click();
+  s.$<HTMLSelectElement>('#initial-filter').value='zh';
+  s.$('#initial-filter').dispatchEvent(new s.window.Event('change',{bubbles:true}));
+  assert.ok(shown().includes('zhi'));
+  assert.ok(shown().every(pinyin=>pinyin?.startsWith('zh')));
 });

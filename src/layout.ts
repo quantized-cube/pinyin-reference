@@ -37,3 +37,17 @@ const aliases: Partial<Record<FinalId, string>> = { iou: 'iu', uei: 'ui', uen: '
 export function finalHeading(id: FinalId): string {
   return aliases[id] ? `${id} (${aliases[id]})` : id;
 }
+
+// Merge spelling columns only; each syllable retains its analytical final/IPA.
+export function matrixFinalId(id: FinalId): FinalId {
+  return id === '-i(z)' || id === '-i(zh)' ? 'i' : id;
+}
+export function finalContext(id: FinalId): string {
+  return id === '-i(z)' ? 'zi・ci・si 系' : id === '-i(zh)' ? 'zhi・chi・shi・ri 系' : '';
+}
+export const matrixFinals = orderedFinals.filter(f => matrixFinalId(f.id) === f.id).map(f => ({
+  ...f,
+  variants: f.id === 'i' ? (['i', '-i(z)', '-i(zh)'] as const).map(getFinal) : [f],
+  ipa: f.id === 'i' ? 'i / ɹ̩ / ɻ̩' : f.ipa,
+  note: f.id === 'i' ? '声母によって発音が変わる。yi・mi などは [i]、zi・ci・si は [ɹ̩]、zhi・chi・shi・ri は [ɻ̩]。' : f.note,
+}));

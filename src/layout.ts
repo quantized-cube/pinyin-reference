@@ -22,15 +22,14 @@ interface FinalSection {
   readonly label: string;
   readonly finals: readonly FinalId[];
 }
-// Common introductory teaching order, with additional finals appended within
-// each class. Keep analytical iou/uei/uen IDs; show their contracted spellings.
+// Traditional teaching categories: 10 simple, 13 compound, 16 nasal finals,
+// plus yo (analytical io). Keep the three i sounds adjacent for comparison.
 export const finalSections: readonly FinalSection[] = [
-  { id: 'simple', label: '単韻母', finals: ['a','o','e','i','u','ü'] },
+  { id: 'simple', label: '単韻母', finals: ['a','o','e','i','-i(z)','-i(zh)','u','ü','ê','er'] },
   { id: 'compound', label: '複合韻母', finals: ['ai','ei','uei','ao','ou','iou','ie','üe','ia','ua','uo','iao','uai'] },
-  { id: 'rhotic', label: 'そり舌韻母', finals: ['er'] },
   { id: 'nasal-n', label: '鼻韻母 · -n', finals: ['an','en','in','uen','ün','ian','uan','üan'] },
   { id: 'nasal-ng', label: '鼻韻母 · -ng', finals: ['ang','eng','ing','ong','iang','uang','iong','ueng'] },
-  { id: 'extra', label: '補足の韻母', finals: ['-i(z)','-i(zh)','ê','io'] },
+  { id: 'extra', label: '補足の音節', finals: ['io'] },
 ];
 export const orderedFinals = finalSections.flatMap(section => section.finals.map(getFinal));
 const aliases: Partial<Record<FinalId, string>> = { iou: 'iu', uei: 'ui', uen: 'un' };

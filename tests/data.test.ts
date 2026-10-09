@@ -21,8 +21,9 @@ test('display sections partition every initial and final once and begin with the
   const finalIds=finalSections.flatMap(section=>section.finals);
   assert.equal(finalIds.length,40);
   assert.deepEqual([...new Set(finalIds)].sort(),finals.map(final=>final.id).sort());
-  assert.deepEqual(orderedFinals.slice(0,6).map(final=>final.id),['a','o','e','i','u','ü']);
-  assert.deepEqual(orderedFinals.slice(6,14).map(final=>final.id),['ai','ei','uei','ao','ou','iou','ie','üe']);
+  assert.deepEqual(finalSections.map(section=>[section.id,section.finals.length]),[['simple',10],['compound',13],['nasal-n',8],['nasal-ng',8],['extra',1]]);
+  assert.deepEqual(matrixFinals.slice(0,6).map(final=>final.id),['a','o','e','i','u','ü']);
+  assert.deepEqual(orderedFinals.slice(10,18).map(final=>final.id),['ai','ei','uei','ao','ou','iou','ie','üe']);
 });
 test('orthographic fixtures cover dots, contractions and zero initials',()=>{
   const fixtures=[['x','üan','xuan'],['j','ün','jun'],['d','uen','dun'],['l','iou','liu'],['g','uei','gui'],['n','ü','nü'],['l','üe','lüe'],['','üan','yuan'],['','ün','yun'],['','i','yi'],['','iou','you'],['','uen','wen'],['','ueng','weng'],['','u','wu'],['','iong','yong']] as const;

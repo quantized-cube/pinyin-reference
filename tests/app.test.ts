@@ -180,7 +180,7 @@ test('matrix shows articulation row groups and final column groups without losin
   assert.match(s.$('[data-initial-section="velar"] .initial-group-title').textContent ?? '',/軟口蓋音/);
   assert.deepEqual([...doc.querySelectorAll('.final-heading th')].slice(0,6).map(el=>el.getAttribute('data-final')),['a','o','e','i','u','ü']);
   const spans=[...doc.querySelectorAll<HTMLTableCellElement>('.final-section-row th[scope="colgroup"]')].map(el=>el.colSpan);
-  assert.deepEqual(spans,[6,13,1,8,8,2]);
+  assert.deepEqual(spans,[8,13,8,8,1]);
   assert.equal(s.$<HTMLTableCellElement>('.initial-group-row th').colSpan,39);
   assert.match(s.$('.final-heading [data-final="uei"]').textContent ?? '',/uei \(ui\)/);
 });
@@ -235,10 +235,44 @@ test('final cards use the same teaching order and omit empty sections when filte
   const cardIds=[...s.window.document.querySelectorAll('.sound-card')].map(el=>el.getAttribute('data-final'));
   assert.equal(cardIds.length,40);
   assert.deepEqual(cardIds.filter(id=>id!=='-i(z)'&&id!=='-i(zh)'),expected);
-  assert.equal(s.window.document.querySelectorAll('[data-final-section]').length,6);
+  assert.equal(s.window.document.querySelectorAll('[data-final-section]').length,5);
   s.$('[data-group="ü"]').click();
   assert.deepEqual([...s.window.document.querySelectorAll('.sound-card')].map(el=>el.getAttribute('data-final')),['ü','üe','ün','üan']);
   assert.equal(s.window.document.querySelectorAll('[data-final-section]').length,3);
+});
+
+test('final cards group all simple finals, distinguish adjacent i sounds and explain supplemental yo', async t => {
+  const s = await setup(t);
+  s.$('[data-tab="finals"]').click();
+  const ids=(section:string)=>[...s.window.document.querySelectorAll(`[data-final-section="${section}"] .sound-card`)]
+    .map(el=>el.getAttribute('data-final'));
+  assert.deepEqual(ids('simple'),['a','o','e','i','-i(z)','-i(zh)','u','ü','ê','er']);
+  assert.deepEqual(ids('extra'),['io']);
+  assert.match(s.$('[data-final-section="extra"] h3').textContent ?? '',/補足の音節/);
+  for (const [id,label,pinyin,ipa] of [
+    ['i','yi・mi系','yi','i'], ['-i(z)','zi系','zi','ɹ̩'], ['-i(zh)','zhi系','zhi','ɻ̩'],
+  ]) {
+    const card=s.$(`.sound-card[data-final="${id}"]`);
+    assert.equal(card.querySelector('.card-symbol')?.textContent,'i');
+    assert.equal(card.querySelector('.card-context')?.textContent,`（${label}）`);
+    card.click();
+    assert.equal(new URLSearchParams(s.window.location.hash.slice(1)).get('s'),pinyin);
+    assert.equal(s.$('.decomposition>div:last-child .ipa').textContent,`[${ipa}]`);
+  }
+  const yo=s.$('.sound-card[data-final="io"]');
+  assert.equal(yo.querySelector('.card-symbol')?.textContent,'yo');
+  assert.match(yo.querySelector('.card-spelling')?.textContent ?? '',/分析上の韻母：io/);
+  yo.click();
+  assert.equal(new URLSearchParams(s.window.location.hash.slice(1)).get('s'),'yo');
+  s.$('[data-group="special"]').click();
+  assert.deepEqual(ids('simple'),['-i(z)','-i(zh)','ê','er']);
+  assert.deepEqual(ids('extra'),['io']);
+  s.input('ê');
+  assert.deepEqual(ids('simple'),['ê']);
+  assert.deepEqual(ids('extra'),[]);
+  s.input('yo');
+  assert.deepEqual(ids('simple'),[]);
+  assert.deepEqual(ids('extra'),['io']);
 });
 
 test('one i header lists all three sounds while cells and details keep the correct pronunciation', async t => {

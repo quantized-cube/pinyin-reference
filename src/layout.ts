@@ -1,4 +1,5 @@
 import { getFinal } from './data.js';
+import { places } from './articulation.js';
 import type { FinalId, InitialId } from './types.js';
 
 interface InitialSection {
@@ -10,11 +11,11 @@ interface InitialSection {
 export const initialSections: readonly InitialSection[] = [
   { id: 'zero', label: '声母なし', note: 'y / w の綴りも含む', initials: [''] },
   { id: 'labial', label: '唇音', note: 'b・p・m：両唇音 / f：唇歯音', initials: ['b','p','m','f'] },
-  { id: 'alveolar', label: '歯茎音', note: 'd・t・n・l', initials: ['d','t','n','l'] },
-  { id: 'velar', label: '軟口蓋音', note: 'g・k・h', initials: ['g','k','h'] },
-  { id: 'alveolopalatal', label: '歯茎硬口蓋音', note: 'j・q・x', initials: ['j','q','x'] },
-  { id: 'retroflex', label: 'そり舌音', note: 'zh・ch・sh・r', initials: ['zh','ch','sh','r'] },
-  { id: 'sibilant', label: '歯茎音', note: 'z・c・s（破擦音・摩擦音）', initials: ['z','c','s'] },
+  { id: 'alveolar', label: places.alveolar.label, note: 'd・t・n・l / 舌尖中音', initials: ['d','t','n','l'] },
+  { id: 'velar', label: places.velar.label, note: 'g・k・h / 舌面後音', initials: ['g','k','h'] },
+  { id: 'alveolopalatal', label: places.alveolopalatal.label, note: 'j・q・x / 舌面前音', initials: ['j','q','x'] },
+  { id: 'retroflex', label: places.retroflex.label, note: 'zh・ch・sh・r / 捲舌音', initials: ['zh','ch','sh','r'] },
+  { id: 'sibilant', label: places.apicalFront.label, note: 'z・c・s / 舌尖前音・平舌音', initials: ['z','c','s'] },
 ];
 
 interface FinalSection {

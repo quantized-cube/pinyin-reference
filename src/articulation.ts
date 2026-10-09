@@ -1,14 +1,17 @@
 import type { InitialId } from './types.js';
 
-// The labels describe the broad IPA transcription used by this app.
+// Put textbook names first and retain the app's broad IPA place names.
 export const places = {
-  bilabial: { label: '両唇音', note: '上下の唇を使う音。b・p・m。唇歯音とあわせて「唇音」と呼びます。' },
-  labiodental: { label: '唇歯音', note: '下唇と上の前歯を使う音。f。両唇音とともに唇音の仲間です。' },
-  alveolar: { label: '歯茎音', note: '舌先や舌の前端と、上の前歯の裏〜歯茎付近を使う音。d・t・n・l・z・c・s。細かな位置には違いがあります。' },
-  velar: { label: '軟口蓋音', note: '舌の奥と、口の天井の奥にある柔らかい部分を使う音。g・k・h。' },
-  alveolopalatal: { label: '歯茎硬口蓋音', note: '舌の前部と、歯茎の後ろから硬口蓋（口の天井の硬い部分）にかけて狭める音。j・q・x。' },
-  retroflex: { label: 'そり舌音（捲舌音）', note: '舌先を歯茎より後ろへ向けて作る音。zh・ch・sh・r。舌を強く巻き込む必要はありません。' },
+  bilabial: { label: '両唇音', aliases: ['双唇音','唇音'], note: '上下の唇を使う音。b・p・m。双唇音とも呼び、唇歯音とあわせて「唇音」と呼びます。' },
+  labiodental: { label: '唇歯音', aliases: ['唇音'], note: '下唇と上の前歯を使う音。f。両唇音とともに唇音の仲間です。' },
+  alveolar: { label: '舌尖音（歯茎音）', aliases: ['舌尖中音'], note: '舌先と上の歯茎を使う音。d・t・n・l。舌尖中音とも呼びます。この表の「舌尖音」はこの4つを指します。' },
+  velar: { label: '舌根音（軟口蓋音）', aliases: ['舌面後音'], note: '舌の奥と、口の天井の奥にある柔らかい部分を使う音。g・k・h。舌面後音とも呼びます。' },
+  alveolopalatal: { label: '舌面音（歯茎硬口蓋音）', aliases: ['舌面前音'], note: '舌の前部と、歯茎の後ろから硬口蓋（口の天井の硬い部分）にかけて狭める音。j・q・x。舌面前音とも呼びます。' },
+  retroflex: { label: 'そり舌音（舌尖後音）', aliases: ['捲舌音','巻舌音','反り舌音'], note: '舌先を歯茎より後ろへ向けて作る音。zh・ch・sh・r。捲舌音・巻舌音とも呼びます。舌を強く巻き込む必要はありません。' },
+  apicalFront: { label: '舌歯音（歯茎音）', aliases: ['舌尖前音','平舌音'], note: '舌先付近と上の前歯の裏〜歯茎付近を使う音。z・c・s。舌尖前音・平舌音とも呼びます。歯音・歯茎音などの細かな分類は資料によって異なり、このアプリでは [ts・tsʰ・s] と表記します。' },
 } as const;
+
+export const placeTerminologyNote = '教材での呼び方を先に置き、括弧内に音声学上の名称や別名を添えています。この表の「舌尖音」は d・t・n・l（舌尖中音）です。広い用法では、舌歯音（舌尖前音）やそり舌音（舌尖後音）も舌尖音に含めます。';
 
 export const manners = {
   plosive: { label: '破裂音', note: '口の中で息の通り道をいったん閉じ、開放して作る音。b・p・d・t・g・k。' },
@@ -55,9 +58,9 @@ const profiles: Record<Exclude<InitialId, ''>, Articulation> = {
   ch: { place: 'retroflex', manner: 'affricate', aspiration: 'aspirated', voicing: 'voiceless' },
   sh: { place: 'retroflex', manner: 'fricative', aspiration: null, voicing: 'voiceless' },
   r: { place: 'retroflex', manner: 'approximant', aspiration: null, voicing: 'voiced' },
-  z: { place: 'alveolar', manner: 'affricate', aspiration: 'unaspirated', voicing: 'voiceless' },
-  c: { place: 'alveolar', manner: 'affricate', aspiration: 'aspirated', voicing: 'voiceless' },
-  s: { place: 'alveolar', manner: 'fricative', aspiration: null, voicing: 'voiceless' },
+  z: { place: 'apicalFront', manner: 'affricate', aspiration: 'unaspirated', voicing: 'voiceless' },
+  c: { place: 'apicalFront', manner: 'affricate', aspiration: 'aspirated', voicing: 'voiceless' },
+  s: { place: 'apicalFront', manner: 'fricative', aspiration: null, voicing: 'voiceless' },
 };
 
 export function articulationFor(id: InitialId): Articulation | undefined { return id ? profiles[id] : undefined; }
@@ -70,8 +73,9 @@ export function articulationTerms(id: InitialId): readonly { readonly label: str
 }
 
 export function articulationSearchText(id: InitialId): string {
-  return articulationTerms(id).map(term => term.label).join(' ')
-    + (id === 'f' ? ' 唇音' : '') + (['zh', 'ch', 'sh', 'r'].includes(id) ? ' 反り舌音 巻舌音' : '');
+  const profile = articulationFor(id);
+  return [...articulationTerms(id).map(term => term.label),
+    ...(profile ? places[profile.place].aliases : [])].join(' ');
 }
 
 export const aspirationPairs: readonly (readonly [InitialId, InitialId, string, string])[] = [

@@ -81,6 +81,11 @@ test('articulation search distinguishes place, aspiration and voicing',()=>{
     ['唇音',['b','p','m','f']], ['唇歯音',['f']], ['鼻音',['m','n']],
     ['無気音',['b','d','g','j','zh','z']], ['有気音',['p','t','k','q','ch','c']],
     ['有声音',['m','n','l','r']], ['捲舌音',['zh','ch','sh','r']],
+    ['双唇音',['b','p','m']], ['舌尖音',['d','t','n','l']], ['舌尖中音',['d','t','n','l']],
+    ['舌根音',['g','k','h']], ['軟口蓋音',['g','k','h']], ['舌面後音',['g','k','h']],
+    ['舌面音',['j','q','x']], ['歯茎硬口蓋音',['j','q','x']], ['舌面前音',['j','q','x']],
+    ['舌歯音',['z','c','s']], ['舌尖前音',['z','c','s']], ['平舌音',['z','c','s']],
+    ['歯茎音',['d','t','n','l','z','c','s']], ['舌尖後音',['zh','ch','sh','r']],
   ] as const){
     assert.deepEqual([...new Set(findSyllables(query).map(s=>s.initial))],expected,query);
   }

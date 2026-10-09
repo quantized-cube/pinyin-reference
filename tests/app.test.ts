@@ -228,6 +228,32 @@ test('keyboard movement crosses articulation headings and follows the reordered 
   assert.equal(s.window.document.querySelectorAll('[data-syllable][tabindex="0"]').length,1);
 });
 
+test('textbook and phonetic names agree in matrix, initial cards, details and alias search', async t => {
+  const s = await setup(t);
+  for (const [section,query,label,sample,initials] of [
+    ['alveolar','舌尖中音','舌尖音（歯茎音）','da',['d','t','n','l']],
+    ['velar','舌根音','舌根音（軟口蓋音）','ga',['g','k','h']],
+    ['alveolopalatal','舌面前音','舌面音（歯茎硬口蓋音）','ji',['j','q','x']],
+    ['retroflex','捲舌音','そり舌音（舌尖後音）','zhi',['zh','ch','sh','r']],
+    ['sibilant','舌歯音','舌歯音（歯茎音）','zi',['z','c','s']],
+  ] as const) {
+    s.$('[data-tab="matrix"]').click();
+    s.input(query);
+    assert.equal(s.window.document.querySelectorAll('[data-initial-section]').length,1);
+    assert.equal(s.$('[data-initial-section]').getAttribute('data-initial-section'),section);
+    assert.ok(s.$('.initial-group-title').textContent?.startsWith(label));
+    s.$(`[data-syllable="${sample}"]`).click();
+    assert.equal(s.$('.initial-articulation .articulation-badges>span').textContent,label);
+    s.$('[data-tab="initials"]').click();
+    const cards=[...s.window.document.querySelectorAll('.sound-card')];
+    assert.deepEqual(cards.map(card=>card.querySelector('.card-symbol')?.textContent),initials);
+    assert.ok(cards.every(card=>card.querySelector('.articulation-badges>span')?.textContent===label));
+  }
+  assert.match(s.$('.articulation-guide').textContent ?? '',/広い用法/);
+  s.input('歯茎音');
+  assert.deepEqual([...s.window.document.querySelectorAll('.sound-card .card-symbol')].map(el=>el.textContent),['d','t','n','l','z','c','s']);
+});
+
 test('final cards use the same teaching order and omit empty sections when filtered', async t => {
   const s = await setup(t);
   const expected=[...s.window.document.querySelectorAll('.final-heading th')].map(el=>el.getAttribute('data-final'));

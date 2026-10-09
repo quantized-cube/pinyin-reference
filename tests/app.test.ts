@@ -169,3 +169,66 @@ test('Escape announces stopped playback, including from search, and ignores stal
     if (target === '#search') assert.equal(s.$<HTMLInputElement>('#search').value, '');
   }
 });
+
+test('matrix shows articulation row groups and final column groups without losing syllables', async t => {
+  const s = await setup(t);
+  const doc = s.window.document;
+  assert.equal(doc.querySelectorAll('[data-syllable]').length,413);
+  assert.deepEqual([...doc.querySelectorAll('[data-initial-section]')].map(el=>el.getAttribute('data-initial-section')),
+    ['zero','labial','alveolar','velar','alveolopalatal','retroflex','sibilant']);
+  assert.match(s.$('[data-initial-section="labial"] .initial-group-title').textContent ?? '',/唇音/);
+  assert.match(s.$('[data-initial-section="velar"] .initial-group-title').textContent ?? '',/軟口蓋音/);
+  assert.deepEqual([...doc.querySelectorAll('.final-heading th')].slice(0,6).map(el=>el.getAttribute('data-final')),['a','o','e','i','u','ü']);
+  const spans=[...doc.querySelectorAll<HTMLTableCellElement>('.final-section-row th[scope="colgroup"]')].map(el=>el.colSpan);
+  assert.deepEqual(spans,[6,13,1,8,8,4]);
+  assert.equal(s.$<HTMLTableCellElement>('.initial-group-row th').colSpan,41);
+  assert.match(s.$('.final-heading [data-final="uei"]').textContent ?? '',/uei \(ui\)/);
+});
+
+test('search and filters remove empty group headings and recompute column spans', async t => {
+  const s = await setup(t);
+  const doc = s.window.document;
+  s.input('唇音');
+  assert.equal(doc.querySelectorAll('[data-initial-section]').length,1);
+  assert.equal(s.$('[data-initial-section]').getAttribute('data-initial-section'),'labial');
+  s.input('üan');
+  assert.equal(doc.querySelectorAll('[data-syllable]').length,4);
+  assert.equal(doc.querySelectorAll('.final-heading th').length,1);
+  assert.equal(s.$<HTMLTableCellElement>('.final-section-row th[scope="colgroup"]').colSpan,1);
+  assert.match(s.$('.final-section-row th[scope="colgroup"]').textContent ?? '',/鼻韻母 · -n/);
+  for (const header of doc.querySelectorAll<HTMLTableCellElement>('.initial-group-row th')) assert.equal(header.colSpan,2);
+  s.input('');
+  s.$<HTMLSelectElement>('#initial-filter').value='g';
+  s.$('#initial-filter').dispatchEvent(new s.window.Event('change',{bubbles:true}));
+  assert.equal(doc.querySelectorAll('[data-initial-section]').length,1);
+  assert.equal(s.$('[data-initial-section]').getAttribute('data-initial-section'),'velar');
+  s.input('not-a-syllable');
+  assert.equal(doc.querySelectorAll('[data-initial-section]').length,0);
+  assert.ok(s.$('.empty-state'));
+});
+
+test('keyboard movement crosses articulation headings and follows the reordered vowel columns', async t => {
+  const s = await setup(t);
+  s.$('[data-syllable="fa"]').focus();
+  s.key('[data-syllable="fa"]','ArrowDown');
+  assert.equal(s.window.document.activeElement?.getAttribute('data-syllable'),'da');
+  s.key('[data-syllable="da"]','ArrowUp');
+  assert.equal(s.window.document.activeElement?.getAttribute('data-syllable'),'fa');
+  s.$('[data-syllable="bi"]').focus();
+  s.key('[data-syllable="bi"]','ArrowRight');
+  assert.equal(s.window.document.activeElement?.getAttribute('data-syllable'),'bu');
+  s.key('[data-syllable="bu"]','Home');
+  assert.equal(s.window.document.activeElement?.getAttribute('data-syllable'),'ba');
+  assert.equal(s.window.document.querySelectorAll('[data-syllable][tabindex="0"]').length,1);
+});
+
+test('final cards use the same teaching order and omit empty sections when filtered', async t => {
+  const s = await setup(t);
+  const expected=[...s.window.document.querySelectorAll('.final-heading th')].map(el=>el.getAttribute('data-final'));
+  s.$('[data-tab="finals"]').click();
+  assert.deepEqual([...s.window.document.querySelectorAll('.sound-card')].map(el=>el.getAttribute('data-final')),expected);
+  assert.equal(s.window.document.querySelectorAll('[data-final-section]').length,6);
+  s.$('[data-group="ü"]').click();
+  assert.deepEqual([...s.window.document.querySelectorAll('.sound-card')].map(el=>el.getAttribute('data-final')),['ü','üe','ün','üan']);
+  assert.equal(s.window.document.querySelectorAll('[data-final-section]').length,3);
+});

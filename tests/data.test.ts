@@ -5,6 +5,7 @@ import {initials,finals,syllables,syllableMap,spell,markTone,parseQuery,findSyll
 import {articulationFor,articulationTerms,aspirationPairs} from '../src/articulation.js';
 import {parseExampleCatalog} from '../src/examples.js';
 import {required} from '../src/types.js';
+import {initialSections,finalSections,orderedFinals} from '../src/layout.js';
 const {examples,meta}=parseExampleCatalog(JSON.parse(await readFile(new URL('../../public/examples.json',import.meta.url),'utf8')));
 
 test('inventory is unique and every cell references a known initial and final',()=>{
@@ -12,6 +13,16 @@ test('inventory is unique and every cell references a known initial and final',(
   assert.equal(new Set(syllables.map(s=>s.pinyin)).size,413);
   assert.equal(new Set(syllables.map(s=>s.initial+'|'+s.final)).size,413);
   for(const s of syllables){assert.ok(initials.some(i=>i.id===s.initial));assert.ok(finals.some(f=>f.id===s.final));assert.ok(s.ipa);}
+});
+
+test('display sections partition every initial and final once and begin with the common six vowels',()=>{
+  const initialIds=initialSections.flatMap(section=>section.initials);
+  assert.deepEqual(initialIds,initials.map(initial=>initial.id));
+  const finalIds=finalSections.flatMap(section=>section.finals);
+  assert.equal(finalIds.length,40);
+  assert.deepEqual([...new Set(finalIds)].sort(),finals.map(final=>final.id).sort());
+  assert.deepEqual(orderedFinals.slice(0,6).map(final=>final.id),['a','o','e','i','u','ü']);
+  assert.deepEqual(orderedFinals.slice(6,14).map(final=>final.id),['ai','ei','uei','ao','ou','iou','ie','üe']);
 });
 test('orthographic fixtures cover dots, contractions and zero initials',()=>{
   const fixtures=[['x','üan','xuan'],['j','ün','jun'],['d','uen','dun'],['l','iou','liu'],['g','uei','gui'],['n','ü','nü'],['l','üe','lüe'],['','üan','yuan'],['','ün','yun'],['','i','yi'],['','iou','you'],['','uen','wen'],['','ueng','weng'],['','u','wu'],['','iong','yong']] as const;

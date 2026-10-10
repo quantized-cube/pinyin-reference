@@ -100,47 +100,65 @@ export class Speaker {
     if (announce) this.report('再生を停止しました。', 'idle');
   }
   speak(text: string, voiceURI: string, rate = 1): boolean {
+    return this.speakSequence([{text}], voiceURI, rate);
+  }
+  speakSequence(items: readonly {text: string; label?: string}[], voiceURI: string, rate = 1): boolean {
     this.stop(false);
+    if (!items.length) return false;
     if (!this.supported) {
       this.report('このブラウザは音声合成に対応していません。', 'error');
       return false;
     }
-    // Re-query inside the tap handler: some engines load voices without an event.
     this.refresh();
     const voice = this.voices.find(v => v.voiceURI === voiceURI) ?? this.voices[0];
     const id = this.serial;
-    this.report(voice ? '音声を準備中…' : '中国語（中国本土）を指定して音声を準備中…', 'pending');
-    this.timer = setTimeout(() => {
-      if (id !== this.serial) return;
-      this.stop(false);
-      this.report('音声の開始を確認できませんでした。「音声が出ないとき」を確認し、もう一度再生してください。', 'error');
-    }, 15000);
-    try {
-      this.engine.speak({
-        // A missing list is not proof that the engine cannot resolve zh-CN.
-        // Keep speak synchronous so the browser retains the user's activation.
-        text, voice, lang: voice?.lang ?? 'zh-CN', rate: Math.max(.6, Math.min(1.2, Number(rate) || 1)),
-        onStart: () => {
-          if (id !== this.serial) return;
-          clearTimeout(this.timer);
-          this.report(`「${text}」を再生中…`, 'playing');
-        },
-        onEnd: () => {
-          if (id !== this.serial) return;
-          clearTimeout(this.timer);
-          this.report('再生しました。', 'idle');
-        },
-        onError: error => {
-          if (id !== this.serial) return;
-          clearTimeout(this.timer);
-          this.report(speechErrorMessage(error), 'error');
-        },
-      });
-      return true;
-    } catch {
-      clearTimeout(this.timer);
-      this.report('音声の開始に失敗しました。「音声が出ないとき」を確認してください。', 'error');
-      return false;
-    }
+    // Snapshot the sequence and settings; a later user action invalidates its generation.
+    const sequence = items.map(item => ({...item}));
+    const play = (index: number): boolean => {
+      const item = sequence[index];
+      if (id !== this.serial || !item) return false;
+      let finished = false;
+      const current = () => id === this.serial && !finished;
+      const label = item.label ? `${item.label} · ` : '';
+      this.report(label + (voice ? '音声を準備中…' : '中国語（中国本土）を指定して音声を準備中…'), 'pending');
+      this.timer = setTimeout(() => {
+        if (!current()) return;
+        this.stop(false);
+        this.report('音声の開始を確認できませんでした。「音声が出ないとき」を確認し、もう一度再生してください。', 'error');
+      }, 15000);
+      try {
+        this.engine.speak({
+          text:item.text, voice, lang:voice?.lang ?? 'zh-CN', rate:Math.max(.6, Math.min(1.2, Number(rate) || 1)),
+          onStart: () => {
+            if (!current()) return;
+            clearTimeout(this.timer);
+            this.report(`${label}「${item.text}」を再生中…`, 'playing');
+          },
+          onEnd: () => {
+            if (!current()) return;
+            finished = true;
+            clearTimeout(this.timer);
+            if (index + 1 < sequence.length) {
+              this.report('次の音を準備中…', 'pending');
+              this.timer = setTimeout(() => { play(index + 1); }, 400);
+            } else this.report('再生しました。', 'idle');
+          },
+          onError: error => {
+            if (!current()) return;
+            finished = true;
+            clearTimeout(this.timer);
+            this.report(speechErrorMessage(error), 'error');
+          },
+        });
+        return true;
+      } catch {
+        if (id !== this.serial) return false;
+        finished = true;
+        clearTimeout(this.timer);
+        this.report('音声の開始に失敗しました。「音声が出ないとき」を確認してください。', 'error');
+        return false;
+      }
+    };
+    return play(0);
   }
 }

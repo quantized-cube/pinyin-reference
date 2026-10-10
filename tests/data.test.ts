@@ -1,3 +1,4 @@
+import {comparisonPresets,comparisonReadings,comparisonExample} from '../src/comparison.js';
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import {readFile} from 'node:fs/promises';
@@ -53,7 +54,7 @@ test('every tone-marked inventory item round-trips without losing ü or ê',()=>
 });
 test('search respects tones, IPA, final groups and exclusions',()=>{
   assert.ok(findSyllables('nǚ').some(s=>s.pinyin==='nü'));
-  assert.ok(findSyllables('ɕ').every(s=>s.ipa.includes('ɕ')));
+  assert.ok(findSyllables('ɕ',{searchMode:'ipa'}).every(s=>s.ipa.includes('ɕ')));
   assert.deepEqual(findSyllables('üan').map(s=>s.pinyin),['yuan','juan','quan','xuan']);
   assert.ok(findSyllables('',{group:'ü',initial:'j'}).every(s=>s.initial==='j'&&s.final.startsWith('ü')));
   assert.equal(findSyllables('not-a-syllable').length,0);
@@ -64,8 +65,10 @@ test('exact pinyin ranks first while filters and partial matches still apply',()
   for(const s of syllables)for(const query of [s.pinyin,s.pinyin+'3',markTone(s.pinyin,3)]){
     assert.equal(findSyllables(query)[0]?.pinyin,s.pinyin,query);
   }
-  assert.ok(findSyllables('pa').some(s=>s.pinyin==='ba'));
-  assert.equal(findSyllables('pa',{initial:'b'})[0]?.pinyin,'ba');
+  assert.ok(!findSyllables('pa').some(s=>s.pinyin==='ba'));
+  assert.equal(findSyllables('pa',{searchMode:'ipa'})[0]?.pinyin,'ba');
+  assert.equal(findSyllables('pa',{initial:'b'}).length,0);
+  assert.equal(findSyllables('pa',{initial:'b',searchMode:'ipa'})[0]?.pinyin,'ba');
   assert.equal(findSyllables('pa',{initial:'x'}).length,0);
   assert.equal(findSyllables('chua',{rare:false}).some(s=>s.pinyin==='chua'),false);
 });
@@ -119,4 +122,33 @@ test('examples align text, numbered pinyin and target; neutral tones always have
   }
   for(const s of syllables.filter(s=>!s.peripheral))assert.ok([1,2,3,4,5].some(t=>examples[s.pinyin+t]),s.pinyin);
   assert.equal(required(examples.ma5,'ma5').text,'妈妈');assert.equal(required(examples.ma5,'ma5').target,1);assert.equal(examples.xuan5,undefined);
+});
+
+
+test('IPA search preserves IPA symbols and does not use pinyin spelling aliases',()=>{
+  assert.equal(findSyllables('ɕ').length,0);
+  assert.ok(findSyllables('ɕ',{searchMode:'ipa'}).length>0);
+  assert.equal(findSyllables('[pa]',{searchMode:'ipa'})[0]?.pinyin,'ba');
+  assert.equal(findSyllables('v',{searchMode:'ipa'}).length,0);
+  assert.ok(findSyllables('v').some(s=>s.pinyin==='nü'));
+  assert.deepEqual(findSyllables('ɹ̩',{searchMode:'ipa'}).map(s=>s.pinyin),['zi','ci','si']);
+});
+
+test('all comparison presets use playable single-character examples at a common tone',()=>{
+  for(const preset of comparisonPresets){
+    for(const pinyin of [preset.a,preset.b]){
+      assert.ok(syllableMap.has(pinyin));
+      const example=required(comparisonExample(pinyin,preset.tone,examples),pinyin);
+      assert.equal([...example.text].length,1);
+      assert.deepEqual(example.tokens,[pinyin+preset.tone]);
+      assert.equal(example.target,0);
+    }
+  }
+  for(const [key,text] of Object.entries(comparisonReadings)){
+    const query=parseQuery(key);assert.ok(syllableMap.has(query.text));assert.ok(query.tone);
+    assert.match(text,/^[\u4e00-\u9fff]$/);
+  }
+  assert.equal(comparisonExample('ma',5,examples),undefined);
+  assert.equal(comparisonExample('ê',1,examples),undefined);
+  assert.equal(comparisonExample('an',4,examples),undefined); // contextual word is not isolated audio
 });

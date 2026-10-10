@@ -123,3 +123,38 @@ test('unsupported speech and synchronous failures do not leave a pending request
   assert.equal(s.speaker.speak('妈', voice.voiceURI), false);
   assert.equal(s.lastStatus()[1], 'error');
 });
+
+
+test('alternating playback is A B A B and ignores duplicate terminal callbacks',async t=>{
+  const s=setup();t.after(()=>s.speaker.stop(false));
+  const delay=()=>new Promise(resolve=>setTimeout(resolve,450));
+  s.speaker.speakSequence([{text:'安',label:'A'},{text:'肮',label:'B'},{text:'安',label:'A'},{text:'肮',label:'B'}],voice.voiceURI,.8);
+  for(let i=0;i<4;i++){
+    assert.equal(s.requests.length,i+1);
+    const request=s.lastRequest();assert.equal(request.text,i%2?'肮':'安');assert.equal(request.rate,.8);
+    request.onStart();assert.match(s.lastStatus()[0],i%2?/B/:/A/);
+    request.onEnd();request.onEnd();request.onError('interrupted');
+    if(i<3)await delay();
+  }
+  assert.equal(s.lastStatus()[1],'idle');assert.equal(s.requests.length,4);
+});
+
+test('stopping during the inter-sound gap cancels the remaining sequence',async t=>{
+  const s=setup();t.after(()=>s.speaker.stop(false));
+  s.speaker.speakSequence([{text:'安'},{text:'肮'}],'');
+  s.lastRequest().onEnd();s.speaker.stop();
+  await new Promise(resolve=>setTimeout(resolve,450));
+  assert.equal(s.requests.length,1);assert.equal(s.speaker.message,'再生を停止しました。');
+});
+
+test('a sequence error aborts later sounds and a new single play replaces the whole queue',async t=>{
+  const s=setup();t.after(()=>s.speaker.stop(false));
+  s.speaker.speakSequence([{text:'安'},{text:'肮'}],'');
+  const first=s.lastRequest();first.onError('network');first.onEnd();
+  await new Promise(resolve=>setTimeout(resolve,450));
+  assert.equal(s.requests.length,1);assert.match(s.speaker.message??'',/network/);
+  s.speaker.speakSequence([{text:'安'},{text:'肮'}],'');s.lastRequest().onEnd();
+  s.speaker.speak('妈','');s.lastRequest().onEnd();
+  await new Promise(resolve=>setTimeout(resolve,450));
+  assert.deepEqual(s.requests.map(r=>r.text),['安','安','妈']);
+});

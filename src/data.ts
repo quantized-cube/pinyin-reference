@@ -1,4 +1,4 @@
-import type { InitialId, FinalId, Initial, Final, GroupFilter, Syllable, Tone, ToneId, SearchFilters } from './types.js';
+import type { InitialId, FinalId, Initial, Final, GroupFilter, Syllable, Tone, ToneId, SearchFilters, SearchMode } from './types.js';
 import { isToneId, required } from './types.js';
 import { articulationSearchText } from './articulation.js';
 
@@ -30,7 +30,7 @@ export const initials: readonly Initial[] = ([
 
 export const groups: readonly (readonly [GroupFilter,string])[] = [ ['all','すべて'], ['plain','基本韻母'], ['i','i 系'], ['u','u 系'], ['ü','ü 系'], ['special','特殊韻母'] ];
 export const finals: readonly Final[] = ([
-  ['a','a','plain','口を大きく開く。'], ['o','o','plain','唇を丸める。b / p / m / f の後は [wo] 系で示す。'],
+  ['a','a','plain','口を大きく開く。'], ['o','o','plain','唇を丸める。唇音後の o は [u̯o]〜[o] 系など、渡り音や母音の音色の扱いが資料・話者により異なる。本アプリでは b / p / m / f の後を広く [wo] と表記する。'],
   ['e','ɤ','plain','唇を丸めず、舌を奥に置く。軽声では [ə] に近づくことがある。'],
   ['ai','ai̯','plain','a から i へ移る。'], ['ei','ei̯','plain','e から i へ移る。'],
   ['ao','ɑu̯','plain','o の文字でも、終わりは [u̯] 系。'], ['ou','ou̯','plain','o から u へ移る。'],
@@ -139,13 +139,18 @@ export function rulesFor(s: Syllable): string[] {
   if (s.final.startsWith('-i')) result.push('この i は [i] ではない。直前の子音に対応した舌の位置で音節を作る。');
   if (s.pinyin==='ri') result.push('ri は声母と韻母が連続するため、音節全体を [ɻ̩] とまとめて示す。');
   if (['ian','üan'].includes(s.final)) result.push('a の文字でも、この韻母では [ɛ] 系の母音になる。');
-  if (s.final === 'o' && ['b','p','m','f'].includes(s.initial)) result.push('bo / po / mo / fo の o は [wo] 系。資料によって [o] と簡略に示す。');
+  if (s.final === 'o' && ['b','p','m','f'].includes(s.initial)) result.push('bo / po / mo / fo の o：渡り音を含む [u̯o]〜[o] 系などの表記があり、[uɔ] 系とする資料もある。本アプリでは広く [wo] と表記する。');
   return result.length ? result : ['この組み合わせでは、声母と韻母をそのままつなげて書く。'];
 }
-export function findSyllables(query: string, {group='all',initial='all',rare=true}: SearchFilters={}): Syllable[] {
-  const {text} = parseQuery(query);
-  return syllables.filter(s => (group==='all' || getFinal(s.final).group===group) && (initial==='all' || s.initial===initial) && (rare || !s.peripheral) && (!text || s.pinyin.includes(text) || s.final.includes(text) || s.ipa.includes(text) || articulationSearchText(s.initial).includes(text)))
-    .sort((a,b) => Number(b.pinyin===text)-Number(a.pinyin===text));
+export function searchText(query: string, mode: SearchMode): string {
+  // IPA must keep its own symbols and combining marks; do not apply pinyin aliases.
+  return mode === 'ipa' ? query.trim().replace(/^\[([\s\S]*)\]$/, '$1').trim().normalize('NFC') : parseQuery(query).text;
+}
+export function findSyllables(query: string, {group='all',initial='all',rare=true,searchMode='pinyin'}: SearchFilters={}): Syllable[] {
+  const text = searchText(query, searchMode);
+  return syllables.filter(s => (group==='all' || getFinal(s.final).group===group) && (initial==='all' || s.initial===initial) && (rare || !s.peripheral)
+    && (!text || (searchMode==='ipa' ? s.ipa.includes(text) : s.pinyin.includes(text) || s.final.includes(text) || articulationSearchText(s.initial).includes(text))))
+    .sort((a,b) => Number((searchMode==='ipa'?b.ipa:b.pinyin)===text)-Number((searchMode==='ipa'?a.ipa:a.pinyin)===text));
 }
 
 export function getInitial(id: InitialId): Initial { return required(initials.find(i => i.id === id), `initial ${id}`); }

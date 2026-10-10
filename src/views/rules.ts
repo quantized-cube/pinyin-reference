@@ -1,0 +1,15 @@
+import {tones} from '../data.js';
+import {thirdToneForms} from '../third-tone.js';
+import type {ToneId} from '../types.js';
+import {contour} from './shared.js';
+export function renderRules(){
+  const rules: [string,string,[string,string,ToneId?][]][]=[
+    ['ü の点は、いつ消える？','j / q / x の後は ü → u。声母がないときは y を前に置き、点を省略します。n / l の後は点を残します。綴りが u でも、舌の位置は ü [y] のままです。',[['ju','j + ü → ju'],['xuan','x + üan → xuan'],['nü','n + ü → nü'],['yuan','üan → yuan']]],
+    ['長い韻母を短く書く','声母が前にあると iou → iu、uei → ui、uen → un。jun / qun / xun の un は ün なので、この uen の省略とは別です。',[['liu','l + iou → liu'],['gui','g + uei → gui'],['dun','d + uen → dun'],['jun','j + ün → jun']]],
+    ['声母なしの y / w 規則','i 系は yi / ya / ye / yao / you / yan / yin / yang / ying / yong。u 系は wu / wa / wo / wai / wei / wan / wen / wang / weng。ü 系は yu / yue / yuan / yun と書きます。y と w は、この表では声母なしの綴りとして扱います。',[['yi','i → yi'],['you','iou → you'],['wen','uen → wen'],['yun','ün → yun']]],
+    ['同じ文字でも、音が違う','ian・üan の a は [ɛ] 系。zi / ci / si と zhi / chi / shi / ri の i は、yi の [i] と区別します。er は独立音節の [ɚ] です。',[['xian','xian [ɕjɛn]'],['zi','zi [tsɹ̩]'],['zhi','zhi [ʈʂɻ̩]'],['er','er [ɚ]']]],
+    ['声調記号はどこに付く？','a → e の順で優先し、ou では o、それ以外は最後の母音に付けます。iu は u（liù）、ui は i（guì）。軽声は記号なしで、数字式では 5 または 0。このアプリはどちらも検索できます。',[['liu','liù',4],['gui','guì',4],['nü','nǚ',3]]],
+  ];
+  return `<div class="section-heading"><h2>綴りのルールをほどく</h2><span>例を選んで確認</span></div><div class="rules-list">${rules.map(([title,note,links],i)=>`<article class="rule-card"><h3><span class="rule-index">0${i+1}</span>${title}</h3><p>${note}</p><div class="rule-examples">${links.map(([s,label,tone])=>`<button data-pick="${s}"${tone?` data-pick-tone="${tone}"`:''}>${label}</button>`).join('')}</div></article>`).join('')}<article class="rule-card"><h3><span class="rule-index">06</span>4つの声調と軽声</h3><p>図は基本の調形です。第3声の発音形は次の欄で比較できます。数字は高さを低い1〜高い5で示します。</p><div class="tone-guide">${tones.map(t=>`<button data-demo-tone="${t.id}">${t.label}${contour(t,true)}<small>${t.value}</small></button>`).join('')}</div><p>「一」「不」にも変調があります。軽声の高さは直前の声調に依存します。例語TTSでは、表示した基本の調形と実際の発音が異なる場合があります。</p></article>${renderThirdToneGuide()}</div>`;
+}
+export function renderThirdToneGuide(){return `<details class="rule-card third-tone-guide"><summary>第3声を詳しく：全三声・半三声・3声＋3声</summary><p>辞書の声調はどれも第3声。半三声・変調でも、ピンインの記号は ǎ のままです。</p><div class="third-guide-grid">${thirdToneForms.map(form=>`<button data-third-demo="${form.id}"><strong>${form.label}</strong>${contour(form,true)}<span>${form.value} [${form.ipa}]</span><small>${form.id==='full'?'好 hǎo':form.id==='half'?'好吃 hǎochī':'好友 hǎoyǒu'}</small></button>`).join('')}</div><p>上の例を選ぶと、対象の「好」のIPA・調形・例語音声を比較できます。数字は相対的な高さ（1＝低い、5＝高い）の代表値で、音声を測定した値ではありません。</p><ul class="third-context-notes"><li>全三声：丁寧な単独形など。自然な発話では、語末でも必ず上がるとは限りません。</li><li>半三声：後半を上げない低い形。第1・2・4声の前などに現れます。</li><li>3声＋3声：同じまとまりの前の第3声が上昇形に変わります。後ろの第3声の形は、さらに後続する音や区切りによります。</li><li>軽声の前は語ごとの性質も関係します。3声が3つ以上続く場合も意味や韻律の区切りが関わるため、自動判定していません。</li></ul><p>図とIPAは学習用の目安。TTSに調形を指定することはできず、実際の音声との一致は保証できません。<a href="https://web.mit.edu/~jinzhang/www/pinyin/tones/" target="_blank" rel="noreferrer">声調の参考資料（MIT） ↗</a></p></details>`;}

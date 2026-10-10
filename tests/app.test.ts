@@ -23,12 +23,12 @@ class Utterance {
   constructor(readonly text: string) {}
 }
 
-async function setup(t: TestContext, initialVoices = [local]) {
+async function setup(t: TestContext, initialVoices = [local], options: {mobile?: boolean; storedIpa?: string; hash?: string} = {}) {
   const errors: unknown[] = [];
   const virtualConsole = new VirtualConsole();
   virtualConsole.on('jsdomError', error => errors.push(error));
   // No resource loading or embedded scripts: only local built modules are evaluated.
-  const dom = new JSDOM(html, { url: 'https://pinyin.test/', runScripts: 'outside-only', virtualConsole });
+  const dom = new JSDOM(html, { url: 'https://pinyin.test/'+(options.hash??''), runScripts: 'outside-only', virtualConsole });
   const { window } = dom;
   t.after(() => { window.close(); assert.deepEqual(errors, []); });
   let voices = initialVoices;
@@ -43,13 +43,14 @@ async function setup(t: TestContext, initialVoices = [local]) {
   Object.assign(window, {
     speechSynthesis: synthesis,
     SpeechSynthesisUtterance: Utterance,
-    matchMedia: () => ({ matches: false }),
+    matchMedia: () => ({ matches: options.mobile??false }),
     fetch: async (url: string) => {
       assert.equal(url, 'examples.json');
       return { ok: true, json: async () => catalog };
     },
   });
   window.localStorage.setItem('pinyin.voice', preferred.voiceURI);
+  if(options.storedIpa!==undefined)window.localStorage.setItem('pinyin.ipa',options.storedIpa);
   const context = dom.getInternalVMContext();
   const modules = new Map<string, Promise<SourceTextModule>>();
   function load(url: URL): Promise<SourceTextModule> {
@@ -306,7 +307,7 @@ test('one i header lists all three sounds while cells and details keep the corre
   assert.equal(s.window.document.querySelectorAll('.final-heading th').length,38);
   assert.equal(s.$('.final-heading [data-final="i"] small').textContent,'[i / ɹ̩ / ɻ̩]');
   assert.equal(s.window.document.querySelectorAll('.final-heading [data-final^="-i"]').length,0);
-  s.$('#show-ipa').click();
+  assert.equal(s.$<HTMLInputElement>('#show-ipa').checked,true);
   const column=s.$('[data-syllable="yi"]').getAttribute('data-col');
   for (const [pinyin,ipa,rime,context] of [
     ['yi','i','i',''], ['mi','mi','i',''], ['ji','tɕi','i',''],
@@ -331,6 +332,8 @@ test('one i header lists all three sounds while cells and details keep the corre
 test('merged i searches and filters show only matching syllables without extra columns', async t => {
   const s = await setup(t);
   const shown=()=>[...s.window.document.querySelectorAll('[data-syllable]')].map(el=>el.getAttribute('data-syllable'));
+  s.$<HTMLSelectElement>('#search-mode').value='ipa';
+  s.$('#search-mode').dispatchEvent(new s.window.Event('change',{bubbles:true}));
   for (const [query,expected] of [['ɹ̩',['zi','ci','si']],['ɻ̩',['zhi','chi','shi','ri']]] as const) {
     s.input(query);
     assert.deepEqual(shown(),expected);
@@ -350,4 +353,115 @@ test('merged i searches and filters show only matching syllables without extra c
   s.$('#initial-filter').dispatchEvent(new s.window.Event('change',{bubbles:true}));
   assert.ok(shown().includes('zhi'));
   assert.ok(shown().every(pinyin=>pinyin?.startsWith('zh')));
+});
+
+
+test('search modes keep pinyin pa separate from IPA pa across matrix and cards', async t => {
+  const s=await setup(t);
+  s.input('pa');
+  assert.ok(s.window.document.querySelector('[data-syllable="pa"]'));
+  assert.equal(s.window.document.querySelector('[data-syllable="ba"]'),null);
+  s.$<HTMLSelectElement>('#search-mode').value='ipa';
+  s.$('#search-mode').dispatchEvent(new s.window.Event('change',{bubbles:true}));
+  assert.ok(s.window.document.querySelector('[data-syllable="ba"]'));
+  assert.equal(s.window.document.querySelector('[data-syllable="pa"]'),null);
+  s.key('#search','Enter');
+  assert.equal(s.$('#detail h2').textContent,'bā');
+  s.$('[data-tab="initials"]').click();s.input('p');
+  const picks=()=>[...s.window.document.querySelectorAll('.sound-card')].map(el=>el.getAttribute('data-pick'));
+  assert.deepEqual(picks(),['ba','pa']);
+  s.$<HTMLSelectElement>('#search-mode').value='pinyin';
+  s.$('#search-mode').dispatchEvent(new s.window.Event('change',{bubbles:true}));
+  assert.deepEqual(picks(),['pa']);
+  s.$('[data-tab="finals"]').click();s.input('ɤ');
+  assert.equal(s.window.document.querySelectorAll('.sound-card').length,0);
+  s.$<HTMLSelectElement>('#search-mode').value='ipa';
+  s.$('#search-mode').dispatchEvent(new s.window.Event('change',{bubbles:true}));
+  assert.equal(s.$('.sound-card').getAttribute('data-final'),'e');
+});
+
+test('IPA starts on desktop, off on mobile, and the stored choice overrides both', async t => {
+  for(const [mobile,storedIpa,expected] of [[false,undefined,true],[true,undefined,false],[false,'false',false],[true,'true',true]] as const){
+    const s=await setup(t,[local],{mobile,storedIpa});
+    assert.equal(s.$<HTMLInputElement>('#show-ipa').checked,expected);
+    assert.equal(s.window.document.querySelectorAll('.cell-ipa').length,expected?413:0);
+    s.$('#show-ipa').click();
+    assert.equal(s.window.localStorage.getItem('pinyin.ipa'),String(!expected));
+    s.$('[data-tab="finals"]').click();s.$('[data-tab="matrix"]').click();
+    assert.equal(s.$<HTMLInputElement>('#show-ipa').checked,!expected);
+  }
+});
+
+test('third tone starts collapsed, preserves an explicit selection and restores linked forms', async t => {
+  const s=await setup(t);s.input('hao3');
+  assert.equal(s.$<HTMLDetailsElement>('.third-tone-panel').open,false);
+  assert.equal(s.window.document.querySelector('.example-realization'),null);
+  s.$<HTMLDetailsElement>('.third-tone-panel').open=true;
+  s.$('[data-third-tone-form="half"]').click();
+  assert.equal(s.$<HTMLDetailsElement>('.third-tone-panel').open,true);
+  assert.match(s.window.location.hash,/form=half/);
+  assert.match(s.$('.detail-ipa').textContent??'',/˨˩/);
+  s.$('[data-tab="rules"]').click();
+  assert.equal(s.$<HTMLDetailsElement>('.third-tone-guide').open,false);
+  const linked=await setup(t,[local],{hash:'#s=hao&t=3&form=sandhi'});
+  assert.equal(linked.$<HTMLDetailsElement>('.third-tone-panel').open,true);
+  assert.match(linked.$('.detail-ipa').textContent??'',/˧˥/);
+});
+
+test('comparison presets play their matching single characters and disable missing tones', async t => {
+  const s=await setup(t);s.$('[data-tab="compare"]').click();
+  assert.equal(s.$<HTMLInputElement>('#search').disabled,true);
+  const cases=[['an-ang','安','肮'],['en-eng','奔','崩'],['ian-iang','先','香'],['in-ing','音','英'],['u-ü','路','绿']] as const;
+  for(const [preset,a,b] of cases){
+    s.$(`[data-compare-preset="${preset}"]`).click();
+    for(const [side,text] of [['A',a],['B',b]]){
+      assert.equal(s.$<HTMLButtonElement>(`[data-compare-play="${side}"]`).disabled,false);
+      s.$(`[data-compare-play="${side}"]`).click();assert.equal(s.lastRequest().text,text);
+      s.lastRequest().onend?.();
+    }
+  }
+  s.$<HTMLSelectElement>('#compare-a').value='ê';
+  s.$('#compare-a').dispatchEvent(new s.window.Event('change',{bubbles:true}));
+  assert.equal(s.$<HTMLButtonElement>('[data-compare-play="A"]').disabled,true);
+  assert.equal(s.$<HTMLButtonElement>('[data-compare-play="alternate"]').disabled,true);
+  s.$('[data-tab="matrix"]').click();assert.equal(s.$<HTMLInputElement>('#search').disabled,false);
+});
+
+test('changing comparison or leaving its tab cancels playback and stale events', async t => {
+  const s=await setup(t);s.$('[data-tab="compare"]').click();
+  s.$('[data-compare-play="alternate"]').click();
+  const first=s.lastRequest();first.onstart?.();
+  assert.match(s.$('#compare-status').textContent??'',/A.*安/);
+  const before=s.cancellations();
+  s.$('[data-compare-preset="en-eng"]').click();
+  assert.ok(s.cancellations()>before);
+  first.onend?.();first.onerror?.({error:'interrupted'});
+  assert.doesNotMatch(s.$('#compare-status').textContent??'',/再生中|interrupted/);
+  s.$('[data-compare-play="A"]').click();
+  const second=s.lastRequest();s.$('[data-tab="vowels"]').click();
+  second.onstart?.();assert.doesNotMatch(s.$('#voice-status').textContent??'',/再生中/);
+});
+
+test('vowel map supports Japanese overlay and opens the correct syllable details', async t => {
+  const s=await setup(t);s.$('[data-tab="vowels"]').click();
+  assert.equal(s.window.document.querySelectorAll('.vowel-point').length,7);
+  assert.equal(s.window.document.querySelectorAll('.japanese-vowel').length,0);
+  s.$('#japanese-vowels').click();
+  assert.equal(s.window.document.querySelectorAll('.japanese-vowel').length,5);
+  assert.match(s.$('.vowel-japanese-note').textContent??'',/ɯ̟/);
+  for(const [pick,reading] of [['yi','yī'],['yu','yū'],['e','ē']] as const){
+    s.$(`.vowel-point[data-pick="${pick}"]`).click();
+    assert.equal(s.$('#detail h2').textContent,reading);
+  }
+  s.$('[data-tab="finals"]').click();s.$('[data-tab="vowels"]').click();
+  assert.equal(s.$<HTMLInputElement>('#japanese-vowels').checked,true);
+});
+
+
+test('slash from a non-searchable tab opens the matrix search',async t=>{
+  const s=await setup(t);s.$('[data-tab="vowels"]').click();
+  s.key('body','/');
+  assert.equal(s.$('[data-tab="matrix"]').getAttribute('aria-current'),'page');
+  assert.equal(s.$<HTMLInputElement>('#search').disabled,false);
+  assert.equal(s.window.document.activeElement,s.$('#search'));
 });

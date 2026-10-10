@@ -22,13 +22,13 @@
       <div class="summary" aria-label="収録数"><div><strong>21</strong><span>声母</span></div><div><strong>40</strong><span>韻母・補足</span></div><div><strong id="total-count">—</strong><span>音節</span></div></div>
     </section>
     <section class="search-bar" aria-label="音節検索">
-      <label class="search-field"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6.5"/><path d="m16 16 5 5"/></svg><input id="search" type="search" placeholder="音節・韻母・IPAで検索… 例：xuan / nǚ / ma3 / ɕ" aria-label="音節・韻母・IPA・発音用語を検索" autocomplete="off" spellcheck="false"><kbd>/</kbd></label>
+      <label class="search-mode-label">検索対象<select id="search-mode" aria-label="検索対象"><option value="pinyin">ピンイン・用語</option><option value="ipa">IPA</option></select></label><label class="search-field"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6.5"/><path d="m16 16 5 5"/></svg><input id="search" type="search" placeholder="ピンイン・用語で検索… 例：xuan / nǚ / ma3 / 唇音" aria-label="ピンイン・韻母・発音用語を検索" autocomplete="off" spellcheck="false"><kbd>/</kbd></label>
       <button id="reset" class="text-button">条件をリセット ↺</button>
     </section>
     <div class="quick-links"><span>まずはここから</span><button data-pick="xuan">xuan <small>ü → u</small></button><button data-pick="jun">jun <small>ü の音</small></button><button data-pick="dun">dun <small>uen → un</small></button><button data-pick="liu">liu <small>iou → iu</small></button><button data-pick="zhi">zhi <small>特別な i</small></button><button data-pick="ma">ma <small>声調を聞く</small></button></div>
     <div class="workspace" id="workspace">
       <div class="reference">
-        <nav class="tabs" aria-label="リファレンスの種類"><button data-tab="matrix" aria-current="page">音節マトリクス</button><button data-tab="finals">韻母一覧 <small>40</small></button><button data-tab="initials">声母一覧 <small>21</small></button><button data-tab="rules">表記と声調</button></nav>
+        <nav class="tabs" aria-label="リファレンスの種類"><button data-tab="matrix" aria-current="page">音節マトリクス</button><button data-tab="finals">韻母一覧 <small>40</small></button><button data-tab="initials">声母一覧 <small>21</small></button><button data-tab="compare">聞き比べ</button><button data-tab="vowels">母音図</button><button data-tab="rules">表記と声調</button></nav>
         <section class="reference-body" id="reference-body" aria-label="発音表"></section>
       </div>
       <aside class="detail" id="detail" aria-label="選択した音節の詳細"></aside>

@@ -16,7 +16,9 @@ export interface ThirdToneForm {
   readonly points: string;
   readonly note: string;
 }
-export type TabId = 'matrix' | 'finals' | 'initials' | 'rules';
+export type TabId = 'matrix' | 'finals' | 'initials' | 'rules' | 'compare' | 'vowels';
+export type SearchMode = 'pinyin' | 'ipa';
+export type ExampleState = 'loading' | 'ready' | 'error';
 export interface Initial { readonly id: InitialId; readonly ipa: string; readonly label: string; readonly note: string; }
 export interface Final { readonly id: FinalId; readonly ipa: string; readonly group: FinalGroup; readonly note: string; }
 export interface Syllable {
@@ -37,11 +39,18 @@ export interface Tone {
   readonly note: string;
 }
 export interface SearchFilters {
+  searchMode?: SearchMode;
   group?: GroupFilter;
   initial?: InitialId | 'all';
   rare?: boolean;
 }
 export interface AppState {
+  searchMode: SearchMode;
+  thirdToneExpanded: boolean;
+  compareA: string;
+  compareB: string;
+  compareTone: ToneId;
+  japaneseVowels: boolean;
   tab: TabId;
   group: GroupFilter;
   initial: InitialId | 'all';
@@ -80,7 +89,7 @@ export function isToneId(value: unknown): value is ToneId {
   return value === 1 || value === 2 || value === 3 || value === 4 || value === 5;
 }
 export function isTabId(value: unknown): value is TabId {
-  return value === 'matrix' || value === 'finals' || value === 'initials' || value === 'rules';
+  return value === 'matrix' || value === 'finals' || value === 'initials' || value === 'rules' || value === 'compare' || value === 'vowels';
 }
 export function required<T>(value: T | null | undefined, description: string): T {
   if (value == null) throw new Error(`Missing ${description}`);

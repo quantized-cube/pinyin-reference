@@ -1,6 +1,6 @@
 import {renderCompare} from './views/compare.js';
 import {renderVowels} from './views/vowels.js';
-import {comparisonPresets,comparisonExample} from './comparison.js';
+import {comparisonPresets,comparisonSequence,comparisonSides} from './comparison.js';
 import {renderAbout} from './views/about.js';
 import {createState,save} from './state.js';
 import {esc} from './views/shared.js';
@@ -54,19 +54,16 @@ function updateSearchMode(){
 }
 function updateComparisonAudio(){
   if(state.tab!=='compare')return;
-  const available=(pinyin: string)=>exampleLoad.status==='ready'&&!!comparisonExample(pinyin,state.compareTone,loadedExamples()?.isolatedExamples??{});
   document.querySelectorAll<HTMLButtonElement>('[data-compare-play]').forEach(button=>{
-    const side=button.dataset.comparePlay;
-    button.disabled=!speaker?.supported||(side==='A'?!available(state.compareA):side==='B'?!available(state.compareB):!available(state.compareA)||!available(state.compareB));
+    button.disabled=!speaker?.supported||exampleLoad.status!=='ready'||!comparisonSequence(state.compareSyllables,state.compareTone,loadedExamples()?.isolatedExamples??{},button.dataset.comparePlay??'');
   });
   const status=document.querySelector('#compare-status');
   if(status)status.textContent=speaker?.message??(!speaker?.supported?'このブラウザは音声合成に対応していません。':'再生する音声・速度は、音節詳細の設定と共通です。');
 }
 function playComparison(side: string){
-  if(exampleLoad.status!=='ready'||!['A','B','alternate'].includes(side))return;
-  const sides=side==='alternate'?['A','B','A','B']:[side];
-  const items=sides.map(label=>{const pinyin=label==='A'?state.compareA:state.compareB;const example=comparisonExample(pinyin,state.compareTone,loadedExamples()?.isolatedExamples??{});return example?{text:example.text,label:`${label} · ${markTone(pinyin,state.compareTone)}`}:undefined;});
-  if(items.every((item): item is {text: string;label: string}=>!!item))speaker?.speakSequence(items,state.voice,state.rate);
+  if(exampleLoad.status!=='ready')return;
+  const items=comparisonSequence(state.compareSyllables,state.compareTone,exampleLoad.catalog.isolatedExamples,side);
+  if(items)speaker?.speakSequence(items,state.voice,state.rate);
 }
 function ensureGridFocus(){if(!document.querySelector('[data-syllable][tabindex="0"]'))document.querySelector('[data-syllable]')?.setAttribute('tabindex','0');}
 function exampleFor(){return detailExample(state.selected,state.tone,state.thirdToneForm,loadedExamples());}
@@ -115,7 +112,7 @@ document.addEventListener('click',event=>{
   if(isTabId(b.dataset.tab)){speaker?.stop(false);state.tab=b.dataset.tab;renderReference();updateVoices();}
   if(isGroupFilter(b.dataset.group)){state.group=b.dataset.group;renderReference();document.querySelector<HTMLElement>(`[data-group="${state.group}"]`)?.focus();}
   if(b.dataset.syllable)select(b.dataset.syllable);
-  if(b.dataset.comparePreset){const preset=comparisonPresets.find(p=>p.id===b.dataset.comparePreset);if(preset){speaker?.stop(false);state.compareA=preset.a;state.compareB=preset.b;state.compareTone=preset.tone;renderReference();updateVoices();document.querySelector<HTMLElement>(`[data-compare-preset="${preset.id}"]`)?.focus();}}
+  if(b.dataset.comparePreset){const preset=comparisonPresets.find(p=>p.id===b.dataset.comparePreset);if(preset){speaker?.stop(false);state.compareSyllables=[...preset.syllables];state.compareTone=preset.tone;renderReference();updateVoices();document.querySelector<HTMLElement>(`[data-compare-preset="${preset.id}"]`)?.focus();}}
   if(b.dataset.comparePlay)playComparison(b.dataset.comparePlay);
   if(b.id==='compare-stop')speaker?.stop();
   if(b.dataset.pick)select(b.dataset.pick,{tone:b.dataset.pickTone?toTone(b.dataset.pickTone):undefined,scroll:true});
@@ -138,7 +135,9 @@ document.addEventListener('change',event=>{
   if(el instanceof HTMLInputElement&&el.id==='show-ipa'){state.ipa=el.checked;save('pinyin.ipa',state.ipa);renderReference();$('#show-ipa').focus();}
   if(el instanceof HTMLInputElement&&el.id==='show-rare'){state.rare=el.checked;renderReference();$('#show-rare').focus();}
   if(el.id==='search-mode'&&(el.value==='pinyin'||el.value==='ipa')){state.searchMode=el.value;updateSearchMode();renderReference();}
-  if(el.id==='compare-a'||el.id==='compare-b'){if(syllableMap.has(el.value)){speaker?.stop(false);if(el.id==='compare-a')state.compareA=el.value;else state.compareB=el.value;renderReference();updateVoices();$('#'+el.id).focus();}}
+  const compareIndex=comparisonSides.findIndex(side=>el.id===`compare-${side.toLowerCase()}`);
+  if(compareIndex>=0&&compareIndex<state.compareSyllables.length&&syllableMap.has(el.value)){speaker?.stop(false);state.compareSyllables[compareIndex]=el.value;renderReference();updateVoices();$('#'+el.id).focus();}
+  if(el.id==='compare-count'&&(el.value==='2'||el.value==='3')){speaker?.stop(false);const [a,b,c]=state.compareSyllables;state.compareSyllables=el.value==='3'?[a,b,c??'xi']:[a,b];renderReference();updateVoices();$('#compare-count').focus();}
   if(el.id==='compare-tone'){const tone=toTone(el.value);if(tone&&tone!==5){speaker?.stop(false);state.compareTone=tone;renderReference();updateVoices();$('#compare-tone').focus();}}
   if(el instanceof HTMLInputElement&&el.id==='japanese-vowels'){state.japaneseVowels=el.checked;renderReference();$('#japanese-vowels').focus();}
   if(el.id==='voice'){speaker?.stop(false);state.voice=el.value;save('pinyin.voice',state.voice);updateVoices();}

@@ -20,6 +20,7 @@ export interface ThirdToneForm {
 export type TabId = 'matrix' | 'finals' | 'initials' | 'rules' | 'compare' | 'vowels';
 export type SearchMode = 'pinyin' | 'ipa';
 export type ExampleState = 'loading' | 'ready' | 'error';
+export type ComparisonSyllables = [string, string] | [string, string, string];
 export interface Initial { readonly id: InitialId; readonly ipa: string; readonly label: string; readonly note: string; }
 export interface Final { readonly id: FinalId; readonly ipa: string; readonly group: FinalGroup; readonly note: string; }
 export interface Syllable {
@@ -48,8 +49,7 @@ export interface SearchFilters {
 export interface AppState {
   searchMode: SearchMode;
   thirdToneExpanded: boolean;
-  compareA: string;
-  compareB: string;
+  compareSyllables: ComparisonSyllables;
   compareTone: ToneId;
   japaneseVowels: boolean;
   tab: TabId;

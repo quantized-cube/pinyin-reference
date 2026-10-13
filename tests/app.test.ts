@@ -82,6 +82,7 @@ async function setup(t: TestContext, initialVoices = [local], options: {
   return {
     $, input, key, setVoices, window,
     lastRequest: () => required(requests.at(-1), 'speech request'),
+    requestCount: () => requests.length,
     cancellations: () => cancellations,
   };
 }
@@ -428,6 +429,89 @@ test('comparison presets play their matching single characters and disable missi
   assert.equal(s.$<HTMLButtonElement>('[data-compare-play="A"]').disabled,true);
   assert.equal(s.$<HTMLButtonElement>('[data-compare-play="alternate"]').disabled,true);
   s.$('[data-tab="matrix"]').click();assert.equal(s.$<HTMLInputElement>('#search').disabled,false);
+});
+
+test('three-sound presets show and play every example and return to a two-sound preset', async t => {
+  const s=await setup(t);s.$('[data-tab="compare"]').click();
+  const cases=[
+    ['si-shi-xi',['思','诗','西']],
+    ['zi-zhi-ji',['资','知','鸡']],
+    ['yi-zi-zhi',['一','资','知']],
+  ] as const;
+  for(const [preset,words] of cases){
+    s.$(`[data-compare-preset="${preset}"]`).click();
+    assert.equal(s.$<HTMLSelectElement>('#compare-count').value,'3');
+    assert.equal(s.window.document.querySelectorAll('.compare-card').length,3);
+    assert.equal(s.$(`[data-compare-preset="${preset}"]`).getAttribute('aria-pressed'),'true');
+    for(const [index,side] of ['A','B','C'].entries()){
+      assert.equal(s.$(`[data-side="${side}"] .compare-example`).textContent,words[index]);
+      assert.equal(s.$<HTMLButtonElement>(`[data-compare-play="${side}"]`).disabled,false);
+      s.$(`[data-compare-play="${side}"]`).click();
+      assert.equal(s.lastRequest().text,words[index]);s.lastRequest().onend?.();
+    }
+  }
+  assert.equal(s.$('[data-side="A"] .compare-initial').textContent,'声母なし');
+  s.$<HTMLSelectElement>('#compare-tone').value='3';
+  s.$('#compare-tone').dispatchEvent(new s.window.Event('change',{bubbles:true}));
+  s.$('[data-side="C"] [data-pick]').click();
+  assert.equal(s.$('#detail h2').textContent,'zhǐ');
+  s.$('[data-compare-preset="an-ang"]').click();
+  assert.equal(s.$<HTMLSelectElement>('#compare-count').value,'2');
+  assert.equal(s.window.document.querySelector('[data-side="C"]'),null);
+  assert.equal(s.$('[data-compare-play="alternate"] small').textContent,'A → B → A → B');
+});
+
+test('three-sound playback is A B C A B C with common settings and then stops', async t => {
+  const s=await setup(t);s.$('[data-tab="compare"]').click();
+  s.$('[data-compare-preset="si-shi-xi"]').click();
+  s.$('[data-compare-play="alternate"]').click();
+  const expected=[['A','思'],['B','诗'],['C','西'],['A','思'],['B','诗'],['C','西']] as const;
+  for(const [index,[side,word]] of expected.entries()){
+    assert.equal(s.requestCount(),index+1);
+    const utterance=s.lastRequest();
+    assert.equal(utterance.text,word);assert.equal(utterance.voice,local);
+    assert.equal(Reflect.get(utterance,'rate'),.85);
+    utterance.onstart?.();assert.ok(s.$('#compare-status').textContent?.startsWith(side+' · '));
+    utterance.onend?.();
+    await new Promise(resolve=>setTimeout(resolve,450));
+  }
+  assert.equal(s.requestCount(),6);
+  assert.equal(s.$('#compare-status').textContent,'再生しました。');
+});
+
+test('changing C, count or tone cancels queued playback; a missing C disables only C and the sequence', async t => {
+  const s=await setup(t);s.$('[data-tab="compare"]').click();
+  for(const [id,value] of [['compare-c','ê'],['compare-count','2'],['compare-tone','2']] as const){
+    s.$('[data-compare-preset="si-shi-xi"]').click();
+    s.$('[data-compare-play="alternate"]').click();
+    const first=s.lastRequest(), count=s.requestCount(), cancellations=s.cancellations();
+    first.onend?.(); // The next sound is queued, but must not play after a change.
+    s.$<HTMLSelectElement>('#'+id).value=value;
+    s.$('#'+id).dispatchEvent(new s.window.Event('change',{bubbles:true}));
+    assert.ok(s.cancellations()>cancellations);
+    first.onend?.();first.onerror?.({error:'interrupted'});
+    await new Promise(resolve=>setTimeout(resolve,450));
+    assert.equal(s.requestCount(),count);
+    assert.doesNotMatch(s.$('#compare-status').textContent??'',/再生中|interrupted/);
+    if(id==='compare-c'){
+      s.setVoices([local,preferred]);
+      for(const side of ['A','B'])assert.equal(s.$<HTMLButtonElement>(`[data-compare-play="${side}"]`).disabled,false);
+      for(const side of ['C','alternate'])assert.equal(s.$<HTMLButtonElement>(`[data-compare-play="${side}"]`).disabled,true);
+    }
+    if(id==='compare-count'){
+      assert.equal(s.window.document.querySelector('#compare-c'),null);
+      s.$<HTMLSelectElement>('#compare-count').value='3';
+      s.$('#compare-count').dispatchEvent(new s.window.Event('change',{bubbles:true}));
+      assert.equal(s.$<HTMLSelectElement>('#compare-a').value,'si');
+      assert.equal(s.$<HTMLSelectElement>('#compare-b').value,'shi');
+      assert.equal(s.$<HTMLSelectElement>('#compare-c').value,'xi');
+    }
+    if(id==='compare-tone'){
+      assert.equal(s.$<HTMLButtonElement>('[data-compare-play="A"]').disabled,true);
+      assert.equal(s.$<HTMLButtonElement>('[data-compare-play="C"]').disabled,false);
+      assert.equal(s.$<HTMLButtonElement>('[data-compare-play="alternate"]').disabled,true);
+    }
+  }
 });
 
 test('changing comparison or leaving its tab cancels playback and stale events', async t => {

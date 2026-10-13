@@ -18,7 +18,7 @@ const japanese = [
 export function renderVowels(state: AppState): string {
   return `<div class="section-heading"><h2>母音の位置を見る</h2><span>前後・高さ・唇の形</span></div>
     ${renderSoundUnitsGuide()}
-    <p class="comparison-intro">上ほど舌が高く、左ほど舌が前にある母音です。i と ü、e と o の横並びは、主に唇を丸めるかどうかの対比を示します。</p>
+    <p class="comparison-intro">上ほど舌が高く、左ほど舌が前にある母音です。i と ü、e と o の横並びは、主に唇を丸めるかどうかの対比を示します。同じ高さ・前後位置の円唇母音は、IPA母音図の慣例に従って右側にずらして表示しています。</p>
     <label class="vowel-overlay-toggle"><input type="checkbox" id="japanese-vowels" ${state.japaneseVowels?'checked':''}> 日本語の「あいうえお」を重ねる</label>
     <div class="vowel-map" aria-label="母音四辺形。中国語の母音ボタンから音節詳細へ移動できます。">
       <svg viewBox="0 0 640 410" aria-hidden="true"><path d="M125 80H551V342H346ZM199 167H551M272 254H551M338 80L448 342" fill="none" stroke="currentColor" stroke-width="1.5"/><g class="vowel-axis"><text x="110" y="30">前</text><text x="328" y="30">中</text><text x="538" y="30">後</text><text x="12" y="85">高（狭）</text><text x="12" y="175">半狭</text><text x="12" y="260">半広</text><text x="12" y="347">低（広）</text></g></svg>

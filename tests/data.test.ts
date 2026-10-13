@@ -137,7 +137,7 @@ test('IPA search preserves IPA symbols and does not use pinyin spelling aliases'
 
 test('all comparison presets use playable single-character examples at a common tone',()=>{
   for(const preset of comparisonPresets){
-    for(const pinyin of [preset.a,preset.b]){
+    for(const pinyin of preset.syllables){
       assert.ok(syllableMap.has(pinyin));
       const example=required(comparisonExample(pinyin,preset.tone,isolatedExamples),pinyin);
       assert.equal([...example.text].length,1);

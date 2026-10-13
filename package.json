@@ -6,13 +6,14 @@
   "description": "普通話のピンイン・IPA・発音リファレンス",
   "scripts": {
     "typecheck": "tsc --noEmit -p tsconfig.json && tsc --noEmit -p tsconfig.tools.json",
-    "build": "tsc -p tsconfig.tools.json && node .build/scripts/build.js",
+    "build": "node scripts/clean.mjs && tsc -p tsconfig.tools.json && node .build/scripts/build.js",
     "prestart": "npm run build",
     "start": "node .build/scripts/server.js",
-    "test": "npm run build && node --experimental-vm-modules --test .build/tests/app.test.js .build/tests/data.test.js .build/tests/examples.test.js .build/tests/speech.test.js .build/tests/third-tone.test.js",
+    "test": "npm run build && node .build/scripts/test.js",
     "test:data": "python -m unittest discover -s tests -p test_*.py",
     "data:check": "python scripts/build_examples.py --check",
-    "data:refresh": "npm run test:data && python scripts/build_examples.py && npm run build"
+    "data:refresh": "npm run test:data && python scripts/build_examples.py && npm test",
+    "data:update": "npm run test:data && python scripts/build_examples.py --update-source && npm test"
   },
   "engines": {
     "node": "^20.19.0 || ^22.13.0 || >=24.0.0"

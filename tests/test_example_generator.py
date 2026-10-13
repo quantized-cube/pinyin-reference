@@ -1,10 +1,15 @@
 """Selection policy tests using a tiny local dictionary, without network access."""
 import sys
 import unittest
+import gzip
+import hashlib
+import json
+import tempfile
 from pathlib import Path
+from unittest.mock import patch
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / 'scripts'))
-from build_examples import generate_examples, retrieval_date
+from build_examples import generate_examples, load_pinned_source, download_source, parse_entries, ROOT
 
 
 def generate(raw, **overrides):
@@ -73,12 +78,60 @@ class ExampleGeneratorTests(unittest.TestCase):
         self.assertEqual(generate(raw), generate('\n'.join(reversed(raw.splitlines()))))
         self.assertEqual(generate(raw, common='眼'), generate(raw, common='眼'))
 
-    def test_cache_reuse_preserves_actual_retrieval_date_and_rejects_unknown_source(self):
-        old = {'sha256': 'original', 'retrieved': '2026-10-07'}
-        self.assertEqual(retrieval_date('original', old, {}), '2026-10-07')
-        self.assertEqual(retrieval_date('new', old, {'sha256': 'new', 'retrieved': '2026-10-13'}), '2026-10-13')
-        with self.assertRaises(ValueError):
-            retrieval_date('unknown', old, {})
+    def test_ambiguous_curated_readings_fail_but_duplicate_definitions_are_allowed(self):
+        raw = '好吃 好吃 [hao3 chi1] /tasty/\n好吃 好吃 [hao3 chi1] /palatable/'
+        data, _ = generate(raw, third_choices={'hao3': {'half': '好吃'}})
+        self.assertEqual(data['thirdToneExamples']['hao3']['half']['tokens'], ['hao3', 'chi1'])
+        # Synthetic alternate dictionary reading: neither ordering may silently win.
+        ambiguous = raw + '\n好吃 好吃 [hao3 chi2] /fixture alternate reading/'
+        for text in (ambiguous, '\n'.join(reversed(ambiguous.splitlines()))):
+            with self.assertRaisesRegex(ValueError, 'Ambiguous'):
+                generate(text, third_choices={'hao3': {'half': '好吃'}})
+            with self.assertRaisesRegex(ValueError, 'Ambiguous'):
+                generate(text, contextual_choices={'hao3': '好吃'})
+
+    def test_bundled_source_is_readable_without_cache_or_network(self):
+        with patch('build_examples.urllib.request.urlopen', side_effect=AssertionError('Unexpected network')):
+            compressed, source = load_pinned_source(ROOT / 'data' / 'cedict')
+            entries = parse_entries(gzip.decompress(compressed).decode('utf-8'))
+        self.assertTrue(entries)
+        self.assertEqual(source['sha256'], hashlib.sha256(compressed).hexdigest())
+        # Deliberately do not compare old generated JSON here: these tests run
+        # before regeneration, including when the editorial choices have changed.
+
+    def test_pinned_source_rejects_tampering_missing_files_and_path_escape(self):
+        work = (ROOT / 'work').resolve()
+        work.mkdir(exist_ok=True)
+        with tempfile.TemporaryDirectory(prefix='source-test-', dir=work) as temporary:
+            directory = Path(temporary).resolve()
+            self.assertEqual(directory.parent, work)  # Check the eventual cleanup target.
+            compressed = gzip.compress(b'fixture dictionary')
+            sha = hashlib.sha256(compressed).hexdigest()
+            meta = {'filename': f'cedict-{sha}.txt.gz', 'sha256': sha,
+                    'source': 'fixture', 'url': 'https://example.test/dictionary',
+                    'license': 'fixture', 'licenseUrl': 'https://example.test/license', 'retrieved': '2026-10-07'}
+            manifest = directory / 'source.json'
+            manifest.write_text(json.dumps(meta), encoding='utf-8')
+            with self.assertRaises(FileNotFoundError):
+                load_pinned_source(directory)
+            snapshot = directory / meta['filename']
+            snapshot.write_bytes(compressed)
+            self.assertEqual(load_pinned_source(directory), (compressed, meta))
+            snapshot.write_bytes(compressed + b'corruption')
+            with self.assertRaisesRegex(ValueError, 'SHA-256'):
+                load_pinned_source(directory)
+            manifest.write_text(json.dumps({**meta, 'filename': '../outside.txt.gz'}), encoding='utf-8')
+            with self.assertRaisesRegex(ValueError, 'manifest'):
+                load_pinned_source(directory)
+
+    def test_downloading_new_source_is_explicit_and_records_the_downloaded_bytes(self):
+        compressed = gzip.compress('眼 眼 [yan3] /eye/'.encode('utf-8'))
+        with patch('build_examples.urllib.request.urlopen') as request:
+            request.return_value.__enter__.return_value.read.return_value = compressed
+            actual, meta = download_source()
+        self.assertEqual(actual, compressed)
+        self.assertEqual(meta['sha256'], hashlib.sha256(compressed).hexdigest())
+        self.assertIn(meta['sha256'], meta['filename'])
 
 
 if __name__ == '__main__':

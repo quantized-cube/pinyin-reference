@@ -45,9 +45,13 @@ export function matrixFinalId(id: FinalId): FinalId {
 export function finalContext(id: FinalId): string {
   return id === '-i(z)' ? 'zi・ci・si 系' : id === '-i(zh)' ? 'zhi・chi・shi・ri 系' : '';
 }
-export const matrixFinals = orderedFinals.filter(f => matrixFinalId(f.id) === f.id).map(f => ({
-  ...f,
-  variants: f.id === 'i' ? (['i', '-i(z)', '-i(zh)'] as const).map(getFinal) : [f],
-  ipa: f.id === 'i' ? 'i / ɹ̩ / ɻ̩' : f.ipa,
-  note: f.id === 'i' ? '声母によって発音が変わる。yi・mi などは [i]、zi・ci・si は [ɹ̩]、zhi・chi・shi・ri は [ɻ̩]。' : f.note,
-}));
+const iVariants = (['i', '-i(z)', '-i(zh)'] as const).map(getFinal);
+export const iPronunciationNote = `yi・mi などは [${getFinal('i').ipa}]、zi・ci・si は [${getFinal('-i(z)').ipa}]、zhi・chi・shi・ri は [${getFinal('-i(zh)').ipa}]。`;
+export const matrixFinals = orderedFinals.filter(f => matrixFinalId(f.id) === f.id).map(f => {
+  const variants = f.id === 'i' ? iVariants : [f];
+  return {
+    ...f, variants,
+    ipa: variants.map(variant => variant.ipa).join(' / '),
+    note: f.id === 'i' ? `声母によって発音が変わる。${iPronunciationNote}` : f.note,
+  };
+});

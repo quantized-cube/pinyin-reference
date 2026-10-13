@@ -1,3 +1,4 @@
+import {fullThirdToneContour} from './tone-contours.js';
 import type { InitialId, FinalId, Initial, Final, GroupFilter, Syllable, Tone, ToneId, SearchFilters, SearchMode } from './types.js';
 import { isToneId, required } from './types.js';
 import { articulationSearchText } from './articulation.js';
@@ -103,7 +104,7 @@ export const syllableMap = new Map(syllables.map(s => [s.pinyin, s]));
 export const tones: readonly Tone[] = [
   {id:1,label:'第1声',name:'陰平',value:'55',ipa:'˥',points:'8,12 92,12',note:'高い位置を保つ。'},
   {id:2,label:'第2声',name:'陽平',value:'35',ipa:'˧˥',points:'8,38 92,12',note:'中ほどから高く上げる。'},
-  {id:3,label:'第3声',name:'上声',value:'214',ipa:'˨˩˦',points:'8,48 42,60 92,25',note:'単独で丁寧に読むと低く下がって上がる。連続発話では低い部分だけになることが多い。'},
+  {id:3,label:'第3声',name:'上声',...fullThirdToneContour,note:'単独で丁寧に読むと低く下がって上がる。連続発話では低い部分だけになることが多い。'},
   {id:4,label:'第4声',name:'去声',value:'51',ipa:'˥˩',points:'8,12 92,60',note:'高い位置から一気に下げる。'},
   {id:5,label:'軽声',name:'軽声',value:'文脈依存',ipa:'',points:'35,38 65,38',note:'弱く短く読む。高さは前の声調に依存し、固定の第5の調形ではない。'},
 ];

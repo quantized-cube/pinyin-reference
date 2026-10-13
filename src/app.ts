@@ -14,12 +14,13 @@ import {Speaker} from './speech.js';
 import {parseExampleCatalog,detailExample} from './examples.js';
 import {isThirdToneFormId} from './third-tone.js';
 import {isToneId,isTabId,required} from './types.js';
-import type {ExampleState,ExampleCatalog,ToneId,ThirdToneFormId} from './types.js';
+import type {ExampleCatalog,ToneId,ThirdToneFormId} from './types.js';
 
 function $<T extends HTMLElement = HTMLElement>(selector: string): T { return required(document.querySelector<T>(selector), selector); }
 const state = createState();
-let exampleCatalog: ExampleCatalog | undefined;
-let exampleState: ExampleState='loading';
+let exampleLoad: {status: 'loading' | 'error'} | {status: 'ready'; catalog: ExampleCatalog} = {status: 'loading'};
+let exampleRequestPending = false;
+function loadedExamples(){return exampleLoad.status==='ready'?exampleLoad.catalog:undefined;}
 let speaker: Speaker | undefined;
 function readHash(){const h=new URLSearchParams(location.hash.slice(1));const pinyin=h.get('s');if(pinyin&&syllableMap.has(pinyin))state.selected=pinyin;const t=Number(h.get('t'));if(isToneId(t))state.tone=t;const form=h.get('form');state.thirdToneForm=isThirdToneFormId(form)?form:'full';state.thirdToneExpanded=state.tone===3&&state.thirdToneForm!=='full';}
 function updateHash(){history.replaceState(null,'',`#s=${encodeURIComponent(state.selected)}&t=${state.tone}${state.tone===3?'&form='+state.thirdToneForm:''}`);}
@@ -39,7 +40,7 @@ function renderReference(){
   if(state.tab==='finals') $('#reference-body').innerHTML=renderFinals(state);
   if(state.tab==='initials') $('#reference-body').innerHTML=renderInitials(state);
   if(state.tab==='rules') $('#reference-body').innerHTML=renderRules();
-  if(state.tab==='compare') $('#reference-body').innerHTML=renderCompare(state,exampleCatalog?.isolatedExamples??{},exampleState,!!speaker?.supported,speaker?.message??null);
+  if(state.tab==='compare') $('#reference-body').innerHTML=renderCompare(state,loadedExamples()?.isolatedExamples??{},exampleLoad.status,!!speaker?.supported,speaker?.message??null);
   if(state.tab==='vowels') $('#reference-body').innerHTML=renderVowels(state);
   const searchable=['matrix','finals','initials'].includes(state.tab);
   $<HTMLInputElement>('#search').disabled=!searchable;
@@ -53,7 +54,7 @@ function updateSearchMode(){
 }
 function updateComparisonAudio(){
   if(state.tab!=='compare')return;
-  const available=(pinyin: string)=>exampleState==='ready'&&!!comparisonExample(pinyin,state.compareTone,exampleCatalog?.isolatedExamples??{});
+  const available=(pinyin: string)=>exampleLoad.status==='ready'&&!!comparisonExample(pinyin,state.compareTone,loadedExamples()?.isolatedExamples??{});
   document.querySelectorAll<HTMLButtonElement>('[data-compare-play]').forEach(button=>{
     const side=button.dataset.comparePlay;
     button.disabled=!speaker?.supported||(side==='A'?!available(state.compareA):side==='B'?!available(state.compareB):!available(state.compareA)||!available(state.compareB));
@@ -62,16 +63,16 @@ function updateComparisonAudio(){
   if(status)status.textContent=speaker?.message??(!speaker?.supported?'このブラウザは音声合成に対応していません。':'再生する音声・速度は、音節詳細の設定と共通です。');
 }
 function playComparison(side: string){
-  if(exampleState!=='ready'||!['A','B','alternate'].includes(side))return;
+  if(exampleLoad.status!=='ready'||!['A','B','alternate'].includes(side))return;
   const sides=side==='alternate'?['A','B','A','B']:[side];
-  const items=sides.map(label=>{const pinyin=label==='A'?state.compareA:state.compareB;const example=comparisonExample(pinyin,state.compareTone,exampleCatalog?.isolatedExamples??{});return example?{text:example.text,label:`${label} · ${markTone(pinyin,state.compareTone)}`}:undefined;});
+  const items=sides.map(label=>{const pinyin=label==='A'?state.compareA:state.compareB;const example=comparisonExample(pinyin,state.compareTone,loadedExamples()?.isolatedExamples??{});return example?{text:example.text,label:`${label} · ${markTone(pinyin,state.compareTone)}`}:undefined;});
   if(items.every((item): item is {text: string;label: string}=>!!item))speaker?.speakSequence(items,state.voice,state.rate);
 }
 function ensureGridFocus(){if(!document.querySelector('[data-syllable][tabindex="0"]'))document.querySelector('[data-syllable]')?.setAttribute('tabindex','0');}
-function exampleFor(){return detailExample(state.selected,state.tone,state.thirdToneForm,exampleCatalog);}
+function exampleFor(){return detailExample(state.selected,state.tone,state.thirdToneForm,loadedExamples());}
 
 
-function renderDetail(){ $('#detail').innerHTML=detailView(state,exampleFor(),exampleState); updateVoices(); }
+function renderDetail(){ $('#detail').innerHTML=detailView(state,exampleFor(),exampleLoad.status); updateVoices(); }
 function updateVoices(){
   if(!speaker || !document.querySelector('#voice'))return;
   const voices=speaker.voices;
@@ -80,12 +81,32 @@ function updateVoices(){
   $<HTMLSelectElement>('#voice').innerHTML=voices.length?voices.map(v=>`<option value="${esc(v.voiceURI)}" ${v===selectedVoice?'selected':''}>${esc(v.name)} (${esc(v.lang)})${v.localService?'':' · オンライン'}</option>`).join(''):'<option value="">自動選択（中国語・中国本土）</option>';
   $<HTMLSelectElement>('#voice').disabled=!speaker.supported;
   $<HTMLButtonElement>('#play').disabled=!speaker.supported||!exampleFor();
-  const msg=!speaker.supported?'このブラウザは音声合成に対応していません。':!exampleFor()?(state.tone===3&&state.thirdToneForm==='full'?'この声調の単独例字は未収録です。':state.tone===3?'この発音形の例語は未収録です。':'例字・例語のある声調を選ぶと再生できます。'):!voices.length?'音声一覧に普通話が表示されていません。再生ボタンで中国語の再生を試せます。音が出ない場合は下の設定手順をご確認ください。':`中国語TTS · ${selectedVoice?.lang || 'zh'}`;
+  const msg=!speaker.supported?'このブラウザは音声合成に対応していません。':exampleLoad.status==='loading'?'例字・例語を読み込み中…':exampleLoad.status==='error'?'例字・例語データを読み込めませんでした。':!exampleFor()?(state.tone===3&&state.thirdToneForm==='full'?'この声調の単独例字は未収録です。':state.tone===3?'この発音形の例語は未収録です。':'例字・例語のある声調を選ぶと再生できます。'):!voices.length?'音声一覧に普通話が表示されていません。再生ボタンで中国語の再生を試せます。音が出ない場合は下の設定手順をご確認ください。':`中国語TTS · ${selectedVoice?.lang || 'zh'}`;
   $('#voice-status').textContent=speaker.message??msg;
   updateComparisonAudio();
 }
 speaker=new Speaker({onVoices:()=>{if(speaker)updateVoices();},onStatus:(message,kind)=>{for(const id of ['#voice-status','#compare-status']){const status=document.querySelector(id);if(status)status.textContent=message;}if(kind==='error'){const help=document.querySelector<HTMLDetailsElement>('#voice-help');if(help)help.open=true;}}});
-async function loadExamples(){exampleState='loading';renderDetail();try{const r=await fetch('examples.json?v=2');if(!r.ok)throw new Error(String(r.status));exampleCatalog=parseExampleCatalog(await r.json());exampleState='ready';}catch{exampleState='error';}renderDetail();if(state.tab==='compare')renderReference();}
+function renderExampleViews(){
+  renderDetail();
+  if(state.tab==='compare')renderReference();
+}
+async function loadExamples(){
+  if(exampleRequestPending)return;
+  exampleRequestPending=true;
+  exampleLoad={status:'loading'};
+  renderExampleViews();
+  try{
+    const response=await fetch('examples.json?v=2');
+    if(!response.ok)throw new Error(String(response.status));
+    const catalog=parseExampleCatalog(await response.json());
+    exampleLoad={status:'ready',catalog};
+  }catch{
+    exampleLoad={status:'error'};
+  }finally{
+    exampleRequestPending=false;
+    renderExampleViews();
+  }
+}
 function reset(){state.query='';state.group='all';state.initial='all';state.rare=true;$<HTMLInputElement>('#search').value='';renderReference();}
 
 document.addEventListener('click',event=>{

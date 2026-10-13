@@ -1,5 +1,6 @@
 """Generate CC-CEDICT example data. Importing this module has no side effects.
-Run with Python 3.10+. --check verifies the catalog against the saved dictionary.
+Run with Python 3.10+. --check verifies the catalog against the pinned dictionary.
+Only --update-source downloads a new dictionary and updates its pinned snapshot.
 """
 from pathlib import Path
 from dataclasses import dataclass
@@ -58,8 +59,11 @@ def verified(entries, key, word, predicate):
     matches = [e for e in entries if e.word == word and key in e.tokens and predicate(e)]
     if not matches:
         raise ValueError(f'Example not verified in CC-CEDICT: {key}/{word}')
-    # Dictionary order never decides between alternate contextual readings.
-    return min(matches, key=lambda e: (e.tokens, e.word))
+    # Multiple definitions for one reading are fine; different readings require
+    # an editorial decision, never an arbitrary lexical tie-break.
+    if len({e.tokens for e in matches}) != 1:
+        raise ValueError(f'Ambiguous example reading in CC-CEDICT: {key}/{word}')
+    return matches[0]
 
 
 def generate_examples(raw, *, common=COMMON, isolated_choices=ISOLATED_CHOICES,
@@ -140,52 +144,70 @@ def generate_examples(raw, *, common=COMMON, isolated_choices=ISOLATED_CHOICES,
     return maps, report
 
 
-def retrieval_date(sha, previous_meta, receipt):
-    for meta in (receipt, previous_meta):
-        if meta.get('sha256') == sha and meta.get('retrieved'):
-            return meta['retrieved']
-    raise ValueError('Unknown cache retrieval date. Restore its source metadata or download a fresh dictionary.')
+def load_pinned_source(directory):
+    meta = json.loads((directory / 'source.json').read_text(encoding='utf-8'))
+    if (not isinstance(meta, dict) or not isinstance(meta.get('sha256'), str)
+            or not re.fullmatch(r'[a-f0-9]{64}', meta['sha256'])
+            or meta.get('filename') != f'cedict-{meta["sha256"]}.txt.gz'):
+        raise ValueError('Invalid pinned dictionary manifest')
+    for key in ('source', 'url', 'license', 'licenseUrl', 'retrieved'):
+        if not isinstance(meta.get(key), str) or not meta[key]:
+            raise ValueError(f'Invalid pinned dictionary metadata: {key}')
+    datetime.strptime(meta['retrieved'], '%Y-%m-%d')
+    compressed = (directory / meta['filename']).read_bytes()
+    if hashlib.sha256(compressed).hexdigest() != meta['sha256']:
+        raise ValueError('Pinned dictionary SHA-256 mismatch')
+    return compressed, meta
+
+
+def download_source():
+    request = urllib.request.Request(URL, headers={'User-Agent': 'PinyinReference-SourceUpdate/1.0'})
+    with urllib.request.urlopen(request, timeout=90) as response:
+        compressed = response.read()
+    gzip.decompress(compressed).decode('utf-8')
+    sha = hashlib.sha256(compressed).hexdigest()
+    return compressed, {
+        'filename': f'cedict-{sha}.txt.gz', 'sha256': sha,
+        'source': 'CC-CEDICT / MDBG', 'url': URL, 'license': 'CC BY-SA 4.0',
+        'licenseUrl': 'https://creativecommons.org/licenses/by-sa/4.0/',
+        'retrieved': datetime.now(timezone.utc).strftime('%Y-%m-%d'),
+    }
+
+
+def write_json(path, data):
+    path.write_text(json.dumps(data, ensure_ascii=False, indent=2) + '\n', encoding='utf-8')
 
 
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument('--check', action='store_true')
+    mode = parser.add_mutually_exclusive_group()
+    mode.add_argument('--check', action='store_true')
+    mode.add_argument('--update-source', action='store_true')
     args = parser.parse_args()
-    cache = ROOT / 'work' / 'cedict.txt.gz'
+    source_dir = ROOT / 'data' / 'cedict'
     output = ROOT / 'public' / 'examples.json'
-    receipt_path = cache.with_suffix('.source.json')
-    cache.parent.mkdir(exist_ok=True)
-    previous = json.loads(output.read_text(encoding='utf-8')) if output.exists() else {}
-    receipt = json.loads(receipt_path.read_text(encoding='utf-8')) if receipt_path.exists() else {}
-    if not cache.exists():
-        if args.check:
-            raise ValueError('--check requires the saved dictionary cache')
-        with urllib.request.urlopen(URL, timeout=90) as response:
-            downloaded = response.read()
-        gzip.decompress(downloaded)
-        receipt = {'sha256': hashlib.sha256(downloaded).hexdigest(),
-                   'retrieved': datetime.now(timezone.utc).strftime('%Y-%m-%d')}
-        cache.write_bytes(downloaded)
-        receipt_path.write_text(json.dumps(receipt, indent=2) + '\n', encoding='utf-8')
-    compressed = cache.read_bytes()
-    sha = hashlib.sha256(compressed).hexdigest()
-    retrieved = retrieval_date(sha, previous.get('meta', {}), receipt)
+    compressed, source = download_source() if args.update_source else load_pinned_source(source_dir)
     maps, report = generate_examples(gzip.decompress(compressed).decode('utf-8'))
     data = {'schemaVersion': 2, 'meta': {
-        'source': 'CC-CEDICT / MDBG', 'url': URL, 'license': 'CC BY-SA 4.0',
-        'licenseUrl': 'https://creativecommons.org/licenses/by-sa/4.0/',
-        'retrieved': retrieved, 'sha256': sha,
+        **{key: source[key] for key in ('source', 'url', 'license', 'licenseUrl', 'retrieved', 'sha256')},
         'changes': 'Selected simplified headwords and readings; definitions omitted; isolated examples selected by reviewed choices or familiar unambiguous characters; contextual and curated third-tone words stored separately.',
     }, **maps}
     if args.check:
+        previous = json.loads(output.read_text(encoding='utf-8'))
         if data != previous:
-            raise ValueError('Committed example data differs from the saved dictionary and selection policy')
-        print('Example catalog matches the saved source and selection policy.')
+            raise ValueError('Committed example data differs from the pinned dictionary and selection policy')
+        print('Example catalog matches the pinned source and selection policy.')
     else:
-        output.write_text(json.dumps(data, ensure_ascii=False, indent=2) + '\n', encoding='utf-8')
-        report['sourceSha256'] = sha
-        (cache.parent / 'example-selection-report.json').write_text(
-            json.dumps(report, ensure_ascii=False, indent=2) + '\n', encoding='utf-8')
+        # Only publish a new pin after parsing and all curated checks succeed.
+        if args.update_source:
+            source_dir.mkdir(parents=True, exist_ok=True)
+            (source_dir / source['filename']).write_bytes(compressed)
+            write_json(source_dir / 'source.json', source)
+        write_json(output, data)
+        report['sourceSha256'] = source['sha256']
+        report_dir = ROOT / 'work'
+        report_dir.mkdir(exist_ok=True)
+        write_json(report_dir / 'example-selection-report.json', report)
         print(f'Generated {len(maps["isolatedExamples"])} isolated / {len(maps["contextualExamples"])} contextual examples; '
               f'{sum(len(v) for v in maps["thirdToneExamples"].values())} third-tone contexts.')
         print(f'{len(report["unselectedCandidates"])} isolated keys have unapproved candidates; see work/example-selection-report.json.')

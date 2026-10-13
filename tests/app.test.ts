@@ -23,7 +23,10 @@ class Utterance {
   constructor(readonly text: string) {}
 }
 
-async function setup(t: TestContext, initialVoices = [local], options: {mobile?: boolean; storedIpa?: string; hash?: string} = {}) {
+interface ExampleResponse {ok: boolean; status?: number; json: () => Promise<unknown>}
+async function setup(t: TestContext, initialVoices = [local], options: {
+  mobile?: boolean; storedIpa?: string; hash?: string; fetchExamples?: () => Promise<ExampleResponse>;
+} = {}) {
   const errors: unknown[] = [];
   const virtualConsole = new VirtualConsole();
   virtualConsole.on('jsdomError', error => errors.push(error));
@@ -46,7 +49,7 @@ async function setup(t: TestContext, initialVoices = [local], options: {mobile?:
     matchMedia: () => ({ matches: options.mobile??false }),
     fetch: async (url: string) => {
       assert.equal(url, 'examples.json?v=2');
-      return { ok: true, json: async () => catalog };
+      return options.fetchExamples ? options.fetchExamples() : { ok: true, json: async () => catalog };
     },
   });
   window.localStorage.setItem('pinyin.voice', preferred.voiceURI);
@@ -445,6 +448,9 @@ test('changing comparison or leaving its tab cancels playback and stale events',
 test('vowel map supports Japanese overlay and opens the correct syllable details', async t => {
   const s=await setup(t);s.$('[data-tab="vowels"]').click();
   assert.equal(s.window.document.querySelectorAll('.vowel-point').length,7);
+  assert.equal(s.$<HTMLInputElement>('#japanese-vowels').checked,true);
+  assert.equal(s.window.document.querySelectorAll('.japanese-vowel').length,5);
+  s.$('#japanese-vowels').click();
   assert.equal(s.window.document.querySelectorAll('.japanese-vowel').length,0);
   s.$('#japanese-vowels').click();
   assert.equal(s.window.document.querySelectorAll('.japanese-vowel').length,5);
@@ -455,6 +461,62 @@ test('vowel map supports Japanese overlay and opens the correct syllable details
   }
   s.$('[data-tab="finals"]').click();s.$('[data-tab="vowels"]').click();
   assert.equal(s.$<HTMLInputElement>('#japanese-vowels').checked,true);
+});
+
+test('example retry updates both views and rapid retries cannot start overlapping requests', async t => {
+  const pending: {resolve: (response: ExampleResponse) => void; reject: (error: Error) => void}[] = [];
+  const s = await setup(t, [local], {
+    hash: '#s=yan&t=3',
+    fetchExamples: () => new Promise((resolve, reject) => pending.push({resolve, reject})),
+  });
+  const flush = () => new Promise<void>(resolve => setImmediate(resolve));
+  s.$('[data-tab="compare"]').click();
+  for (const [id, value] of [['compare-a', 'yan'], ['compare-tone', '3']] as const) {
+    s.$<HTMLSelectElement>('#'+id).value = value;
+    s.$('#'+id).dispatchEvent(new s.window.Event('change', {bubbles:true}));
+  }
+  assert.equal(pending.length, 1);
+  assert.equal(s.$<HTMLButtonElement>('#play').disabled, true);
+  assert.equal(s.$<HTMLButtonElement>('[data-compare-play="A"]').disabled, true);
+  required(pending[0], 'initial request').reject(new Error('offline'));
+  await flush();
+  const detailRetry = s.$('#detail #retry-examples');
+  const compareRetry = s.$('#reference-body #retry-examples');
+  compareRetry.click();
+  detailRetry.click();
+  compareRetry.click();
+  assert.equal(pending.length, 2);
+  assert.equal(s.window.document.querySelector('#retry-examples'), null);
+  assert.match(s.$('#detail .example').textContent ?? '', /読み込み中/);
+  assert.match(s.$('[data-side="A"]').textContent ?? '', /読み込み中/);
+  assert.equal(s.$<HTMLButtonElement>('#play').disabled, true);
+  assert.equal(s.$<HTMLButtonElement>('[data-compare-play="A"]').disabled, true);
+  s.$('[data-tab="matrix"]').click();
+  s.$('[data-tab="compare"]').click();
+  assert.equal(pending.length, 2);
+  required(pending[1], 'retry request').resolve({ok:true, json:async () => catalog});
+  await flush();
+  assert.equal(s.$('.example-word').textContent, '眼');
+  assert.equal(s.$('[data-side="A"] .compare-example').textContent, '眼');
+  assert.equal(s.$<HTMLButtonElement>('#play').disabled, false);
+  assert.equal(s.$<HTMLButtonElement>('[data-compare-play="A"]').disabled, false);
+});
+
+test('HTTP and invalid-catalog failures can be retried from the detail view', async t => {
+  for (const response of [
+    {ok:false, status:503, json:async () => catalog},
+    {ok:true, json:async () => ({schemaVersion:1})},
+  ]) {
+    let calls = 0;
+    const s = await setup(t, [local], {fetchExamples:async () => ++calls===1 ? response : {ok:true, json:async () => catalog}});
+    assert.equal(s.$<HTMLButtonElement>('#play').disabled, true);
+    assert.match(s.$('#voice-status').textContent ?? '', /読み込めませんでした/);
+    s.$('#detail #retry-examples').click();
+    await new Promise<void>(resolve => setImmediate(resolve));
+    assert.equal(calls, 2);
+    assert.equal(s.$<HTMLButtonElement>('#play').disabled, false);
+    assert.equal(s.window.document.querySelector('#retry-examples'), null);
+  }
 });
 
 

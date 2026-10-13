@@ -2,8 +2,10 @@
   "extends": "./tsconfig.json",
   "compilerOptions": {
     "types": ["node"],
+    "allowJs": true,
+    "checkJs": true,
     "rootDir": ".",
     "outDir": ".build"
   },
-  "include": ["scripts/**/*.ts", "tests/**/*.ts"]
+  "include": ["scripts/**/*.ts", "scripts/clean.mjs", "tests/**/*.ts"]
 }

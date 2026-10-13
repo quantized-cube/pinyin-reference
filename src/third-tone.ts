@@ -1,9 +1,10 @@
 import type { ExampleMap, PronunciationExample, ThirdToneExampleMap, ThirdToneForm, ThirdToneFormId } from './types.js';
 import { required } from './types.js';
+import { fullThirdToneContour } from './tone-contours.js';
 
 // Teaching contours, not measurements or instructions to the speech synthesizer.
 export const thirdToneForms: readonly ThirdToneForm[] = [
-  { id: 'full', label: '全三声', value: '214', ipa: '˨˩˦', points: '8,48 42,60 92,25',
+  { id: 'full', label: '全三声', ...fullThirdToneContour,
     note: '単独で丁寧に読むときの代表形。低く下げてから上げます。自然な発話では、語末でも上がらないことがあります。' },
   { id: 'half', label: '半三声', value: '21', ipa: '˨˩', points: '8,48 92,60',
     note: '後半を上げず、低く発音する形。同じまとまりの中で第1・2・4声の前に来るときなどに現れます。' },

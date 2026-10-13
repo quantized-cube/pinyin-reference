@@ -17,6 +17,6 @@ export function createState(): AppState {
     searchMode: 'pinyin', query: '', selected: 'xuan', tone: 1,
     thirdToneForm: 'full', thirdToneExpanded: false,
     voice: getSetting('pinyin.voice', ''), rate: Math.max(.6, Math.min(1.2, rate)), settings: false,
-    compareA: 'an', compareB: 'ang', compareTone: 1, japaneseVowels: false,
+    compareA: 'an', compareB: 'ang', compareTone: 1, japaneseVowels: true,
   };
 }

@@ -27,12 +27,10 @@ export function fitsThirdToneForm(form: ThirdToneFormId, example: PronunciationE
   return form === 'half' ? /[124]$/.test(next ?? '') : next?.endsWith('3') === true;
 }
 export function thirdToneExample(
-  pinyin: string, form: ThirdToneFormId, curated: ThirdToneExampleMap, general: ExampleMap,
+  pinyin: string, form: ThirdToneFormId, curated: ThirdToneExampleMap, isolated: ExampleMap,
 ): PronunciationExample | undefined {
   const key = pinyin + '3';
-  const candidate = curated[key]?.[form];
-  if (candidate && fitsThirdToneForm(form, candidate)) return candidate;
-  const single = general[key];
   // Never play a contextual example underneath an unrelated isolated contour.
-  return form === 'full' && single && fitsThirdToneForm(form, single) ? single : undefined;
+  const candidate = form === 'full' ? isolated[key] : curated[key]?.[form];
+  return candidate && candidate.tokens[candidate.target] === key && fitsThirdToneForm(form, candidate) ? candidate : undefined;
 }

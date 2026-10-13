@@ -8,6 +8,7 @@ export type FinalGroup = 'plain' | 'i' | 'u' | 'ü' | 'special';
 export type GroupFilter = 'all' | FinalGroup;
 export type ToneId = 1 | 2 | 3 | 4 | 5;
 export type ThirdToneFormId = 'full' | 'half' | 'sandhi';
+export type ThirdToneContextId = Exclude<ThirdToneFormId, 'full'>;
 export interface ThirdToneForm {
   readonly id: ThirdToneFormId;
   readonly label: string;
@@ -70,8 +71,9 @@ export interface PronunciationExample {
   readonly target: number;
 }
 export type ExampleMap = Readonly<Record<string, PronunciationExample | undefined>>;
-export type ThirdToneExampleMap = Readonly<Record<string, Readonly<Partial<Record<ThirdToneFormId, PronunciationExample>>> | undefined>>;
+export type ThirdToneExampleMap = Readonly<Record<string, Readonly<Partial<Record<ThirdToneContextId, PronunciationExample>>> | undefined>>;
 export interface ExampleCatalog {
+  readonly schemaVersion: 2;
   readonly meta: {
     readonly source: string;
     readonly url: string;
@@ -81,7 +83,8 @@ export interface ExampleCatalog {
     readonly sha256: string;
     readonly changes: string;
   };
-  readonly examples: ExampleMap;
+  readonly isolatedExamples: ExampleMap;
+  readonly contextualExamples: ExampleMap;
   readonly thirdToneExamples: ThirdToneExampleMap;
 }
 

@@ -11,7 +11,7 @@ const catalog = parseExampleCatalog(JSON.parse(await readFile(new URL('../../pub
 
 test('third-tone examples keep the dictionary tone while selecting three different contours', () => {
   for (const [form, word, ipa] of [['full', '好', '˨˩˦'], ['half', '好吃', '˨˩'], ['sandhi', '好友', '˧˥']] as const) {
-    const e = required(thirdToneExample('hao', form, catalog.thirdToneExamples, catalog.examples), form);
+    const e = required(thirdToneExample('hao', form, catalog.thirdToneExamples, catalog.isolatedExamples), form);
     assert.equal(e.text, word);
     assert.equal(e.tokens[e.target], 'hao3');
     assert.equal(markTone('hao', parseQuery(required(e.tokens[e.target], 'target')).tone), 'hǎo');
@@ -37,7 +37,7 @@ test('every curated word is aligned and fits its explicitly chosen pronunciation
     }
   }
   assert.equal(Object.keys(catalog.thirdToneExamples).length, 21);
-  assert.equal(total, 62);
+  assert.equal(total, 41);
   assert.deepEqual([...halfFollowers].sort(), [1, 2, 4]);
 });
 
@@ -57,16 +57,16 @@ test('neutral followers, longer chains and word-final targets are never automati
 test('missing contextual audio never falls back to a single character or an unrelated example', () => {
   const single: PronunciationExample = { text: '你', tokens: ['ni3'], target: 0 };
   assert.equal(thirdToneExample('ni', 'full', {}, { ni3: single }), single);
-  assert.equal(thirdToneExample('ni', 'half', catalog.thirdToneExamples, catalog.examples), undefined);
-  assert.equal(thirdToneExample('ni', 'sandhi', catalog.thirdToneExamples, catalog.examples)?.text, '你好');
-  assert.equal(thirdToneExample('ê', 'full', catalog.thirdToneExamples, catalog.examples), undefined);
+  assert.equal(thirdToneExample('ni', 'half', catalog.thirdToneExamples, catalog.isolatedExamples), undefined);
+  assert.equal(thirdToneExample('ni', 'sandhi', catalog.thirdToneExamples, catalog.isolatedExamples)?.text, '你好');
+  assert.equal(thirdToneExample('ê', 'full', catalog.thirdToneExamples, catalog.isolatedExamples), undefined);
 });
 
 test('catalog rejects incorrect tone classifications and malformed comparison words', () => {
   const invalid = [
     { hao3: { half: { text: '好友', tokens: ['hao3', 'you3'], target: 0 } } },
     { hao3: { sandhi: { text: '好吃', tokens: ['hao3', 'chi1'], target: 0 } } },
-    { hao3: { full: { text: '好友', tokens: ['hao3', 'you3'], target: 0 } } },
+    { hao3: { full: { text: '好', tokens: ['hao3'], target: 0 } } },
     { hao3: { half: { text: '好的', tokens: ['hao3', 'de5'], target: 0 } } },
     { hao3: { unknown: { text: '好', tokens: ['hao3'], target: 0 } } },
     { hao2: { full: { text: '好', tokens: ['hao2'], target: 0 } } },

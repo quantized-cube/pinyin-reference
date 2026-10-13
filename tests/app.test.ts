@@ -45,7 +45,7 @@ async function setup(t: TestContext, initialVoices = [local], options: {mobile?:
     SpeechSynthesisUtterance: Utterance,
     matchMedia: () => ({ matches: options.mobile??false }),
     fetch: async (url: string) => {
-      assert.equal(url, 'examples.json');
+      assert.equal(url, 'examples.json?v=2');
       return { ok: true, json: async () => catalog };
     },
   });
@@ -464,4 +464,51 @@ test('slash from a non-searchable tab opens the matrix search',async t=>{
   assert.equal(s.$('[data-tab="matrix"]').getAttribute('aria-current'),'page');
   assert.equal(s.$<HTMLInputElement>('#search').disabled,false);
   assert.equal(s.window.document.activeElement,s.$('#search'));
+});
+
+test('isolated third-tone detail and comparison play the same approved characters', async t => {
+  const s = await setup(t);
+  for (const [pinyin, word] of [['yan', '眼'], ['yin', '引'], ['ying', '影'], ['li', '理'], ['hao', '好']]) {
+    s.$('[data-tab="matrix"]').click();
+    s.input(pinyin + '3');
+    assert.equal(s.$('.example-word').textContent, word);
+    assert.equal(s.$<HTMLButtonElement>('#play').disabled, false);
+    s.$('#play').click();
+    assert.equal(s.lastRequest().text, word);
+    s.lastRequest().onend?.();
+    s.$('[data-tab="compare"]').click();
+    for (const [id, value] of [['compare-a', pinyin], ['compare-tone', '3']] as const) {
+      s.$<HTMLSelectElement>('#' + id).value = required(value, id);
+      s.$('#' + id).dispatchEvent(new s.window.Event('change', { bubbles: true }));
+    }
+    assert.equal(s.$('[data-side="A"] .compare-example').textContent, word);
+    s.$('[data-compare-play="A"]').click();
+    assert.equal(s.lastRequest().text, word);
+    s.lastRequest().onend?.();
+  }
+  s.$('[data-tab="matrix"]').click();
+  s.input('yan3');
+  s.$('[data-third-tone-form="half"]').click();
+  assert.equal(s.$<HTMLButtonElement>('#play').disabled, true);
+  assert.equal(s.window.document.querySelector('.example-word'), null);
+  s.input('jing5');
+  assert.equal(s.$('.example-word').textContent, '眼睛');
+  s.$('#play').click();
+  assert.equal(s.lastRequest().text, '眼睛');
+  s.lastRequest().onend?.();
+});
+
+test('detail prefers shared first-tone characters and labels multi-syllable fallback playback', async t => {
+  const s = await setup(t);
+  s.input('an1');
+  assert.equal(s.$('.example-word').textContent, '安');
+  s.$('#play').click();
+  assert.equal(s.lastRequest().text, '安');
+  s.lastRequest().onend?.();
+  s.input('an4');
+  assert.match(s.$('.example small').textContent ?? '', /例語全体を再生/);
+  assert.equal(s.$('#play span').textContent, '例語を聞く');
+  s.$('#play').click();
+  assert.equal(s.lastRequest().text, s.$('.example-word').textContent);
+  s.lastRequest().onend?.();
 });

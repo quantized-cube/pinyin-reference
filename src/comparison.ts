@@ -1,4 +1,5 @@
 import type {ExampleMap, PronunciationExample, ToneId} from './types.js';
+import {isolatedExample} from './examples.js';
 
 export const comparisonPresets = [
   {id:'an-ang', label:'an ↔ ang', a:'an', b:'ang', tone:1, note:'-n は舌先、-ng は舌の奥で閉じます。母音も [a] と [ɑ] の違いに注目。'},
@@ -14,20 +15,6 @@ export const comparisonPresets = [
   {id:'u-ü', label:'u ↔ ü', a:'lu', b:'lü', tone:4, note:'同じ声母 l と第4声。u は舌が後ろ、ü は i の舌の位置で唇を丸めます。'},
 ] as const;
 
-// Single-character readings checked against the saved CC-CEDICT source (2026-10-07).
-// This selection supplements the general catalog's preference for contextual words.
-// Derived reading data: CC BY-SA 4.0, https://www.mdbg.net/chinese/dictionary?page=cedict
-export const comparisonReadings: Readonly<Record<string, string>> = {
-  an1:'安', ang1:'肮', ben1:'奔', beng1:'崩', xian1:'先', xiang1:'香',
-  yin1:'音', ying1:'英', ge1:'歌', ke1:'科', ci1:'疵', lu4:'路',
-};
-
 export function comparisonExample(pinyin: string, tone: ToneId, examples: ExampleMap): PronunciationExample | undefined {
-  // A neutral tone needs context and is not an isolated comparison recording.
-  if (tone === 5) return undefined;
-  const key = pinyin + tone;
-  const curated = comparisonReadings[key];
-  if (curated) return {text:curated, tokens:[key], target:0};
-  const example = examples[key];
-  return example?.tokens.length === 1 ? example : undefined;
+  return isolatedExample(pinyin, tone, examples);
 }

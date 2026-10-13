@@ -21,7 +21,7 @@ export function renderDetail(state: AppState, example: PronunciationExample | un
       :'第3声 → 第3声。同じまとまりで読むと、前の音節が上昇形になります。';
     exampleHtml=`<div class="example"><small>${chars.length>1?'例語全体を再生・下線が対象音節':'例字を再生'}</small><div class="example-word" lang="zh-CN">${chars.map((c,n)=>n===example.target?`<mark>${c}</mark>`:c).join('')}</div><small>辞書の読み</small><div class="example-pinyin">${example.tokens.map((p,n)=>{const {text,tone}=parseQuery(p);const py=esc(markTone(text,tone));return n===example.target?`<mark>${py}</mark>`:py;}).join(' ')}</div>${third&&third.id!=='full'?`<div class="example-realization"><small>対象音の発音の目安</small><strong>${third.label} · ${third.value} <span>[${s.ipa}${third.ipa}]</span></strong><p>${context}</p></div>`:''}</div>`;
   } else {
-    const missing=state.tone===3?'この音節・発音形の比較用例語は未収録です。図とIPAは練習用の目安です。':'この音節・声調の例語は未収録です。声調の綴りは練習用の表示です。';
+    const missing=third?.id==='full'?'この声調の単独例字は未収録です。図とIPAは練習用の目安です。':third?'この音節・発音形の例語は未収録です。図とIPAは練習用の目安です。':'この音節・声調の例字・例語は未収録です。声調の綴りは練習用の表示です。';
     exampleHtml=`<div class="example"><small>${exampleState==='loading'?'例語を読み込み中…':exampleState==='error'?'例語データを読み込めませんでした。':missing}</small>${exampleState==='error'?'<button id="retry-examples" class="text-button">再試行</button>':exampleState==='ready'&&third?`<button class="example-demo" data-third-demo="${third.id}">hǎo の比較例を開く ↗</button>`:''}</div>`;
   }
   return `<div class="detail-top"><p class="eyebrow">SYLLABLE / 音節の詳細</p><span class="detail-number">${s.peripheral?'周辺的な音節':t.name}</span><p class="reading-caption">辞書の読み · ${t.label}</p><h2>${markTone(s.pinyin,state.tone)}</h2><div class="detail-ipa">[${s.ipa}${pronunciation.ipa}]</div><p class="ipa-caption">${ipaCaption}</p></div>

@@ -1,4 +1,4 @@
-import {comparisonPresets,comparisonReadings,comparisonExample} from '../src/comparison.js';
+import {comparisonPresets,comparisonExample} from '../src/comparison.js';
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import {readFile} from 'node:fs/promises';
@@ -7,7 +7,7 @@ import {articulationFor,articulationTerms,aspirationPairs} from '../src/articula
 import {parseExampleCatalog} from '../src/examples.js';
 import {required} from '../src/types.js';
 import {initialSections,finalSections,orderedFinals,matrixFinals,matrixFinalId} from '../src/layout.js';
-const {examples,meta}=parseExampleCatalog(JSON.parse(await readFile(new URL('../../public/examples.json',import.meta.url),'utf8')));
+const {isolatedExamples,contextualExamples,meta}=parseExampleCatalog(JSON.parse(await readFile(new URL('../../public/examples.json',import.meta.url),'utf8')));
 
 test('inventory is unique and every cell references a known initial and final',()=>{
   assert.equal(initials.length,22);assert.equal(finals.length,40);assert.equal(syllables.length,413);
@@ -114,14 +114,15 @@ test('aspiration pairs share place, manner and voicelessness; other manners have
 });
 test('examples align text, numbered pinyin and target; neutral tones always have context',()=>{
   assert.equal(meta.license,'CC BY-SA 4.0');assert.match(meta.sha256,/^[a-f0-9]{64}$/);
-  for(const [key,e] of Object.entries(examples)){
+  for(const [key,e] of Object.entries({...contextualExamples,...isolatedExamples})){
     assert.ok(e);
     assert.equal([...e.text].length,e.tokens.length,key);assert.equal(e.tokens[e.target],key);
     assert.ok(e.tokens.every(t=>/^[a-züê]+[1-5]$/.test(t)),key);
     if(key.endsWith('5'))assert.ok(e.tokens.length>1,key);
   }
-  for(const s of syllables.filter(s=>!s.peripheral))assert.ok([1,2,3,4,5].some(t=>examples[s.pinyin+t]),s.pinyin);
-  assert.equal(required(examples.ma5,'ma5').text,'妈妈');assert.equal(required(examples.ma5,'ma5').target,1);assert.equal(examples.xuan5,undefined);
+  // Core inventory retains an example somewhere; individual tones may be unrecorded.
+  for(const s of syllables.filter(s=>!s.peripheral))assert.ok([1,2,3,4,5].some(t=>isolatedExamples[s.pinyin+t]||contextualExamples[s.pinyin+t]),s.pinyin);
+  assert.equal(required(contextualExamples.ma5,'ma5').text,'妈妈');assert.equal(required(contextualExamples.ma5,'ma5').target,1);assert.equal(contextualExamples.xuan5,undefined);
 });
 
 
@@ -138,17 +139,18 @@ test('all comparison presets use playable single-character examples at a common 
   for(const preset of comparisonPresets){
     for(const pinyin of [preset.a,preset.b]){
       assert.ok(syllableMap.has(pinyin));
-      const example=required(comparisonExample(pinyin,preset.tone,examples),pinyin);
+      const example=required(comparisonExample(pinyin,preset.tone,isolatedExamples),pinyin);
       assert.equal([...example.text].length,1);
       assert.deepEqual(example.tokens,[pinyin+preset.tone]);
       assert.equal(example.target,0);
     }
   }
-  for(const [key,text] of Object.entries(comparisonReadings)){
+  for(const [key,example] of Object.entries(isolatedExamples)){
+    assert.ok(example);
     const query=parseQuery(key);assert.ok(syllableMap.has(query.text));assert.ok(query.tone);
-    assert.match(text,/^[\u4e00-\u9fff]$/);
+    assert.match(example.text,/^[\u4e00-\u9fff]$/);
   }
-  assert.equal(comparisonExample('ma',5,examples),undefined);
-  assert.equal(comparisonExample('ê',1,examples),undefined);
-  assert.equal(comparisonExample('an',4,examples),undefined); // contextual word is not isolated audio
+  assert.equal(comparisonExample('ma',5,isolatedExamples),undefined);
+  assert.equal(comparisonExample('ê',1,isolatedExamples),undefined);
+  assert.equal(comparisonExample('an',4,contextualExamples),undefined); // contextual word is not isolated audio
 });

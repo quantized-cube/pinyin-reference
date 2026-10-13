@@ -1,4 +1,5 @@
 {
+  "schemaVersion": 2,
   "meta": {
     "source": "CC-CEDICT / MDBG",
     "url": "https://www.mdbg.net/chinese/export/cedict/cedict_1_0_ts_utf-8_mdbg.txt.gz",
@@ -6,9 +7,1523 @@
     "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
     "retrieved": "2026-10-07",
     "sha256": "00e6c188df0056c42c0448386d0b4f532aa805d9fdd87aef139f72b421ace2f4",
-    "changes": "Selected simplified headwords and readings; definitions omitted; example ranking, curated overrides and third-tone comparison words added."
+    "changes": "Selected simplified headwords and readings; definitions omitted; isolated examples selected by reviewed choices or familiar unambiguous characters; contextual and curated third-tone words stored separately."
   },
-  "examples": {
+  "isolatedExamples": {
+    "an1": {
+      "text": "安",
+      "tokens": [
+        "an1"
+      ],
+      "target": 0
+    },
+    "ang1": {
+      "text": "肮",
+      "tokens": [
+        "ang1"
+      ],
+      "target": 0
+    },
+    "ba1": {
+      "text": "八",
+      "tokens": [
+        "ba1"
+      ],
+      "target": 0
+    },
+    "ba2": {
+      "text": "拔",
+      "tokens": [
+        "ba2"
+      ],
+      "target": 0
+    },
+    "ba3": {
+      "text": "把",
+      "tokens": [
+        "ba3"
+      ],
+      "target": 0
+    },
+    "ba4": {
+      "text": "爸",
+      "tokens": [
+        "ba4"
+      ],
+      "target": 0
+    },
+    "bai2": {
+      "text": "白",
+      "tokens": [
+        "bai2"
+      ],
+      "target": 0
+    },
+    "bei3": {
+      "text": "北",
+      "tokens": [
+        "bei3"
+      ],
+      "target": 0
+    },
+    "bei4": {
+      "text": "被",
+      "tokens": [
+        "bei4"
+      ],
+      "target": 0
+    },
+    "ben1": {
+      "text": "奔",
+      "tokens": [
+        "ben1"
+      ],
+      "target": 0
+    },
+    "ben3": {
+      "text": "本",
+      "tokens": [
+        "ben3"
+      ],
+      "target": 0
+    },
+    "beng1": {
+      "text": "崩",
+      "tokens": [
+        "beng1"
+      ],
+      "target": 0
+    },
+    "bu4": {
+      "text": "不",
+      "tokens": [
+        "bu4"
+      ],
+      "target": 0
+    },
+    "chang2": {
+      "text": "常",
+      "tokens": [
+        "chang2"
+      ],
+      "target": 0
+    },
+    "chen2": {
+      "text": "陈",
+      "tokens": [
+        "chen2"
+      ],
+      "target": 0
+    },
+    "cheng2": {
+      "text": "成",
+      "tokens": [
+        "cheng2"
+      ],
+      "target": 0
+    },
+    "chi1": {
+      "text": "吃",
+      "tokens": [
+        "chi1"
+      ],
+      "target": 0
+    },
+    "chi2": {
+      "text": "池",
+      "tokens": [
+        "chi2"
+      ],
+      "target": 0
+    },
+    "chi3": {
+      "text": "尺",
+      "tokens": [
+        "chi3"
+      ],
+      "target": 0
+    },
+    "chi4": {
+      "text": "赤",
+      "tokens": [
+        "chi4"
+      ],
+      "target": 0
+    },
+    "chu1": {
+      "text": "出",
+      "tokens": [
+        "chu1"
+      ],
+      "target": 0
+    },
+    "chun1": {
+      "text": "春",
+      "tokens": [
+        "chun1"
+      ],
+      "target": 0
+    },
+    "chun2": {
+      "text": "唇",
+      "tokens": [
+        "chun2"
+      ],
+      "target": 0
+    },
+    "chun3": {
+      "text": "蠢",
+      "tokens": [
+        "chun3"
+      ],
+      "target": 0
+    },
+    "ci1": {
+      "text": "疵",
+      "tokens": [
+        "ci1"
+      ],
+      "target": 0
+    },
+    "ci2": {
+      "text": "词",
+      "tokens": [
+        "ci2"
+      ],
+      "target": 0
+    },
+    "ci3": {
+      "text": "此",
+      "tokens": [
+        "ci3"
+      ],
+      "target": 0
+    },
+    "ci4": {
+      "text": "次",
+      "tokens": [
+        "ci4"
+      ],
+      "target": 0
+    },
+    "da1": {
+      "text": "搭",
+      "tokens": [
+        "da1"
+      ],
+      "target": 0
+    },
+    "da2": {
+      "text": "答",
+      "tokens": [
+        "da2"
+      ],
+      "target": 0
+    },
+    "da3": {
+      "text": "打",
+      "tokens": [
+        "da3"
+      ],
+      "target": 0
+    },
+    "da4": {
+      "text": "大",
+      "tokens": [
+        "da4"
+      ],
+      "target": 0
+    },
+    "dao4": {
+      "text": "到",
+      "tokens": [
+        "dao4"
+      ],
+      "target": 0
+    },
+    "deng3": {
+      "text": "等",
+      "tokens": [
+        "deng3"
+      ],
+      "target": 0
+    },
+    "dian3": {
+      "text": "点",
+      "tokens": [
+        "dian3"
+      ],
+      "target": 0
+    },
+    "ding3": {
+      "text": "顶",
+      "tokens": [
+        "ding3"
+      ],
+      "target": 0
+    },
+    "ding4": {
+      "text": "定",
+      "tokens": [
+        "ding4"
+      ],
+      "target": 0
+    },
+    "dong1": {
+      "text": "东",
+      "tokens": [
+        "dong1"
+      ],
+      "target": 0
+    },
+    "dong4": {
+      "text": "动",
+      "tokens": [
+        "dong4"
+      ],
+      "target": 0
+    },
+    "dui4": {
+      "text": "对",
+      "tokens": [
+        "dui4"
+      ],
+      "target": 0
+    },
+    "dun1": {
+      "text": "蹲",
+      "tokens": [
+        "dun1"
+      ],
+      "target": 0
+    },
+    "dun3": {
+      "text": "盹",
+      "tokens": [
+        "dun3"
+      ],
+      "target": 0
+    },
+    "dun4": {
+      "text": "顿",
+      "tokens": [
+        "dun4"
+      ],
+      "target": 0
+    },
+    "er2": {
+      "text": "而",
+      "tokens": [
+        "er2"
+      ],
+      "target": 0
+    },
+    "fa3": {
+      "text": "法",
+      "tokens": [
+        "fa3"
+      ],
+      "target": 0
+    },
+    "fang1": {
+      "text": "方",
+      "tokens": [
+        "fang1"
+      ],
+      "target": 0
+    },
+    "gao1": {
+      "text": "高",
+      "tokens": [
+        "gao1"
+      ],
+      "target": 0
+    },
+    "ge1": {
+      "text": "歌",
+      "tokens": [
+        "ge1"
+      ],
+      "target": 0
+    },
+    "gong1": {
+      "text": "公",
+      "tokens": [
+        "gong1"
+      ],
+      "target": 0
+    },
+    "guan1": {
+      "text": "关",
+      "tokens": [
+        "guan1"
+      ],
+      "target": 0
+    },
+    "gui1": {
+      "text": "归",
+      "tokens": [
+        "gui1"
+      ],
+      "target": 0
+    },
+    "gui3": {
+      "text": "鬼",
+      "tokens": [
+        "gui3"
+      ],
+      "target": 0
+    },
+    "gui4": {
+      "text": "贵",
+      "tokens": [
+        "gui4"
+      ],
+      "target": 0
+    },
+    "guo2": {
+      "text": "国",
+      "tokens": [
+        "guo2"
+      ],
+      "target": 0
+    },
+    "hai2": {
+      "text": "孩",
+      "tokens": [
+        "hai2"
+      ],
+      "target": 0
+    },
+    "hao3": {
+      "text": "好",
+      "tokens": [
+        "hao3"
+      ],
+      "target": 0
+    },
+    "hei1": {
+      "text": "黑",
+      "tokens": [
+        "hei1"
+      ],
+      "target": 0
+    },
+    "hen3": {
+      "text": "很",
+      "tokens": [
+        "hen3"
+      ],
+      "target": 0
+    },
+    "hou4": {
+      "text": "后",
+      "tokens": [
+        "hou4"
+      ],
+      "target": 0
+    },
+    "hua1": {
+      "text": "花",
+      "tokens": [
+        "hua1"
+      ],
+      "target": 0
+    },
+    "ji1": {
+      "text": "鸡",
+      "tokens": [
+        "ji1"
+      ],
+      "target": 0
+    },
+    "ji2": {
+      "text": "急",
+      "tokens": [
+        "ji2"
+      ],
+      "target": 0
+    },
+    "ji3": {
+      "text": "几",
+      "tokens": [
+        "ji3"
+      ],
+      "target": 0
+    },
+    "ji4": {
+      "text": "记",
+      "tokens": [
+        "ji4"
+      ],
+      "target": 0
+    },
+    "jia1": {
+      "text": "家",
+      "tokens": [
+        "jia1"
+      ],
+      "target": 0
+    },
+    "jie3": {
+      "text": "姐",
+      "tokens": [
+        "jie3"
+      ],
+      "target": 0
+    },
+    "jin4": {
+      "text": "进",
+      "tokens": [
+        "jin4"
+      ],
+      "target": 0
+    },
+    "jing1": {
+      "text": "经",
+      "tokens": [
+        "jing1"
+      ],
+      "target": 0
+    },
+    "jiu3": {
+      "text": "久",
+      "tokens": [
+        "jiu3"
+      ],
+      "target": 0
+    },
+    "jiu4": {
+      "text": "就",
+      "tokens": [
+        "jiu4"
+      ],
+      "target": 0
+    },
+    "ju2": {
+      "text": "局",
+      "tokens": [
+        "ju2"
+      ],
+      "target": 0
+    },
+    "ju3": {
+      "text": "举",
+      "tokens": [
+        "ju3"
+      ],
+      "target": 0
+    },
+    "ju4": {
+      "text": "巨",
+      "tokens": [
+        "ju4"
+      ],
+      "target": 0
+    },
+    "jun1": {
+      "text": "军",
+      "tokens": [
+        "jun1"
+      ],
+      "target": 0
+    },
+    "jun4": {
+      "text": "俊",
+      "tokens": [
+        "jun4"
+      ],
+      "target": 0
+    },
+    "kai1": {
+      "text": "开",
+      "tokens": [
+        "kai1"
+      ],
+      "target": 0
+    },
+    "ke1": {
+      "text": "科",
+      "tokens": [
+        "ke1"
+      ],
+      "target": 0
+    },
+    "ke3": {
+      "text": "可",
+      "tokens": [
+        "ke3"
+      ],
+      "target": 0
+    },
+    "la1": {
+      "text": "拉",
+      "tokens": [
+        "la1"
+      ],
+      "target": 0
+    },
+    "la4": {
+      "text": "辣",
+      "tokens": [
+        "la4"
+      ],
+      "target": 0
+    },
+    "lai2": {
+      "text": "来",
+      "tokens": [
+        "lai2"
+      ],
+      "target": 0
+    },
+    "lao3": {
+      "text": "老",
+      "tokens": [
+        "lao3"
+      ],
+      "target": 0
+    },
+    "li3": {
+      "text": "理",
+      "tokens": [
+        "li3"
+      ],
+      "target": 0
+    },
+    "li4": {
+      "text": "力",
+      "tokens": [
+        "li4"
+      ],
+      "target": 0
+    },
+    "liu1": {
+      "text": "溜",
+      "tokens": [
+        "liu1"
+      ],
+      "target": 0
+    },
+    "liu2": {
+      "text": "流",
+      "tokens": [
+        "liu2"
+      ],
+      "target": 0
+    },
+    "liu3": {
+      "text": "柳",
+      "tokens": [
+        "liu3"
+      ],
+      "target": 0
+    },
+    "liu4": {
+      "text": "六",
+      "tokens": [
+        "liu4"
+      ],
+      "target": 0
+    },
+    "lu4": {
+      "text": "路",
+      "tokens": [
+        "lu4"
+      ],
+      "target": 0
+    },
+    "lun2": {
+      "text": "轮",
+      "tokens": [
+        "lun2"
+      ],
+      "target": 0
+    },
+    "lü2": {
+      "text": "驴",
+      "tokens": [
+        "lü2"
+      ],
+      "target": 0
+    },
+    "lü3": {
+      "text": "吕",
+      "tokens": [
+        "lü3"
+      ],
+      "target": 0
+    },
+    "lü4": {
+      "text": "绿",
+      "tokens": [
+        "lü4"
+      ],
+      "target": 0
+    },
+    "lüe4": {
+      "text": "略",
+      "tokens": [
+        "lüe4"
+      ],
+      "target": 0
+    },
+    "ma1": {
+      "text": "妈",
+      "tokens": [
+        "ma1"
+      ],
+      "target": 0
+    },
+    "ma2": {
+      "text": "麻",
+      "tokens": [
+        "ma2"
+      ],
+      "target": 0
+    },
+    "ma3": {
+      "text": "马",
+      "tokens": [
+        "ma3"
+      ],
+      "target": 0
+    },
+    "ma4": {
+      "text": "骂",
+      "tokens": [
+        "ma4"
+      ],
+      "target": 0
+    },
+    "mai3": {
+      "text": "买",
+      "tokens": [
+        "mai3"
+      ],
+      "target": 0
+    },
+    "mei4": {
+      "text": "妹",
+      "tokens": [
+        "mei4"
+      ],
+      "target": 0
+    },
+    "mian4": {
+      "text": "面",
+      "tokens": [
+        "mian4"
+      ],
+      "target": 0
+    },
+    "ming2": {
+      "text": "明",
+      "tokens": [
+        "ming2"
+      ],
+      "target": 0
+    },
+    "na2": {
+      "text": "拿",
+      "tokens": [
+        "na2"
+      ],
+      "target": 0
+    },
+    "na3": {
+      "text": "哪",
+      "tokens": [
+        "na3"
+      ],
+      "target": 0
+    },
+    "na4": {
+      "text": "那",
+      "tokens": [
+        "na4"
+      ],
+      "target": 0
+    },
+    "nan2": {
+      "text": "男",
+      "tokens": [
+        "nan2"
+      ],
+      "target": 0
+    },
+    "nei4": {
+      "text": "内",
+      "tokens": [
+        "nei4"
+      ],
+      "target": 0
+    },
+    "neng2": {
+      "text": "能",
+      "tokens": [
+        "neng2"
+      ],
+      "target": 0
+    },
+    "ni3": {
+      "text": "你",
+      "tokens": [
+        "ni3"
+      ],
+      "target": 0
+    },
+    "nian2": {
+      "text": "年",
+      "tokens": [
+        "nian2"
+      ],
+      "target": 0
+    },
+    "nü3": {
+      "text": "女",
+      "tokens": [
+        "nü3"
+      ],
+      "target": 0
+    },
+    "nüe4": {
+      "text": "虐",
+      "tokens": [
+        "nüe4"
+      ],
+      "target": 0
+    },
+    "pa1": {
+      "text": "趴",
+      "tokens": [
+        "pa1"
+      ],
+      "target": 0
+    },
+    "pa2": {
+      "text": "爬",
+      "tokens": [
+        "pa2"
+      ],
+      "target": 0
+    },
+    "pa4": {
+      "text": "怕",
+      "tokens": [
+        "pa4"
+      ],
+      "target": 0
+    },
+    "peng2": {
+      "text": "朋",
+      "tokens": [
+        "peng2"
+      ],
+      "target": 0
+    },
+    "pou1": {
+      "text": "剖",
+      "tokens": [
+        "pou1"
+      ],
+      "target": 0
+    },
+    "qi1": {
+      "text": "七",
+      "tokens": [
+        "qi1"
+      ],
+      "target": 0
+    },
+    "qi2": {
+      "text": "旗",
+      "tokens": [
+        "qi2"
+      ],
+      "target": 0
+    },
+    "qi3": {
+      "text": "起",
+      "tokens": [
+        "qi3"
+      ],
+      "target": 0
+    },
+    "qi4": {
+      "text": "气",
+      "tokens": [
+        "qi4"
+      ],
+      "target": 0
+    },
+    "qian2": {
+      "text": "前",
+      "tokens": [
+        "qian2"
+      ],
+      "target": 0
+    },
+    "qing2": {
+      "text": "情",
+      "tokens": [
+        "qing2"
+      ],
+      "target": 0
+    },
+    "qu3": {
+      "text": "取",
+      "tokens": [
+        "qu3"
+      ],
+      "target": 0
+    },
+    "qu4": {
+      "text": "去",
+      "tokens": [
+        "qu4"
+      ],
+      "target": 0
+    },
+    "quan2": {
+      "text": "全",
+      "tokens": [
+        "quan2"
+      ],
+      "target": 0
+    },
+    "ran2": {
+      "text": "然",
+      "tokens": [
+        "ran2"
+      ],
+      "target": 0
+    },
+    "ren2": {
+      "text": "人",
+      "tokens": [
+        "ren2"
+      ],
+      "target": 0
+    },
+    "ri4": {
+      "text": "日",
+      "tokens": [
+        "ri4"
+      ],
+      "target": 0
+    },
+    "ru2": {
+      "text": "如",
+      "tokens": [
+        "ru2"
+      ],
+      "target": 0
+    },
+    "san1": {
+      "text": "三",
+      "tokens": [
+        "san1"
+      ],
+      "target": 0
+    },
+    "sen1": {
+      "text": "森",
+      "tokens": [
+        "sen1"
+      ],
+      "target": 0
+    },
+    "shan1": {
+      "text": "山",
+      "tokens": [
+        "shan1"
+      ],
+      "target": 0
+    },
+    "shei2": {
+      "text": "谁",
+      "tokens": [
+        "shei2"
+      ],
+      "target": 0
+    },
+    "shen2": {
+      "text": "神",
+      "tokens": [
+        "shen2"
+      ],
+      "target": 0
+    },
+    "sheng1": {
+      "text": "生",
+      "tokens": [
+        "sheng1"
+      ],
+      "target": 0
+    },
+    "shi1": {
+      "text": "诗",
+      "tokens": [
+        "shi1"
+      ],
+      "target": 0
+    },
+    "shi2": {
+      "text": "十",
+      "tokens": [
+        "shi2"
+      ],
+      "target": 0
+    },
+    "shi3": {
+      "text": "使",
+      "tokens": [
+        "shi3"
+      ],
+      "target": 0
+    },
+    "shi4": {
+      "text": "是",
+      "tokens": [
+        "shi4"
+      ],
+      "target": 0
+    },
+    "shou3": {
+      "text": "手",
+      "tokens": [
+        "shou3"
+      ],
+      "target": 0
+    },
+    "shu1": {
+      "text": "书",
+      "tokens": [
+        "shu1"
+      ],
+      "target": 0
+    },
+    "shu4": {
+      "text": "树",
+      "tokens": [
+        "shu4"
+      ],
+      "target": 0
+    },
+    "shui3": {
+      "text": "水",
+      "tokens": [
+        "shui3"
+      ],
+      "target": 0
+    },
+    "shui4": {
+      "text": "睡",
+      "tokens": [
+        "shui4"
+      ],
+      "target": 0
+    },
+    "shun4": {
+      "text": "顺",
+      "tokens": [
+        "shun4"
+      ],
+      "target": 0
+    },
+    "si1": {
+      "text": "思",
+      "tokens": [
+        "si1"
+      ],
+      "target": 0
+    },
+    "si3": {
+      "text": "死",
+      "tokens": [
+        "si3"
+      ],
+      "target": 0
+    },
+    "si4": {
+      "text": "四",
+      "tokens": [
+        "si4"
+      ],
+      "target": 0
+    },
+    "suo3": {
+      "text": "所",
+      "tokens": [
+        "suo3"
+      ],
+      "target": 0
+    },
+    "ta1": {
+      "text": "他",
+      "tokens": [
+        "ta1"
+      ],
+      "target": 0
+    },
+    "ta3": {
+      "text": "塔",
+      "tokens": [
+        "ta3"
+      ],
+      "target": 0
+    },
+    "ta4": {
+      "text": "踏",
+      "tokens": [
+        "ta4"
+      ],
+      "target": 0
+    },
+    "tian1": {
+      "text": "天",
+      "tokens": [
+        "tian1"
+      ],
+      "target": 0
+    },
+    "wai4": {
+      "text": "外",
+      "tokens": [
+        "wai4"
+      ],
+      "target": 0
+    },
+    "wan3": {
+      "text": "晚",
+      "tokens": [
+        "wan3"
+      ],
+      "target": 0
+    },
+    "wo3": {
+      "text": "我",
+      "tokens": [
+        "wo3"
+      ],
+      "target": 0
+    },
+    "xi1": {
+      "text": "西",
+      "tokens": [
+        "xi1"
+      ],
+      "target": 0
+    },
+    "xi2": {
+      "text": "习",
+      "tokens": [
+        "xi2"
+      ],
+      "target": 0
+    },
+    "xi3": {
+      "text": "洗",
+      "tokens": [
+        "xi3"
+      ],
+      "target": 0
+    },
+    "xi4": {
+      "text": "戏",
+      "tokens": [
+        "xi4"
+      ],
+      "target": 0
+    },
+    "xia4": {
+      "text": "下",
+      "tokens": [
+        "xia4"
+      ],
+      "target": 0
+    },
+    "xian1": {
+      "text": "先",
+      "tokens": [
+        "xian1"
+      ],
+      "target": 0
+    },
+    "xiang1": {
+      "text": "香",
+      "tokens": [
+        "xiang1"
+      ],
+      "target": 0
+    },
+    "xiang3": {
+      "text": "想",
+      "tokens": [
+        "xiang3"
+      ],
+      "target": 0
+    },
+    "xiao3": {
+      "text": "小",
+      "tokens": [
+        "xiao3"
+      ],
+      "target": 0
+    },
+    "xin1": {
+      "text": "心",
+      "tokens": [
+        "xin1"
+      ],
+      "target": 0
+    },
+    "xing4": {
+      "text": "性",
+      "tokens": [
+        "xing4"
+      ],
+      "target": 0
+    },
+    "xu1": {
+      "text": "需",
+      "tokens": [
+        "xu1"
+      ],
+      "target": 0
+    },
+    "xu2": {
+      "text": "徐",
+      "tokens": [
+        "xu2"
+      ],
+      "target": 0
+    },
+    "xu3": {
+      "text": "许",
+      "tokens": [
+        "xu3"
+      ],
+      "target": 0
+    },
+    "xu4": {
+      "text": "续",
+      "tokens": [
+        "xu4"
+      ],
+      "target": 0
+    },
+    "xuan1": {
+      "text": "宣",
+      "tokens": [
+        "xuan1"
+      ],
+      "target": 0
+    },
+    "xuan2": {
+      "text": "悬",
+      "tokens": [
+        "xuan2"
+      ],
+      "target": 0
+    },
+    "xuan3": {
+      "text": "选",
+      "tokens": [
+        "xuan3"
+      ],
+      "target": 0
+    },
+    "xuan4": {
+      "text": "炫",
+      "tokens": [
+        "xuan4"
+      ],
+      "target": 0
+    },
+    "xue2": {
+      "text": "学",
+      "tokens": [
+        "xue2"
+      ],
+      "target": 0
+    },
+    "xun1": {
+      "text": "熏",
+      "tokens": [
+        "xun1"
+      ],
+      "target": 0
+    },
+    "xun2": {
+      "text": "寻",
+      "tokens": [
+        "xun2"
+      ],
+      "target": 0
+    },
+    "xun4": {
+      "text": "训",
+      "tokens": [
+        "xun4"
+      ],
+      "target": 0
+    },
+    "yan3": {
+      "text": "眼",
+      "tokens": [
+        "yan3"
+      ],
+      "target": 0
+    },
+    "ye3": {
+      "text": "也",
+      "tokens": [
+        "ye3"
+      ],
+      "target": 0
+    },
+    "yi1": {
+      "text": "一",
+      "tokens": [
+        "yi1"
+      ],
+      "target": 0
+    },
+    "yi3": {
+      "text": "以",
+      "tokens": [
+        "yi3"
+      ],
+      "target": 0
+    },
+    "yin1": {
+      "text": "音",
+      "tokens": [
+        "yin1"
+      ],
+      "target": 0
+    },
+    "yin3": {
+      "text": "引",
+      "tokens": [
+        "yin3"
+      ],
+      "target": 0
+    },
+    "ying1": {
+      "text": "英",
+      "tokens": [
+        "ying1"
+      ],
+      "target": 0
+    },
+    "ying3": {
+      "text": "影",
+      "tokens": [
+        "ying3"
+      ],
+      "target": 0
+    },
+    "yong4": {
+      "text": "用",
+      "tokens": [
+        "yong4"
+      ],
+      "target": 0
+    },
+    "you3": {
+      "text": "有",
+      "tokens": [
+        "you3"
+      ],
+      "target": 0
+    },
+    "you4": {
+      "text": "又",
+      "tokens": [
+        "you4"
+      ],
+      "target": 0
+    },
+    "yu2": {
+      "text": "于",
+      "tokens": [
+        "yu2"
+      ],
+      "target": 0
+    },
+    "yu3": {
+      "text": "雨",
+      "tokens": [
+        "yu3"
+      ],
+      "target": 0
+    },
+    "yu4": {
+      "text": "玉",
+      "tokens": [
+        "yu4"
+      ],
+      "target": 0
+    },
+    "yuan2": {
+      "text": "元",
+      "tokens": [
+        "yuan2"
+      ],
+      "target": 0
+    },
+    "yuan4": {
+      "text": "院",
+      "tokens": [
+        "yuan4"
+      ],
+      "target": 0
+    },
+    "yue4": {
+      "text": "月",
+      "tokens": [
+        "yue4"
+      ],
+      "target": 0
+    },
+    "yun2": {
+      "text": "云",
+      "tokens": [
+        "yun2"
+      ],
+      "target": 0
+    },
+    "yun3": {
+      "text": "允",
+      "tokens": [
+        "yun3"
+      ],
+      "target": 0
+    },
+    "yun4": {
+      "text": "运",
+      "tokens": [
+        "yun4"
+      ],
+      "target": 0
+    },
+    "zai4": {
+      "text": "在",
+      "tokens": [
+        "zai4"
+      ],
+      "target": 0
+    },
+    "zao3": {
+      "text": "早",
+      "tokens": [
+        "zao3"
+      ],
+      "target": 0
+    },
+    "zen3": {
+      "text": "怎",
+      "tokens": [
+        "zen3"
+      ],
+      "target": 0
+    },
+    "zhan4": {
+      "text": "战",
+      "tokens": [
+        "zhan4"
+      ],
+      "target": 0
+    },
+    "zhe3": {
+      "text": "者",
+      "tokens": [
+        "zhe3"
+      ],
+      "target": 0
+    },
+    "zhen1": {
+      "text": "真",
+      "tokens": [
+        "zhen1"
+      ],
+      "target": 0
+    },
+    "zhi1": {
+      "text": "知",
+      "tokens": [
+        "zhi1"
+      ],
+      "target": 0
+    },
+    "zhi2": {
+      "text": "直",
+      "tokens": [
+        "zhi2"
+      ],
+      "target": 0
+    },
+    "zhi3": {
+      "text": "纸",
+      "tokens": [
+        "zhi3"
+      ],
+      "target": 0
+    },
+    "zhi4": {
+      "text": "至",
+      "tokens": [
+        "zhi4"
+      ],
+      "target": 0
+    },
+    "zhu3": {
+      "text": "主",
+      "tokens": [
+        "zhu3"
+      ],
+      "target": 0
+    },
+    "zhun3": {
+      "text": "准",
+      "tokens": [
+        "zhun3"
+      ],
+      "target": 0
+    },
+    "zhuo1": {
+      "text": "桌",
+      "tokens": [
+        "zhuo1"
+      ],
+      "target": 0
+    },
+    "zi1": {
+      "text": "资",
+      "tokens": [
+        "zi1"
+      ],
+      "target": 0
+    },
+    "zi3": {
+      "text": "紫",
+      "tokens": [
+        "zi3"
+      ],
+      "target": 0
+    },
+    "zi4": {
+      "text": "字",
+      "tokens": [
+        "zi4"
+      ],
+      "target": 0
+    }
+  },
+  "contextualExamples": {
     "a1": {
       "text": "阿们",
       "tokens": [
@@ -77,19 +1592,13 @@
       ],
       "target": 1
     },
-    "an2": {
-      "text": "啽",
-      "tokens": [
-        "an2"
-      ],
-      "target": 0
-    },
     "an3": {
-      "text": "埯",
+      "text": "碳铵",
       "tokens": [
+        "tan4",
         "an3"
       ],
-      "target": 0
+      "target": 1
     },
     "an4": {
       "text": "暗地里",
@@ -101,9 +1610,10 @@
       "target": 0
     },
     "ang1": {
-      "text": "肮",
+      "text": "肮脏",
       "tokens": [
-        "ang1"
+        "ang1",
+        "zang1"
       ],
       "target": 0
     },
@@ -156,30 +1666,35 @@
       "target": 0
     },
     "ba1": {
-      "text": "八",
+      "text": "巴不得",
       "tokens": [
-        "ba1"
+        "ba1",
+        "bu5",
+        "de5"
       ],
       "target": 0
     },
     "ba2": {
-      "text": "拔",
+      "text": "拔地",
       "tokens": [
-        "ba2"
+        "ba2",
+        "di4"
       ],
       "target": 0
     },
     "ba3": {
-      "text": "把",
+      "text": "个把",
       "tokens": [
+        "ge4",
         "ba3"
       ],
-      "target": 0
+      "target": 1
     },
     "ba4": {
-      "text": "爸",
+      "text": "把子",
       "tokens": [
-        "ba4"
+        "ba4",
+        "zi5"
       ],
       "target": 0
     },
@@ -200,9 +1715,10 @@
       "target": 0
     },
     "bai2": {
-      "text": "白",
+      "text": "白人",
       "tokens": [
-        "bai2"
+        "bai2",
+        "ren2"
       ],
       "target": 0
     },
@@ -354,16 +1870,18 @@
       "target": 0
     },
     "bei3": {
-      "text": "北",
+      "text": "北上",
       "tokens": [
-        "bei3"
+        "bei3",
+        "shang4"
       ],
       "target": 0
     },
     "bei4": {
-      "text": "被",
+      "text": "被子",
       "tokens": [
-        "bei4"
+        "bei4",
+        "zi5"
       ],
       "target": 0
     },
@@ -384,9 +1902,10 @@
       "target": 1
     },
     "ben3": {
-      "text": "本",
+      "text": "本人",
       "tokens": [
-        "ben3"
+        "ben3",
+        "ren2"
       ],
       "target": 0
     },
@@ -415,9 +1934,11 @@
       "target": 0
     },
     "beng3": {
-      "text": "埲",
+      "text": "绷着脸",
       "tokens": [
-        "beng3"
+        "beng3",
+        "zhe5",
+        "lian3"
       ],
       "target": 0
     },
@@ -542,11 +2063,12 @@
       "target": 2
     },
     "bie3": {
-      "text": "瘪",
+      "text": "受瘪",
       "tokens": [
+        "shou4",
         "bie3"
       ],
-      "target": 0
+      "target": 1
     },
     "bie4": {
       "text": "别嘴",
@@ -650,9 +2172,11 @@
       "target": 1
     },
     "bu1": {
-      "text": "晡",
+      "text": "逋逃薮",
       "tokens": [
-        "bu1"
+        "bu1",
+        "tao2",
+        "sou3"
       ],
       "target": 0
     },
@@ -674,9 +2198,10 @@
       "target": 1
     },
     "bu4": {
-      "text": "不",
+      "text": "不一",
       "tokens": [
-        "bu4"
+        "bu4",
+        "yi1"
       ],
       "target": 0
     },
@@ -697,9 +2222,10 @@
       "target": 0
     },
     "ca3": {
-      "text": "礤",
+      "text": "礤床",
       "tokens": [
-        "ca3"
+        "ca3",
+        "chuang2"
       ],
       "target": 0
     },
@@ -847,13 +2373,6 @@
       ],
       "target": 0
     },
-    "cen2": {
-      "text": "岑",
-      "tokens": [
-        "cen2"
-      ],
-      "target": 0
-    },
     "ceng1": {
       "text": "味噌",
       "tokens": [
@@ -872,11 +2391,12 @@
       "target": 2
     },
     "ceng4": {
-      "text": "蹭",
+      "text": "刮蹭",
       "tokens": [
+        "gua1",
         "ceng4"
       ],
-      "target": 0
+      "target": 1
     },
     "ceng5": {
       "text": "磨蹭",
@@ -905,11 +2425,12 @@
       "target": 2
     },
     "cha3": {
-      "text": "蹅",
+      "text": "裤衩",
       "tokens": [
+        "ku4",
         "cha3"
       ],
-      "target": 0
+      "target": 1
     },
     "cha4": {
       "text": "一刹那",
@@ -944,13 +2465,6 @@
         "chai2"
       ],
       "target": 1
-    },
-    "chai4": {
-      "text": "囆",
-      "tokens": [
-        "chai4"
-      ],
-      "target": 0
     },
     "chai5": {
       "text": "劈柴",
@@ -1010,9 +2524,10 @@
       "target": 0
     },
     "chang2": {
-      "text": "常",
+      "text": "常人",
       "tokens": [
-        "chang2"
+        "chang2",
+        "ren2"
       ],
       "target": 0
     },
@@ -1068,13 +2583,6 @@
       ],
       "target": 0
     },
-    "chao4": {
-      "text": "耖",
-      "tokens": [
-        "chao4"
-      ],
-      "target": 0
-    },
     "chao5": {
       "text": "吵吵",
       "tokens": [
@@ -1127,16 +2635,10 @@
       "target": 0
     },
     "chen2": {
-      "text": "陈",
+      "text": "陈说",
       "tokens": [
-        "chen2"
-      ],
-      "target": 0
-    },
-    "chen3": {
-      "text": "碜",
-      "tokens": [
-        "chen3"
+        "chen2",
+        "shuo1"
       ],
       "target": 0
     },
@@ -1167,11 +2669,12 @@
       "target": 0
     },
     "cheng2": {
-      "text": "成",
+      "text": "不成",
       "tokens": [
+        "bu4",
         "cheng2"
       ],
-      "target": 0
+      "target": 1
     },
     "cheng3": {
       "text": "得逞",
@@ -1198,32 +2701,38 @@
       "target": 1
     },
     "chi1": {
-      "text": "吃",
+      "text": "吃不来",
       "tokens": [
-        "chi1"
+        "chi1",
+        "bu5",
+        "lai2"
       ],
       "target": 0
     },
     "chi2": {
-      "text": "池",
+      "text": "持有人",
       "tokens": [
-        "chi2"
+        "chi2",
+        "you3",
+        "ren2"
       ],
       "target": 0
     },
     "chi3": {
-      "text": "尺",
+      "text": "不齿",
       "tokens": [
+        "bu4",
         "chi3"
       ],
-      "target": 0
+      "target": 1
     },
     "chi4": {
-      "text": "赤",
+      "text": "不啻",
       "tokens": [
+        "bu4",
         "chi4"
       ],
-      "target": 0
+      "target": 1
     },
     "chi5": {
       "text": "吭哧",
@@ -1260,9 +2769,10 @@
       "target": 1
     },
     "chong4": {
-      "text": "揰",
+      "text": "冲劲",
       "tokens": [
-        "chong4"
+        "chong4",
+        "jin4"
       ],
       "target": 0
     },
@@ -1317,9 +2827,10 @@
       "target": 1
     },
     "chu1": {
-      "text": "出",
+      "text": "出来",
       "tokens": [
-        "chu1"
+        "chu1",
+        "lai2"
       ],
       "target": 0
     },
@@ -1375,11 +2886,12 @@
       "target": 0
     },
     "chuai4": {
-      "text": "膪",
+      "text": "囊膪",
       "tokens": [
+        "nang1",
         "chuai4"
       ],
-      "target": 0
+      "target": 1
     },
     "chuan1": {
       "text": "天穿日",
@@ -1468,23 +2980,26 @@
       "target": 1
     },
     "chun1": {
-      "text": "春",
+      "text": "发春",
       "tokens": [
+        "fa1",
         "chun1"
       ],
-      "target": 0
+      "target": 1
     },
     "chun2": {
-      "text": "唇",
+      "text": "上唇",
       "tokens": [
+        "shang4",
         "chun2"
       ],
-      "target": 0
+      "target": 1
     },
     "chun3": {
-      "text": "蠢",
+      "text": "蠢人",
       "tokens": [
-        "chun3"
+        "chun3",
+        "ren2"
       ],
       "target": 0
     },
@@ -1513,32 +3028,38 @@
       "target": 1
     },
     "ci1": {
-      "text": "偨",
+      "text": "参差",
       "tokens": [
+        "cen1",
         "ci1"
       ],
-      "target": 0
+      "target": 1
     },
     "ci2": {
-      "text": "词",
+      "text": "不定词",
       "tokens": [
+        "bu4",
+        "ding4",
         "ci2"
       ],
-      "target": 0
+      "target": 2
     },
     "ci3": {
-      "text": "此",
+      "text": "在此",
       "tokens": [
+        "zai4",
         "ci3"
       ],
-      "target": 0
+      "target": 1
     },
     "ci4": {
-      "text": "次",
+      "text": "有一次",
       "tokens": [
+        "you3",
+        "yi1",
         "ci4"
       ],
-      "target": 0
+      "target": 2
     },
     "cong1": {
       "text": "小聪明",
@@ -1575,11 +3096,12 @@
       "target": 2
     },
     "cu2": {
-      "text": "徂",
+      "text": "崩殂",
       "tokens": [
+        "beng1",
         "cu2"
       ],
-      "target": 0
+      "target": 1
     },
     "cu4": {
       "text": "卒中",
@@ -1623,8 +3145,9 @@
       "target": 0
     },
     "cui3": {
-      "text": "漼",
+      "text": "璀璀",
       "tokens": [
+        "cui3",
         "cui3"
       ],
       "target": 0
@@ -1688,16 +3211,10 @@
       "target": 2
     },
     "cuo2": {
-      "text": "嵯",
+      "text": "痤疮",
       "tokens": [
-        "cuo2"
-      ],
-      "target": 0
-    },
-    "cuo3": {
-      "text": "脞",
-      "tokens": [
-        "cuo3"
+        "cuo2",
+        "chuang1"
       ],
       "target": 0
     },
@@ -1718,30 +3235,37 @@
       "target": 1
     },
     "da1": {
-      "text": "搭",
+      "text": "马褡子",
       "tokens": [
-        "da1"
+        "ma3",
+        "da1",
+        "zi5"
       ],
-      "target": 0
+      "target": 1
     },
     "da2": {
-      "text": "答",
+      "text": "达不到",
       "tokens": [
-        "da2"
+        "da2",
+        "bu4",
+        "dao4"
       ],
       "target": 0
     },
     "da3": {
-      "text": "打",
+      "text": "打不过",
       "tokens": [
-        "da3"
+        "da3",
+        "bu5",
+        "guo4"
       ],
       "target": 0
     },
     "da4": {
-      "text": "大",
+      "text": "大一",
       "tokens": [
-        "da4"
+        "da4",
+        "yi1"
       ],
       "target": 0
     },
@@ -1865,9 +3389,10 @@
       "target": 1
     },
     "dao2": {
-      "text": "捯",
+      "text": "捯饬",
       "tokens": [
-        "dao2"
+        "dao2",
+        "chi5"
       ],
       "target": 0
     },
@@ -1881,11 +3406,12 @@
       "target": 2
     },
     "dao4": {
-      "text": "到",
+      "text": "不到",
       "tokens": [
+        "bu4",
         "dao4"
       ],
-      "target": 0
+      "target": 1
     },
     "dao5": {
       "text": "说道",
@@ -1927,13 +3453,6 @@
       ],
       "target": 0
     },
-    "den4": {
-      "text": "扽",
-      "tokens": [
-        "den4"
-      ],
-      "target": 0
-    },
     "deng1": {
       "text": "登出来",
       "tokens": [
@@ -1944,11 +3463,12 @@
       "target": 0
     },
     "deng3": {
-      "text": "等",
+      "text": "一等",
       "tokens": [
+        "yi1",
         "deng3"
       ],
-      "target": 0
+      "target": 1
     },
     "deng4": {
       "text": "凳子",
@@ -2000,13 +3520,6 @@
       ],
       "target": 1
     },
-    "dia3": {
-      "text": "嗲",
-      "tokens": [
-        "dia3"
-      ],
-      "target": 0
-    },
     "dian1": {
       "text": "发癫",
       "tokens": [
@@ -2016,11 +3529,12 @@
       "target": 1
     },
     "dian3": {
-      "text": "点",
+      "text": "一点",
       "tokens": [
+        "yi1",
         "dian3"
       ],
-      "target": 0
+      "target": 1
     },
     "dian4": {
       "text": "电子人",
@@ -2099,11 +3613,12 @@
       "target": 0
     },
     "ding4": {
-      "text": "定",
+      "text": "一定",
       "tokens": [
+        "yi1",
         "ding4"
       ],
-      "target": 0
+      "target": 1
     },
     "ding5": {
       "text": "补丁",
@@ -2123,11 +3638,12 @@
       "target": 0
     },
     "dong1": {
-      "text": "东",
+      "text": "以东",
       "tokens": [
+        "yi3",
         "dong1"
       ],
-      "target": 0
+      "target": 1
     },
     "dong3": {
       "text": "看不懂",
@@ -2139,11 +3655,12 @@
       "target": 2
     },
     "dong4": {
-      "text": "动",
+      "text": "不动",
       "tokens": [
+        "bu4",
         "dong4"
       ],
-      "target": 0
+      "target": 1
     },
     "dou1": {
       "text": "大都",
@@ -2254,32 +3771,37 @@
       "target": 1
     },
     "dui4": {
-      "text": "对",
+      "text": "一对",
       "tokens": [
+        "yi1",
         "dui4"
       ],
-      "target": 0
+      "target": 1
     },
     "dun1": {
-      "text": "蹲",
+      "text": "家里蹲",
       "tokens": [
+        "jia1",
+        "li3",
         "dun1"
       ],
-      "target": 0
+      "target": 2
     },
     "dun3": {
-      "text": "盹",
+      "text": "拥趸",
       "tokens": [
+        "yong1",
         "dun3"
       ],
-      "target": 0
+      "target": 1
     },
     "dun4": {
-      "text": "顿",
+      "text": "人盾",
       "tokens": [
+        "ren2",
         "dun4"
       ],
-      "target": 0
+      "target": 1
     },
     "duo1": {
       "text": "多大",
@@ -2373,9 +3895,11 @@
       "target": 0
     },
     "en4": {
-      "text": "摁",
+      "text": "摁扣儿",
       "tokens": [
-        "en4"
+        "en4",
+        "kou4",
+        "r5"
       ],
       "target": 0
     },
@@ -2387,17 +3911,11 @@
       ],
       "target": 0
     },
-    "eng1": {
-      "text": "鞥",
-      "tokens": [
-        "eng1"
-      ],
-      "target": 0
-    },
     "er2": {
-      "text": "而",
+      "text": "而是",
       "tokens": [
-        "er2"
+        "er2",
+        "shi4"
       ],
       "target": 0
     },
@@ -2436,11 +3954,12 @@
       "target": 1
     },
     "fa3": {
-      "text": "法",
+      "text": "不法",
       "tokens": [
+        "bu4",
         "fa3"
       ],
-      "target": 0
+      "target": 1
     },
     "fa4": {
       "text": "长发",
@@ -2503,11 +4022,12 @@
       "target": 1
     },
     "fang1": {
-      "text": "方",
+      "text": "一方",
       "tokens": [
+        "yi1",
         "fang1"
       ],
-      "target": 0
+      "target": 1
     },
     "fang2": {
       "text": "公事房",
@@ -2637,11 +4157,12 @@
       "target": 1
     },
     "feng3": {
-      "text": "唪",
+      "text": "嘲讽",
       "tokens": [
+        "chao2",
         "feng3"
       ],
-      "target": 0
+      "target": 1
     },
     "feng4": {
       "text": "中缝",
@@ -2666,13 +4187,6 @@
         "fo2"
       ],
       "target": 1
-    },
-    "fou2": {
-      "text": "紑",
-      "tokens": [
-        "fou2"
-      ],
-      "target": 0
     },
     "fou3": {
       "text": "是否",
@@ -2750,9 +4264,10 @@
       "target": 1
     },
     "ga4": {
-      "text": "尬",
+      "text": "尬意",
       "tokens": [
-        "ga4"
+        "ga4",
+        "yi4"
       ],
       "target": 0
     },
@@ -2857,9 +4372,10 @@
       "target": 1
     },
     "gao1": {
-      "text": "高",
+      "text": "高人",
       "tokens": [
-        "gao1"
+        "gao1",
+        "ren2"
       ],
       "target": 0
     },
@@ -2890,11 +4406,12 @@
       "target": 1
     },
     "ge1": {
-      "text": "哥",
+      "text": "一哥",
       "tokens": [
+        "yi1",
         "ge1"
       ],
-      "target": 0
+      "target": 1
     },
     "ge2": {
       "text": "所有格",
@@ -2963,9 +4480,10 @@
       "target": 1
     },
     "gen4": {
-      "text": "亘",
+      "text": "亘古",
       "tokens": [
-        "gen4"
+        "gen4",
+        "gu3"
       ],
       "target": 0
     },
@@ -2994,11 +4512,12 @@
       "target": 0
     },
     "gong1": {
-      "text": "公",
+      "text": "不公",
       "tokens": [
+        "bu4",
         "gong1"
       ],
-      "target": 0
+      "target": 1
     },
     "gong3": {
       "text": "拱道",
@@ -3155,11 +4674,12 @@
       "target": 1
     },
     "guan1": {
-      "text": "关",
+      "text": "有关",
       "tokens": [
+        "you3",
         "guan1"
       ],
-      "target": 0
+      "target": 1
     },
     "guan3": {
       "text": "管他的",
@@ -3197,11 +4717,12 @@
       "target": 0
     },
     "guang4": {
-      "text": "逛",
+      "text": "游逛",
       "tokens": [
+        "you2",
         "guang4"
       ],
-      "target": 0
+      "target": 1
     },
     "guang5": {
       "text": "逛逛",
@@ -3212,23 +4733,29 @@
       "target": 1
     },
     "gui1": {
-      "text": "归",
+      "text": "正规军",
       "tokens": [
-        "gui1"
+        "zheng4",
+        "gui1",
+        "jun1"
       ],
-      "target": 0
+      "target": 1
     },
     "gui3": {
-      "text": "鬼",
+      "text": "上轨道",
       "tokens": [
-        "gui3"
+        "shang4",
+        "gui3",
+        "dao4"
       ],
-      "target": 0
+      "target": 1
     },
     "gui4": {
-      "text": "贵",
+      "text": "刽子手",
       "tokens": [
-        "gui4"
+        "gui4",
+        "zi5",
+        "shou3"
       ],
       "target": 0
     },
@@ -3266,9 +4793,10 @@
       "target": 1
     },
     "guo2": {
-      "text": "国",
+      "text": "国人",
       "tokens": [
-        "guo2"
+        "guo2",
+        "ren2"
       ],
       "target": 0
     },
@@ -3341,17 +4869,11 @@
       ],
       "target": 2
     },
-    "hai1": {
-      "text": "咍",
-      "tokens": [
-        "hai1"
-      ],
-      "target": 0
-    },
     "hai2": {
-      "text": "孩",
+      "text": "还是",
       "tokens": [
-        "hai2"
+        "hai2",
+        "shi5"
       ],
       "target": 0
     },
@@ -3439,9 +4961,10 @@
       "target": 1
     },
     "hang4": {
-      "text": "沆",
+      "text": "沆瀣",
       "tokens": [
-        "hang4"
+        "hang4",
+        "xie4"
       ],
       "target": 0
     },
@@ -3520,9 +5043,10 @@
       "target": 1
     },
     "hei1": {
-      "text": "黑",
+      "text": "黑人",
       "tokens": [
-        "hei1"
+        "hei1",
+        "ren2"
       ],
       "target": 0
     },
@@ -3535,9 +5059,10 @@
       "target": 1
     },
     "hen3": {
-      "text": "很",
+      "text": "很是",
       "tokens": [
-        "hen3"
+        "hen3",
+        "shi4"
       ],
       "target": 0
     },
@@ -3568,11 +5093,13 @@
       "target": 2
     },
     "heng4": {
-      "text": "堼",
+      "text": "窝里横",
       "tokens": [
+        "wo1",
+        "li5",
         "heng4"
       ],
-      "target": 0
+      "target": 2
     },
     "hong1": {
       "text": "哄然",
@@ -3616,16 +5143,18 @@
       "target": 2
     },
     "hou3": {
-      "text": "吼",
+      "text": "吼叫",
       "tokens": [
-        "hou3"
+        "hou3",
+        "jiao4"
       ],
       "target": 0
     },
     "hou4": {
-      "text": "后",
+      "text": "后人",
       "tokens": [
-        "hou4"
+        "hou4",
+        "ren2"
       ],
       "target": 0
     },
@@ -3681,11 +5210,12 @@
       "target": 2
     },
     "hua1": {
-      "text": "花",
+      "text": "国花",
       "tokens": [
+        "guo2",
         "hua1"
       ],
-      "target": 0
+      "target": 1
     },
     "hua2": {
       "text": "划不来",
@@ -3929,32 +5459,39 @@
       "target": 1
     },
     "ji1": {
-      "text": "鸡",
+      "text": "无人机",
       "tokens": [
+        "wu2",
+        "ren2",
         "ji1"
       ],
-      "target": 0
+      "target": 2
     },
     "ji2": {
-      "text": "急",
+      "text": "来不及",
       "tokens": [
+        "lai2",
+        "bu5",
         "ji2"
       ],
-      "target": 0
+      "target": 2
     },
     "ji3": {
-      "text": "几",
+      "text": "一己",
       "tokens": [
+        "yi1",
         "ji3"
       ],
-      "target": 0
+      "target": 1
     },
     "ji4": {
-      "text": "记",
+      "text": "中和剂",
       "tokens": [
+        "zhong1",
+        "he2",
         "ji4"
       ],
-      "target": 0
+      "target": 2
     },
     "ji5": {
       "text": "里脊",
@@ -3965,9 +5502,10 @@
       "target": 1
     },
     "jia1": {
-      "text": "家",
+      "text": "家的",
       "tokens": [
-        "jia1"
+        "jia1",
+        "de5"
       ],
       "target": 0
     },
@@ -4133,11 +5671,12 @@
       "target": 2
     },
     "jie3": {
-      "text": "姐",
+      "text": "的姐",
       "tokens": [
+        "di1",
         "jie3"
       ],
-      "target": 0
+      "target": 1
     },
     "jie4": {
       "text": "中介所",
@@ -4175,18 +5714,20 @@
       "target": 2
     },
     "jin4": {
-      "text": "进",
+      "text": "进来",
       "tokens": [
-        "jin4"
+        "jin4",
+        "lai2"
       ],
       "target": 0
     },
     "jing1": {
-      "text": "经",
+      "text": "一经",
       "tokens": [
+        "yi1",
         "jing1"
       ],
-      "target": 0
+      "target": 1
     },
     "jing3": {
       "text": "红景天",
@@ -4214,13 +5755,6 @@
       ],
       "target": 1
     },
-    "jiong1": {
-      "text": "冂",
-      "tokens": [
-        "jiong1"
-      ],
-      "target": 0
-    },
     "jiong3": {
       "text": "发窘",
       "tokens": [
@@ -4238,16 +5772,18 @@
       "target": 0
     },
     "jiu3": {
-      "text": "久",
+      "text": "不久",
       "tokens": [
+        "bu4",
         "jiu3"
       ],
-      "target": 0
+      "target": 1
     },
     "jiu4": {
-      "text": "就",
+      "text": "就是",
       "tokens": [
-        "jiu4"
+        "jiu4",
+        "shi4"
       ],
       "target": 0
     },
@@ -4268,23 +5804,26 @@
       "target": 1
     },
     "ju2": {
-      "text": "局",
+      "text": "了局",
       "tokens": [
+        "liao3",
         "ju2"
       ],
-      "target": 0
+      "target": 1
     },
     "ju3": {
-      "text": "举",
+      "text": "一举",
       "tokens": [
+        "yi1",
         "ju3"
       ],
-      "target": 0
+      "target": 1
     },
     "ju4": {
-      "text": "巨",
+      "text": "巨人",
       "tokens": [
-        "ju4"
+        "ju4",
+        "ren2"
       ],
       "target": 0
     },
@@ -4322,9 +5861,10 @@
       "target": 1
     },
     "jue1": {
-      "text": "撅",
+      "text": "噘嘴",
       "tokens": [
-        "jue1"
+        "jue1",
+        "zui3"
       ],
       "target": 0
     },
@@ -4355,16 +5895,18 @@
       "target": 0
     },
     "jun1": {
-      "text": "军",
+      "text": "均一",
       "tokens": [
-        "jun1"
+        "jun1",
+        "yi1"
       ],
       "target": 0
     },
     "jun4": {
-      "text": "俊",
+      "text": "郡会",
       "tokens": [
-        "jun4"
+        "jun4",
+        "hui4"
       ],
       "target": 0
     },
@@ -4386,11 +5928,12 @@
       "target": 2
     },
     "kai1": {
-      "text": "开",
+      "text": "大开",
       "tokens": [
+        "da4",
         "kai1"
       ],
-      "target": 0
+      "target": 1
     },
     "kai3": {
       "text": "正楷",
@@ -4401,11 +5944,12 @@
       "target": 1
     },
     "kai4": {
-      "text": "忾",
+      "text": "敌忾",
       "tokens": [
+        "di2",
         "kai4"
       ],
-      "target": 0
+      "target": 1
     },
     "kai5": {
       "text": "撩开",
@@ -4475,9 +6019,11 @@
       "target": 1
     },
     "kao1": {
-      "text": "尻",
+      "text": "尻门子",
       "tokens": [
-        "kao1"
+        "kao1",
+        "men2",
+        "zi5"
       ],
       "target": 0
     },
@@ -4533,9 +6079,10 @@
       "target": 2
     },
     "kei1": {
-      "text": "剋",
+      "text": "剋架",
       "tokens": [
-        "kei1"
+        "kei1",
+        "jia4"
       ],
       "target": 0
     },
@@ -4546,13 +6093,6 @@
         "ken3"
       ],
       "target": 1
-    },
-    "ken4": {
-      "text": "掯",
-      "tokens": [
-        "ken4"
-      ],
-      "target": 0
     },
     "keng1": {
       "text": "坑人",
@@ -4673,13 +6213,6 @@
       ],
       "target": 0
     },
-    "kuai3": {
-      "text": "蒯",
-      "tokens": [
-        "kuai3"
-      ],
-      "target": 0
-    },
     "kuai4": {
       "text": "快中子",
       "tokens": [
@@ -4731,13 +6264,6 @@
       ],
       "target": 2
     },
-    "kuang3": {
-      "text": "夼",
-      "tokens": [
-        "kuang3"
-      ],
-      "target": 0
-    },
     "kuang4": {
       "text": "看情况",
       "tokens": [
@@ -4774,9 +6300,10 @@
       "target": 0
     },
     "kui3": {
-      "text": "煃",
+      "text": "傀儡",
       "tokens": [
-        "kui3"
+        "kui3",
+        "lei3"
       ],
       "target": 0
     },
@@ -4797,11 +6324,12 @@
       "target": 0
     },
     "kun3": {
-      "text": "壸",
+      "text": "令阃",
       "tokens": [
+        "ling4",
         "kun3"
       ],
-      "target": 0
+      "target": 1
     },
     "kun4": {
       "text": "发困",
@@ -4820,18 +6348,22 @@
       "target": 0
     },
     "la1": {
-      "text": "拉",
+      "text": "拉家常",
       "tokens": [
-        "la1"
+        "la1",
+        "jia1",
+        "chang2"
       ],
       "target": 0
     },
     "la2": {
-      "text": "旯",
+      "text": "山旮旯",
       "tokens": [
+        "shan1",
+        "ga1",
         "la2"
       ],
-      "target": 0
+      "target": 2
     },
     "la3": {
       "text": "喇叭花",
@@ -4843,9 +6375,11 @@
       "target": 0
     },
     "la4": {
-      "text": "辣",
+      "text": "辣妹子",
       "tokens": [
-        "la4"
+        "la4",
+        "mei4",
+        "zi5"
       ],
       "target": 0
     },
@@ -4858,11 +6392,12 @@
       "target": 1
     },
     "lai2": {
-      "text": "来",
+      "text": "一来",
       "tokens": [
+        "yi1",
         "lai2"
       ],
-      "target": 0
+      "target": 1
     },
     "lai4": {
       "text": "有赖于",
@@ -5069,11 +6604,13 @@
       "target": 1
     },
     "leng2": {
-      "text": "塄",
+      "text": "三棱草",
       "tokens": [
-        "leng2"
+        "san1",
+        "leng2",
+        "cao3"
       ],
-      "target": 0
+      "target": 1
     },
     "leng3": {
       "text": "大冷天",
@@ -5110,18 +6647,20 @@
       "target": 2
     },
     "li3": {
-      "text": "里",
+      "text": "里人",
       "tokens": [
-        "li3"
+        "li3",
+        "ren2"
       ],
       "target": 0
     },
     "li4": {
-      "text": "力",
+      "text": "不力",
       "tokens": [
+        "bu4",
         "li4"
       ],
-      "target": 0
+      "target": 1
     },
     "li5": {
       "text": "那里",
@@ -5276,11 +6815,12 @@
       "target": 2
     },
     "lin3": {
-      "text": "僯",
+      "text": "仓廪",
       "tokens": [
+        "cang1",
         "lin3"
       ],
-      "target": 0
+      "target": 1
     },
     "lin4": {
       "text": "不吝",
@@ -5289,13 +6829,6 @@
         "lin4"
       ],
       "target": 1
-    },
-    "ling1": {
-      "text": "昤",
-      "tokens": [
-        "ling1"
-      ],
-      "target": 0
     },
     "ling2": {
       "text": "同龄人",
@@ -5332,30 +6865,34 @@
       "target": 1
     },
     "liu1": {
-      "text": "溜",
+      "text": "开溜",
       "tokens": [
+        "kai1",
         "liu1"
       ],
-      "target": 0
+      "target": 1
     },
     "liu2": {
-      "text": "流",
+      "text": "一流",
       "tokens": [
+        "yi1",
         "liu2"
       ],
-      "target": 0
+      "target": 1
     },
     "liu3": {
-      "text": "柳",
+      "text": "发绺",
       "tokens": [
+        "fa4",
         "liu3"
       ],
-      "target": 0
+      "target": 1
     },
     "liu4": {
-      "text": "六",
+      "text": "六家",
       "tokens": [
-        "liu4"
+        "liu4",
+        "jia1"
       ],
       "target": 0
     },
@@ -5450,11 +6987,12 @@
       "target": 1
     },
     "lu1": {
-      "text": "噜",
+      "text": "呼噜",
       "tokens": [
+        "hu1",
         "lu1"
       ],
-      "target": 0
+      "target": 1
     },
     "lu2": {
       "text": "新出炉",
@@ -5525,11 +7063,12 @@
       "target": 1
     },
     "lun2": {
-      "text": "轮",
+      "text": "一轮",
       "tokens": [
+        "yi1",
         "lun2"
       ],
-      "target": 0
+      "target": 1
     },
     "lun4": {
       "text": "不论",
@@ -5582,58 +7121,67 @@
       "target": 1
     },
     "lü2": {
-      "text": "驴",
+      "text": "驴子",
       "tokens": [
-        "lü2"
+        "lü2",
+        "zi5"
       ],
       "target": 0
     },
     "lü3": {
-      "text": "吕",
+      "text": "旅行者",
       "tokens": [
-        "lü3"
+        "lü3",
+        "xing2",
+        "zhe3"
       ],
       "target": 0
     },
     "lü4": {
-      "text": "绿",
+      "text": "绿地",
       "tokens": [
-        "lü4"
+        "lü4",
+        "di4"
       ],
       "target": 0
     },
     "lüe4": {
-      "text": "略",
+      "text": "略为",
       "tokens": [
-        "lüe4"
+        "lüe4",
+        "wei2"
       ],
       "target": 0
     },
     "ma1": {
-      "text": "妈",
+      "text": "妈的",
       "tokens": [
-        "ma1"
+        "ma1",
+        "de5"
       ],
       "target": 0
     },
     "ma2": {
-      "text": "麻",
+      "text": "大麻",
       "tokens": [
+        "da4",
         "ma2"
       ],
-      "target": 0
+      "target": 1
     },
     "ma3": {
-      "text": "马",
+      "text": "人马",
       "tokens": [
+        "ren2",
         "ma3"
       ],
-      "target": 0
+      "target": 1
     },
     "ma4": {
-      "text": "骂",
+      "text": "骂人",
       "tokens": [
-        "ma4"
+        "ma4",
+        "ren2"
       ],
       "target": 0
     },
@@ -5678,13 +7226,6 @@
         "mai5"
       ],
       "target": 1
-    },
-    "man1": {
-      "text": "颟",
-      "tokens": [
-        "man1"
-      ],
-      "target": 0
     },
     "man2": {
       "text": "瞒不过",
@@ -5809,11 +7350,12 @@
       "target": 1
     },
     "mei4": {
-      "text": "妹",
+      "text": "小妹",
       "tokens": [
+        "xiao3",
         "mei4"
       ],
-      "target": 0
+      "target": 1
     },
     "mei5": {
       "text": "妹妹",
@@ -5893,9 +7435,10 @@
       "target": 0
     },
     "mi1": {
-      "text": "咪",
+      "text": "咪唑",
       "tokens": [
-        "mi1"
+        "mi1",
+        "zuo4"
       ],
       "target": 0
     },
@@ -5951,9 +7494,10 @@
       "target": 0
     },
     "mian4": {
-      "text": "面",
+      "text": "面的",
       "tokens": [
-        "mian4"
+        "mian4",
+        "di1"
       ],
       "target": 0
     },
@@ -5964,13 +7508,6 @@
         "mian5"
       ],
       "target": 1
-    },
-    "miao1": {
-      "text": "喵",
-      "tokens": [
-        "miao1"
-      ],
-      "target": 0
     },
     "miao2": {
       "text": "实生苗",
@@ -5998,9 +7535,10 @@
       "target": 1
     },
     "mie1": {
-      "text": "咩",
+      "text": "乜嘢",
       "tokens": [
-        "mie1"
+        "mie1",
+        "ye3"
       ],
       "target": 0
     },
@@ -6031,16 +7569,18 @@
       "target": 1
     },
     "ming2": {
-      "text": "明",
+      "text": "不明",
       "tokens": [
+        "bu4",
         "ming2"
       ],
-      "target": 0
+      "target": 1
     },
     "ming3": {
-      "text": "酩",
+      "text": "酩酊",
       "tokens": [
-        "ming3"
+        "ming3",
+        "ding3"
       ],
       "target": 0
     },
@@ -6112,13 +7652,6 @@
       ],
       "target": 1
     },
-    "mou1": {
-      "text": "哞",
-      "tokens": [
-        "mou1"
-      ],
-      "target": 0
-    },
     "mou2": {
       "text": "眸子",
       "tokens": [
@@ -6171,23 +7704,28 @@
       "target": 1
     },
     "na2": {
-      "text": "拿",
+      "text": "拿不动",
       "tokens": [
-        "na2"
+        "na2",
+        "bu5",
+        "dong4"
       ],
       "target": 0
     },
     "na3": {
-      "text": "哪",
+      "text": "哪一个",
       "tokens": [
-        "na3"
+        "na3",
+        "yi1",
+        "ge5"
       ],
       "target": 0
     },
     "na4": {
-      "text": "那",
+      "text": "那是",
       "tokens": [
-        "na4"
+        "na4",
+        "shi5"
       ],
       "target": 0
     },
@@ -6227,18 +7765,20 @@
       "target": 1
     },
     "nan1": {
-      "text": "囡",
+      "text": "囡囡",
       "tokens": [
+        "nan1",
         "nan1"
       ],
       "target": 0
     },
     "nan2": {
-      "text": "男",
+      "text": "以南",
       "tokens": [
+        "yi3",
         "nan2"
       ],
-      "target": 0
+      "target": 1
     },
     "nan3": {
       "text": "赧然",
@@ -6265,9 +7805,10 @@
       "target": 1
     },
     "nang1": {
-      "text": "乪",
+      "text": "囊膪",
       "tokens": [
-        "nang1"
+        "nang1",
+        "chuai4"
       ],
       "target": 0
     },
@@ -6280,16 +7821,10 @@
       "target": 1
     },
     "nang3": {
-      "text": "攮",
+      "text": "馕嗓",
       "tokens": [
-        "nang3"
-      ],
-      "target": 0
-    },
-    "nang4": {
-      "text": "齉",
-      "tokens": [
-        "nang4"
+        "nang3",
+        "sang3"
       ],
       "target": 0
     },
@@ -6344,11 +7879,12 @@
       "target": 2
     },
     "ne4": {
-      "text": "疒",
+      "text": "口讷",
       "tokens": [
+        "kou3",
         "ne4"
       ],
-      "target": 0
+      "target": 1
     },
     "ne5": {
       "text": "着呢",
@@ -6367,9 +7903,10 @@
       "target": 1
     },
     "nei4": {
-      "text": "内",
+      "text": "内人",
       "tokens": [
-        "nei4"
+        "nei4",
+        "ren2"
       ],
       "target": 0
     },
@@ -6398,11 +7935,12 @@
       "target": 1
     },
     "neng2": {
-      "text": "能",
+      "text": "不能",
       "tokens": [
+        "bu4",
         "neng2"
       ],
-      "target": 0
+      "target": 1
     },
     "ni2": {
       "text": "水泥地",
@@ -6414,9 +7952,10 @@
       "target": 1
     },
     "ni3": {
-      "text": "你",
+      "text": "你我",
       "tokens": [
-        "ni3"
+        "ni3",
+        "wo3"
       ],
       "target": 0
     },
@@ -6438,11 +7977,12 @@
       "target": 1
     },
     "nian2": {
-      "text": "年",
+      "text": "有年",
       "tokens": [
+        "you3",
         "nian2"
       ],
-      "target": 0
+      "target": 1
     },
     "nian3": {
       "text": "碾子",
@@ -6511,16 +8051,10 @@
       "target": 0
     },
     "nie1": {
-      "text": "捏",
+      "text": "捏估",
       "tokens": [
-        "nie1"
-      ],
-      "target": 0
-    },
-    "nie2": {
-      "text": "苶",
-      "tokens": [
-        "nie2"
+        "nie1",
+        "gu5"
       ],
       "target": 0
     },
@@ -6574,9 +8108,10 @@
       "target": 1
     },
     "niu1": {
-      "text": "妞",
+      "text": "妞妞",
       "tokens": [
-        "niu1"
+        "niu1",
+        "niu5"
       ],
       "target": 0
     },
@@ -6639,13 +8174,6 @@
       ],
       "target": 1
     },
-    "nou4": {
-      "text": "獳",
-      "tokens": [
-        "nou4"
-      ],
-      "target": 0
-    },
     "nu2": {
       "text": "奴家",
       "tokens": [
@@ -6678,13 +8206,6 @@
       ],
       "target": 1
     },
-    "nun2": {
-      "text": "黁",
-      "tokens": [
-        "nun2"
-      ],
-      "target": 0
-    },
     "nuo2": {
       "text": "挪用",
       "tokens": [
@@ -6702,16 +8223,10 @@
       "target": 0
     },
     "nü3": {
-      "text": "女",
+      "text": "女的",
       "tokens": [
-        "nü3"
-      ],
-      "target": 0
-    },
-    "nü4": {
-      "text": "恧",
-      "tokens": [
-        "nü4"
+        "nü3",
+        "de5"
       ],
       "target": 0
     },
@@ -6724,16 +8239,19 @@
       "target": 1
     },
     "nüe4": {
-      "text": "虐",
+      "text": "虐心",
       "tokens": [
-        "nüe4"
+        "nüe4",
+        "xin1"
       ],
       "target": 0
     },
     "o1": {
-      "text": "噢",
+      "text": "噢买嘎",
       "tokens": [
-        "o1"
+        "o1",
+        "mai3",
+        "ga1"
       ],
       "target": 0
     },
@@ -6772,32 +8290,36 @@
       "target": 1
     },
     "ou4": {
-      "text": "怄",
+      "text": "怄气",
       "tokens": [
-        "ou4"
+        "ou4",
+        "qi4"
       ],
       "target": 0
     },
     "pa1": {
-      "text": "趴",
+      "text": "马趴",
       "tokens": [
+        "ma3",
         "pa1"
       ],
-      "target": 0
+      "target": 1
     },
     "pa2": {
-      "text": "爬",
+      "text": "爬上",
       "tokens": [
-        "pa2"
+        "pa2",
+        "shang4"
       ],
       "target": 0
     },
     "pa4": {
-      "text": "怕",
+      "text": "不怕",
       "tokens": [
+        "bu4",
         "pa4"
       ],
-      "target": 0
+      "target": 1
     },
     "pa5": {
       "text": "琵琶鱼",
@@ -6879,11 +8401,12 @@
       "target": 2
     },
     "pang1": {
-      "text": "乓",
+      "text": "乒乓",
       "tokens": [
+        "ping1",
         "pang1"
       ],
-      "target": 0
+      "target": 1
     },
     "pang2": {
       "text": "旁听生",
@@ -6891,13 +8414,6 @@
         "pang2",
         "ting1",
         "sheng1"
-      ],
-      "target": 0
-    },
-    "pang3": {
-      "text": "耪",
-      "tokens": [
-        "pang3"
       ],
       "target": 0
     },
@@ -6961,11 +8477,13 @@
       "target": 1
     },
     "pei1": {
-      "text": "呸",
+      "text": "中胚层",
       "tokens": [
-        "pei1"
+        "zhong1",
+        "pei1",
+        "ceng2"
       ],
-      "target": 0
+      "target": 1
     },
     "pei2": {
       "text": "赔不是",
@@ -7026,9 +8544,10 @@
       "target": 0
     },
     "peng2": {
-      "text": "朋",
+      "text": "朋友",
       "tokens": [
-        "peng2"
+        "peng2",
+        "you5"
       ],
       "target": 0
     },
@@ -7112,11 +8631,13 @@
       "target": 2
     },
     "pian2": {
-      "text": "楩",
+      "text": "小便宜",
       "tokens": [
-        "pian2"
+        "xiao3",
+        "pian2",
+        "yi5"
       ],
-      "target": 0
+      "target": 1
     },
     "pian4": {
       "text": "动作片",
@@ -7171,11 +8692,13 @@
       "target": 1
     },
     "pie3": {
-      "text": "丿",
+      "text": "右撇子",
       "tokens": [
-        "pie3"
+        "you4",
+        "pie3",
+        "zi5"
       ],
-      "target": 0
+      "target": 1
     },
     "pin1": {
       "text": "有一拼",
@@ -7212,9 +8735,10 @@
       "target": 1
     },
     "ping1": {
-      "text": "乒",
+      "text": "乒乓",
       "tokens": [
-        "ping1"
+        "ping1",
+        "pang1"
       ],
       "target": 0
     },
@@ -7245,9 +8769,10 @@
       "target": 2
     },
     "po3": {
-      "text": "叵",
+      "text": "叵测",
       "tokens": [
-        "po3"
+        "po3",
+        "ce4"
       ],
       "target": 0
     },
@@ -7272,20 +8797,6 @@
       "tokens": [
         "pou1",
         "mian4"
-      ],
-      "target": 0
-    },
-    "pou2": {
-      "text": "垺",
-      "tokens": [
-        "pou2"
-      ],
-      "target": 0
-    },
-    "pou3": {
-      "text": "咅",
-      "tokens": [
-        "pou3"
       ],
       "target": 0
     },
@@ -7324,30 +8835,36 @@
       "target": 2
     },
     "qi1": {
-      "text": "七",
+      "text": "一年期",
       "tokens": [
+        "yi1",
+        "nian2",
         "qi1"
       ],
-      "target": 0
+      "target": 2
     },
     "qi2": {
-      "text": "旗",
+      "text": "其一",
       "tokens": [
-        "qi2"
+        "qi2",
+        "yi1"
       ],
       "target": 0
     },
     "qi3": {
-      "text": "起",
+      "text": "一起",
       "tokens": [
+        "yi1",
         "qi3"
       ],
-      "target": 0
+      "target": 1
     },
     "qi4": {
-      "text": "气",
+      "text": "气不过",
       "tokens": [
-        "qi4"
+        "qi4",
+        "bu5",
+        "guo4"
       ],
       "target": 0
     },
@@ -7360,16 +8877,11 @@
       "target": 0
     },
     "qia1": {
-      "text": "葜",
+      "text": "掐脖子",
       "tokens": [
-        "qia1"
-      ],
-      "target": 0
-    },
-    "qia2": {
-      "text": "拤",
-      "tokens": [
-        "qia2"
+        "qia1",
+        "bo2",
+        "zi5"
       ],
       "target": 0
     },
@@ -7400,9 +8912,10 @@
       "target": 2
     },
     "qian2": {
-      "text": "前",
+      "text": "前人",
       "tokens": [
-        "qian2"
+        "qian2",
+        "ren2"
       ],
       "target": 0
     },
@@ -7457,11 +8970,12 @@
       "target": 0
     },
     "qiang4": {
-      "text": "炝",
+      "text": "够呛",
       "tokens": [
+        "gou4",
         "qiang4"
       ],
-      "target": 0
+      "target": 1
     },
     "qiao1": {
       "text": "雀子",
@@ -7577,9 +9091,10 @@
       "target": 1
     },
     "qin4": {
-      "text": "吣",
+      "text": "沁入",
       "tokens": [
-        "qin4"
+        "qin4",
+        "ru4"
       ],
       "target": 0
     },
@@ -7601,11 +9116,12 @@
       "target": 1
     },
     "qing2": {
-      "text": "情",
+      "text": "人情",
       "tokens": [
+        "ren2",
         "qing2"
       ],
-      "target": 0
+      "target": 1
     },
     "qing3": {
       "text": "顷之",
@@ -7631,13 +9147,6 @@
         "qing5"
       ],
       "target": 1
-    },
-    "qiong1": {
-      "text": "銎",
-      "tokens": [
-        "qiong1"
-      ],
-      "target": 0
     },
     "qiong2": {
       "text": "无穷大",
@@ -7699,18 +9208,20 @@
       "target": 0
     },
     "qu3": {
-      "text": "取",
+      "text": "取道",
       "tokens": [
-        "qu3"
+        "qu3",
+        "dao4"
       ],
       "target": 0
     },
     "qu4": {
-      "text": "去",
+      "text": "上去",
       "tokens": [
+        "shang4",
         "qu4"
       ],
-      "target": 0
+      "target": 1
     },
     "qu5": {
       "text": "过去",
@@ -7730,11 +9241,12 @@
       "target": 0
     },
     "quan2": {
-      "text": "全",
+      "text": "大全",
       "tokens": [
+        "da4",
         "quan2"
       ],
-      "target": 0
+      "target": 1
     },
     "quan3": {
       "text": "上犬式",
@@ -7787,9 +9299,10 @@
       "target": 2
     },
     "qun1": {
-      "text": "踆",
+      "text": "逡巡",
       "tokens": [
-        "qun1"
+        "qun1",
+        "xun2"
       ],
       "target": 0
     },
@@ -7811,11 +9324,12 @@
       "target": 2
     },
     "ran2": {
-      "text": "然",
+      "text": "不然",
       "tokens": [
+        "bu4",
         "ran2"
       ],
-      "target": 0
+      "target": 1
     },
     "ran3": {
       "text": "染上",
@@ -7834,11 +9348,13 @@
       "target": 0
     },
     "rang2": {
-      "text": "勷",
+      "text": "面包瓤",
       "tokens": [
+        "mian4",
+        "bao1",
         "rang2"
       ],
-      "target": 0
+      "target": 2
     },
     "rang3": {
       "text": "攘外",
@@ -7908,11 +9424,12 @@
       "target": 0
     },
     "ren2": {
-      "text": "人",
+      "text": "一人",
       "tokens": [
+        "yi1",
         "ren2"
       ],
-      "target": 0
+      "target": 1
     },
     "ren3": {
       "text": "不忍心",
@@ -7956,19 +9473,13 @@
       ],
       "target": 0
     },
-    "reng4": {
-      "text": "芿",
-      "tokens": [
-        "reng4"
-      ],
-      "target": 0
-    },
     "ri4": {
-      "text": "日",
+      "text": "是日",
       "tokens": [
+        "shi4",
         "ri4"
       ],
-      "target": 0
+      "target": 1
     },
     "rong2": {
       "text": "容不得",
@@ -8005,11 +9516,12 @@
       "target": 2
     },
     "ru2": {
-      "text": "如",
+      "text": "一如",
       "tokens": [
+        "yi1",
         "ru2"
       ],
-      "target": 0
+      "target": 1
     },
     "ru3": {
       "text": "下乳",
@@ -8028,13 +9540,6 @@
       ],
       "target": 0
     },
-    "ruan2": {
-      "text": "堧",
-      "tokens": [
-        "ruan2"
-      ],
-      "target": 0
-    },
     "ruan3": {
       "text": "软实力",
       "tokens": [
@@ -8045,11 +9550,12 @@
       "target": 0
     },
     "rui2": {
-      "text": "緌",
+      "text": "萎蕤",
       "tokens": [
+        "wei3",
         "rui2"
       ],
-      "target": 0
+      "target": 1
     },
     "rui3": {
       "text": "花蕊",
@@ -8067,25 +9573,11 @@
       ],
       "target": 1
     },
-    "run2": {
-      "text": "犉",
-      "tokens": [
-        "run2"
-      ],
-      "target": 0
-    },
     "run4": {
       "text": "闰年",
       "tokens": [
         "run4",
         "nian2"
-      ],
-      "target": 0
-    },
-    "ruo2": {
-      "text": "捼",
-      "tokens": [
-        "ruo2"
       ],
       "target": 0
     },
@@ -8149,9 +9641,10 @@
       "target": 2
     },
     "san1": {
-      "text": "三",
+      "text": "三不",
       "tokens": [
-        "san1"
+        "san1",
+        "bu4"
       ],
       "target": 0
     },
@@ -8265,9 +9758,10 @@
       "target": 1
     },
     "sen1": {
-      "text": "森",
+      "text": "森然",
       "tokens": [
-        "sen1"
+        "sen1",
+        "ran2"
       ],
       "target": 0
     },
@@ -8332,11 +9826,12 @@
       "target": 0
     },
     "shan1": {
-      "text": "山",
+      "text": "上山",
       "tokens": [
+        "shang4",
         "shan1"
       ],
-      "target": 0
+      "target": 1
     },
     "shan3": {
       "text": "闪人",
@@ -8439,9 +9934,10 @@
       "target": 1
     },
     "she1": {
-      "text": "奢",
+      "text": "奢丽",
       "tokens": [
-        "she1"
+        "she1",
+        "li4"
       ],
       "target": 0
     },
@@ -8481,9 +9977,10 @@
       "target": 1
     },
     "shei2": {
-      "text": "谁",
+      "text": "谁知",
       "tokens": [
-        "shei2"
+        "shei2",
+        "zhi1"
       ],
       "target": 0
     },
@@ -8497,9 +9994,10 @@
       "target": 2
     },
     "shen2": {
-      "text": "神",
+      "text": "神人",
       "tokens": [
-        "shen2"
+        "shen2",
+        "ren2"
       ],
       "target": 0
     },
@@ -8529,11 +10027,12 @@
       "target": 1
     },
     "sheng1": {
-      "text": "生",
+      "text": "一生",
       "tokens": [
+        "yi1",
         "sheng1"
       ],
-      "target": 0
+      "target": 1
     },
     "sheng2": {
       "text": "绳子",
@@ -8570,32 +10069,37 @@
       "target": 1
     },
     "shi1": {
-      "text": "诗",
+      "text": "不失为",
       "tokens": [
-        "shi1"
+        "bu4",
+        "shi1",
+        "wei2"
       ],
-      "target": 0
+      "target": 1
     },
     "shi2": {
-      "text": "十",
+      "text": "一时",
       "tokens": [
+        "yi1",
         "shi2"
       ],
-      "target": 0
+      "target": 1
     },
     "shi3": {
-      "text": "使",
+      "text": "大使",
       "tokens": [
+        "da4",
         "shi3"
       ],
-      "target": 0
+      "target": 1
     },
     "shi4": {
-      "text": "是",
+      "text": "不是",
       "tokens": [
+        "bu4",
         "shi4"
       ],
-      "target": 0
+      "target": 1
     },
     "shi5": {
       "text": "不是",
@@ -8623,11 +10127,12 @@
       "target": 1
     },
     "shou3": {
-      "text": "手",
+      "text": "一手",
       "tokens": [
+        "yi1",
         "shou3"
       ],
-      "target": 0
+      "target": 1
     },
     "shou4": {
       "text": "受不了",
@@ -8647,11 +10152,12 @@
       "target": 1
     },
     "shu1": {
-      "text": "书",
+      "text": "上书",
       "tokens": [
+        "shang4",
         "shu1"
       ],
-      "target": 0
+      "target": 1
     },
     "shu2": {
       "text": "自来熟",
@@ -8671,11 +10177,12 @@
       "target": 0
     },
     "shu4": {
-      "text": "树",
+      "text": "人数",
       "tokens": [
+        "ren2",
         "shu4"
       ],
-      "target": 0
+      "target": 1
     },
     "shu5": {
       "text": "寿数",
@@ -8768,16 +10275,18 @@
       "target": 1
     },
     "shui3": {
-      "text": "水",
+      "text": "大水",
       "tokens": [
+        "da4",
         "shui3"
       ],
-      "target": 0
+      "target": 1
     },
     "shui4": {
-      "text": "睡",
+      "text": "睡着",
       "tokens": [
-        "shui4"
+        "shui4",
+        "zhao2"
       ],
       "target": 0
     },
@@ -8790,18 +10299,20 @@
       "target": 1
     },
     "shun3": {
-      "text": "吮",
+      "text": "吮吸",
       "tokens": [
-        "shun3"
+        "shun3",
+        "xi1"
       ],
       "target": 0
     },
     "shun4": {
-      "text": "顺",
+      "text": "不顺",
       "tokens": [
+        "bu4",
         "shun4"
       ],
-      "target": 0
+      "target": 1
     },
     "shuo1": {
       "text": "一说",
@@ -8828,23 +10339,29 @@
       "target": 1
     },
     "si1": {
-      "text": "思",
+      "text": "私生子",
       "tokens": [
-        "si1"
+        "si1",
+        "sheng1",
+        "zi3"
       ],
       "target": 0
     },
     "si3": {
-      "text": "死",
+      "text": "死不了",
       "tokens": [
-        "si3"
+        "si3",
+        "bu4",
+        "liao3"
       ],
       "target": 0
     },
     "si4": {
-      "text": "四",
+      "text": "四一二",
       "tokens": [
-        "si4"
+        "si4",
+        "yi1",
+        "er4"
       ],
       "target": 0
     },
@@ -8897,18 +10414,12 @@
       "target": 1
     },
     "sou3": {
-      "text": "叟",
+      "text": "林薮",
       "tokens": [
+        "lin2",
         "sou3"
       ],
-      "target": 0
-    },
-    "sou4": {
-      "text": "嗽",
-      "tokens": [
-        "sou4"
-      ],
-      "target": 0
+      "target": 1
     },
     "sou5": {
       "text": "咳嗽",
@@ -8956,13 +10467,6 @@
       "tokens": [
         "suan1",
         "zhong3"
-      ],
-      "target": 0
-    },
-    "suan3": {
-      "text": "匴",
-      "tokens": [
-        "suan3"
       ],
       "target": 0
     },
@@ -9044,9 +10548,10 @@
       "target": 0
     },
     "suo3": {
-      "text": "所",
+      "text": "所在",
       "tokens": [
-        "suo3"
+        "suo3",
+        "zai4"
       ],
       "target": 0
     },
@@ -9059,23 +10564,26 @@
       "target": 1
     },
     "ta1": {
-      "text": "他",
+      "text": "他人",
       "tokens": [
-        "ta1"
+        "ta1",
+        "ren2"
       ],
       "target": 0
     },
     "ta3": {
-      "text": "塔",
+      "text": "塔可",
       "tokens": [
-        "ta3"
+        "ta3",
+        "ke3"
       ],
       "target": 0
     },
     "ta4": {
-      "text": "踏",
+      "text": "踏上",
       "tokens": [
-        "ta4"
+        "ta4",
+        "shang4"
       ],
       "target": 0
     },
@@ -9261,13 +10769,6 @@
       ],
       "target": 0
     },
-    "teng1": {
-      "text": "鼟",
-      "tokens": [
-        "teng1"
-      ],
-      "target": 0
-    },
     "teng2": {
       "text": "腾出手",
       "tokens": [
@@ -9329,9 +10830,10 @@
       "target": 1
     },
     "tian1": {
-      "text": "天",
+      "text": "天人",
       "tokens": [
-        "tian1"
+        "tian1",
+        "ren2"
       ],
       "target": 0
     },
@@ -9344,16 +10846,10 @@
       "target": 0
     },
     "tian3": {
-      "text": "忝",
+      "text": "舔吮",
       "tokens": [
-        "tian3"
-      ],
-      "target": 0
-    },
-    "tian4": {
-      "text": "掭",
-      "tokens": [
-        "tian4"
+        "tian3",
+        "shun3"
       ],
       "target": 0
     },
@@ -9419,11 +10915,12 @@
       "target": 0
     },
     "tie4": {
-      "text": "餮",
+      "text": "临帖",
       "tokens": [
+        "lin2",
         "tie4"
       ],
-      "target": 0
+      "target": 1
     },
     "tie5": {
       "text": "烙铁",
@@ -9527,13 +11024,6 @@
       ],
       "target": 1
     },
-    "tou3": {
-      "text": "妵",
-      "tokens": [
-        "tou3"
-      ],
-      "target": 0
-    },
     "tou4": {
       "text": "不透明",
       "tokens": [
@@ -9612,17 +11102,11 @@
       ],
       "target": 2
     },
-    "tuan3": {
-      "text": "畽",
-      "tokens": [
-        "tuan3"
-      ],
-      "target": 0
-    },
     "tuan4": {
-      "text": "彖",
+      "text": "彖辞",
       "tokens": [
-        "tuan4"
+        "tuan4",
+        "ci2"
       ],
       "target": 0
     },
@@ -9678,9 +11162,10 @@
       "target": 0
     },
     "tun3": {
-      "text": "氽",
+      "text": "氽汤",
       "tokens": [
-        "tun3"
+        "tun3",
+        "tang1"
       ],
       "target": 0
     },
@@ -9794,11 +11279,12 @@
       "target": 0
     },
     "wai4": {
-      "text": "外",
+      "text": "不外",
       "tokens": [
+        "bu4",
         "wai4"
       ],
-      "target": 0
+      "target": 1
     },
     "wai5": {
       "text": "腻歪",
@@ -9844,11 +11330,13 @@
       "target": 1
     },
     "wang1": {
-      "text": "尢",
+      "text": "水汪汪",
       "tokens": [
+        "shui3",
+        "wang1",
         "wang1"
       ],
-      "target": 0
+      "target": 1
     },
     "wang2": {
       "text": "大王",
@@ -9972,18 +11460,21 @@
       "target": 2
     },
     "weng3": {
-      "text": "奣",
+      "text": "塕埲",
       "tokens": [
-        "weng3"
+        "weng3",
+        "beng3"
       ],
       "target": 0
     },
     "weng4": {
-      "text": "瓮",
+      "text": "水蕹菜",
       "tokens": [
-        "weng4"
+        "shui3",
+        "weng4",
+        "cai4"
       ],
-      "target": 0
+      "target": 1
     },
     "wo1": {
       "text": "倭人",
@@ -9994,9 +11485,10 @@
       "target": 0
     },
     "wo3": {
-      "text": "我",
+      "text": "我人",
       "tokens": [
-        "wo3"
+        "wo3",
+        "ren2"
       ],
       "target": 0
     },
@@ -10061,32 +11553,39 @@
       "target": 1
     },
     "xi1": {
-      "text": "西",
+      "text": "以西",
       "tokens": [
+        "yi3",
         "xi1"
       ],
-      "target": 0
+      "target": 1
     },
     "xi2": {
-      "text": "习",
+      "text": "出席者",
       "tokens": [
-        "xi2"
+        "chu1",
+        "xi2",
+        "zhe3"
       ],
-      "target": 0
+      "target": 1
     },
     "xi3": {
-      "text": "洗",
+      "text": "洗发水",
       "tokens": [
-        "xi3"
+        "xi3",
+        "fa4",
+        "shui3"
       ],
       "target": 0
     },
     "xi4": {
-      "text": "戏",
+      "text": "地方戏",
       "tokens": [
+        "di4",
+        "fang1",
         "xi4"
       ],
-      "target": 0
+      "target": 2
     },
     "xi5": {
       "text": "东西",
@@ -10115,11 +11614,12 @@
       "target": 1
     },
     "xia4": {
-      "text": "下",
+      "text": "一下",
       "tokens": [
+        "yi1",
         "xia4"
       ],
-      "target": 0
+      "target": 1
     },
     "xia5": {
       "text": "年下",
@@ -10130,9 +11630,10 @@
       "target": 1
     },
     "xian1": {
-      "text": "先",
+      "text": "先人",
       "tokens": [
-        "xian1"
+        "xian1",
+        "ren2"
       ],
       "target": 0
     },
@@ -10190,11 +11691,12 @@
       "target": 1
     },
     "xiang3": {
-      "text": "想",
+      "text": "不想",
       "tokens": [
+        "bu4",
         "xiang3"
       ],
-      "target": 0
+      "target": 1
     },
     "xiang4": {
       "text": "成人向",
@@ -10231,9 +11733,10 @@
       "target": 0
     },
     "xiao3": {
-      "text": "小",
+      "text": "小的",
       "tokens": [
-        "xiao3"
+        "xiao3",
+        "de5"
       ],
       "target": 0
     },
@@ -10290,18 +11793,12 @@
       "target": 1
     },
     "xin1": {
-      "text": "心",
+      "text": "一心",
       "tokens": [
+        "yi1",
         "xin1"
       ],
-      "target": 0
-    },
-    "xin3": {
-      "text": "伈",
-      "tokens": [
-        "xin3"
-      ],
-      "target": 0
+      "target": 1
     },
     "xin4": {
       "text": "信不过",
@@ -10347,11 +11844,12 @@
       "target": 2
     },
     "xing4": {
-      "text": "性",
+      "text": "人性",
       "tokens": [
+        "ren2",
         "xing4"
       ],
-      "target": 0
+      "target": 1
     },
     "xing5": {
       "text": "长记性",
@@ -10379,13 +11877,6 @@
         "xin1"
       ],
       "target": 1
-    },
-    "xiong4": {
-      "text": "诇",
-      "tokens": [
-        "xiong4"
-      ],
-      "target": 0
     },
     "xiong5": {
       "text": "弟兄",
@@ -10423,30 +11914,34 @@
       "target": 2
     },
     "xu1": {
-      "text": "需",
+      "text": "需要",
       "tokens": [
-        "xu1"
+        "xu1",
+        "yao4"
       ],
       "target": 0
     },
     "xu2": {
-      "text": "徐",
+      "text": "徐行",
       "tokens": [
-        "xu2"
+        "xu2",
+        "xing2"
       ],
       "target": 0
     },
     "xu3": {
-      "text": "许",
+      "text": "不许",
       "tokens": [
+        "bu4",
         "xu3"
       ],
-      "target": 0
+      "target": 1
     },
     "xu4": {
-      "text": "续",
+      "text": "续作",
       "tokens": [
-        "xu4"
+        "xu4",
+        "zuo4"
       ],
       "target": 0
     },
@@ -10459,30 +11954,34 @@
       "target": 1
     },
     "xuan1": {
-      "text": "宣",
+      "text": "宣道",
       "tokens": [
-        "xuan1"
+        "xuan1",
+        "dao4"
       ],
       "target": 0
     },
     "xuan2": {
-      "text": "悬",
+      "text": "旋子",
       "tokens": [
-        "xuan2"
+        "xuan2",
+        "zi5"
       ],
       "target": 0
     },
     "xuan3": {
-      "text": "选",
+      "text": "人选",
       "tokens": [
+        "ren2",
         "xuan3"
       ],
-      "target": 0
+      "target": 1
     },
     "xuan4": {
-      "text": "炫",
+      "text": "眩人",
       "tokens": [
-        "xuan4"
+        "xuan4",
+        "ren2"
       ],
       "target": 0
     },
@@ -10495,9 +11994,10 @@
       "target": 0
     },
     "xue2": {
-      "text": "学",
+      "text": "学人",
       "tokens": [
-        "xue2"
+        "xue2",
+        "ren2"
       ],
       "target": 0
     },
@@ -10519,23 +12019,28 @@
       "target": 2
     },
     "xun1": {
-      "text": "熏",
+      "text": "熏天",
       "tokens": [
-        "xun1"
+        "xun1",
+        "tian1"
       ],
       "target": 0
     },
     "xun2": {
-      "text": "寻",
+      "text": "寻开心",
       "tokens": [
-        "xun2"
+        "xun2",
+        "kai1",
+        "xin1"
       ],
       "target": 0
     },
     "xun4": {
-      "text": "训",
+      "text": "驯马人",
       "tokens": [
-        "xun4"
+        "xun4",
+        "ma3",
+        "ren2"
       ],
       "target": 0
     },
@@ -10735,9 +12240,10 @@
       "target": 2
     },
     "ye3": {
-      "text": "也",
+      "text": "也好",
       "tokens": [
-        "ye3"
+        "ye3",
+        "hao3"
       ],
       "target": 0
     },
@@ -10760,8 +12266,9 @@
       "target": 2
     },
     "yi1": {
-      "text": "一",
+      "text": "一一",
       "tokens": [
+        "yi1",
         "yi1"
       ],
       "target": 0
@@ -10776,11 +12283,12 @@
       "target": 1
     },
     "yi3": {
-      "text": "以",
+      "text": "是以",
       "tokens": [
+        "shi4",
         "yi3"
       ],
-      "target": 0
+      "target": 1
     },
     "yi4": {
       "text": "不在意",
@@ -10912,8 +12420,9 @@
       "target": 0
     },
     "yong2": {
-      "text": "颙",
+      "text": "喁喁",
       "tokens": [
+        "yong2",
         "yong2"
       ],
       "target": 0
@@ -10928,11 +12437,12 @@
       "target": 0
     },
     "yong4": {
-      "text": "用",
+      "text": "不用",
       "tokens": [
+        "bu4",
         "yong4"
       ],
-      "target": 0
+      "target": 1
     },
     "yong5": {
       "text": "受用",
@@ -10961,16 +12471,19 @@
       "target": 1
     },
     "you3": {
-      "text": "有",
+      "text": "有的",
       "tokens": [
-        "you3"
+        "you3",
+        "de5"
       ],
       "target": 0
     },
     "you4": {
-      "text": "又",
+      "text": "又来了",
       "tokens": [
-        "you4"
+        "you4",
+        "lai2",
+        "le5"
       ],
       "target": 0
     },
@@ -10991,9 +12504,10 @@
       "target": 0
     },
     "yu2": {
-      "text": "于",
+      "text": "于是",
       "tokens": [
-        "yu2"
+        "yu2",
+        "shi4"
       ],
       "target": 0
     },
@@ -11006,9 +12520,10 @@
       "target": 0
     },
     "yu4": {
-      "text": "玉",
+      "text": "与会",
       "tokens": [
-        "yu4"
+        "yu4",
+        "hui4"
       ],
       "target": 0
     },
@@ -11029,11 +12544,12 @@
       "target": 0
     },
     "yuan2": {
-      "text": "元",
+      "text": "一元",
       "tokens": [
+        "yi1",
         "yuan2"
       ],
-      "target": 0
+      "target": 1
     },
     "yuan3": {
       "text": "远人",
@@ -11044,11 +12560,12 @@
       "target": 0
     },
     "yuan4": {
-      "text": "院",
+      "text": "大院",
       "tokens": [
+        "da4",
         "yuan4"
       ],
-      "target": 0
+      "target": 1
     },
     "yue1": {
       "text": "大约",
@@ -11059,11 +12576,12 @@
       "target": 1
     },
     "yue4": {
-      "text": "月",
+      "text": "不月",
       "tokens": [
+        "bu4",
         "yue4"
       ],
-      "target": 0
+      "target": 1
     },
     "yue5": {
       "text": "干哕",
@@ -11082,25 +12600,28 @@
       "target": 1
     },
     "yun2": {
-      "text": "云",
+      "text": "上云",
       "tokens": [
+        "shang4",
         "yun2"
       ],
-      "target": 0
+      "target": 1
     },
     "yun3": {
-      "text": "允",
+      "text": "允当",
       "tokens": [
-        "yun3"
+        "yun3",
+        "dang4"
       ],
       "target": 0
     },
     "yun4": {
-      "text": "运",
+      "text": "大运",
       "tokens": [
+        "da4",
         "yun4"
       ],
-      "target": 0
+      "target": 1
     },
     "za1": {
       "text": "匝道",
@@ -11137,11 +12658,12 @@
       "target": 1
     },
     "zai4": {
-      "text": "在",
+      "text": "不在",
       "tokens": [
+        "bu4",
         "zai4"
       ],
-      "target": 0
+      "target": 1
     },
     "zai5": {
       "text": "自在",
@@ -11198,13 +12720,6 @@
         "zang1"
       ],
       "target": 1
-    },
-    "zang3": {
-      "text": "驵",
-      "tokens": [
-        "zang3"
-      ],
-      "target": 0
     },
     "zang4": {
       "text": "藏红花",
@@ -11267,9 +12782,10 @@
       "target": 1
     },
     "ze4": {
-      "text": "仄",
+      "text": "仄声",
       "tokens": [
-        "ze4"
+        "ze4",
+        "sheng1"
       ],
       "target": 0
     },
@@ -11282,16 +12798,18 @@
       "target": 1
     },
     "zen3": {
-      "text": "怎",
+      "text": "怎的",
       "tokens": [
-        "zen3"
+        "zen3",
+        "de5"
       ],
       "target": 0
     },
     "zen4": {
-      "text": "谮",
+      "text": "谮言",
       "tokens": [
-        "zen4"
+        "zen4",
+        "yan2"
       ],
       "target": 0
     },
@@ -11331,11 +12849,13 @@
       "target": 2
     },
     "zha3": {
-      "text": "拃",
+      "text": "一眨眼",
       "tokens": [
-        "zha3"
+        "yi1",
+        "zha3",
+        "yan3"
       ],
-      "target": 0
+      "target": 1
     },
     "zha4": {
       "text": "栅子",
@@ -11406,11 +12926,12 @@
       "target": 1
     },
     "zhan4": {
-      "text": "战",
+      "text": "大战",
       "tokens": [
+        "da4",
         "zhan4"
       ],
-      "target": 0
+      "target": 1
     },
     "zhan5": {
       "text": "冷战",
@@ -11506,11 +13027,12 @@
       "target": 0
     },
     "zhe3": {
-      "text": "者",
+      "text": "他者",
       "tokens": [
+        "ta1",
         "zhe3"
       ],
-      "target": 0
+      "target": 1
     },
     "zhe4": {
       "text": "这不",
@@ -11529,9 +13051,10 @@
       "target": 1
     },
     "zhen1": {
-      "text": "真",
+      "text": "真的",
       "tokens": [
-        "zhen1"
+        "zhen1",
+        "de5"
       ],
       "target": 0
     },
@@ -11587,32 +13110,38 @@
       "target": 1
     },
     "zhi1": {
-      "text": "知",
+      "text": "之一",
       "tokens": [
-        "zhi1"
+        "zhi1",
+        "yi1"
       ],
       "target": 0
     },
     "zhi2": {
-      "text": "直",
+      "text": "不值得",
       "tokens": [
-        "zhi2"
+        "bu4",
+        "zhi2",
+        "de5"
       ],
-      "target": 0
+      "target": 1
     },
     "zhi3": {
-      "text": "纸",
+      "text": "只是",
       "tokens": [
-        "zhi3"
+        "zhi3",
+        "shi4"
       ],
       "target": 0
     },
     "zhi4": {
-      "text": "至",
+      "text": "不至于",
       "tokens": [
-        "zhi4"
+        "bu4",
+        "zhi4",
+        "yu2"
       ],
-      "target": 0
+      "target": 1
     },
     "zhi5": {
       "text": "位置",
@@ -11714,9 +13243,10 @@
       "target": 2
     },
     "zhu3": {
-      "text": "主",
+      "text": "主人",
       "tokens": [
-        "zhu3"
+        "zhu3",
+        "ren2"
       ],
       "target": 0
     },
@@ -11755,9 +13285,10 @@
       "target": 0
     },
     "zhuai3": {
-      "text": "跩",
+      "text": "跩文",
       "tokens": [
-        "zhuai3"
+        "zhuai3",
+        "wen2"
       ],
       "target": 0
     },
@@ -11846,9 +13377,10 @@
       "target": 1
     },
     "zhun1": {
-      "text": "窀",
+      "text": "窀穸",
       "tokens": [
-        "zhun1"
+        "zhun1",
+        "xi1"
       ],
       "target": 0
     },
@@ -11862,11 +13394,12 @@
       "target": 2
     },
     "zhuo1": {
-      "text": "桌",
+      "text": "上桌",
       "tokens": [
+        "shang4",
         "zhuo1"
       ],
-      "target": 0
+      "target": 1
     },
     "zhuo2": {
       "text": "要着",
@@ -11877,23 +13410,27 @@
       "target": 1
     },
     "zi1": {
-      "text": "资",
+      "text": "资本家",
       "tokens": [
-        "zi1"
+        "zi1",
+        "ben3",
+        "jia1"
       ],
       "target": 0
     },
     "zi3": {
-      "text": "紫",
+      "text": "人子",
       "tokens": [
+        "ren2",
         "zi3"
       ],
-      "target": 0
+      "target": 1
     },
     "zi4": {
-      "text": "字",
+      "text": "自我",
       "tokens": [
-        "zi4"
+        "zi4",
+        "wo3"
       ],
       "target": 0
     },
@@ -11992,9 +13529,10 @@
       "target": 0
     },
     "zuan3": {
-      "text": "籫",
+      "text": "纂修",
       "tokens": [
-        "zuan3"
+        "zuan3",
+        "xiu1"
       ],
       "target": 0
     },
@@ -12005,13 +13543,6 @@
         "zuan4"
       ],
       "target": 1
-    },
-    "zui1": {
-      "text": "厜",
-      "tokens": [
-        "zui1"
-      ],
-      "target": 0
     },
     "zui3": {
       "text": "说嘴",
@@ -12046,20 +13577,6 @@
         "xin1"
       ],
       "target": 1
-    },
-    "zun3": {
-      "text": "僔",
-      "tokens": [
-        "zun3"
-      ],
-      "target": 0
-    },
-    "zun4": {
-      "text": "捘",
-      "tokens": [
-        "zun4"
-      ],
-      "target": 0
     },
     "zuo1": {
       "text": "作坊",
@@ -12105,13 +13622,6 @@
   },
   "thirdToneExamples": {
     "dian3": {
-      "full": {
-        "text": "点",
-        "tokens": [
-          "dian3"
-        ],
-        "target": 0
-      },
       "half": {
         "text": "点名",
         "tokens": [
@@ -12130,13 +13640,6 @@
       }
     },
     "fa3": {
-      "full": {
-        "text": "法",
-        "tokens": [
-          "fa3"
-        ],
-        "target": 0
-      },
       "half": {
         "text": "法国",
         "tokens": [
@@ -12155,13 +13658,6 @@
       }
     },
     "hao3": {
-      "full": {
-        "text": "好",
-        "tokens": [
-          "hao3"
-        ],
-        "target": 0
-      },
       "half": {
         "text": "好吃",
         "tokens": [
@@ -12180,13 +13676,6 @@
       }
     },
     "ke3": {
-      "full": {
-        "text": "可",
-        "tokens": [
-          "ke3"
-        ],
-        "target": 0
-      },
       "half": {
         "text": "可惜",
         "tokens": [
@@ -12205,13 +13694,6 @@
       }
     },
     "lao3": {
-      "full": {
-        "text": "老",
-        "tokens": [
-          "lao3"
-        ],
-        "target": 0
-      },
       "half": {
         "text": "老师",
         "tokens": [
@@ -12230,13 +13712,6 @@
       }
     },
     "li3": {
-      "full": {
-        "text": "理",
-        "tokens": [
-          "li3"
-        ],
-        "target": 0
-      },
       "half": {
         "text": "理科",
         "tokens": [
@@ -12255,13 +13730,6 @@
       }
     },
     "ma3": {
-      "full": {
-        "text": "马",
-        "tokens": [
-          "ma3"
-        ],
-        "target": 0
-      },
       "half": {
         "text": "马车",
         "tokens": [
@@ -12280,13 +13748,6 @@
       }
     },
     "mai3": {
-      "full": {
-        "text": "买",
-        "tokens": [
-          "mai3"
-        ],
-        "target": 0
-      },
       "half": {
         "text": "买单",
         "tokens": [
@@ -12305,13 +13766,6 @@
       }
     },
     "ni3": {
-      "full": {
-        "text": "你",
-        "tokens": [
-          "ni3"
-        ],
-        "target": 0
-      },
       "sandhi": {
         "text": "你好",
         "tokens": [
@@ -12322,13 +13776,6 @@
       }
     },
     "nü3": {
-      "full": {
-        "text": "女",
-        "tokens": [
-          "nü3"
-        ],
-        "target": 0
-      },
       "half": {
         "text": "女生",
         "tokens": [
@@ -12347,13 +13794,6 @@
       }
     },
     "shi3": {
-      "full": {
-        "text": "使",
-        "tokens": [
-          "shi3"
-        ],
-        "target": 0
-      },
       "half": {
         "text": "使用",
         "tokens": [
@@ -12372,13 +13812,6 @@
       }
     },
     "shou3": {
-      "full": {
-        "text": "手",
-        "tokens": [
-          "shou3"
-        ],
-        "target": 0
-      },
       "half": {
         "text": "手机",
         "tokens": [
@@ -12397,13 +13830,6 @@
       }
     },
     "shui3": {
-      "full": {
-        "text": "水",
-        "tokens": [
-          "shui3"
-        ],
-        "target": 0
-      },
       "half": {
         "text": "水平",
         "tokens": [
@@ -12422,13 +13848,6 @@
       }
     },
     "wan3": {
-      "full": {
-        "text": "晚",
-        "tokens": [
-          "wan3"
-        ],
-        "target": 0
-      },
       "half": {
         "text": "晚安",
         "tokens": [
@@ -12447,13 +13866,6 @@
       }
     },
     "xiang3": {
-      "full": {
-        "text": "想",
-        "tokens": [
-          "xiang3"
-        ],
-        "target": 0
-      },
       "half": {
         "text": "想念",
         "tokens": [
@@ -12472,13 +13884,6 @@
       }
     },
     "xiao3": {
-      "full": {
-        "text": "小",
-        "tokens": [
-          "xiao3"
-        ],
-        "target": 0
-      },
       "half": {
         "text": "小吃",
         "tokens": [
@@ -12497,13 +13902,6 @@
       }
     },
     "you3": {
-      "full": {
-        "text": "有",
-        "tokens": [
-          "you3"
-        ],
-        "target": 0
-      },
       "half": {
         "text": "有名",
         "tokens": [
@@ -12522,13 +13920,6 @@
       }
     },
     "yu3": {
-      "full": {
-        "text": "雨",
-        "tokens": [
-          "yu3"
-        ],
-        "target": 0
-      },
       "half": {
         "text": "雨衣",
         "tokens": [
@@ -12547,13 +13938,6 @@
       }
     },
     "zao3": {
-      "full": {
-        "text": "早",
-        "tokens": [
-          "zao3"
-        ],
-        "target": 0
-      },
       "half": {
         "text": "早晨",
         "tokens": [
@@ -12572,13 +13956,6 @@
       }
     },
     "zhu3": {
-      "full": {
-        "text": "主",
-        "tokens": [
-          "zhu3"
-        ],
-        "target": 0
-      },
       "half": {
         "text": "主人",
         "tokens": [
@@ -12597,13 +13974,6 @@
       }
     },
     "zhun3": {
-      "full": {
-        "text": "准",
-        "tokens": [
-          "zhun3"
-        ],
-        "target": 0
-      },
       "half": {
         "text": "准备",
         "tokens": [

@@ -5,7 +5,8 @@ import {isolatedExample} from './examples.js';
 
 export const comparisonGroups = [
   {id:'i-sounds', label:'s・sh・x／z・zh・j と、3種類の i'},
-  {id:'finals', label:'韻母・鼻音'},
+  {id:'nasal-finals', label:'鼻韻母の比較（-n / -ng）'},
+  {id:'simple-finals', label:'単韻母の比較（u / ü）'},
   {id:'aspiration', label:'無気・有気'},
 ] as const;
 
@@ -22,11 +23,11 @@ export const comparisonPresets = [
   {id:'si-shi-xi', label:'si / shi / xi', group:'i-sounds', syllables:['si','shi','xi'], tone:1, note:'s / sh / x を含む音節の比較です。声母の摩擦音と、続く i の発音の両方を聞き比べます。'},
   {id:'zi-zhi-ji', label:'zi / zhi / ji', group:'i-sounds', syllables:['zi','zhi','ji'], tone:1, note:'z / zh / j を含む音節の比較です。いずれも無気の破擦音ですが、調音位置と、続く i の発音が異なります。'},
   {id:'yi-zi-zhi', label:'yi / zi / zhi', group:'i-sounds', syllables:['yi','zi','zhi'], tone:1, note:'yi の通常の i と、zi・zhi の舌先の i を比較します。yi は声母なし、zi・zhi は声母を含む音節全体の再生です。'},
-  {id:'an-ang', label:'an ↔ ang', group:'finals', syllables:['an','ang'], tone:1, note:'-n は舌先、-ng は舌の奥で閉じます。母音も [a] と [ɑ] の違いに注目。'},
-  {id:'en-eng', label:'en ↔ eng', group:'finals', syllables:['ben','beng'], tone:1, note:'同じ声母 b と第1声で、鼻音の終わり方を比較します。'},
-  {id:'ian-iang', label:'ian ↔ iang', group:'finals', syllables:['xian','xiang'], tone:1, note:'ian の母音は [ɛ] 系、iang は [ɑ] 系。末尾だけでなく母音も変わります。'},
-  {id:'in-ing', label:'in ↔ ing', group:'finals', syllables:['yin','ying'], tone:1, note:'-n と -ng の閉じる場所を比べます。ing は話者によって [iəŋ] 系にもなります。'},
-  {id:'u-ü', label:'u ↔ ü', group:'finals', syllables:['lu','lü'], tone:4, note:'同じ声母 l と第4声。u は舌が後ろ、ü は i の舌の位置で唇を丸めます。'},
+  {id:'an-ang', label:'an ↔ ang', group:'nasal-finals', syllables:['an','ang'], tone:1, note:'-n は舌先、-ng は舌の奥で閉じます。母音も [a] と [ɑ] の違いに注目。'},
+  {id:'en-eng', label:'en ↔ eng', group:'nasal-finals', syllables:['ben','beng'], tone:1, note:'同じ声母 b と第1声で、鼻音の終わり方を比較します。'},
+  {id:'ian-iang', label:'ian ↔ iang', group:'nasal-finals', syllables:['xian','xiang'], tone:1, note:'ian の母音は [ɛ] 系、iang は [ɑ] 系。末尾だけでなく母音も変わります。'},
+  {id:'in-ing', label:'in ↔ ing', group:'nasal-finals', syllables:['yin','ying'], tone:1, note:'-n と -ng の閉じる場所を比べます。ing は話者によって [iəŋ] 系にもなります。'},
+  {id:'u-ü', label:'u ↔ ü', group:'simple-finals', syllables:['lu','lü'], tone:4, note:'同じ声母 l と第4声。どちらも唇を丸め、u は舌を後ろ、ü は舌を前（i に近い位置）に置きます。'},
   {id:'b-p', label:'b ↔ p', group:'aspiration', syllables:['ba','pa'], tone:1, note:'両唇の無気音と有気音。同じ声調で、開放後の息を比べます。'},
   {id:'d-t', label:'d ↔ t', group:'aspiration', syllables:['da','ta'], tone:1, note:'舌尖の無気音と有気音。どちらも無声音です。'},
   {id:'g-k', label:'g ↔ k', group:'aspiration', syllables:['ge','ke'], tone:1, note:'舌根の無気音と有気音。どちらも無声音です。'},

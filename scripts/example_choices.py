@@ -39,6 +39,7 @@ ISOLATED_CHOICES = {
     'dun4': ('顿', 'Retained familiar teaching example; dictionary reading required'),
     'fa3': ('法', 'Retained familiar teaching example; dictionary reading required'),
     'ge1': ('歌', 'Retained familiar teaching example; dictionary reading required'),
+    'gei3': ('给', 'Common give reading explicitly selected despite the bound-form ji3 reading'),
     'gui1': ('归', 'Retained familiar teaching example; dictionary reading required'),
     'gui3': ('鬼', 'Retained familiar teaching example; dictionary reading required'),
     'gui4': ('贵', 'Retained familiar teaching example; dictionary reading required'),

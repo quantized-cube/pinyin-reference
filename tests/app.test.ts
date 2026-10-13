@@ -614,7 +614,7 @@ test('slash from a non-searchable tab opens the matrix search',async t=>{
 
 test('isolated third-tone detail and comparison play the same approved characters', async t => {
   const s = await setup(t);
-  for (const [pinyin, word] of [['yan', '眼'], ['yin', '引'], ['ying', '影'], ['li', '理'], ['hao', '好']]) {
+  for (const [pinyin, word] of [['yan', '眼'], ['yin', '引'], ['ying', '影'], ['li', '理'], ['hao', '好'], ['gei', '给']]) {
     s.$('[data-tab="matrix"]').click();
     s.input(pinyin + '3');
     assert.equal(s.$('.example-word').textContent, word);

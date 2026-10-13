@@ -48,7 +48,7 @@ test('approved isolated characters are shared by detail and comparison at every 
     assert.equal(detailExample(text, tone, 'full', catalog), example, key);
     assert.equal(comparisonExample(text, tone, catalog.isolatedExamples), example, key);
   }
-  for (const [key, word] of [['yan3', '眼'], ['yin3', '引'], ['ying3', '影'], ['li3', '理'], ['hao3', '好']] as const) {
+  for (const [key, word] of [['yan3', '眼'], ['yin3', '引'], ['ying3', '影'], ['li3', '理'], ['hao3', '好'], ['gei3', '给']] as const) {
     assert.equal(catalog.isolatedExamples[key]?.text, word);
   }
 });

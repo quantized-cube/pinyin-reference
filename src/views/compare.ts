@@ -23,8 +23,12 @@ export function renderCompare(state: AppState, examples: ExampleMap, exampleStat
   };
   return `<div class="section-heading"><h2>音を聞き比べる</h2><span>同じ声調・音声で比較</span></div>
     <p class="comparison-intro">韻母や声母の違いを、2〜3個の例字の音節で比べます。声母・韻母だけを切り出した音声ではありません。</p>
-    ${comparisonGroups.map(group=>`<section class="comparison-preset-group"><h3>${group.label}</h3><div class="comparison-presets" role="group" aria-label="${group.label}">${comparisonPresets.filter(p=>p.group===group.id).map(p=>`<button data-compare-preset="${p.id}" aria-pressed="${preset===p}">${p.label}</button>`).join('')}</div></section>`).join('')}
-    <p class="comparison-note">${preset?.note??`音節 A・B${triple?'・C':''} と声調を選んで比較できます。`}</p>
+    ${comparisonGroups.map(group=>`<section class="comparison-preset-group">
+      <h3>${group.label}</h3>${'description' in group?`<p class="comparison-note">${esc(group.description)}</p>`:''}
+      <div class="comparison-presets" role="group" aria-label="${group.label}">${comparisonPresets.filter(p=>p.group===group.id).map(p=>`<button data-compare-preset="${p.id}" aria-pressed="${preset===p}" ${preset===p?'aria-describedby="comparison-selection-note"':''}>${p.label}</button>`).join('')}</div>
+      ${preset?.group===group.id?`<p id="comparison-selection-note" class="comparison-note comparison-selection-note"><strong>選択中：${esc(preset.label)}</strong>${esc(preset.note)}</p>`:''}
+    </section>`).join('')}
+    ${preset?'':`<p class="comparison-note">音節 A・B${triple?'・C':''} と声調を選んで比較できます。</p>`}
     <div class="compare-controls"><label class="compare-count-label">比較する音数<select id="compare-count"><option value="2" ${triple?'':'selected'}>2音</option><option value="3" ${triple?'selected':''}>3音</option></select></label>
     <label class="compare-tone-label">共通の声調<select id="compare-tone" aria-label="比較の声調">${([1,2,3,4] as const).map(t=>`<option value="${t}" ${state.compareTone===t?'selected':''}>第${t}声</option>`).join('')}</select></label></div>
     <div class="comparison-grid${triple?' comparison-grid--three':''}">${entries.map(card).join('')}</div>

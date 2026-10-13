@@ -415,7 +415,7 @@ test('third tone starts collapsed, preserves an explicit selection and restores 
 test('comparison presets play their matching single characters and disable missing tones', async t => {
   const s=await setup(t);s.$('[data-tab="compare"]').click();
   assert.equal(s.$<HTMLInputElement>('#search').disabled,true);
-  const cases=[['an-ang','安','肮'],['en-eng','奔','崩'],['ian-iang','先','香'],['in-ing','音','英'],['u-ü','路','绿']] as const;
+  const cases=[['an-ang','安','肮'],['en-eng','奔','崩'],['ian-iang','先','香'],['in-ing','音','英'],['uan-uang','关','光'],['uen-ueng','温','翁']] as const;
   for(const [preset,a,b] of cases){
     s.$(`[data-compare-preset="${preset}"]`).click();
     for(const [side,text] of [['A',a],['B',b]]){
@@ -436,7 +436,7 @@ test('three-sound presets show and play every example and return to a two-sound 
   const cases=[
     ['si-shi-xi',['思','诗','西']],
     ['zi-zhi-ji',['资','知','鸡']],
-    ['yi-zi-zhi',['一','资','知']],
+    ['ci-chi-qi',['疵','吃','七']],
   ] as const;
   for(const [preset,words] of cases){
     s.$(`[data-compare-preset="${preset}"]`).click();
@@ -450,11 +450,11 @@ test('three-sound presets show and play every example and return to a two-sound 
       assert.equal(s.lastRequest().text,words[index]);s.lastRequest().onend?.();
     }
   }
-  assert.equal(s.$('[data-side="A"] .compare-initial').textContent,'声母なし');
+  assert.equal(s.$('[data-side="A"] .compare-initial').textContent,'声母 c [tsʰ]');
   s.$<HTMLSelectElement>('#compare-tone').value='3';
   s.$('#compare-tone').dispatchEvent(new s.window.Event('change',{bubbles:true}));
   s.$('[data-side="C"] [data-pick]').click();
-  assert.equal(s.$('#detail h2').textContent,'zhǐ');
+  assert.equal(s.$('#detail h2').textContent,'qǐ');
   s.$('[data-compare-preset="an-ang"]').click();
   assert.equal(s.$<HTMLSelectElement>('#compare-count').value,'2');
   assert.equal(s.window.document.querySelector('[data-side="C"]'),null);

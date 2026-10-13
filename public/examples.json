@@ -367,6 +367,13 @@
       ],
       "target": 0
     },
+    "guang1": {
+      "text": "光",
+      "tokens": [
+        "guang1"
+      ],
+      "target": 0
+    },
     "gui1": {
       "text": "归",
       "tokens": [
@@ -1106,6 +1113,20 @@
       "text": "晚",
       "tokens": [
         "wan3"
+      ],
+      "target": 0
+    },
+    "wen1": {
+      "text": "温",
+      "tokens": [
+        "wen1"
+      ],
+      "target": 0
+    },
+    "weng1": {
+      "text": "翁",
+      "tokens": [
+        "weng1"
       ],
       "target": 0
     },

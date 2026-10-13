@@ -68,6 +68,7 @@
 
 /* Search modes stay explicit: Latin IPA must not silently match pinyin. */
 .comparison-preset-group{margin:18px 0}.comparison-preset-group h3{font-size:12px;color:var(--green);margin:0 0 8px}.comparison-preset-group .comparison-presets{margin:0}
+.comparison-selection-note{margin:10px 0 0;padding:10px 12px;border-left:3px solid var(--green);background:var(--light);border-radius:0 6px 6px 0}.comparison-selection-note strong{display:block;color:var(--green);margin-bottom:3px}
 .compare-controls{display:flex;flex-wrap:wrap;gap:12px 24px;margin:18px 0}.compare-controls label{display:flex;align-items:center;gap:10px;margin:0;font-size:12px}.compare-initial{font-size:12px;margin:8px 0 0}
 .comparison-grid.comparison-grid--three{grid-template-columns:repeat(3,minmax(0,1fr))}.comparison-grid--three .compare-card{padding:16px}.comparison-grid--three .compare-card label{display:block}.comparison-grid--three select{display:block;width:100%;margin-top:6px}
 @media(max-width:1100px){.comparison-grid.comparison-grid--three{grid-template-columns:1fr}}

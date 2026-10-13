@@ -1,4 +1,5 @@
 import type {AppState} from '../types.js';
+import {renderSoundUnitsGuide} from './sound-units.js';
 
 const vowels = [
   {pinyin:'i', ipa:'i', pick:'yi', x:125, y:80, note:'前舌・狭母音。唇を丸めない。'},
@@ -16,6 +17,7 @@ const japanese = [
 
 export function renderVowels(state: AppState): string {
   return `<div class="section-heading"><h2>母音の位置を見る</h2><span>前後・高さ・唇の形</span></div>
+    ${renderSoundUnitsGuide()}
     <p class="comparison-intro">上ほど舌が高く、左ほど舌が前にある母音です。i と ü、e と o の横並びは、主に唇を丸めるかどうかの対比を示します。</p>
     <label class="vowel-overlay-toggle"><input type="checkbox" id="japanese-vowels" ${state.japaneseVowels?'checked':''}> 日本語の「あいうえお」を重ねる</label>
     <div class="vowel-map" aria-label="母音四辺形。中国語の母音ボタンから音節詳細へ移動できます。">

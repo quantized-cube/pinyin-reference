@@ -6,7 +6,7 @@ import { execFile } from 'node:child_process';
 
 const root = fileURLToPath(new URL('../../dist/', import.meta.url));
 const port = Number(process.env.PORT || 4173);
-const types: Record<string,string> = { '.html': 'text/html', '.css': 'text/css', '.js': 'text/javascript', '.json': 'application/json', '.svg': 'image/svg+xml' };
+const types: Record<string,string> = { '.html': 'text/html', '.css': 'text/css', '.js': 'text/javascript', '.json': 'application/json', '.svg': 'image/svg+xml', '.png': 'image/png', '.ico': 'image/vnd.microsoft.icon' };
 export const server = createServer(async (req, res) => {
   try {
     if (!['GET', 'HEAD'].includes(req.method ?? '')) { res.writeHead(405).end(); return; }

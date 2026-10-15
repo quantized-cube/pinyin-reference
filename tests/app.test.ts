@@ -5,6 +5,7 @@ import { readFile } from 'node:fs/promises';
 import { SourceTextModule } from 'node:vm';
 import { JSDOM, VirtualConsole } from 'jsdom';
 import { required } from '../src/types.js';
+import { parseExampleCatalog } from '../src/examples.js';
 
 const html = await readFile(new URL('../../public/index.html', import.meta.url), 'utf8');
 const catalog: unknown = JSON.parse(await readFile(new URL('../../public/examples.json', import.meta.url), 'utf8'));
@@ -94,6 +95,58 @@ test('search Enter keeps the exact pinyin instead of an earlier IPA substring ma
     assert.equal(s.$('#detail h2').textContent, expected);
     s.key('#search', 'Enter');
     assert.equal(s.$('#detail h2').textContent, expected);
+  }
+});
+
+test('final search Enter uses visible cards without hidden matrix initial or rare filters', async t => {
+  const s = await setup(t);
+  s.$<HTMLSelectElement>('#initial-filter').value = 'b';
+  s.$('#initial-filter').dispatchEvent(new s.window.Event('change', { bubbles: true }));
+  s.$('#show-rare').click();
+  s.$('[data-tab="finals"]').click();
+  assert.equal(s.window.document.querySelector('#initial-filter'), null);
+  assert.equal(s.window.document.querySelector('#show-rare'), null);
+  for (const [query, pinyin, tone] of [['ün3', 'yun', '3'], ['ê2', 'ê', '2']] as const) {
+    s.input(query);
+    assert.equal(s.$('.sound-card').dataset.pick, pinyin);
+    s.key('#search', 'Enter');
+    assert.equal(new URLSearchParams(s.window.location.hash.slice(1)).get('s'), pinyin);
+    assert.equal(s.$('.tone[aria-pressed="true"]').dataset.tone, tone);
+  }
+  s.input('');
+  s.$('[data-tab="matrix"]').click();
+  assert.equal(s.$<HTMLSelectElement>('#initial-filter').value, 'b');
+  assert.equal(s.$<HTMLInputElement>('#show-rare').checked, false);
+  s.input('ün');
+  assert.equal(s.window.document.querySelector('[data-syllable]'), null);
+  const before = s.window.location.hash;
+  s.key('#search', 'Enter');
+  assert.equal(s.window.location.hash, before);
+});
+
+test('initial search Enter uses the visible example despite hidden matrix and final filters', async t => {
+  const s = await setup(t);
+  s.$('[data-group="u"]').click();
+  s.$<HTMLSelectElement>('#initial-filter').value = 'b';
+  s.$('#initial-filter').dispatchEvent(new s.window.Event('change', { bubbles: true }));
+  s.$('[data-tab="initials"]').click();
+  s.input('x');
+  assert.equal(s.$('.sound-card').dataset.pick, 'xi');
+  s.key('#search', 'Enter');
+  assert.equal(s.$('#detail h2').textContent, 'xī');
+});
+
+test('Enter with no visible list result does not select a match from another reference view', async t => {
+  const s = await setup(t);
+  s.$<HTMLSelectElement>('#search-mode').value = 'ipa';
+  s.$('#search-mode').dispatchEvent(new s.window.Event('change', { bubbles: true }));
+  for (const [tab, query] of [['initials', 'ɑŋ'], ['finals', 'p']] as const) {
+    s.$(`[data-tab="${tab}"]`).click();
+    s.input(query);
+    assert.equal(s.window.document.querySelector('.sound-card'), null);
+    const before = s.$('#detail h2').textContent;
+    s.key('#search', 'Enter');
+    assert.equal(s.$('#detail h2').textContent, before);
   }
 });
 
@@ -412,10 +465,13 @@ test('third tone starts collapsed, preserves an explicit selection and restores 
   assert.match(linked.$('.detail-ipa').textContent??'',/˧˥/);
 });
 
-test('comparison presets play their matching single characters and disable missing tones', async t => {
+test('fixed comparison presets play their first-tone characters without editable selectors', async t => {
   const s=await setup(t);s.$('[data-tab="compare"]').click();
   assert.equal(s.$<HTMLInputElement>('#search').disabled,true);
-  const cases=[['an-ang','安','肮'],['en-eng','奔','崩'],['ian-iang','先','香'],['in-ing','音','英'],['uan-uang','关','光'],['uen-ueng','温','翁']] as const;
+  assert.equal(s.window.document.querySelectorAll('[data-compare-preset]').length,15);
+  assert.equal(s.window.document.querySelector('#reference-body select'),null);
+  assert.match(s.$('#reference-body .section-heading').textContent??'',/第1声で聞き比べます/);
+  const cases=[['an-ang','安','肮'],['en-eng','奔','崩'],['ian-iang','先','香'],['in-ing','音','英'],['uan-uang','关','光'],['uen-ueng','温','翁'],['b-p','八','趴'],['d-t','搭','他'],['g-k','歌','科'],['j-q','鸡','七'],['zh-ch','知','吃'],['z-c','资','疵']] as const;
   for(const [preset,a,b] of cases){
     s.$(`[data-compare-preset="${preset}"]`).click();
     for(const [side,text] of [['A',a],['B',b]]){
@@ -424,10 +480,6 @@ test('comparison presets play their matching single characters and disable missi
       s.lastRequest().onend?.();
     }
   }
-  s.$<HTMLSelectElement>('#compare-a').value='ê';
-  s.$('#compare-a').dispatchEvent(new s.window.Event('change',{bubbles:true}));
-  assert.equal(s.$<HTMLButtonElement>('[data-compare-play="A"]').disabled,true);
-  assert.equal(s.$<HTMLButtonElement>('[data-compare-play="alternate"]').disabled,true);
   s.$('[data-tab="matrix"]').click();assert.equal(s.$<HTMLInputElement>('#search').disabled,false);
 });
 
@@ -440,8 +492,8 @@ test('three-sound presets show and play every example and return to a two-sound 
   ] as const;
   for(const [preset,words] of cases){
     s.$(`[data-compare-preset="${preset}"]`).click();
-    assert.equal(s.$<HTMLSelectElement>('#compare-count').value,'3');
     assert.equal(s.window.document.querySelectorAll('.compare-card').length,3);
+    assert.equal(s.window.document.querySelector('#reference-body select'),null);
     assert.equal(s.$(`[data-compare-preset="${preset}"]`).getAttribute('aria-pressed'),'true');
     for(const [index,side] of ['A','B','C'].entries()){
       assert.equal(s.$(`[data-side="${side}"] .compare-example`).textContent,words[index]);
@@ -451,12 +503,10 @@ test('three-sound presets show and play every example and return to a two-sound 
     }
   }
   assert.equal(s.$('[data-side="A"] .compare-initial').textContent,'声母 c [tsʰ]');
-  s.$<HTMLSelectElement>('#compare-tone').value='3';
-  s.$('#compare-tone').dispatchEvent(new s.window.Event('change',{bubbles:true}));
   s.$('[data-side="C"] [data-pick]').click();
-  assert.equal(s.$('#detail h2').textContent,'qǐ');
+  assert.equal(s.$('#detail h2').textContent,'qī');
   s.$('[data-compare-preset="an-ang"]').click();
-  assert.equal(s.$<HTMLSelectElement>('#compare-count').value,'2');
+  assert.equal(s.window.document.querySelectorAll('.compare-card').length,2);
   assert.equal(s.window.document.querySelector('[data-side="C"]'),null);
   assert.equal(s.$('[data-compare-play="alternate"] small').textContent,'A → B → A → B');
 });
@@ -479,39 +529,60 @@ test('three-sound playback is A B C A B C with common settings and then stops', 
   assert.equal(s.$('#compare-status').textContent,'再生しました。');
 });
 
-test('changing C, count or tone cancels queued playback; a missing C disables only C and the sequence', async t => {
+test('changing fixed presets cancels queued playback across two- and three-sound comparisons', async t => {
   const s=await setup(t);s.$('[data-tab="compare"]').click();
-  for(const [id,value] of [['compare-c','ê'],['compare-count','2'],['compare-tone','2']] as const){
+  for(const preset of ['an-ang','zi-zhi-ji','ci-chi-qi']){
     s.$('[data-compare-preset="si-shi-xi"]').click();
     s.$('[data-compare-play="alternate"]').click();
     const first=s.lastRequest(), count=s.requestCount(), cancellations=s.cancellations();
     first.onend?.(); // The next sound is queued, but must not play after a change.
-    s.$<HTMLSelectElement>('#'+id).value=value;
-    s.$('#'+id).dispatchEvent(new s.window.Event('change',{bubbles:true}));
+    s.$(`[data-compare-preset="${preset}"]`).click();
     assert.ok(s.cancellations()>cancellations);
     first.onend?.();first.onerror?.({error:'interrupted'});
     await new Promise(resolve=>setTimeout(resolve,450));
     assert.equal(s.requestCount(),count);
     assert.doesNotMatch(s.$('#compare-status').textContent??'',/再生中|interrupted/);
-    if(id==='compare-c'){
-      s.setVoices([local,preferred]);
-      for(const side of ['A','B'])assert.equal(s.$<HTMLButtonElement>(`[data-compare-play="${side}"]`).disabled,false);
-      for(const side of ['C','alternate'])assert.equal(s.$<HTMLButtonElement>(`[data-compare-play="${side}"]`).disabled,true);
-    }
-    if(id==='compare-count'){
-      assert.equal(s.window.document.querySelector('#compare-c'),null);
-      s.$<HTMLSelectElement>('#compare-count').value='3';
-      s.$('#compare-count').dispatchEvent(new s.window.Event('change',{bubbles:true}));
-      assert.equal(s.$<HTMLSelectElement>('#compare-a').value,'si');
-      assert.equal(s.$<HTMLSelectElement>('#compare-b').value,'shi');
-      assert.equal(s.$<HTMLSelectElement>('#compare-c').value,'xi');
-    }
-    if(id==='compare-tone'){
-      assert.equal(s.$<HTMLButtonElement>('[data-compare-play="A"]').disabled,true);
-      assert.equal(s.$<HTMLButtonElement>('[data-compare-play="C"]').disabled,false);
-      assert.equal(s.$<HTMLButtonElement>('[data-compare-play="alternate"]').disabled,true);
-    }
+    assert.equal(s.$(`[data-compare-preset="${preset}"]`).getAttribute('aria-pressed'),'true');
   }
+});
+
+test('detail tone changes do not alter the selected first-tone comparison', async t => {
+  const s=await setup(t,[local],{hash:'#s=yan&t=3'});
+  s.$('[data-tab="compare"]').click();
+  s.$('[data-compare-preset="uan-uang"]').click();
+  assert.equal(s.$('#detail h2').textContent,'yǎn');
+  s.$('[data-side="A"] [data-pick]').click();
+  assert.equal(s.$('#detail h2').textContent,'guān');
+  s.$('[data-tone="3"]').click();
+  assert.equal(s.$('#detail h2').textContent,'guǎn');
+  s.$('[data-tab="matrix"]').click();
+  s.$('[data-tab="compare"]').click();
+  assert.equal(s.$('[data-compare-preset="uan-uang"]').getAttribute('aria-pressed'),'true');
+  assert.equal(s.$('[data-side="A"] h3').textContent,'guān');
+  assert.equal(s.$('[data-side="A"] .compare-ipa').textContent,'[kwan˥]');
+  assert.match(s.$('#comparison-selection-note').textContent??'',/第1声/);
+  s.$('[data-compare-play="A"]').click();
+  assert.equal(s.lastRequest().text,'关');
+  s.lastRequest().onend?.();
+});
+
+test('a missing fixed-preset example disables its card and the sequence without a tone fallback', async t => {
+  const parsed=parseExampleCatalog(catalog);
+  const {xi1: removed,...isolatedExamples}=parsed.isolatedExamples;
+  assert.ok(removed);
+  assert.ok(isolatedExamples.xi2);
+  const s=await setup(t,[local],{fetchExamples:async()=>({ok:true,json:async()=>({...parsed,isolatedExamples})})});
+  s.$('[data-tab="compare"]').click();
+  s.$('[data-compare-preset="si-shi-xi"]').click();
+  s.setVoices([local,preferred]);
+  for(const side of ['A','B'])assert.equal(s.$<HTMLButtonElement>(`[data-compare-play="${side}"]`).disabled,false);
+  for(const side of ['C','alternate'])assert.equal(s.$<HTMLButtonElement>(`[data-compare-play="${side}"]`).disabled,true);
+  assert.match(s.$('[data-side="C"]').textContent??'',/第1声.*未収録/);
+  s.$('[data-compare-play="alternate"]').click();
+  assert.equal(s.requestCount(),0);
+  s.$('[data-compare-play="A"]').click();
+  assert.equal(s.lastRequest().text,'思');
+  s.lastRequest().onend?.();
 });
 
 test('changing comparison or leaving its tab cancels playback and stale events', async t => {
@@ -555,10 +626,6 @@ test('example retry updates both views and rapid retries cannot start overlappin
   });
   const flush = () => new Promise<void>(resolve => setImmediate(resolve));
   s.$('[data-tab="compare"]').click();
-  for (const [id, value] of [['compare-a', 'yan'], ['compare-tone', '3']] as const) {
-    s.$<HTMLSelectElement>('#'+id).value = value;
-    s.$('#'+id).dispatchEvent(new s.window.Event('change', {bubbles:true}));
-  }
   assert.equal(pending.length, 1);
   assert.equal(s.$<HTMLButtonElement>('#play').disabled, true);
   assert.equal(s.$<HTMLButtonElement>('[data-compare-play="A"]').disabled, true);
@@ -581,7 +648,7 @@ test('example retry updates both views and rapid retries cannot start overlappin
   required(pending[1], 'retry request').resolve({ok:true, json:async () => catalog});
   await flush();
   assert.equal(s.$('.example-word').textContent, '眼');
-  assert.equal(s.$('[data-side="A"] .compare-example').textContent, '眼');
+  assert.equal(s.$('[data-side="A"] .compare-example').textContent, '安');
   assert.equal(s.$<HTMLButtonElement>('#play').disabled, false);
   assert.equal(s.$<HTMLButtonElement>('[data-compare-play="A"]').disabled, false);
 });
@@ -612,7 +679,7 @@ test('slash from a non-searchable tab opens the matrix search',async t=>{
   assert.equal(s.window.document.activeElement,s.$('#search'));
 });
 
-test('isolated third-tone detail and comparison play the same approved characters', async t => {
+test('third-tone detail keeps its approved characters and contextual playback rules', async t => {
   const s = await setup(t);
   for (const [pinyin, word] of [['yan', '眼'], ['yin', '引'], ['ying', '影'], ['li', '理'], ['hao', '好'], ['gei', '给']]) {
     s.$('[data-tab="matrix"]').click();
@@ -620,15 +687,6 @@ test('isolated third-tone detail and comparison play the same approved character
     assert.equal(s.$('.example-word').textContent, word);
     assert.equal(s.$<HTMLButtonElement>('#play').disabled, false);
     s.$('#play').click();
-    assert.equal(s.lastRequest().text, word);
-    s.lastRequest().onend?.();
-    s.$('[data-tab="compare"]').click();
-    for (const [id, value] of [['compare-a', pinyin], ['compare-tone', '3']] as const) {
-      s.$<HTMLSelectElement>('#' + id).value = required(value, id);
-      s.$('#' + id).dispatchEvent(new s.window.Event('change', { bubbles: true }));
-    }
-    assert.equal(s.$('[data-side="A"] .compare-example').textContent, word);
-    s.$('[data-compare-play="A"]').click();
     assert.equal(s.lastRequest().text, word);
     s.lastRequest().onend?.();
   }

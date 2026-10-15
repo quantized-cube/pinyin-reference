@@ -5,9 +5,9 @@ import {getThirdToneForm} from '../src/third-tone.js';
 import {iPronunciationNote, matrixFinals} from '../src/layout.js';
 import {required} from '../src/types.js';
 
-test('full third tone agrees between syllable detail and comparison contours', () => {
-  const detail = getThirdToneForm('full'), comparison = getTone(3);
-  for (const field of ['value', 'ipa', 'points'] as const) assert.equal(detail[field], comparison[field], field);
+test('full third tone agrees between syllable detail and the tone guide contours', () => {
+  const detail = getThirdToneForm('full'), tone = getTone(3);
+  for (const field of ['value', 'ipa', 'points'] as const) assert.equal(detail[field], tone[field], field);
 });
 
 test('matrix IPA headings and i explanations follow their analytical final data', () => {

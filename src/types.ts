@@ -1,3 +1,5 @@
+import type {ComparisonPresetId} from './comparison.js';
+
 export type InitialId = '' | 'b' | 'p' | 'm' | 'f' | 'd' | 't' | 'n' | 'l'
   | 'g' | 'k' | 'h' | 'j' | 'q' | 'x' | 'zh' | 'ch' | 'sh' | 'r' | 'z' | 'c' | 's';
 export type FinalId = 'a' | 'o' | 'e' | 'ai' | 'ei' | 'ao' | 'ou' | 'an' | 'en'
@@ -49,8 +51,7 @@ export interface SearchFilters {
 export interface AppState {
   searchMode: SearchMode;
   thirdToneExpanded: boolean;
-  compareSyllables: ComparisonSyllables;
-  compareTone: ToneId;
+  comparePreset: ComparisonPresetId;
   japaneseVowels: boolean;
   tab: TabId;
   group: GroupFilter;

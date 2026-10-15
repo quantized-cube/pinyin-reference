@@ -14,7 +14,7 @@ interface ComparisonPreset {
   readonly label: string;
   readonly group: typeof comparisonGroups[number]['id'];
   readonly syllables: Readonly<ComparisonSyllables>;
-  readonly tone: Exclude<ToneId, 5>;
+  readonly tone: 1;
   readonly note: string;
 }
 
@@ -36,7 +36,12 @@ export const comparisonPresets = [
   {id:'z-c', label:'z ↔ c', group:'aspiration', syllables:['zi','ci'], tone:1, note:'舌歯の無気音と有気音。同じ舌先の i で比べます。'},
 ] as const satisfies readonly ComparisonPreset[];
 
-export const comparisonSides = ['A','B','C'] as const;
+export type ComparisonPresetId = typeof comparisonPresets[number]['id'];
+export function getComparisonPreset(id: ComparisonPresetId) {
+  return required(comparisonPresets.find(preset=>preset.id===id), `comparison preset ${id}`);
+}
+
+const comparisonSides = ['A','B','C'] as const;
 export function comparisonEntries(syllables: Readonly<ComparisonSyllables>) {
   return syllables.map((pinyin,index)=>({side:required(comparisonSides[index],'comparison side'),pinyin}));
 }

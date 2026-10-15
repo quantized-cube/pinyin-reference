@@ -135,8 +135,9 @@ test('IPA search preserves IPA symbols and does not use pinyin spelling aliases'
   assert.deepEqual(findSyllables('ɹ̩',{searchMode:'ipa'}).map(s=>s.pinyin),['zi','ci','si']);
 });
 
-test('all comparison presets use playable single-character examples at a common tone',()=>{
+test('all comparison presets use playable single-character examples at the first tone',()=>{
   for(const preset of comparisonPresets){
+    assert.equal(preset.tone,1,preset.id);
     for(const pinyin of preset.syllables){
       assert.ok(syllableMap.has(pinyin));
       const example=required(comparisonExample(pinyin,preset.tone,isolatedExamples),pinyin);

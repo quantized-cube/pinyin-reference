@@ -26,7 +26,7 @@ export function renderVowels(state: AppState): string {
       ${state.japaneseVowels?japanese.map(v=>`<span class="japanese-vowel" style="left:${v.x/640*100}%;top:${v.y/410*100}%">${v.label}</span>`).join(''):''}
     </div>
     <p class="vowel-legend"><span>● 普通話の代表的な母音（クリックで詳細）</span>${state.japaneseVowels?'<span>◇ 日本語の代表的な位置</span>':''}</p>
-    ${state.japaneseVowels?'<div class="vowel-japanese-note"><p>日本語の「う」は、普通話の u [u] ほど唇を突き出さず、舌の位置もやや前寄りになることがあります。ここでは [ɯ̟] と略記していますが、唇を圧縮する発音など、話者・文脈で幅があります。</p><p>日本語の「え」[e̞] は前寄り。普通話の e [ɤ] は後ろ寄りで、同じ「エ」ではありません。近い点でも、両言語の音が常に同じという意味ではありません。</p></div>':''}
-    <p class="tone-note">図は学習用の模式図で、話者の実測位置ではありません。日本語は標準語を想定した代表例です。ə は en / eng などに現れる中舌母音ですが、独立した単韻母としては置いていません。舌先の i と er のそり舌性、二重母音の移動も省略しています。o の渡り音の扱いは音節詳細で確認できます。</p>
+    ${state.japaneseVowels?'<div class="vowel-japanese-note"><p>日本語の「う」は、普通話の u [u] ほど唇を突き出さず、舌の位置もやや前寄りになることがあります。ここでは [ɯ̟] と略記していますが、唇を圧縮する発音など、話者や文脈による違いがあります。</p><p>日本語の「え」[e̞] は前寄り。普通話の e [ɤ] は後ろ寄りで、同じ「エ」ではありません。図上の点が近くても、両言語の音が常に同じという意味ではありません。</p></div>':''}
+    <p class="tone-note">図は学習用の模式図で、実際に測定した舌の位置を示すものではありません。日本語は標準語を想定した代表例です。ə は en / eng などに現れる中舌母音ですが、独立した単韻母としては置いていません。舌先の i と er のそり舌性、二重母音の発音中の舌の動きも省略しています。o の渡り音の扱いは音節詳細で確認できます。</p>
     <p class="vowel-sources">参考：<a href="https://www.internationalphoneticassociation.org/IPAcharts/IPA_charts_EI/IPA_charts_EI.html" target="_blank" rel="noreferrer">国際音声学会の母音表 ↗</a> · <a href="https://doi.org/10.1017/S002510030000445X" target="_blank" rel="noreferrer">Okada『Japanese』 ↗</a></p>`;
 }

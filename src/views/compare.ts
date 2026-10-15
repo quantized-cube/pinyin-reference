@@ -16,7 +16,7 @@ export function renderCompare(state: AppState, examples: ExampleMap, exampleStat
       <p class="compare-initial">${s.initial?`声母 ${s.initial} [${initial.ipa}]`:'声母なし'}</p>
       <p class="compare-rime">韻母 ${esc(s.final)} [${s.rimeIpa}]</p><p class="note">${esc(getFinal(s.final).note)}</p>
       <div class="compare-example" lang="zh-CN">${exampleState==='ready'&&example?example.text:'—'}</div>
-      <p class="tone-note">${exampleState==='loading'?'例字を読み込み中…':exampleState==='error'?'例字を読み込めませんでした。':example?'上の例字を第1声で再生します。':'第1声の単独比較用例字は未収録です。'}</p>
+      <p class="tone-note">${exampleState==='loading'?'例字を読み込み中…':exampleState==='error'?'例字を読み込めませんでした。':example?'上の例字を第1声で再生します。':'第1声の聞き比べに使える単独例字は未収録です。'}</p>
       <button class="primary" data-compare-play="${side}" ${playable(side)?'':'disabled'}>${side}を聞く</button>
       <button class="text-button" data-pick="${pinyin}" data-pick-tone="${preset.tone}">音節の詳細を見る ↗</button>
     </article>`;

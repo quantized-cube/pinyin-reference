@@ -2,7 +2,7 @@ import {getFinal} from '../data.js';
 
 export function renderSoundUnitsGuide(): string {
   return `<section class="sound-units-guide" aria-label="母音と韻母の違い">
-    <p><strong>母音は音の種類、韻母は音節のまとまり。</strong>韻母には母音だけでなく、末尾の子音も含まれることがあります。</p>
+    <p><strong>母音は音の種類、韻母は音節の中のまとまり。</strong>韻母には母音だけでなく、末尾の子音も含まれることがあります。</p>
     <details>
       <summary>母音・子音と、声母・韻母はどう違う？</summary>
       <p>母音・子音は、音の作り方による分類です。一方、普通話の音節を「声母＋韻母」に分けるとき、声母は先頭の子音、韻母はその後の部分を指します。an のように声母のない音節もあります。声調はこの区分とは別に扱います。</p>

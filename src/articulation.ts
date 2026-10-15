@@ -6,7 +6,7 @@ export const places = {
   labiodental: { label: '唇歯音', aliases: ['唇音'], note: '下唇と上の前歯を使う音。f。両唇音とともに唇音の仲間です。' },
   alveolar: { label: '舌尖音（歯茎音）', aliases: ['舌尖中音'], note: '舌先と上の歯茎を使う音。d・t・n・l。舌尖中音とも呼びます。この表の「舌尖音」はこの4つを指します。' },
   velar: { label: '舌根音（軟口蓋音）', aliases: ['舌面後音'], note: '舌の奥と、口の天井の奥にある柔らかい部分を使う音。g・k・h。舌面後音とも呼びます。' },
-  alveolopalatal: { label: '舌面音（歯茎硬口蓋音）', aliases: ['舌面前音'], note: '舌の前部と、歯茎の後ろから硬口蓋（口の天井の硬い部分）にかけて狭める音。j・q・x。舌面前音とも呼びます。' },
+  alveolopalatal: { label: '舌面音（歯茎硬口蓋音）', aliases: ['舌面前音'], note: '舌の前部を、歯茎の後ろから硬口蓋にかけての部分に近づけて作る音。硬口蓋は口の天井の硬い部分です。j・q・x。舌面前音とも呼びます。' },
   retroflex: { label: 'そり舌音（舌尖後音）', aliases: ['捲舌音','巻舌音','反り舌音'], note: '舌先を歯茎より後ろへ向けて作る音。zh・ch・sh・r。捲舌音・巻舌音とも呼びます。舌を強く巻き込む必要はありません。' },
   apicalFront: { label: '舌歯音（歯茎音）', aliases: ['舌尖前音','平舌音'], note: '舌先付近と上の前歯の裏〜歯茎付近を使う音。z・c・s。舌尖前音・平舌音とも呼びます。歯音・歯茎音などの細かな分類は資料によって異なり、このアプリでは [ts・tsʰ・s] と表記します。' },
 } as const;
@@ -15,11 +15,11 @@ export const placeTerminologyNote = '教材での呼び方を先に置き、括�
 
 export const manners = {
   plosive: { label: '破裂音', note: '口の中で息の通り道をいったん閉じ、開放して作る音。b・p・d・t・g・k。' },
-  affricate: { label: '破擦音', note: 'いったん閉じた後、狭いすき間を残して摩擦を伴いながら開放する音。j・q・zh・ch・z・c。' },
+  affricate: { label: '破擦音', note: '息の通り道をいったん閉じた後、狭いすき間を残して摩擦を伴いながら開放する音。j・q・zh・ch・z・c。' },
   fricative: { label: '摩擦音', note: '狭いすき間に息を通し、摩擦を起こす音。f・h・x・sh・s。' },
-  nasal: { label: '鼻音', note: '口の通り道を閉じ、鼻に息を通す音。m・n。' },
-  lateral: { label: '側面接近音', note: '舌の中央を閉じ、側面に息を通す音。l。' },
-  approximant: { label: '接近音', note: '発音器官を近づけ、強い摩擦を起こさず息を通す音。このアプリの r [ɻ]。摩擦音 [ʐ] とする分析もあります。' },
+  nasal: { label: '鼻音', note: '口の中の息の通り道を閉じ、鼻に息を通す音。m・n。' },
+  lateral: { label: '側面接近音', note: '舌の中央で息の通り道を閉じ、舌の側面に息を通す音。l。' },
+  approximant: { label: '接近音', note: '発音器官を近づけ、強い摩擦を起こさず息を通す音。このアプリでは r を [ɻ] と表記しています。摩擦音 [ʐ] とする分析もあります。' },
 } as const;
 
 export const aspirations = {

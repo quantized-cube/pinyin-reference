@@ -18,8 +18,8 @@ function neutralToneContour(example: typeof neutralToneExamples[number]): string
 }
 
 export function renderNeutralToneGuide(): string {
-  return `<section class="neutral-tone-guide" aria-labelledby="neutral-tone-heading">
-    <h4 id="neutral-tone-heading">軽声</h4>
+  return `<details class="neutral-tone-guide">
+    <summary>軽声の高さと発音例</summary>
     <p>軽声は短く弱く読みます。線は前の音節の声調、点は軽声の高さの目安を示します。</p>
     <div class="neutral-tone-grid">${neutralToneExamples.map(example=>`<button class="neutral-tone-example" data-neutral-tone-play="${example.precedingTone}" aria-label="第${example.precedingTone}声＋軽声、高さの目安 ${example.height}（${example.label}）。${example.text} ${example.pinyin} の録音を聞く" disabled>
       <strong>第${example.precedingTone}声＋軽声</strong>
@@ -33,5 +33,5 @@ export function renderNeutralToneGuide(): string {
       <p>第3声の図は「奶奶」のように低く読む場合を示しています。実際の高さは語や話し方によって変わります。図は録音を測定して描いたものではありません。</p>
       <p class="neutral-tone-source"><a href="audio/neutral/credits.html" target="_blank" rel="noreferrer">録音の出典・ライセンス ↗</a><br><a href="https://www.cheng-tsui.com/sites/default/files/ic_1_textbook_chapters_1-3_reduced.pdf" target="_blank" rel="noreferrer">高さの参考：Integrated Chinese（PDF） ↗</a></p>
     </details>
-  </section>`;
+  </details>`;
 }

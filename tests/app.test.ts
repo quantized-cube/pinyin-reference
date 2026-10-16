@@ -200,8 +200,10 @@ test('neutral-tone recordings preserve their timing regardless of TTS settings a
   s.$<HTMLInputElement>('#rate').value = '0.75';
   s.$('#rate').dispatchEvent(new s.window.Event('input', {bubbles:true}));
   s.$('[data-tab="rules"]').click();
-  const guide = s.$('.neutral-tone-guide');
-  assert.equal(guide.closest('details'), null);
+  const guide = s.$<HTMLDetailsElement>('.neutral-tone-guide');
+  assert.equal(guide.open, false);
+  s.$('.neutral-tone-guide>summary').click();
+  assert.equal(guide.open, true);
   assert.match(guide.closest('.rule-card')?.querySelector('h3')?.textContent??'', /4つの声調と軽声/);
   assert.equal(s.$<HTMLDetailsElement>('.neutral-tone-notes').open, false);
   const before = s.window.location.hash;
@@ -217,6 +219,7 @@ test('neutral-tone recordings preserve their timing regardless of TTS settings a
     assert.ok(s.$('#neutral-tone-status').textContent?.includes(word));
     recording.onended?.();
     assert.equal(s.window.location.hash, before);
+    assert.equal(guide.open, true);
     assert.equal(s.$<HTMLDetailsElement>('.neutral-tone-notes').open, false);
   }
 });

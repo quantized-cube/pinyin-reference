@@ -13,6 +13,7 @@ import {syllables,syllableMap,markTone,parseQuery,findSyllables,isInitialId,isGr
 import {Speaker} from './speech.js';
 import {parseExampleCatalog,detailExample} from './examples.js';
 import {isThirdToneFormId} from './third-tone.js';
+import {neutralToneExamples} from './neutral-tone.js';
 import {isToneId,isTabId,required} from './types.js';
 import type {ExampleCatalog,ToneId,ThirdToneFormId} from './types.js';
 
@@ -40,12 +41,13 @@ function renderReference(){
   if(state.tab==='finals') $('#reference-body').innerHTML=renderFinals(state);
   if(state.tab==='initials') $('#reference-body').innerHTML=renderInitials(state);
   if(state.tab==='rules') $('#reference-body').innerHTML=renderRules();
-  if(state.tab==='compare') $('#reference-body').innerHTML=renderCompare(state,loadedExamples()?.isolatedExamples??{},exampleLoad.status,!!speaker?.supported,speaker?.message??null);
+  if(state.tab==='compare') $('#reference-body').innerHTML=renderCompare(state,loadedExamples()?.isolatedExamples??{},exampleLoad.status,!!speaker?.supported,speaker?.messageFor('speech')??null);
   if(state.tab==='vowels') $('#reference-body').innerHTML=renderVowels(state);
   const searchable=['matrix','finals','initials'].includes(state.tab);
   $<HTMLInputElement>('#search').disabled=!searchable;
   $<HTMLSelectElement>('#search-mode').disabled=!searchable;
   updateComparisonAudio();
+  updateNeutralToneAudio();
 }
 function updateSearchMode(){
   const input=$<HTMLInputElement>('#search');
@@ -59,13 +61,21 @@ function updateComparisonAudio(){
     button.disabled=!speaker?.supported||exampleLoad.status!=='ready'||!comparisonSequence(preset.syllables,preset.tone,loadedExamples()?.isolatedExamples??{},button.dataset.comparePlay??'');
   });
   const status=document.querySelector('#compare-status');
-  if(status)status.textContent=speaker?.message??(!speaker?.supported?'このブラウザは音声合成に対応していません。':'再生する音声・速度は、音節詳細の設定と共通です。');
+  if(status)status.textContent=speaker?.messageFor('speech')??(!speaker?.supported?'このブラウザは音声合成に対応していません。':'再生する音声・速度は、音節詳細の設定と共通です。');
 }
 function playComparison(side: string){
   if(exampleLoad.status!=='ready')return;
   const preset=getComparisonPreset(state.comparePreset);
   const items=comparisonSequence(preset.syllables,preset.tone,exampleLoad.catalog.isolatedExamples,side);
   if(items)speaker?.speakSequence(items,state.voice,state.rate);
+}
+function updateNeutralToneAudio(){
+  if(state.tab!=='rules')return;
+  document.querySelectorAll<HTMLButtonElement>('[data-neutral-tone-play],#neutral-tone-stop').forEach(button=>{
+    button.disabled=!speaker?.recordingsSupported;
+  });
+  const status=document.querySelector('#neutral-tone-status');
+  if(status)status.textContent=speaker?.messageFor('recording')??(!speaker?.recordingsSupported?'このブラウザは録音の再生に対応していません。':'話者の録音を元の速度で再生します。');
 }
 function ensureGridFocus(){if(!document.querySelector('[data-syllable][tabindex="0"]'))document.querySelector('[data-syllable]')?.setAttribute('tabindex','0');}
 function exampleFor(){return detailExample(state.selected,state.tone,state.thirdToneForm,loadedExamples());}
@@ -80,11 +90,19 @@ function updateVoices(){
   $<HTMLSelectElement>('#voice').innerHTML=voices.length?voices.map(v=>`<option value="${esc(v.voiceURI)}" ${v===selectedVoice?'selected':''}>${esc(v.name)} (${esc(v.lang)})${v.localService?'':' · オンライン'}</option>`).join(''):'<option value="">自動選択（中国語・中国本土）</option>';
   $<HTMLSelectElement>('#voice').disabled=!speaker.supported;
   $<HTMLButtonElement>('#play').disabled=!speaker.supported||!exampleFor();
-  const msg=!speaker.supported?'このブラウザは音声合成に対応していません。':exampleLoad.status==='loading'?'例字・例語を読み込み中…':exampleLoad.status==='error'?'例字・例語データを読み込めませんでした。':!exampleFor()?(state.tone===3&&state.thirdToneForm==='full'?'この声調の単独例字は未収録です。':state.tone===3?'この発音形の例語は未収録です。':'例字・例語のある声調を選ぶと再生できます。'):!voices.length?'音声一覧に普通話が表示されていません。再生ボタンで中国語の再生を試せます。音が出ない場合は下の設定手順をご確認ください。':`中国語TTS · ${selectedVoice?.lang || 'zh'}`;
-  $('#voice-status').textContent=speaker.message??msg;
-  updateComparisonAudio();
+  updateAudioStatuses();
 }
-speaker=new Speaker({onVoices:()=>{if(speaker)updateVoices();},onStatus:(message,kind)=>{for(const id of ['#voice-status','#compare-status']){const status=document.querySelector(id);if(status)status.textContent=message;}if(kind==='error'){const help=document.querySelector<HTMLDetailsElement>('#voice-help');if(help)help.open=true;}}});
+function updateAudioStatuses(){
+  if(!speaker)return;
+  const voices=speaker.voices;
+  const selectedVoice=voices.find(v=>v.voiceURI===state.voice)??voices[0];
+  const msg=!speaker.supported?'このブラウザは音声合成に対応していません。':exampleLoad.status==='loading'?'例字・例語を読み込み中…':exampleLoad.status==='error'?'例字・例語データを読み込めませんでした。':!exampleFor()?(state.tone===3&&state.thirdToneForm==='full'?'この声調の単独例字は未収録です。':state.tone===3?'この発音形の例語は未収録です。':'例字・例語のある声調を選ぶと再生できます。'):!voices.length?'音声一覧に普通話が表示されていません。再生ボタンで中国語の再生を試せます。音が出ない場合は下の設定手順をご確認ください。':`中国語TTS · ${selectedVoice?.lang || 'zh'}`;
+  const status=document.querySelector('#voice-status');
+  if(status)status.textContent=speaker.messageFor('speech')??msg;
+  updateComparisonAudio();
+  updateNeutralToneAudio();
+}
+speaker=new Speaker({onVoices:()=>{if(speaker)updateVoices();},onStatus:(_message,kind,source)=>{updateAudioStatuses();if(kind==='error'&&source==='speech'){const help=document.querySelector<HTMLDetailsElement>('#voice-help');if(help)help.open=true;}}});
 function renderExampleViews(){
   renderDetail();
   if(state.tab==='compare')renderReference();
@@ -117,6 +135,8 @@ document.addEventListener('click',event=>{
   if(b.dataset.comparePreset){const preset=comparisonPresets.find(p=>p.id===b.dataset.comparePreset);if(preset){speaker?.stop(false);state.comparePreset=preset.id;renderReference();updateVoices();document.querySelector<HTMLElement>(`[data-compare-preset="${preset.id}"]`)?.focus();}}
   if(b.dataset.comparePlay)playComparison(b.dataset.comparePlay);
   if(b.id==='compare-stop')speaker?.stop();
+  if(b.dataset.neutralTonePlay){const example=neutralToneExamples.find(item=>String(item.precedingTone)===b.dataset.neutralTonePlay);if(example)speaker?.playRecording(example.audio,example.text);}
+  if(b.id==='neutral-tone-stop')speaker?.stop();
   if(b.dataset.pick)select(b.dataset.pick,{tone:b.dataset.pickTone?toTone(b.dataset.pickTone):undefined,scroll:true});
   if(b.dataset.tone){select(state.selected,{tone:toTone(b.dataset.tone)});document.querySelector<HTMLElement>(`[data-tone="${state.tone}"]`)?.focus();}
   if(b.dataset.demoTone)select('ma',{tone:toTone(b.dataset.demoTone),scroll:true});

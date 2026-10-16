@@ -1,0 +1,62 @@
+[
+  {
+    "file": "mama.mp3",
+    "word": "妈妈",
+    "pinyin": "māma",
+    "author": "Wei Gao, Vion Nicolas",
+    "license": "CC BY 2.0 France",
+    "licenseUrl": "https://creativecommons.org/licenses/by/2.0/fr/",
+    "source": "The Shtooka Project / Wikimedia Commons",
+    "sourcePage": "https://commons.wikimedia.org/wiki/File:Zh-m%C4%81ma.ogg",
+    "downloadUrl": "https://upload.wikimedia.org/wikipedia/commons/transcoded/a/af/Zh-m%C4%81ma.ogg/Zh-m%C4%81ma.ogg.mp3",
+    "retrieved": "2026-10-16",
+    "changes": "Wikimedia Commons MP3 transcode, copied without further modification.",
+    "sha256": "8a2f07e8ce9e86c183e14941233f595fe3582a07bd56eeb9c0775b1edded9625",
+    "bytes": 18213
+  },
+  {
+    "file": "yeye.mp3",
+    "word": "爷爷",
+    "pinyin": "yéye",
+    "author": "Yue Tan",
+    "license": "CC BY-SA 3.0 US",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0/us/",
+    "source": "The Shtooka Project / Wikimedia Commons",
+    "sourcePage": "https://commons.wikimedia.org/wiki/File:Zh-y%C3%A9ye.ogg",
+    "downloadUrl": "https://upload.wikimedia.org/wikipedia/commons/transcoded/6/67/Zh-y%C3%A9ye.ogg/Zh-y%C3%A9ye.ogg.mp3",
+    "retrieved": "2026-10-16",
+    "changes": "Wikimedia Commons MP3 transcode, copied without further modification.",
+    "sha256": "e6e597b171705d14703a1600e757f8eeb8b51a05c13556b00aa215801bf1bdb8",
+    "bytes": 20643
+  },
+  {
+    "file": "nainai.mp3",
+    "word": "奶奶",
+    "pinyin": "nǎinai",
+    "author": "Yue Tan",
+    "license": "CC BY-SA 3.0 US",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0/us/",
+    "source": "The Shtooka Project / Wikimedia Commons",
+    "sourcePage": "https://commons.wikimedia.org/wiki/File:Zh-nainai.ogg",
+    "downloadUrl": "https://upload.wikimedia.org/wikipedia/commons/transcoded/8/83/Zh-nainai.ogg/Zh-nainai.ogg.mp3",
+    "retrieved": "2026-10-16",
+    "changes": "Wikimedia Commons MP3 transcode, copied without further modification.",
+    "sha256": "e6b19f72b631f0b4c3f064a3a7d18a6ca953943ff3760bec7daab8e96c719824",
+    "bytes": 20432
+  },
+  {
+    "file": "baba.mp3",
+    "word": "爸爸",
+    "pinyin": "bàba",
+    "author": "Wei Gao, Vion Nicolas",
+    "license": "CC BY 2.0 France",
+    "licenseUrl": "https://creativecommons.org/licenses/by/2.0/fr/",
+    "source": "The Shtooka Project / Wikimedia Commons",
+    "sourcePage": "https://commons.wikimedia.org/wiki/File:Zh-b%C3%A0ba.ogg",
+    "downloadUrl": "https://upload.wikimedia.org/wikipedia/commons/transcoded/0/0d/Zh-b%C3%A0ba.ogg/Zh-b%C3%A0ba.ogg.mp3",
+    "retrieved": "2026-10-16",
+    "changes": "Wikimedia Commons MP3 transcode, copied without further modification.",
+    "sha256": "abf54cae4f5e8ea8fc34c6ad4ffcdaead189356c94d9ac2489ffbd9d91e586fc",
+    "bytes": 16419
+  }
+]

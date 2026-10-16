@@ -6,7 +6,7 @@ import { execFile } from 'node:child_process';
 
 const root = fileURLToPath(new URL('../../dist/', import.meta.url));
 const port = Number(process.env.PORT || 4173);
-const types: Record<string,string> = { '.html': 'text/html', '.css': 'text/css', '.js': 'text/javascript', '.json': 'application/json', '.svg': 'image/svg+xml', '.png': 'image/png', '.ico': 'image/vnd.microsoft.icon' };
+const types: Record<string,string> = { '.html': 'text/html', '.css': 'text/css', '.js': 'text/javascript', '.json': 'application/json', '.svg': 'image/svg+xml', '.png': 'image/png', '.ico': 'image/vnd.microsoft.icon', '.mp3': 'audio/mpeg' };
 export const server = createServer(async (req, res) => {
   try {
     if (!['GET', 'HEAD'].includes(req.method ?? '')) { res.writeHead(405).end(); return; }
@@ -14,7 +14,9 @@ export const server = createServer(async (req, res) => {
     const path = resolve(root, '.' + (pathname === '/' ? '/index.html' : pathname));
     if (!path.startsWith(resolve(root) + sep)) { res.writeHead(403).end(); return; }
     const body = await readFile(path);
-    res.writeHead(200, { 'Content-Type': (types[extname(path)] || 'application/octet-stream') + '; charset=utf-8', 'Cache-Control': 'no-cache', 'X-Content-Type-Options': 'nosniff' });
+    const contentType = types[extname(path)] || 'application/octet-stream';
+    const charset = contentType.startsWith('text/') || contentType === 'application/json' ? '; charset=utf-8' : '';
+    res.writeHead(200, { 'Content-Type': contentType + charset, 'Cache-Control': 'no-cache', 'X-Content-Type-Options': 'nosniff' });
     res.end(req.method === 'HEAD' ? undefined : body);
   } catch (error) { res.writeHead(error instanceof URIError ? 400 : 404).end('Not found'); }
 });

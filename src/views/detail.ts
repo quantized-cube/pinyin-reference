@@ -12,7 +12,7 @@ export function renderDetail(state: AppState, example: PronunciationExample | un
   const s=getSyllable(state.selected),t=getTone(state.tone),f=getFinal(s.final),i=getInitial(s.initial);
   const third=state.tone===3?getThirdToneForm(state.thirdToneForm):undefined;
   const pronunciation=third??t;
-  const ipaCaption=third?`${third.label}の目安 · ${third.value}`:state.tone===5?'分節音の目安（軽声の高さは文脈依存）':'単独声調の目安';
+  const ipaCaption=third?`${third.label}の目安 · ${third.value}`:state.tone===5?'分節音の目安':'単独声調の目安';
   let exampleHtml='';
   if(example){
     const chars=[...example.text];

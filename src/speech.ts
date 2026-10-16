@@ -1,4 +1,5 @@
 export type SpeechStatus = 'idle' | 'pending' | 'playing' | 'error';
+export type AudioSource = 'speech' | 'recording';
 export interface SpeechRequest {
   readonly text: string;
   readonly voice: SpeechSynthesisVoice | undefined;
@@ -62,7 +63,7 @@ function speechErrorMessage(error: string): string {
 
 interface SpeakerOptions {
   engine?: SpeechEngine;
-  onStatus?: (message: string, status: SpeechStatus) => void;
+  onStatus?: (message: string, status: SpeechStatus, source: AudioSource) => void;
   onVoices?: (voices: readonly SpeechSynthesisVoice[]) => void;
 }
 
@@ -71,8 +72,10 @@ export class Speaker {
   message: string | null = null;
   private serial = 0;
   private timer: ReturnType<typeof setTimeout> | undefined;
+  private recording: HTMLAudioElement | undefined;
+  private source: AudioSource = 'speech';
   private readonly engine: SpeechEngine;
-  private readonly onStatus: (message: string, status: SpeechStatus) => void;
+  private readonly onStatus: (message: string, status: SpeechStatus, source: AudioSource) => void;
   private readonly onVoices: (voices: readonly SpeechSynthesisVoice[]) => void;
 
   constructor({ engine = new BrowserSpeechEngine(), onStatus = () => {}, onVoices = () => {} }: SpeakerOptions = {}) {
@@ -88,22 +91,72 @@ export class Speaker {
     this.onVoices(this.voices);
   };
   get supported(): boolean { return this.engine.supported; }
+  get recordingsSupported(): boolean { return typeof globalThis.Audio === 'function'; }
+  messageFor(source: AudioSource): string | null {
+    return this.source === source ? this.message : null;
+  }
   private report(message: string, status: SpeechStatus): void {
     this.message = message;
-    this.onStatus(message, status);
+    this.onStatus(message, status, this.source);
   }
   stop(announce = true): void {
     this.serial++;
     clearTimeout(this.timer);
     this.engine.cancel();
+    this.recording?.pause();
+    this.recording = undefined;
     this.message = null;
     if (announce) this.report('再生を停止しました。', 'idle');
   }
   speak(text: string, voiceURI: string, rate = 1): boolean {
     return this.speakSequence([{text}], voiceURI, rate);
   }
+  playRecording(url: string, label: string): boolean {
+    this.stop(false);
+    this.source = 'recording';
+    if (!this.recordingsSupported) {
+      this.report('このブラウザは録音の再生に対応していません。', 'error');
+      return false;
+    }
+    const id = this.serial;
+    let finished = false;
+    const current = () => id === this.serial && !finished;
+    const fail = (message: string) => {
+      if (!current()) return;
+      finished = true;
+      this.stop(false);
+      this.report(message, 'error');
+    };
+    try {
+      const audio = new Audio(url);
+      this.recording = audio;
+      // Preserve the recorded timing, independent of the TTS speed setting.
+      audio.playbackRate = 1;
+      audio.onplaying = () => {
+        if (!current()) return;
+        clearTimeout(this.timer);
+        this.report(`「${label}」の録音を再生中…`, 'playing');
+      };
+      audio.onended = () => {
+        if (!current()) return;
+        finished = true;
+        clearTimeout(this.timer);
+        this.recording = undefined;
+        this.report('再生しました。', 'idle');
+      };
+      audio.onerror = () => fail('録音を読み込めませんでした。通信を確認して再試行してください。');
+      this.report('録音を読み込み中…', 'pending');
+      this.timer = setTimeout(() => fail('録音の開始を確認できませんでした。再試行してください。'), 15000);
+      void audio.play().catch(() => fail('録音を再生できませんでした。再生ボタンをもう一度押してください。'));
+      return true;
+    } catch {
+      fail('録音を再生できませんでした。再試行してください。');
+      return false;
+    }
+  }
   speakSequence(items: readonly {text: string; label?: string}[], voiceURI: string, rate = 1): boolean {
     this.stop(false);
+    this.source = 'speech';
     if (!items.length) return false;
     if (!this.supported) {
       this.report('このブラウザは音声合成に対応していません。', 'error');

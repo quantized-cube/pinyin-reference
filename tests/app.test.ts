@@ -27,6 +27,7 @@ class Utterance {
 interface ExampleResponse {ok: boolean; status?: number; json: () => Promise<unknown>}
 async function setup(t: TestContext, initialVoices = [local], options: {
   mobile?: boolean; storedIpa?: string; hash?: string; fetchExamples?: () => Promise<ExampleResponse>;
+  speechSupported?: boolean;
 } = {}) {
   const errors: unknown[] = [];
   const virtualConsole = new VirtualConsole();
@@ -38,6 +39,22 @@ async function setup(t: TestContext, initialVoices = [local], options: {
   let voices = initialVoices;
   let cancellations = 0;
   const requests: Utterance[] = [];
+  const recordings: RecordedAudio[] = [];
+  let rejectRecording = false;
+  class RecordedAudio {
+    playbackRate = 1;
+    paused = true;
+    onplaying: (() => void) | null = null;
+    onended: (() => void) | null = null;
+    onerror: (() => void) | null = null;
+    constructor(readonly src: string) { recordings.push(this); }
+    play(): Promise<void> {
+      if (rejectRecording) return Promise.reject(new Error('Playback blocked'));
+      this.paused = false;
+      return Promise.resolve();
+    }
+    pause(): void { this.paused = true; }
+  }
   const synthesis = new window.EventTarget();
   Object.assign(synthesis, {
     getVoices: () => voices,
@@ -45,8 +62,9 @@ async function setup(t: TestContext, initialVoices = [local], options: {
     speak: (utterance: Utterance) => requests.push(utterance),
   });
   Object.assign(window, {
-    speechSynthesis: synthesis,
+    speechSynthesis: options.speechSupported===false?undefined:synthesis,
     SpeechSynthesisUtterance: Utterance,
+    Audio: RecordedAudio,
     matchMedia: () => ({ matches: options.mobile??false }),
     fetch: async (url: string) => {
       assert.equal(url, 'examples.json?v=2');
@@ -85,6 +103,8 @@ async function setup(t: TestContext, initialVoices = [local], options: {
     lastRequest: () => required(requests.at(-1), 'speech request'),
     requestCount: () => requests.length,
     cancellations: () => cancellations,
+    lastRecording: () => required(recordings.at(-1), 'recording'),
+    blockRecordings: (blocked: boolean) => { rejectRecording = blocked; },
   };
 }
 
@@ -172,6 +192,127 @@ test('the saved voice returns after a partial voice list without a user selectio
   assert.equal(s.window.localStorage.getItem('pinyin.voice'), preferred.voiceURI);
   s.$('#play').click();
   assert.equal(s.lastRequest().voice, preferred);
+  s.lastRequest().onend?.();
+});
+
+test('neutral-tone recordings preserve their timing regardless of TTS settings and keep the selected syllable', async t => {
+  const s = await setup(t, [local, preferred]);
+  s.$<HTMLInputElement>('#rate').value = '0.75';
+  s.$('#rate').dispatchEvent(new s.window.Event('input', {bubbles:true}));
+  s.$('[data-tab="rules"]').click();
+  const guide = s.$('.neutral-tone-guide');
+  assert.equal(guide.closest('details'), null);
+  assert.match(guide.closest('.rule-card')?.querySelector('h3')?.textContent??'', /4つの声調と軽声/);
+  assert.equal(s.$<HTMLDetailsElement>('.neutral-tone-notes').open, false);
+  const before = s.window.location.hash;
+  for (const [tone, word, file] of [[1,'妈妈','mama'],[2,'爷爷','yeye'],[3,'奶奶','nainai'],[4,'爸爸','baba']] as const) {
+    const button = s.$<HTMLButtonElement>(`[data-neutral-tone-play="${tone}"]`);
+    assert.equal(button.disabled, false);
+    button.click();
+    const recording = s.lastRecording();
+    assert.equal(recording.src, `audio/neutral/${file}.mp3`);
+    assert.equal(recording.playbackRate, 1);
+    assert.equal(s.requestCount(), 0);
+    recording.onplaying?.();
+    assert.ok(s.$('#neutral-tone-status').textContent?.includes(word));
+    recording.onended?.();
+    assert.equal(s.window.location.hash, before);
+    assert.equal(s.$<HTMLDetailsElement>('.neutral-tone-notes').open, false);
+  }
+});
+
+test('neutral-tone recordings work without TTS or a catalog and ignore stale events after errors and cancellation', async t => {
+  const s = await setup(t, [], {speechSupported:false,fetchExamples:async()=>({ok:false,status:503,json:async()=>null})});
+  s.$('[data-tab="rules"]').click();
+  s.$('[data-neutral-tone-play="1"]').click();
+  const first = s.lastRecording();
+  first.onerror?.();
+  assert.match(s.$('#neutral-tone-status').textContent??'', /録音を読み込めません/);
+  assert.equal(s.$<HTMLDetailsElement>('#voice-help').open, false);
+  s.$('[data-neutral-tone-play="2"]').click();
+  const second = s.lastRecording();
+  second.onplaying?.();
+  first.onended?.();
+  assert.ok(s.$('#neutral-tone-status').textContent?.includes('爷爷'));
+  s.$('#neutral-tone-stop').click();
+  assert.equal(second.paused, true);
+  second.onended?.();
+  assert.equal(s.$('#neutral-tone-status').textContent, '再生を停止しました。');
+  s.$('[data-neutral-tone-play="3"]').click();
+  const third = s.lastRecording();
+  s.$('[data-tab="matrix"]').click();
+  assert.equal(third.paused, true);
+  third.onplaying?.();
+  assert.doesNotMatch(s.$('#voice-status').textContent??'', /奶奶/);
+  assert.equal(s.requestCount(), 0);
+});
+
+test('recording playback replaces TTS and recordings, handles rejected play promises and never falls back to TTS', async t => {
+  const s = await setup(t);
+  s.$('#play').click();
+  const speech = s.lastRequest();
+  s.$('[data-tab="rules"]').click();
+  const beforeRecording = s.cancellations();
+  s.$('[data-neutral-tone-play="1"]').click();
+  assert.ok(s.cancellations()>beforeRecording);
+  const first = s.lastRecording();
+  s.$('[data-neutral-tone-play="2"]').click();
+  const second = s.lastRecording();
+  assert.equal(first.paused, true);
+  second.onplaying?.();
+  first.onended?.();
+  speech.onstart?.();
+  assert.ok(s.$('#neutral-tone-status').textContent?.includes('爷爷'));
+  s.$('#play').click();
+  assert.equal(second.paused, true);
+  const beforeFailure = s.requestCount();
+  s.blockRecordings(true);
+  s.$('[data-neutral-tone-play="3"]').click();
+  await new Promise<void>(resolve=>setImmediate(resolve));
+  assert.match(s.$('#neutral-tone-status').textContent??'', /録音を再生できません/);
+  assert.equal(s.$<HTMLDetailsElement>('#voice-help').open, false);
+  assert.equal(s.requestCount(), beforeFailure);
+  s.blockRecordings(false);
+  s.$('[data-neutral-tone-play="4"]').click();
+  s.lastRecording().onplaying?.();
+  assert.ok(s.$('#neutral-tone-status').textContent?.includes('爸爸'));
+  s.lastRecording().onended?.();
+});
+
+test('TTS and recording statuses stay in their own sections, including after voice refreshes and playback changes', async t => {
+  const s = await setup(t);
+  s.$('[data-tab="rules"]').click();
+  const recordingHint = s.$('#neutral-tone-status').textContent;
+  const speechHint = s.$('#voice-status').textContent;
+
+  s.$('#play').click();
+  s.lastRequest().onerror?.({error:'language-unavailable'});
+  const speechError = s.$('#voice-status').textContent;
+  assert.match(speechError??'', /普通話の音声を追加/);
+  assert.equal(s.$('#neutral-tone-status').textContent, recordingHint);
+  assert.equal(s.$<HTMLButtonElement>('[data-neutral-tone-play="1"]').disabled, false);
+  s.setVoices([local]);
+  assert.equal(s.$('#voice-status').textContent, speechError);
+  assert.equal(s.$('#neutral-tone-status').textContent, recordingHint);
+
+  s.$<HTMLDetailsElement>('#voice-help').open = false;
+  s.$('[data-neutral-tone-play="1"]').click();
+  s.lastRecording().onplaying?.();
+  assert.match(s.$('#neutral-tone-status').textContent??'', /妈妈.*録音を再生中/);
+  assert.equal(s.$('#voice-status').textContent, speechHint);
+  s.lastRecording().onerror?.();
+  const recordingError = s.$('#neutral-tone-status').textContent;
+  assert.match(recordingError??'', /録音を読み込めません/);
+  assert.equal(s.$('#voice-status').textContent, speechHint);
+  assert.equal(s.$<HTMLDetailsElement>('#voice-help').open, false);
+  s.window.dispatchEvent(new s.window.Event('focus'));
+  assert.equal(s.$('#neutral-tone-status').textContent, recordingError);
+  assert.equal(s.$('#voice-status').textContent, speechHint);
+
+  s.$('#play').click();
+  s.lastRequest().onstart?.();
+  assert.match(s.$('#voice-status').textContent??'', /再生中/);
+  assert.equal(s.$('#neutral-tone-status').textContent, recordingHint);
   s.lastRequest().onend?.();
 });
 

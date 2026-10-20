@@ -1,6 +1,6 @@
 import {renderCompare} from './views/compare.js';
 import {renderVowels} from './views/vowels.js';
-import {comparisonPresets,comparisonSequence,getComparisonPreset} from './comparison.js';
+import {comparisonAudioHint,comparisonPresets,comparisonSequence,getComparisonPreset} from './comparison.js';
 import {renderAbout} from './views/about.js';
 import {createState,save} from './state.js';
 import {esc} from './views/shared.js';
@@ -41,7 +41,7 @@ function renderReference(){
   if(state.tab==='finals') $('#reference-body').innerHTML=renderFinals(state);
   if(state.tab==='initials') $('#reference-body').innerHTML=renderInitials(state);
   if(state.tab==='rules') $('#reference-body').innerHTML=renderRules();
-  if(state.tab==='compare') $('#reference-body').innerHTML=renderCompare(state,loadedExamples()?.isolatedExamples??{},exampleLoad.status,!!speaker?.supported,speaker?.messageFor('speech')??null);
+  if(state.tab==='compare') $('#reference-body').innerHTML=renderCompare(state,loadedExamples()?.isolatedExamples??{},exampleLoad.status,!!speaker?.recordingsSupported,speaker?.messageFor('comparison')??null);
   if(state.tab==='vowels') $('#reference-body').innerHTML=renderVowels(state);
   const searchable=['matrix','finals','initials'].includes(state.tab);
   $<HTMLInputElement>('#search').disabled=!searchable;
@@ -58,16 +58,15 @@ function updateComparisonAudio(){
   if(state.tab!=='compare')return;
   const preset=getComparisonPreset(state.comparePreset);
   document.querySelectorAll<HTMLButtonElement>('[data-compare-play]').forEach(button=>{
-    button.disabled=!speaker?.supported||exampleLoad.status!=='ready'||!comparisonSequence(preset.syllables,preset.tone,loadedExamples()?.isolatedExamples??{},button.dataset.comparePlay??'');
+    button.disabled=!speaker?.recordingsSupported||!comparisonSequence(preset.syllables,preset.tone,button.dataset.comparePlay??'');
   });
   const status=document.querySelector('#compare-status');
-  if(status)status.textContent=speaker?.messageFor('speech')??(!speaker?.supported?'このブラウザは音声合成に対応していません。':'再生する音声・速度は、音節詳細の設定と共通です。');
+  if(status)status.textContent=speaker?.messageFor('comparison')??comparisonAudioHint(!!speaker?.recordingsSupported);
 }
 function playComparison(side: string){
-  if(exampleLoad.status!=='ready')return;
   const preset=getComparisonPreset(state.comparePreset);
-  const items=comparisonSequence(preset.syllables,preset.tone,exampleLoad.catalog.isolatedExamples,side);
-  if(items)speaker?.speakSequence(items,state.voice,state.rate);
+  const items=comparisonSequence(preset.syllables,preset.tone,side);
+  if(items)speaker?.playRecordingSequence(items,'comparison');
 }
 function updateNeutralToneAudio(){
   if(state.tab!=='rules')return;

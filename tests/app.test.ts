@@ -27,7 +27,7 @@ class Utterance {
 interface ExampleResponse {ok: boolean; status?: number; json: () => Promise<unknown>}
 async function setup(t: TestContext, initialVoices = [local], options: {
   mobile?: boolean; storedIpa?: string; hash?: string; fetchExamples?: () => Promise<ExampleResponse>;
-  speechSupported?: boolean;
+  speechSupported?: boolean; recordingsSupported?: boolean;
 } = {}) {
   const errors: unknown[] = [];
   const virtualConsole = new VirtualConsole();
@@ -40,6 +40,7 @@ async function setup(t: TestContext, initialVoices = [local], options: {
   let cancellations = 0;
   const requests: Utterance[] = [];
   const recordings: RecordedAudio[] = [];
+  const recordingPlays: {src: string; rate: number}[] = [];
   let rejectRecording = false;
   class RecordedAudio {
     playbackRate = 1;
@@ -47,8 +48,9 @@ async function setup(t: TestContext, initialVoices = [local], options: {
     onplaying: (() => void) | null = null;
     onended: (() => void) | null = null;
     onerror: (() => void) | null = null;
-    constructor(readonly src: string) { recordings.push(this); }
+    constructor(public src = '') { recordings.push(this); }
     play(): Promise<void> {
+      recordingPlays.push({src:this.src,rate:this.playbackRate});
       if (rejectRecording) return Promise.reject(new Error('Playback blocked'));
       this.paused = false;
       return Promise.resolve();
@@ -64,7 +66,7 @@ async function setup(t: TestContext, initialVoices = [local], options: {
   Object.assign(window, {
     speechSynthesis: options.speechSupported===false?undefined:synthesis,
     SpeechSynthesisUtterance: Utterance,
-    Audio: RecordedAudio,
+    Audio: options.recordingsSupported===false?undefined:RecordedAudio,
     matchMedia: () => ({ matches: options.mobile??false }),
     fetch: async (url: string) => {
       assert.equal(url, 'examples.json?v=2');
@@ -104,6 +106,8 @@ async function setup(t: TestContext, initialVoices = [local], options: {
     requestCount: () => requests.length,
     cancellations: () => cancellations,
     lastRecording: () => required(recordings.at(-1), 'recording'),
+    recordingPlays,
+    recordingCount: () => recordings.length,
     blockRecordings: (blocked: boolean) => { rejectRecording = blocked; },
   };
 }
@@ -609,21 +613,25 @@ test('third tone starts collapsed, preserves an explicit selection and restores 
   assert.match(linked.$('.detail-ipa').textContent??'',/˧˥/);
 });
 
-test('fixed comparison presets play their first-tone characters without editable selectors', async t => {
+test('fixed comparison presets play first-tone recordings and display the shared example characters', async t => {
   const s=await setup(t);s.$('[data-tab="compare"]').click();
   assert.equal(s.$<HTMLInputElement>('#search').disabled,true);
   assert.equal(s.window.document.querySelectorAll('[data-compare-preset]').length,15);
   assert.equal(s.window.document.querySelector('#reference-body select'),null);
   assert.match(s.$('#reference-body .section-heading').textContent??'',/第1声で聞き比べます/);
-  const cases=[['an-ang','安','肮'],['en-eng','奔','崩'],['ian-iang','先','香'],['in-ing','音','英'],['uan-uang','关','光'],['uen-ueng','温','翁'],['b-p','八','趴'],['d-t','搭','他'],['g-k','歌','科'],['j-q','鸡','七'],['zh-ch','知','吃'],['z-c','资','疵']] as const;
-  for(const [preset,a,b] of cases){
+  const cases=[['an-ang','安','肮','an','ang'],['en-eng','奔','崩','ben','beng'],['ian-iang','先','香','xian','xiang'],['in-ing','音','英','yin','ying'],['uan-uang','关','光','guan','guang'],['uen-ueng','温','翁','wen','weng'],['b-p','八','趴','ba','pa'],['d-t','搭','他','da','ta'],['g-k','歌','科','ge','ke'],['j-q','鸡','七','ji','qi'],['zh-ch','知','吃','zhi','chi'],['z-c','资','疵','zi','ci']] as const;
+  for(const [preset,a,b,first,second] of cases){
     s.$(`[data-compare-preset="${preset}"]`).click();
-    for(const [side,text] of [['A',a],['B',b]]){
+    for(const [side,text,pinyin] of [['A',a,first],['B',b,second]]){
       assert.equal(s.$<HTMLButtonElement>(`[data-compare-play="${side}"]`).disabled,false);
-      s.$(`[data-compare-play="${side}"]`).click();assert.equal(s.lastRequest().text,text);
-      s.lastRequest().onend?.();
+      assert.equal(s.$(`[data-side="${side}"] .compare-example`).textContent,text);
+      s.$(`[data-compare-play="${side}"]`).click();
+      assert.equal(s.lastRecording().src,`audio/comparison/${pinyin}1.mp3`);
+      assert.equal(s.lastRecording().playbackRate,1);
+      s.lastRecording().onended?.();
     }
   }
+  assert.equal(s.requestCount(),0);
   s.$('[data-tab="matrix"]').click();assert.equal(s.$<HTMLInputElement>('#search').disabled,false);
 });
 
@@ -643,7 +651,8 @@ test('three-sound presets show and play every example and return to a two-sound 
       assert.equal(s.$(`[data-side="${side}"] .compare-example`).textContent,words[index]);
       assert.equal(s.$<HTMLButtonElement>(`[data-compare-play="${side}"]`).disabled,false);
       s.$(`[data-compare-play="${side}"]`).click();
-      assert.equal(s.lastRequest().text,words[index]);s.lastRequest().onend?.();
+      assert.equal(s.lastRecording().src,`audio/comparison/${preset.split('-')[index]}1.mp3`);
+      s.lastRecording().onended?.();
     }
   }
   assert.equal(s.$('[data-side="A"] .compare-initial').textContent,'声母 c [tsʰ]');
@@ -655,22 +664,29 @@ test('three-sound presets show and play every example and return to a two-sound 
   assert.equal(s.$('[data-compare-play="alternate"] small').textContent,'A → B → A → B');
 });
 
-test('three-sound playback is A B C A B C with common settings and then stops', async t => {
+test('recorded playback repeats each pair or triple twice at original speed on one audio element', async t => {
   const s=await setup(t);s.$('[data-tab="compare"]').click();
-  s.$('[data-compare-preset="si-shi-xi"]').click();
-  s.$('[data-compare-play="alternate"]').click();
-  const expected=[['A','思'],['B','诗'],['C','西'],['A','思'],['B','诗'],['C','西']] as const;
-  for(const [index,[side,word]] of expected.entries()){
-    assert.equal(s.requestCount(),index+1);
-    const utterance=s.lastRequest();
-    assert.equal(utterance.text,word);assert.equal(utterance.voice,local);
-    assert.equal(Reflect.get(utterance,'rate'),.85);
-    utterance.onstart?.();assert.ok(s.$('#compare-status').textContent?.startsWith(side+' · '));
-    utterance.onend?.();
-    await new Promise(resolve=>setTimeout(resolve,450));
+  for(const [preset,expected] of [['an-ang',['an','ang','an','ang']],['si-shi-xi',['si','shi','xi','si','shi','xi']]] as const){
+    s.$(`[data-compare-preset="${preset}"]`).click();
+    const start=s.recordingPlays.length, elements=s.recordingCount();
+    s.$('[data-compare-play="alternate"]').click();
+    for(const [index,pinyin] of expected.entries()){
+      assert.equal(s.recordingPlays.length,start+index+1);
+      const audio=s.lastRecording();
+      assert.equal(audio.src,`audio/comparison/${pinyin}1.mp3`);
+      assert.equal(audio.playbackRate,1);
+      audio.onplaying?.();assert.match(s.$('#compare-status').textContent??'',/録音を再生中/);
+      // Duplicate or late terminal callbacks from this item cannot skip the next sound.
+      const ended=audio.onended, error=audio.onerror;
+      ended?.();ended?.();error?.();
+      await new Promise(resolve=>setTimeout(resolve,450));
+      ended?.();error?.();
+    }
+    assert.equal(s.recordingCount(),elements+1);
+    assert.equal(s.recordingPlays.length,start+expected.length);
+    assert.equal(s.$('#compare-status').textContent,'再生しました。');
   }
-  assert.equal(s.requestCount(),6);
-  assert.equal(s.$('#compare-status').textContent,'再生しました。');
+  assert.equal(s.requestCount(),0);
 });
 
 test('changing fixed presets cancels queued playback across two- and three-sound comparisons', async t => {
@@ -678,13 +694,13 @@ test('changing fixed presets cancels queued playback across two- and three-sound
   for(const preset of ['an-ang','zi-zhi-ji','ci-chi-qi']){
     s.$('[data-compare-preset="si-shi-xi"]').click();
     s.$('[data-compare-play="alternate"]').click();
-    const first=s.lastRequest(), count=s.requestCount(), cancellations=s.cancellations();
-    first.onend?.(); // The next sound is queued, but must not play after a change.
+    const first=s.lastRecording(), count=s.recordingPlays.length;
+    first.onended?.(); // The next sound is queued, but must not play after a change.
     s.$(`[data-compare-preset="${preset}"]`).click();
-    assert.ok(s.cancellations()>cancellations);
-    first.onend?.();first.onerror?.({error:'interrupted'});
+    assert.equal(first.paused,true);
+    first.onended?.();first.onerror?.();
     await new Promise(resolve=>setTimeout(resolve,450));
-    assert.equal(s.requestCount(),count);
+    assert.equal(s.recordingPlays.length,count);
     assert.doesNotMatch(s.$('#compare-status').textContent??'',/再生中|interrupted/);
     assert.equal(s.$(`[data-compare-preset="${preset}"]`).getAttribute('aria-pressed'),'true');
   }
@@ -706,11 +722,11 @@ test('detail tone changes do not alter the selected first-tone comparison', asyn
   assert.equal(s.$('[data-side="A"] .compare-ipa').textContent,'[kwan˥]');
   assert.match(s.$('#comparison-selection-note').textContent??'',/第1声/);
   s.$('[data-compare-play="A"]').click();
-  assert.equal(s.lastRequest().text,'关');
-  s.lastRequest().onend?.();
+  assert.equal(s.lastRecording().src,'audio/comparison/guan1.mp3');
+  s.lastRecording().onended?.();
 });
 
-test('a missing fixed-preset example disables its card and the sequence without a tone fallback', async t => {
+test('a missing example character does not prevent playback of its first-tone recording', async t => {
   const parsed=parseExampleCatalog(catalog);
   const {xi1: removed,...isolatedExamples}=parsed.isolatedExamples;
   assert.ok(removed);
@@ -719,29 +735,107 @@ test('a missing fixed-preset example disables its card and the sequence without 
   s.$('[data-tab="compare"]').click();
   s.$('[data-compare-preset="si-shi-xi"]').click();
   s.setVoices([local,preferred]);
-  for(const side of ['A','B'])assert.equal(s.$<HTMLButtonElement>(`[data-compare-play="${side}"]`).disabled,false);
-  for(const side of ['C','alternate'])assert.equal(s.$<HTMLButtonElement>(`[data-compare-play="${side}"]`).disabled,true);
-  assert.match(s.$('[data-side="C"]').textContent??'',/第1声.*未収録/);
+  for(const side of ['A','B','C','alternate'])assert.equal(s.$<HTMLButtonElement>(`[data-compare-play="${side}"]`).disabled,false);
+  assert.match(s.$('[data-side="C"]').textContent??'',/例字は未収録/);
   s.$('[data-compare-play="alternate"]').click();
   assert.equal(s.requestCount(),0);
-  s.$('[data-compare-play="A"]').click();
-  assert.equal(s.lastRequest().text,'思');
-  s.lastRequest().onend?.();
+  s.$('[data-compare-play="C"]').click();
+  assert.equal(s.lastRecording().src,'audio/comparison/xi1.mp3');
+  s.lastRecording().onended?.();
 });
 
 test('changing comparison or leaving its tab cancels playback and stale events', async t => {
   const s=await setup(t);s.$('[data-tab="compare"]').click();
   s.$('[data-compare-play="alternate"]').click();
-  const first=s.lastRequest();first.onstart?.();
-  assert.match(s.$('#compare-status').textContent??'',/A.*安/);
-  const before=s.cancellations();
+  const first=s.lastRecording();first.onplaying?.();
+  assert.match(s.$('#compare-status').textContent??'',/A.*ān/);
   s.$('[data-compare-preset="en-eng"]').click();
-  assert.ok(s.cancellations()>before);
-  first.onend?.();first.onerror?.({error:'interrupted'});
+  assert.equal(first.paused,true);
+  first.onended?.();first.onerror?.();
   assert.doesNotMatch(s.$('#compare-status').textContent??'',/再生中|interrupted/);
   s.$('[data-compare-play="A"]').click();
-  const second=s.lastRequest();s.$('[data-tab="vowels"]').click();
-  second.onstart?.();assert.doesNotMatch(s.$('#voice-status').textContent??'',/再生中/);
+  const second=s.lastRecording();s.$('[data-tab="vowels"]').click();
+  assert.equal(second.paused,true);
+  second.onplaying?.();assert.doesNotMatch(s.$('#voice-status').textContent??'',/再生中/);
+});
+
+test('comparisons work without TTS or the character catalog and keep audio statuses separate', async t => {
+  const s=await setup(t,[],{speechSupported:false,fetchExamples:async()=>({ok:false,status:503,json:async()=>null})});
+  s.$('[data-tab="compare"]').click();
+  assert.equal(s.$<HTMLButtonElement>('[data-compare-play="alternate"]').disabled,false);
+  assert.match(s.$('[data-side="A"]').textContent??'',/例字を読み込めません/);
+  const detailStatus=s.$('#voice-status').textContent;
+  s.$('[data-compare-play="A"]').click();
+  const audio=s.lastRecording();audio.onplaying?.();
+  assert.match(s.$('#compare-status').textContent??'',/A.*ān.*録音/);
+  assert.equal(s.$('#voice-status').textContent,detailStatus);
+  s.setVoices([]);
+  assert.match(s.$('#compare-status').textContent??'',/録音を再生中/);
+  audio.onended?.();
+  s.$('[data-tab="rules"]').click();
+  assert.doesNotMatch(s.$('#neutral-tone-status').textContent??'',/再生しました/);
+  s.$('[data-neutral-tone-play="1"]').click();
+  const neutral=s.lastRecording();neutral.onplaying?.();
+  s.$('[data-tab="compare"]').click();
+  assert.equal(neutral.paused,true);
+  neutral.onerror?.();
+  assert.equal(s.$('#compare-status').textContent,'話者の録音を元の速度で再生します。');
+  assert.equal(s.requestCount(),0);
+});
+
+test('recording failures abort comparison sequences without a TTS fallback, and allow retry', async t => {
+  const s=await setup(t);s.$('[data-tab="compare"]').click();
+  s.$('[data-compare-play="alternate"]').click();
+  s.lastRecording().onended?.();
+  await new Promise(resolve=>setTimeout(resolve,450));
+  assert.equal(s.lastRecording().src,'audio/comparison/ang1.mp3');
+  const failed=s.lastRecording();
+  failed.onerror?.();failed.onended?.();
+  const message=s.$('#compare-status').textContent;
+  assert.match(message??'',/録音を読み込めません/);
+  s.setVoices([local,preferred]);
+  assert.equal(s.$('#compare-status').textContent,message);
+  await new Promise(resolve=>setTimeout(resolve,450));
+  assert.equal(s.recordingPlays.length,2);
+  assert.equal(failed.paused,true);
+  assert.equal(s.$<HTMLDetailsElement>('#voice-help').open,false);
+  s.blockRecordings(true);
+  s.$('[data-compare-play="alternate"]').click();
+  await new Promise<void>(resolve=>setImmediate(resolve));
+  assert.match(s.$('#compare-status').textContent??'',/録音を再生できません/);
+  s.blockRecordings(false);
+  s.$('[data-compare-play="A"]').click();s.lastRecording().onended?.();
+  assert.equal(s.$('#compare-status').textContent,'再生しました。');
+  assert.equal(s.requestCount(),0);
+});
+
+test('stop and detail TTS playback both cancel a comparison during the gap between sounds', async t => {
+  const s=await setup(t);s.$('[data-tab="compare"]').click();
+  for(const selector of ['#compare-stop','#play']){
+    s.$('[data-compare-play="alternate"]').click();
+    const audio=s.lastRecording(), count=s.recordingPlays.length;
+    audio.onended?.();
+    s.$(selector).click();
+    assert.equal(audio.paused,true);
+    audio.onended?.();audio.onerror?.();
+    await new Promise(resolve=>setTimeout(resolve,450));
+    assert.equal(s.recordingPlays.length,count);
+    if(selector==='#play'){
+      s.lastRequest().onstart?.();
+      assert.doesNotMatch(s.$('#compare-status').textContent??'',/再生中/);
+      s.lastRequest().onend?.();
+    }
+  }
+});
+
+test('unsupported recorded playback is clearly disabled even when TTS is available', async t => {
+  const s=await setup(t,[local],{recordingsSupported:false});
+  s.$('[data-tab="compare"]').click();
+  for(const side of ['A','B','alternate'])assert.equal(s.$<HTMLButtonElement>(`[data-compare-play="${side}"]`).disabled,true);
+  assert.match(s.$('#compare-status').textContent??'',/録音の再生に対応していません/);
+  s.$('[data-compare-play="alternate"]').click();
+  assert.equal(s.requestCount(),0);
+  assert.equal(s.recordingCount(),0);
 });
 
 test('vowel map supports Japanese overlay and opens the correct syllable details', async t => {
@@ -772,7 +866,7 @@ test('example retry updates both views and rapid retries cannot start overlappin
   s.$('[data-tab="compare"]').click();
   assert.equal(pending.length, 1);
   assert.equal(s.$<HTMLButtonElement>('#play').disabled, true);
-  assert.equal(s.$<HTMLButtonElement>('[data-compare-play="A"]').disabled, true);
+  assert.equal(s.$<HTMLButtonElement>('[data-compare-play="A"]').disabled, false);
   required(pending[0], 'initial request').reject(new Error('offline'));
   await flush();
   const detailRetry = s.$('#detail #retry-examples');
@@ -785,7 +879,7 @@ test('example retry updates both views and rapid retries cannot start overlappin
   assert.match(s.$('#detail .example').textContent ?? '', /読み込み中/);
   assert.match(s.$('[data-side="A"]').textContent ?? '', /読み込み中/);
   assert.equal(s.$<HTMLButtonElement>('#play').disabled, true);
-  assert.equal(s.$<HTMLButtonElement>('[data-compare-play="A"]').disabled, true);
+  assert.equal(s.$<HTMLButtonElement>('[data-compare-play="A"]').disabled, false);
   s.$('[data-tab="matrix"]').click();
   s.$('[data-tab="compare"]').click();
   assert.equal(pending.length, 2);

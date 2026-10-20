@@ -2,6 +2,7 @@ import type {ComparisonSyllables, ExampleMap, PronunciationExample, ToneId} from
 import {required} from './types.js';
 import {markTone} from './data.js';
 import {isolatedExample} from './examples.js';
+import {comparisonRecording} from './comparison-recordings.js';
 
 export const comparisonGroups = [
   {id:'nasal-finals', label:'鼻韻母の比較（-n / -ng）'},
@@ -55,15 +56,19 @@ export function comparisonExample(pinyin: string, tone: ToneId, examples: Exampl
   return isolatedExample(pinyin, tone, examples);
 }
 
-// Rendering, voice refresh and playback must agree on missing examples for every side.
-export function comparisonSequence(syllables: Readonly<ComparisonSyllables>, tone: ToneId, examples: ExampleMap, selection: string) {
+// Recording availability is independent of the example characters shown on the cards.
+export function comparisonSequence(syllables: Readonly<ComparisonSyllables>, tone: ToneId, selection: string) {
   const order=comparisonOrder(syllables,selection);
   if(!order.length)return undefined;
-  const items: {text: string;label: string}[]=[];
+  const items: {url: string;label: string}[]=[];
   for(const {side,pinyin} of order){
-    const example=comparisonExample(pinyin,tone,examples);
-    if(!example)return undefined;
-    items.push({text:example.text,label:`${side} · ${markTone(pinyin,tone)}`});
+    const url=comparisonRecording(pinyin,tone);
+    if(!url)return undefined;
+    items.push({url,label:`${side} · ${markTone(pinyin,tone)}`});
   }
   return items;
+}
+
+export function comparisonAudioHint(supported: boolean): string {
+  return supported?'話者の録音を元の速度で再生します。':'このブラウザは録音の再生に対応していません。';
 }

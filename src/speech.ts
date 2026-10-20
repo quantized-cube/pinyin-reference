@@ -1,5 +1,5 @@
 export type SpeechStatus = 'idle' | 'pending' | 'playing' | 'error';
-export type AudioSource = 'speech' | 'recording';
+export type AudioSource = 'speech' | 'recording' | 'comparison';
 export interface SpeechRequest {
   readonly text: string;
   readonly voice: SpeechSynthesisVoice | undefined;
@@ -112,47 +112,71 @@ export class Speaker {
     return this.speakSequence([{text}], voiceURI, rate);
   }
   playRecording(url: string, label: string): boolean {
+    return this.playRecordingSequence([{url, label}]);
+  }
+  playRecordingSequence(items: readonly {url: string; label: string}[], source: Exclude<AudioSource, 'speech'> = 'recording'): boolean {
     this.stop(false);
-    this.source = 'recording';
+    this.source = source;
+    if (!items.length) return false;
     if (!this.recordingsSupported) {
       this.report('このブラウザは録音の再生に対応していません。', 'error');
       return false;
     }
     const id = this.serial;
-    let finished = false;
-    const current = () => id === this.serial && !finished;
-    const fail = (message: string) => {
-      if (!current()) return;
-      finished = true;
-      this.stop(false);
-      this.report(message, 'error');
-    };
+    const sequence = items.map(item => ({...item}));
+    let audio: HTMLAudioElement;
     try {
-      const audio = new Audio(url);
+      // Reuse the element throughout the sequence, including on mobile browsers.
+      audio = new Audio();
       this.recording = audio;
       // Preserve the recorded timing, independent of the TTS speed setting.
       audio.playbackRate = 1;
-      audio.onplaying = () => {
-        if (!current()) return;
-        clearTimeout(this.timer);
-        this.report(`「${label}」の録音を再生中…`, 'playing');
-      };
-      audio.onended = () => {
-        if (!current()) return;
-        finished = true;
-        clearTimeout(this.timer);
-        this.recording = undefined;
-        this.report('再生しました。', 'idle');
-      };
-      audio.onerror = () => fail('録音を読み込めませんでした。通信を確認して再試行してください。');
-      this.report('録音を読み込み中…', 'pending');
-      this.timer = setTimeout(() => fail('録音の開始を確認できませんでした。再試行してください。'), 15000);
-      void audio.play().catch(() => fail('録音を再生できませんでした。再生ボタンをもう一度押してください。'));
-      return true;
     } catch {
-      fail('録音を再生できませんでした。再試行してください。');
+      this.stop(false);
+      this.report('録音を再生できませんでした。再試行してください。', 'error');
       return false;
     }
+    const play = (index: number): boolean => {
+      const item = sequence[index];
+      if (id !== this.serial || !item) return false;
+      let finished = false;
+      const current = () => id === this.serial && !finished;
+      const fail = (message: string) => {
+        if (!current()) return;
+        finished = true;
+        this.stop(false);
+        this.report(message, 'error');
+      };
+      try {
+        audio.src = item.url;
+        audio.onplaying = () => {
+          if (!current()) return;
+          clearTimeout(this.timer);
+          this.report(`「${item.label}」の録音を再生中…`, 'playing');
+        };
+        audio.onended = () => {
+          if (!current()) return;
+          finished = true;
+          clearTimeout(this.timer);
+          if (index + 1 < sequence.length) {
+            this.report('次の音を準備中…', 'pending');
+            this.timer = setTimeout(() => { play(index + 1); }, 400);
+          } else {
+            this.recording = undefined;
+            this.report('再生しました。', 'idle');
+          }
+        };
+        audio.onerror = () => fail('録音を読み込めませんでした。通信を確認して再試行してください。');
+        this.report('録音を読み込み中…', 'pending');
+        this.timer = setTimeout(() => fail('録音の開始を確認できませんでした。再試行してください。'), 15000);
+        void audio.play().catch(() => fail('録音を再生できませんでした。再生ボタンをもう一度押してください。'));
+        return true;
+      } catch {
+        fail('録音を再生できませんでした。再試行してください。');
+        return false;
+      }
+    };
+    return play(0);
   }
   speakSequence(items: readonly {text: string; label?: string}[], voiceURI: string, rate = 1): boolean {
     this.stop(false);

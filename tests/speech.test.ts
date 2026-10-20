@@ -1,4 +1,5 @@
 import test from 'node:test';
+import type { TestContext } from 'node:test';
 import assert from 'node:assert/strict';
 import { Speaker, isMandarinVoice } from '../src/speech.js';
 import type { SpeechEngine, SpeechRequest, SpeechStatus } from '../src/speech.js';
@@ -157,4 +158,76 @@ test('a sequence error aborts later sounds and a new single play replaces the wh
   s.speaker.speak('妈','');s.lastRequest().onEnd();
   await new Promise(resolve=>setTimeout(resolve,450));
   assert.deepEqual(s.requests.map(r=>r.text),['安','安','妈']);
+});
+
+function recordingSetup(t: TestContext) {
+  const s=setup();
+  const original=Object.getOwnPropertyDescriptor(globalThis,'Audio');
+  const elements: RecordedAudio[]=[];
+  const pending: {reject:(error:Error)=>void}[]=[];
+  class RecordedAudio {
+    src=''; playbackRate=1; paused=true;
+    onplaying:(()=>void)|null=null;
+    onended:(()=>void)|null=null;
+    onerror:(()=>void)|null=null;
+    constructor(){elements.push(this);}
+    play():Promise<void>{
+      this.paused=false;
+      return new Promise((_resolve,reject)=>pending.push({reject}));
+    }
+    pause(){this.paused=true;}
+  }
+  Object.defineProperty(globalThis,'Audio',{configurable:true,value:RecordedAudio});
+  t.after(()=>{
+    s.speaker.stop(false);
+    if(original)Object.defineProperty(globalThis,'Audio',original);
+    else Reflect.deleteProperty(globalThis,'Audio');
+  });
+  return {...s,pending,lastAudio:()=>required(elements.at(-1),'recording')};
+}
+
+test('recording startup timeout aborts the queue, permits retry and does not expire during playback', t=>{
+  t.mock.timers.enable({apis:['setTimeout']});
+  const s=recordingSetup(t);
+  const items=[{url:'an1.mp3',label:'A'},{url:'ang1.mp3',label:'B'}];
+  s.speaker.playRecordingSequence(items,'comparison');
+  const first=s.lastAudio();
+  t.mock.timers.tick(15000);
+  assert.match(s.speaker.message??'',/録音の開始を確認できません/);
+  assert.equal(first.paused,true);
+  first.onplaying?.();first.onended?.();
+  t.mock.timers.tick(20000);
+  assert.equal(s.pending.length,1);
+  s.speaker.playRecordingSequence(items,'comparison');
+  const retry=s.lastAudio();retry.onplaying?.();
+  t.mock.timers.tick(15000);
+  assert.match(s.speaker.message??'',/A.*録音を再生中/);
+  retry.onended?.();t.mock.timers.tick(400);
+  assert.equal(retry.src,'ang1.mp3');
+  t.mock.timers.tick(15000);
+  assert.match(s.speaker.message??'',/録音の開始を確認できません/);
+  assert.equal(retry.paused,true);
+  assert.equal(s.requests.length,0);
+});
+
+test('late recording play rejections cannot interrupt the next item or a replacement recording', async t=>{
+  t.mock.timers.enable({apis:['setTimeout']});
+  const s=recordingSetup(t);
+  s.speaker.playRecordingSequence([{url:'si1.mp3',label:'A'},{url:'shi1.mp3',label:'B'}],'comparison');
+  const audio=s.lastAudio();
+  audio.onended?.();t.mock.timers.tick(400);audio.onplaying?.();
+  required(s.pending[0],'first play').reject(new Error('late rejection'));
+  await Promise.resolve();
+  assert.match(s.speaker.message??'',/B.*録音を再生中/);
+  const staleEnd=audio.onended, staleError=audio.onerror;
+  s.speaker.playRecording('neutral.mp3','妈妈');
+  s.lastAudio().onplaying?.();
+  const message=s.speaker.message;
+  required(s.pending[1],'second play').reject(new Error('cancelled play'));
+  await Promise.resolve();
+  staleEnd?.();staleError?.();t.mock.timers.tick(20000);
+  assert.equal(s.speaker.message,message);
+  assert.equal(s.speaker.messageFor('comparison'),null);
+  assert.equal(s.lastAudio().paused,false);
+  assert.equal(s.pending.length,3);
 });

@@ -11,8 +11,8 @@ import {renderRules} from './views/rules.js';
 import {renderDetail as detailView} from './views/detail.js';
 import {syllables,syllableMap,markTone,parseQuery,findSyllables,isInitialId,isGroupFilter} from './data.js';
 import {Speaker} from './speech.js';
-import {parseExampleCatalog,detailExample} from './examples.js';
-import {detailRecording} from './detail-recordings.js';
+import {parseExampleCatalog} from './examples.js';
+import {resolveDetailPlayback,unavailablePlaybackMessage} from './detail-playback.js';
 import {isThirdToneFormId} from './third-tone.js';
 import {neutralToneExamples} from './neutral-tone.js';
 import {isToneId,isTabId,required} from './types.js';
@@ -78,11 +78,10 @@ function updateNeutralToneAudio(){
   if(status)status.textContent=speaker?.messageFor('recording')??(!speaker?.recordingsSupported?'このブラウザは録音の再生に対応していません。':'話者の録音を元の速度で再生します。');
 }
 function ensureGridFocus(){if(!document.querySelector('[data-syllable][tabindex="0"]'))document.querySelector('[data-syllable]')?.setAttribute('tabindex','0');}
-function exampleFor(){return detailExample(state.selected,state.tone,state.thirdToneForm,loadedExamples());}
-function recordingFor(){return detailRecording(state.selected,state.tone,state.thirdToneForm);}
+function playbackFor(){return resolveDetailPlayback(state,loadedExamples(),exampleLoad.status);}
 
 
-function renderDetail(){ $('#detail').innerHTML=detailView(state,exampleFor(),exampleLoad.status,!!recordingFor()); updateVoices(); }
+function renderDetail(){ $('#detail').innerHTML=detailView(state,playbackFor(),exampleLoad.status); updateVoices(); }
 function updateVoices(){
   if(!speaker)return;
   const voice=document.querySelector<HTMLSelectElement>('#voice');
@@ -93,18 +92,19 @@ function updateVoices(){
     voice.innerHTML=voices.length?voices.map(v=>`<option value="${esc(v.voiceURI)}" ${v===selectedVoice?'selected':''}>${esc(v.name)} (${esc(v.lang)})${v.localService?'':' · オンライン'}</option>`).join(''):'<option value="">自動選択（中国語・中国本土）</option>';
     voice.disabled=!speaker.supported;
   }
-  $<HTMLButtonElement>('#play').disabled=!(recordingFor()?speaker.recordingsSupported:speaker.supported)||!exampleFor();
+  const playback=playbackFor();
+  $<HTMLButtonElement>('#play').disabled=playback.kind==='unavailable'||!(playback.kind==='recording'?speaker.recordingsSupported:speaker.supported);
   updateAudioStatuses();
 }
 function updateAudioStatuses(){
   if(!speaker)return;
   const voices=speaker.voices;
   const selectedVoice=voices.find(v=>v.voiceURI===state.voice)??voices[0];
-  const recorded=!!recordingFor();
-  const unavailable=recorded?(!speaker.recordingsSupported?'このブラウザは録音の再生に対応していません。':null):(!speaker.supported?'このブラウザは音声合成に対応していません。':null);
-  const msg=unavailable??(exampleLoad.status==='loading'?'例字・例語を読み込み中…':exampleLoad.status==='error'?'例字・例語データを読み込めませんでした。':!exampleFor()?(state.tone===3&&state.thirdToneForm==='full'?'この声調の単独例字は未収録です。':state.tone===3?'この発音形の例語は未収録です。':'例字・例語のある声調を選ぶと再生できます。'):recorded?'話者の録音を元の速度で再生します。':!voices.length?'音声一覧に普通話が表示されていません。再生ボタンで中国語の再生を試せます。音が出ない場合は下の設定手順をご確認ください。':`中国語TTS · ${selectedVoice?.lang || 'zh'}`);
+  const playback=playbackFor(),recorded=playback.kind==='recording';
+  const unavailable=playback.kind==='unavailable'?unavailablePlaybackMessage(playback.reason):recorded?(!speaker.recordingsSupported?'このブラウザは録音の再生に対応していません。':null):(!speaker.supported?'このブラウザは音声合成に対応していません。':null);
+  const msg=unavailable??(recorded?'単独音の録音を元の速度で再生します。':!voices.length?'音声一覧に普通話が表示されていません。再生ボタンで中国語の再生を試せます。音が出ない場合は下の設定手順をご確認ください。':`中国語TTS · ${selectedVoice?.lang || 'zh'}`);
   const status=document.querySelector('#voice-status');
-  if(status)status.textContent=speaker.messageFor(recorded?'detail-recording':'speech')??msg;
+  if(status)status.textContent=unavailable??speaker.messageFor(recorded?'detail-recording':'speech')??msg;
   updateComparisonAudio();
   updateNeutralToneAudio();
 }
@@ -149,11 +149,10 @@ document.addEventListener('click',event=>{
   if(isThirdToneFormId(b.dataset.thirdToneForm)){select(state.selected,{tone:3,form:b.dataset.thirdToneForm});document.querySelector<HTMLElement>(`[data-third-tone-form="${state.thirdToneForm}"]`)?.focus();}
   if(isThirdToneFormId(b.dataset.thirdDemo))select('hao',{tone:3,form:b.dataset.thirdDemo,scroll:true});
   if(b.id==='reset'||b.hasAttribute('data-reset'))reset();
-  const example=exampleFor();
-  if(b.id==='play'&&example){
-    const recording=recordingFor();
-    if(recording)speaker?.playRecording(recording,markTone(state.selected,state.tone),'detail-recording');
-    else speaker?.speak(example.text,state.voice,state.rate);
+  if(b.id==='play'){
+    const playback=playbackFor();
+    if(playback.kind==='recording')speaker?.playRecording(playback.url,markTone(state.selected,state.tone),'detail-recording');
+    else if(playback.kind==='speech')speaker?.speak(playback.text,state.voice,state.rate);
   }
   if(b.id==='stop')speaker?.stop();
   if(b.id==='refresh-voices'){speaker?.stop(false);speaker?.refresh();}

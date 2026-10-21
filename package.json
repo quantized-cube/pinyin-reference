@@ -13,7 +13,8 @@
     "test:data": "python -m unittest discover -s tests -p test_*.py",
     "data:check": "python scripts/build_examples.py --check",
     "data:refresh": "npm run test:data && python scripts/build_examples.py && npm test",
-    "data:update": "npm run test:data && python scripts/build_examples.py --update-source && npm test"
+    "data:update": "npm run test:data && python scripts/build_examples.py --update-source && npm test",
+    "audio:check": "python scripts/build_recordings.py --check"
   },
   "engines": {
     "node": "^20.19.0 || ^22.13.0 || >=24.0.0"

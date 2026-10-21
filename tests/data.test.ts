@@ -4,10 +4,11 @@ import assert from 'node:assert/strict';
 import {readFile} from 'node:fs/promises';
 import {initials,finals,syllables,syllableMap,spell,markTone,parseQuery,findSyllables,rulesFor,getSyllable,getInitial} from '../src/data.js';
 import {articulationFor,articulationTerms,aspirationPairs} from '../src/articulation.js';
-import {parseExampleCatalog} from '../src/examples.js';
+import {detailExample,parseExampleCatalog} from '../src/examples.js';
 import {required} from '../src/types.js';
 import {initialSections,finalSections,orderedFinals,matrixFinals,matrixFinalId} from '../src/layout.js';
-const {isolatedExamples,contextualExamples,meta}=parseExampleCatalog(JSON.parse(await readFile(new URL('../../public/examples.json',import.meta.url),'utf8')));
+const catalog=parseExampleCatalog(JSON.parse(await readFile(new URL('../../public/examples.json',import.meta.url),'utf8')));
+const {isolatedExamples,contextualExamples,meta}=catalog;
 
 test('inventory is unique and every cell references a known initial and final',()=>{
   assert.equal(initials.length,22);assert.equal(finals.length,40);assert.equal(syllables.length,413);
@@ -120,8 +121,9 @@ test('examples align text, numbered pinyin and target; neutral tones always have
     assert.ok(e.tokens.every(t=>/^[a-züê]+[1-5]$/.test(t)),key);
     if(key.endsWith('5'))assert.ok(e.tokens.length>1,key);
   }
-  // Core inventory retains an example somewhere; individual tones may be unrecorded.
-  for(const s of syllables.filter(s=>!s.peripheral))assert.ok([1,2,3,4,5].some(t=>isolatedExamples[s.pinyin+t]||contextualExamples[s.pinyin+t]),s.pinyin);
+  // Check the actual detail selector: a contextual third-tone word alone is not playable in full form.
+  // Individual tones may remain unrecorded; each core syllable must have a usable default example.
+  for(const s of syllables.filter(s=>!s.peripheral))assert.ok(([1,2,3,4,5] as const).some(t=>detailExample(s.pinyin,t,'full',catalog)),s.pinyin);
   assert.equal(required(contextualExamples.ma5,'ma5').text,'妈妈');assert.equal(required(contextualExamples.ma5,'ma5').target,1);assert.equal(contextualExamples.xuan5,undefined);
 });
 

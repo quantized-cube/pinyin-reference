@@ -1,5 +1,5 @@
 export type SpeechStatus = 'idle' | 'pending' | 'playing' | 'error';
-export type AudioSource = 'speech' | 'recording' | 'comparison';
+export type AudioSource = 'speech' | 'recording' | 'comparison' | 'detail-recording';
 export interface SpeechRequest {
   readonly text: string;
   readonly voice: SpeechSynthesisVoice | undefined;
@@ -111,8 +111,8 @@ export class Speaker {
   speak(text: string, voiceURI: string, rate = 1): boolean {
     return this.speakSequence([{text}], voiceURI, rate);
   }
-  playRecording(url: string, label: string): boolean {
-    return this.playRecordingSequence([{url, label}]);
+  playRecording(url: string, label: string, source: Exclude<AudioSource, 'speech'> = 'recording'): boolean {
+    return this.playRecordingSequence([{url, label}], source);
   }
   playRecordingSequence(items: readonly {url: string; label: string}[], source: Exclude<AudioSource, 'speech'> = 'recording'): boolean {
     this.stop(false);

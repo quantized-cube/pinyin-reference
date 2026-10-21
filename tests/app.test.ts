@@ -977,12 +977,12 @@ test('reviewed basic readings replace contextual fallbacks without changing the 
   }
 });
 
-test('different readings of 发 and 卡 use distinct recordings while keeping their example characters', async t => {
+test('recorded detail examples play the selected isolated reading instead of ambiguous text or contextual words', async t => {
   const s=await setup(t);
   s.setVoices([local,preferred]);
   s.$<HTMLInputElement>('#rate').value='0.6';
   s.$('#rate').dispatchEvent(new s.window.Event('input',{bubbles:true}));
-  for(const [token,word,reading] of [['fa1','发','fā'],['fa4','发','fà'],['ka3','卡','kǎ'],['qia3','卡','qiǎ']] as const){
+  for(const [token,word,reading] of [['fa1','发','fā'],['fa2','罚','fá'],['fa4','发','fà'],['ka3','卡','kǎ'],['qia3','卡','qiǎ']] as const){
     s.input(token);
     assert.equal(s.$('#detail h2').textContent,reading);
     assert.equal(s.$('.example-word').textContent,word);

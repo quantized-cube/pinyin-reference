@@ -1,7 +1,7 @@
 import type {ToneId, ThirdToneFormId} from './types.js';
 
-// These isolated readings share a written character, so TTS text cannot distinguish them.
-export const detailRecordingTokens = ['fa1', 'fa4', 'ka3', 'qia3'] as const;
+// Recordings distinguish polyphonic examples and provide an isolated fá for tone practice.
+export const detailRecordingTokens = ['fa1', 'fa2', 'fa4', 'ka3', 'qia3'] as const;
 const recordings = new Map<string, string>(
   detailRecordingTokens.map(token => [token, `audio/detail/${token}.mp3`]),
 );

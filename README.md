@@ -103,7 +103,7 @@ Cloudflare側で依存関係のインストールとビルドが行われ、`dis
 
 自動選定では多音字や異体字・古語・方言等の注記を除外します。通常の語義と別の読みの注記が併記された「剖 pōu」などは、理由を添えた手選定で採用できます。「给」は gěi と jǐ の読みがあるため自動選定から外れますが、単独例字として `gěi=给` を明示的に採用しています。手選定は単字・1〜4声・辞書の読みとの一致を必須とし、不一致は生成エラーにします。辞書照合は実端末のTTSの読みを保証する検証ではありません。
 
-2026-10-21のデータは単独例字512件（うち第3声252件）、一般の文脈例語1,440件、半三声・変調41例です。「甩」に加え、未収録箇所の調査で選んだ第3声191件、第1・2・4声100件を、保存辞書で読みと一般的な意味を確認して手選定へ追加しました。例：耳・口・五・两・请・暖・软・肯・窘、包・杯・茶・床・爱・饭。二・多・牛のように副次的な語義の注記で自動選定から外れる字も、採用する読みを個別に指定しています。自動選定の除外条件は維持し、未確認の候補は採用していません。
+2026-10-21のデータは単独例字513件（うち第3声252件）、一般の文脈例語1,440件、半三声・変調41例です。「甩」に加え、未収録箇所の調査で選んだ第3声191件、第1・2・4声100件を、保存辞書で読みと一般的な意味を確認して手選定へ追加しました。例：耳・口・五・两・请・暖・软・肯・窘、包・杯・茶・床・爱・饭。二・多・牛のように副次的な語義の注記で自動選定から外れる字も、採用する読みを個別に指定しています。自動選定の除外条件は維持し、未確認の候補は採用していません。`fá` は第2声を単独音で確認できるよう、例字「罚」を追加しています。
 
 テストでは、すべての採用済み単独例字が詳細画面の選択処理で使えることに加え、主要音節に少なくとも一つ再生対象の例があることを確認します。第3声では単独例字が必要なため、文脈例語が存在するだけでは合格にしません。辞書上の候補をすべて採用することや、全音節の全声調を埋めることは条件にしていません。
 
@@ -113,7 +113,7 @@ Cloudflare側で依存関係のインストールとビルドが行われ、`dis
 
 「表記と声調」の軽声の4例（妈妈・爷爷・奶奶・爸爸）には、中国出身の話者による録音を収録しています。元の長さ・高さを保つため原速で再生し、TTSの音声・速度設定は適用しません。中国語の読み上げ音声がない端末でも再生できます。録音の取得・再生に失敗したときはエラーを表示し、TTSでは代用しません。[録音の出典・ライセンス](public/audio/neutral/credits.html)と[取得情報・ハッシュ値](public/audio/neutral/credits.json)を同梱しています。
 
-音節詳細の `fā / fà / kǎ / qiǎ` は、同じ例字（发・卡）の異なる読みを区別するため、音節・声調ごとに別の録音を使います。聞き比べと同じ話者のMP3を変更せず収録し、原速で再生します。`kǎ / qiǎ` の録音は全三声の表示時だけ使い、半三声・変調の例語の代用にはしません。録音を読み込めない場合もTTSには切り替えません。録音の再生時はTTS用の音声・速度設定を非表示にします。[出典・ライセンス](public/audio/detail/credits.html)と[取得情報・ハッシュ値](public/audio/detail/credits.json)を同梱しています。
+音節詳細の `fā / fá / fà / kǎ / qiǎ` は、音節・声調ごとに別の録音を使います。同じ例字（发・卡）の異なる読みを区別し、`fá` は「北伐军」全体のTTSから、例字「罚」と単独音の録音に変更しています。聞き比べと同じ話者のMP3を変更せず収録し、原速で再生します。`kǎ / qiǎ` の録音は全三声の表示時だけ使い、半三声・変調の例語の代用にはしません。録音を読み込めない場合もTTSには切り替えません。録音の再生時はTTS用の音声・速度設定を非表示にします。[出典・ライセンス](public/audio/detail/credits.html)と[取得情報・ハッシュ値](public/audio/detail/credits.json)を同梱しています。
 
 その他の音節詳細ではWeb Speech API を使用し、端末・ブラウザが提供する普通話の音声で漢字・例語を読み上げます。ピンインやIPAを読み上げサービスにそのまま渡したり、pitch を変更して声調を偽装したりはしません。
 
@@ -154,7 +154,7 @@ IPAは広い音声表記の一案に統一しています。`eng [əŋ]`、`ie [
 - [CC-CEDICT / MDBG](https://www.mdbg.net/chinese/dictionary?page=cedict)：漢字・例語のピンイン。簡体字見出しと読みを抽出し、例語の自動選別と手動優先例を追加、英語定義は省略。`public/examples.json`（ビルド時に `dist/` へコピー）と `scripts/example_choices.py` の読みの指定 は **CC BY-SA 4.0** の派生データです。取得日・元圧縮ファイルのSHA-256はJSON内の `meta` に記録しています。
 - [MDN: SpeechSynthesis](https://developer.mozilla.org/en-US/docs/Web/API/SpeechSynthesis) および関連API：Context7 CLIで現行ドキュメントを取得して実装。
 
-CC-CEDICT の原著作者は CC-CEDICT contributors（CEDICT 創始者 Paul Denisowski）、配布元は MDBG です。[CC BY-SA 4.0 ライセンス本文](https://creativecommons.org/licenses/by-sa/4.0/)。例語データを再配布・改変する際は出典・変更の明示と同一ライセンスが必要です。軽声ガイドの4録音はThe Shtooka Project / Wikimedia Commonsから取得しました。妈妈・爸爸はWei Gao, Vion NicolasによるCC BY 2.0 France、爷爷・奶奶はYue TanによるCC BY-SA 3.0 USです。Wikimedia CommonsのMP3版を変更せず同梱しています。聞き比べの27録音と音節詳細の4録音はaudio-cmnから取得し、作者はWang Chen, Lopez Hugo, Vion Nicolas、ライセンスは[CC BY-SA 3.0](https://creativecommons.org/licenses/by-sa/3.0/)です。録音の出典・ライセンスも、再配布時に維持してください。
+CC-CEDICT の原著作者は CC-CEDICT contributors（CEDICT 創始者 Paul Denisowski）、配布元は MDBG です。[CC BY-SA 4.0 ライセンス本文](https://creativecommons.org/licenses/by-sa/4.0/)。例語データを再配布・改変する際は出典・変更の明示と同一ライセンスが必要です。軽声ガイドの4録音はThe Shtooka Project / Wikimedia Commonsから取得しました。妈妈・爸爸はWei Gao, Vion NicolasによるCC BY 2.0 France、爷爷・奶奶はYue TanによるCC BY-SA 3.0 USです。Wikimedia CommonsのMP3版を変更せず同梱しています。聞き比べの27録音と音節詳細の5録音はaudio-cmnから取得し、作者はWang Chen, Lopez Hugo, Vion Nicolas、ライセンスは[CC BY-SA 3.0](https://creativecommons.org/licenses/by-sa/3.0/)です。録音の出典・ライセンスも、再配布時に維持してください。
 
 ## ファイル構成
 
@@ -164,7 +164,7 @@ src/
   state.ts         初期状態・表示設定の保存
   comparison.ts    聞き比べのプリセット・共通例字の参照・録音の再生順
   comparison-recordings.ts  聞き比べの音節と録音パスの対応
-  detail-recordings.ts  多音字の読みを区別する音節詳細用の録音
+  detail-recordings.ts  音節詳細で使う単独音の録音
   views/           matrix / finals / initials / detail / rules / compare / vowels / about
     shared.ts      共通の見出し・説明・HTMLエスケープ
     sound-units.ts 母音・子音と声母・韻母の違いを説明する共通ガイド

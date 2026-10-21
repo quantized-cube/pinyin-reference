@@ -139,6 +139,6 @@ test('detail recordings do not stand in for other tones or contextual third-tone
     assert.equal(detailRecording(pinyin,3,'sandhi'),undefined);
     for(const tone of [1,2,4,5] as const)assert.equal(detailRecording(pinyin,tone,'full'),undefined);
   }
-  for(const tone of [2,3,5] as const)assert.equal(detailRecording('fa',tone,'full'),undefined);
+  for(const tone of [3,5] as const)assert.equal(detailRecording('fa',tone,'full'),undefined);
   assert.equal(detailRecording('ma',1,'full'),undefined);
 });

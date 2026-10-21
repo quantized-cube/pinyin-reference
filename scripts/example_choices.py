@@ -98,6 +98,7 @@ ISOLATED_CHOICES = {
     'er3': ('耳', 'Reviewed ordinary meaning: ear; dictionary reading required'),
     'er4': ('二', 'Reviewed ordinary meaning: two; dictionary reading required'),
     'fa1': ('发', 'Reviewed ordinary meaning: to send out; dictionary reading required'),
+    'fa2': ('罚', 'Ordinary punishment sense; isolated second tone for playback instead of a three-syllable contextual word'),
     'fa3': ('法', 'Retained familiar teaching example; dictionary reading required'),
     'fa4': ('发', 'Reviewed ordinary meaning: hair; dictionary reading required'),
     'fan3': ('反', 'Reviewed ordinary meaning: contrary; dictionary reading required'),

@@ -7,6 +7,8 @@ interface ThirdToneRecording extends PronunciationExample {
 
 export const thirdToneRecordings: readonly ThirdToneRecording[] = [
   {text: '好吃', tokens: ['hao3', 'chi1'], target: 0, form: 'half', url: 'audio/third-tone/haochi.mp3'},
+  {text: '老师', tokens: ['lao3', 'shi1'], target: 0, form: 'half', url: 'audio/third-tone/laoshi.mp3'},
+  {text: '老板', tokens: ['lao3', 'ban3'], target: 0, form: 'sandhi', url: 'audio/third-tone/laoban.mp3'},
 ];
 
 // Bind a recording to the complete displayed example, not just its target syllable.

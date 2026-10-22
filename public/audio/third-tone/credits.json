@@ -27,5 +27,63 @@
       "acousticInspection": "Praat autocorrelation at 10 ms steps, 60–400 Hz: median F0 in successive 100 ms windows from 0.2 s is 114.1, 102.1, 98.8, 103.3 Hz. The first voiced region falls and remains low; the second voiced region is about 139–142 Hz. This supports the intended half-third-tone context but is not a phonetic transcription or a quality guarantee.",
       "listening": "Not performed. Source identification, decoding and acoustic inspection do not establish pronunciation naturalness by listening."
     }
+  },
+  {
+    "file": "laoshi.mp3",
+    "word": "老师",
+    "pinyin": "lǎoshī",
+    "tokens": [
+      "lao3",
+      "shi1"
+    ],
+    "target": 0,
+    "form": "half",
+    "author": "Wei Gao, Vion Nicolas",
+    "license": "CC BY 2.0 France",
+    "licenseUrl": "https://creativecommons.org/licenses/by/2.0/fr/",
+    "sourcePage": "https://commons.wikimedia.org/wiki/File:Zh-l%C7%8Eosh%C4%AB.ogg",
+    "sourceRevision": "https://commons.wikimedia.org/w/index.php?title=File:Zh-l%C7%8Eosh%C4%AB.ogg&oldid=1129766484",
+    "downloadUrl": "https://upload.wikimedia.org/wikipedia/commons/transcoded/8/81/Zh-l%C7%8Eosh%C4%AB.ogg/Zh-l%C7%8Eosh%C4%AB.ogg.mp3",
+    "source": "The Shtooka Project / Wikimedia Commons",
+    "retrieved": "2026-10-22",
+    "changes": "Wikimedia Commons MP3 transcode, copied without further modification.",
+    "sha256": "f5f694f68b7ae5a69fd310f48af54b8fc600cf92c626c43264dacc139934dd78",
+    "bytes": 25334,
+    "duration": 1.462857,
+    "review": {
+      "date": "2026-10-22",
+      "sourceReading": "The source description labels this recording lǎoshī (老师), a male voice from Beijing, recorded 2006-10-29.",
+      "acousticInspection": "Praat autocorrelation at 10 ms steps, 75–500 Hz: median F0 in successive 100 ms windows from 0.2 s is 113.5, 99.4, 95.3, 92.1, 97.5 Hz. The first voiced region falls and stays low before the following syllable, whose central voiced region is about 169–179 Hz. This supports the intended half-third-tone context but is not a phonetic transcription or a quality guarantee.",
+      "listening": "Not performed. Source identification, decoding and acoustic inspection do not establish pronunciation naturalness by listening."
+    }
+  },
+  {
+    "file": "laoban.mp3",
+    "word": "老板",
+    "pinyin": "lǎobǎn",
+    "tokens": [
+      "lao3",
+      "ban3"
+    ],
+    "target": 0,
+    "form": "sandhi",
+    "author": "Yue Tan",
+    "license": "CC BY-SA 3.0 US",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0/us/",
+    "sourcePage": "https://commons.wikimedia.org/wiki/File:Zh-laoban.ogg",
+    "sourceRevision": "https://commons.wikimedia.org/w/index.php?title=File:Zh-laoban.ogg&oldid=1138489060",
+    "downloadUrl": "https://upload.wikimedia.org/wikipedia/commons/transcoded/a/a9/Zh-laoban.ogg/Zh-laoban.ogg.mp3",
+    "source": "The Shtooka Project / Wikimedia Commons",
+    "retrieved": "2026-10-22",
+    "changes": "Wikimedia Commons MP3 transcode, copied without further modification.",
+    "sha256": "6324a3e1973b432cc799ae864ef6ef4c0e8384d1b07f405fafbcc572950366b1",
+    "bytes": 23198,
+    "duration": 1.253878,
+    "review": {
+      "date": "2026-10-22",
+      "sourceReading": "The source description labels this recording lǎobǎn (老板), a female voice from Liaoning, recorded 2009-07-08. Written tones remain third tone on both syllables.",
+      "acousticInspection": "Praat autocorrelation at 10 ms steps, 75–500 Hz: median F0 in successive 100 ms windows from 0.3 s is 220.7, 229.2, 327.6 Hz. The first voiced region rises before the following syllable. Tracking in the second syllable is sparse and is not used to claim an exact contour. This supports sandhi on the first syllable but is not a phonetic transcription or a quality guarantee.",
+      "listening": "Not performed. Source identification, decoding and acoustic inspection do not establish pronunciation naturalness by listening."
+    }
   }
 ]

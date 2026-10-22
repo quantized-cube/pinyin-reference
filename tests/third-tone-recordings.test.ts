@@ -5,16 +5,17 @@ import {createHash} from 'node:crypto';
 import {thirdToneRecording, thirdToneRecordings} from '../src/third-tone-recordings.js';
 import {parseExampleCatalog, detailExample} from '../src/examples.js';
 import {resolveDetailPlayback} from '../src/detail-playback.js';
+import {parseQuery} from '../src/data.js';
 import type {PronunciationExample} from '../src/types.js';
 
 const root = new URL('../../', import.meta.url);
 const catalog = parseExampleCatalog(JSON.parse(await readFile(new URL('public/examples.json', root), 'utf8')));
 
-test('the contextual pilot ships its exact example, unchanged audio and separate attribution', async () => {
+test('contextual recordings ship exact examples, unchanged audio and separate attribution', async () => {
   const folder = new URL('public/audio/third-tone/', root);
   const credits: {file:string;word:string;tokens:string[];target:number;form:string;sha256:string;bytes:number;author:string;licenseUrl:string;sourcePage:string}[] = JSON.parse(await readFile(new URL('credits.json', folder), 'utf8'));
   const page = await readFile(new URL('credits.html', folder), 'utf8');
-  assert.equal(thirdToneRecordings.length, 1);
+  assert.equal(thirdToneRecordings.length, 3);
   assert.equal(credits.length, thirdToneRecordings.length);
   assert.deepEqual((await readdir(folder)).filter(f => f.endsWith('.mp3')).sort(), credits.map(c => c.file).sort());
   for (const recording of thirdToneRecordings) {
@@ -22,14 +23,37 @@ test('the contextual pilot ships its exact example, unchanged audio and separate
     assert.ok(credit);
     const {text, tokens, target, form} = recording;
     assert.deepEqual({text:credit.word, tokens:credit.tokens, target:credit.target, form:credit.form}, {text, tokens, target, form});
-    assert.deepEqual(detailExample('hao', 3, form, catalog), {text, tokens, target});
-    assert.equal(credit.author, 'Wei Gao, Vion Nicolas');
-    assert.equal(credit.licenseUrl, 'https://creativecommons.org/licenses/by/2.0/fr/');
+    const syllable = parseQuery(tokens[target] ?? '');
+    assert.equal(syllable.tone, 3);
+    assert.deepEqual(detailExample(syllable.text, 3, form, catalog), {text, tokens, target});
+    assert.ok(credit.author.trim());
+    assert.match(credit.licenseUrl, /^https:\/\/creativecommons\.org\/licenses\//);
     for (const value of [credit.word, credit.author, credit.licenseUrl, credit.sourcePage]) assert.ok(page.includes(value));
     const audio = await readFile(new URL(credit.file, folder));
     assert.equal(audio.length, credit.bytes);
     assert.equal(createHash('sha256').update(audio).digest('hex'), credit.sha256);
     assert.deepEqual(await readFile(new URL('dist/' + recording.url, root)), audio);
+  }
+});
+
+test('lao uses the isolated recording or the exact complete word for each third-tone form', () => {
+  for (const [form, word, tokens, url] of [
+    ['full', '老', ['lao3'], 'audio/syllables/lao3.mp3'],
+    ['half', '老师', ['lao3','shi1'], 'audio/third-tone/laoshi.mp3'],
+    ['sandhi', '老板', ['lao3','ban3'], 'audio/third-tone/laoban.mp3'],
+  ] as const) {
+    const playback = resolveDetailPlayback({selected:'lao', tone:3, thirdToneForm:form}, catalog, 'ready');
+    assert.equal(playback.kind, 'recording');
+    if (playback.kind !== 'recording') throw new Error('Expected a recording');
+    assert.equal(playback.url, url);
+    assert.equal(playback.contextual, form !== 'full');
+    const example = playback.example;
+    assert.ok(example);
+    assert.deepEqual(example, {text:word, tokens, target:0});
+    if (form !== 'full') {
+      assert.equal(thirdToneRecording({...example, tokens:['lao2', tokens[1]]}, form), undefined);
+      assert.equal(thirdToneRecording(example, form === 'half' ? 'sandhi' : 'half'), undefined);
+    }
   }
 });
 

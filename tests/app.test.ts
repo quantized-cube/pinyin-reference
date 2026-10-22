@@ -1082,32 +1082,68 @@ test('isolated third-tone recordings stop on form changes and cannot replace con
   assert.equal(s.requestCount(),0);
 });
 
-test('the half-third pilot plays the complete recorded word without TTS support or settings', async t => {
-  for(const recordingsSupported of [true,false]){
-    const s=await setup(t,[],{hash:'#s=hao&t=3&form=half',speechSupported:false,recordingsSupported});
-    assert.equal(s.$('.example-word').textContent,'好吃');
-    assert.equal(s.$('.example-word mark').textContent,'好');
-    assert.equal(s.$('.example-pinyin').textContent,'hǎo chī');
-    assert.equal(s.$('#play span').textContent,'例語を聞く');
-    assert.equal(s.$<HTMLButtonElement>('#play').disabled,!recordingsSupported);
-    assert.equal(s.window.document.querySelector('.voice-settings,#voice-help'),null);
-    assert.equal(s.$('.audio-footnote a').getAttribute('href'),'audio/third-tone/credits.html');
-    assert.doesNotMatch(s.$('.audio-footnote').textContent??'',/TTS/);
-    s.$('#play').click();
-    if(recordingsSupported){
-      const audio=s.lastRecording();
-      assert.equal(audio.src,'audio/third-tone/haochi.mp3');
-      assert.equal(audio.playbackRate,1);
-      audio.onplaying?.();
-      assert.match(s.$('#voice-status').textContent??'',/好吃.*録音を再生中/);
-      audio.onended?.();
-      assert.equal(s.$('#voice-status').textContent,'再生しました。');
-    }else{
-      assert.match(s.$('#voice-status').textContent??'',/録音の再生に対応していません/);
-      assert.equal(s.recordingCount(),0);
+test('contextual recordings play complete words without TTS support or settings', async t => {
+  for(const [syllable,form,word,target,pinyin,file] of [
+    ['hao','half','好吃','好','hǎo chī','haochi'],
+    ['lao','half','老师','老','lǎo shī','laoshi'],
+    ['lao','sandhi','老板','老','lǎo bǎn','laoban'],
+  ] as const){
+    for(const recordingsSupported of [true,false]){
+      const s=await setup(t,[],{hash:`#s=${syllable}&t=3&form=${form}`,speechSupported:false,recordingsSupported});
+      assert.equal(s.$('.example-word').textContent,word);
+      assert.equal(s.$('.example-word mark').textContent,target);
+      assert.equal(s.$('.example-pinyin').textContent,pinyin);
+      assert.equal(s.$('#play span').textContent,'例語を聞く');
+      assert.equal(s.$<HTMLButtonElement>('#play').disabled,!recordingsSupported);
+      assert.equal(s.window.document.querySelector('.voice-settings,#voice-help'),null);
+      assert.equal(s.$('.audio-footnote a').getAttribute('href'),'audio/third-tone/credits.html');
+      assert.doesNotMatch(s.$('.audio-footnote').textContent??'',/TTS/);
+      s.$('#play').click();
+      if(recordingsSupported){
+        const audio=s.lastRecording();
+        assert.equal(audio.src,`audio/third-tone/${file}.mp3`);
+        assert.equal(audio.playbackRate,1);
+        audio.onplaying?.();
+        assert.ok(s.$('#voice-status').textContent?.includes(word));
+        assert.match(s.$('#voice-status').textContent??'',/録音を再生中/);
+        audio.onended?.();
+        assert.equal(s.$('#voice-status').textContent,'再生しました。');
+      }else{
+        assert.match(s.$('#voice-status').textContent??'',/録音の再生に対応していません/);
+        assert.equal(s.recordingCount(),0);
+      }
+      assert.equal(s.requestCount(),0);
     }
-    assert.equal(s.requestCount(),0);
   }
+});
+
+test('lao switches among three recorded forms and ignores events from the previous recording', async t => {
+  const s=await setup(t,[],{hash:'#s=lao&t=3',speechSupported:false});
+  s.$('#play').click();
+  assert.equal(s.lastRecording().src,'audio/syllables/lao3.mp3');
+  for(const [form,url,label] of [
+    ['half','audio/third-tone/laoshi.mp3','老师'],
+    ['sandhi','audio/third-tone/laoban.mp3','老板'],
+    ['full','audio/syllables/lao3.mp3','lǎo'],
+  ] as const){
+    const previous=s.lastRecording();
+    s.$(`[data-third-tone-form="${form}"]`).click();
+    assert.equal(previous.paused,true);
+    assert.equal(s.window.document.querySelector('.voice-settings,#voice-help'),null);
+    s.$('#play').click();
+    const current=s.lastRecording();
+    assert.equal(current.src,url);
+    assert.equal(current.playbackRate,1);
+    current.onplaying?.();
+    const status=s.$('#voice-status').textContent;
+    assert.ok(status?.includes(label));
+    assert.match(status??'',/録音を再生中/);
+    previous.onplaying?.();previous.onerror?.();previous.onended?.();
+    assert.equal(s.$('#voice-status').textContent,status);
+  }
+  s.lastRecording().onended?.();
+  assert.equal(s.$('#voice-status').textContent,'再生しました。');
+  assert.equal(s.requestCount(),0);
 });
 
 test('contextual recordings stop on form changes and restore TTS settings only for TTS examples', async t => {

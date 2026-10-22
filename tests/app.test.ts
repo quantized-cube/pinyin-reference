@@ -1139,6 +1139,10 @@ test('contextual recordings play complete words without TTS support or settings'
     ['hao','half','好吃','好','hǎo chī','haochi'],
     ['lao','half','老师','老','lǎo shī','laoshi'],
     ['lao','sandhi','老板','老','lǎo bǎn','laoban'],
+    ['shui','half','水平','水','shuǐ píng','shuiping'],
+    ['shui','sandhi','水果','水','shuǐ guǒ','shuiguo'],
+    ['zhun','half','准备','准','zhǔn bèi','zhunbei'],
+    ['zhun','sandhi','准许','准','zhǔn xǔ','zhunxu'],
   ] as const){
     for(const recordingsSupported of [true,false]){
       const s=await setup(t,[],{hash:`#s=${syllable}&t=3&form=${form}`,speechSupported:false,recordingsSupported});

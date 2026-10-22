@@ -85,5 +85,137 @@
       "acousticInspection": "Praat autocorrelation at 10 ms steps, 75–500 Hz: median F0 in successive 100 ms windows from 0.3 s is 220.7, 229.2, 327.6 Hz. The first voiced region rises before the following syllable. Tracking in the second syllable is sparse and is not used to claim an exact contour. This supports sandhi on the first syllable but is not a phonetic transcription or a quality guarantee.",
       "listening": "Not performed. Source identification, decoding and acoustic inspection do not establish pronunciation naturalness by listening."
     }
+  },
+  {
+    "file": "shuiping.mp3",
+    "word": "水平",
+    "pinyin": "shuǐpíng",
+    "tokens": [
+      "shui3",
+      "ping2"
+    ],
+    "target": 0,
+    "form": "half",
+    "author": "Wei Gao, Vion Nicolas",
+    "license": "CC BY 2.0 France",
+    "licenseUrl": "https://creativecommons.org/licenses/by/2.0/fr/",
+    "source": "The Shtooka Project / Wikimedia Commons",
+    "sourcePage": "https://commons.wikimedia.org/wiki/File:Zh-shu%C7%90p%C3%ADng.ogg",
+    "sourceRevision": "https://commons.wikimedia.org/w/index.php?title=File:Zh-shu%C7%90p%C3%ADng.ogg&oldid=447927430",
+    "downloadUrl": "https://upload.wikimedia.org/wikipedia/commons/transcoded/f/f5/Zh-shu%C7%90p%C3%ADng.ogg/Zh-shu%C7%90p%C3%ADng.ogg.mp3",
+    "retrieved": "2026-10-22",
+    "changes": "Wikimedia Commons MP3 transcode, copied without further modification.",
+    "sha256": "6829f4a0fdae5c0415524c3c0f132bcba2c4ec907c53b0128da2a84339a21d20",
+    "bytes": 24032,
+    "duration": 1.38449,
+    "review": {
+      "date": "2026-10-22",
+      "sourceReading": "The source description labels this recording shuǐpíng (水平), a male voice from Beijing, recorded 2006-10-29.",
+      "acousticInspection": "Praat autocorrelation at 10 ms steps, 60–500 Hz: Median F0 in successive 100 ms windows from 0.3 s is 127.9, 115.4, 96.8, 92.3 Hz; the first voiced region falls and stays low. The second voiced region rises from about 117 to 195 Hz. This supports the intended third-before-second context. This is not a phonetic transcription or a quality guarantee.",
+      "listening": "Not performed. Source identification, decoding and acoustic inspection do not establish pronunciation naturalness by listening."
+    }
+  },
+  {
+    "file": "shuiguo.mp3",
+    "word": "水果",
+    "pinyin": "shuǐguǒ",
+    "tokens": [
+      "shui3",
+      "guo3"
+    ],
+    "target": 0,
+    "form": "sandhi",
+    "author": "Wei Gao, Vion Nicolas",
+    "license": "CC BY 2.0 France",
+    "licenseUrl": "https://creativecommons.org/licenses/by/2.0/fr/",
+    "source": "The Shtooka Project / Wikimedia Commons",
+    "sourcePage": "https://commons.wikimedia.org/wiki/File:Zh-shu%C7%90gu%C7%92.ogg",
+    "sourceRevision": "https://commons.wikimedia.org/w/index.php?title=File:Zh-shu%C7%90gu%C7%92.ogg&oldid=447927417",
+    "downloadUrl": "https://upload.wikimedia.org/wikipedia/commons/transcoded/a/ad/Zh-shu%C7%90gu%C7%92.ogg/Zh-shu%C7%90gu%C7%92.ogg.mp3",
+    "retrieved": "2026-10-22",
+    "changes": "Wikimedia Commons MP3 transcode, copied without further modification.",
+    "sha256": "f9b6c1ad76a2fc0d1efe694ee56a97d7707b96cc33aae6c48e25672d5a5572b8",
+    "bytes": 24242,
+    "duration": 1.332245,
+    "review": {
+      "date": "2026-10-22",
+      "sourceReading": "The source description labels this recording shuǐguǒ (水果), a male voice from Beijing, recorded 2006-10-29.",
+      "acousticInspection": "Praat autocorrelation at 10 ms steps, 60–500 Hz: Median F0 in successive 100 ms windows from 0.4 s is 127.0, 148.2, 175.8 Hz. The first voiced region rises before the following syllable, supporting sandhi on the first syllable. Tracking in the second syllable is sparse and includes octave errors; no exact second-syllable contour is claimed. This is not a phonetic transcription or a quality guarantee.",
+      "listening": "Not performed. Source identification, decoding and acoustic inspection do not establish pronunciation naturalness by listening."
+    }
+  },
+  {
+    "file": "zhunbei.mp3",
+    "word": "准备",
+    "pinyin": "zhǔnbèi",
+    "tokens": [
+      "zhun3",
+      "bei4"
+    ],
+    "target": 0,
+    "form": "half",
+    "author": "Wei Gao, Vion Nicolas",
+    "license": "CC BY 2.0 France",
+    "licenseUrl": "https://creativecommons.org/licenses/by/2.0/fr/",
+    "source": "The Shtooka Project / Wikimedia Commons",
+    "sourcePage": "https://commons.wikimedia.org/wiki/File:Zh-zh%C7%94nb%C3%A8i.ogg",
+    "sourceRevision": "https://commons.wikimedia.org/w/index.php?title=File:Zh-zh%C7%94nb%C3%A8i.ogg&oldid=865355585",
+    "downloadUrl": "https://upload.wikimedia.org/wikipedia/commons/transcoded/2/29/Zh-zh%C7%94nb%C3%A8i.ogg/Zh-zh%C7%94nb%C3%A8i.ogg.mp3",
+    "retrieved": "2026-10-22",
+    "changes": "Wikimedia Commons MP3 transcode, copied without further modification.",
+    "sha256": "0381cd50749b9b99bf60409a0bc30f27729192f689138201392189d08850ff5c",
+    "bytes": 20565,
+    "duration": 1.097143,
+    "review": {
+      "date": "2026-10-22",
+      "sourceReading": "The source description labels this recording zhǔnbèi (准备), a male voice from Beijing, recorded 2006-10-29.",
+      "acousticInspection": "Praat autocorrelation at 10 ms steps, 60–500 Hz: Median F0 in successive 100 ms windows from 0.2 s is 188.2, 181.7, 176.9, 183.5 Hz; the first voiced region stays relatively level with a small fall. It is lower than the following syllable onset (249.0 Hz at 0.6 s), which falls to about 192 Hz. This is compatible with a low third-before-fourth context, not a measured 21 contour. This is not a phonetic transcription or a quality guarantee.",
+      "listening": "Not performed. Source identification, decoding and acoustic inspection do not establish pronunciation naturalness by listening."
+    }
+  },
+  {
+    "file": "zhunxu.mp3",
+    "word": "准许",
+    "pinyin": "zhǔnxǔ",
+    "tokens": [
+      "zhun3",
+      "xu3"
+    ],
+    "target": 0,
+    "form": "sandhi",
+    "author": "Yue Tan",
+    "license": "CC BY-SA 3.0 US",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0/us/",
+    "source": "The Shtooka Project (cmn-caen-tan) / audio-cmn",
+    "sourcePage": "https://github.com/hugolpz/audio-cmn/blob/59dbafbda8b172ffc3b8b295cd5938ae1b3de803/64k/hsk/cmn-%E5%87%86%E8%AE%B8.mp3",
+    "sourceRevision": "https://github.com/hugolpz/audio-cmn/blob/59dbafbda8b172ffc3b8b295cd5938ae1b3de803/64k/hsk/cmn-%E5%87%86%E8%AE%B8.mp3",
+    "downloadUrl": "https://raw.githubusercontent.com/hugolpz/audio-cmn/59dbafbda8b172ffc3b8b295cd5938ae1b3de803/64k/hsk/cmn-%E5%87%86%E8%AE%B8.mp3",
+    "retrieved": "2026-10-22",
+    "changes": "MP3 compression by audio-cmn (Hugo Lopez); copied without further modification.",
+    "sourceMetadata": {
+      "description": "Original Shtooka FLAC redistributed in Free Cultural Works Mandarin Audio Pack 1.0.0 by Trevor L. Davis; the pack filename applies tone sandhi, while its embedded pinyin retains dictionary tones.",
+      "packUrl": "https://dl.dropboxusercontent.com/s/bh3ctzsgwbagbw0/fc_mandarin_audio_pack.zip",
+      "packEntry": "audio/shtooka_caen_tan/zhun2xu3_准许.flac",
+      "packReadme": "https://github.com/trevorld/mandarin_audio_utilities/blob/1f67a0bf2a352a61114ca53d4628b0f828e3b647/fc_README.rst",
+      "upstreamReadme": "https://github.com/hugolpz/audio-cmn/blob/59dbafbda8b172ffc3b8b295cd5938ae1b3de803/README.md",
+      "originalFlacSha256": "d6a33e6cff80b34b144f67f20ea26c42a1233c7b5048b0db2ac9e33059b4ce22",
+      "embeddedTags": {
+        "TITLE": "准许",
+        "LICENSE": "Creative Commons BY-SA 3.0 U.S",
+        "COPYRIGHT": "(c) 2009 Yue Tan",
+        "DATE": "2009-07-10",
+        "SWAC_PRON_PHON": "zhǔnxǔ"
+      },
+      "audioMatch": "Original FLAC and the shipped MP3 decode to 27563 mono samples at 22050 Hz; waveform Pearson correlation is 0.984674. This links the MP3 to the tagged source recording, without judging pronunciation."
+    },
+    "sha256": "f21c44f321b63a87e7d57982ba37c594ce7ecbe50dd8b840d3c1dc4213b67997",
+    "bytes": 10656,
+    "duration": 1.306122,
+    "review": {
+      "date": "2026-10-22",
+      "sourceReading": "The original FLAC metadata labels this recording 准许, zhǔnxǔ, by Yue Tan, recorded 2009-07-10. Written tones remain third tone on both syllables. The matching audio-cmn MP3 is distributed here.",
+      "acousticInspection": "Praat autocorrelation at 10 ms steps, 60–500 Hz: Median F0 in successive 100 ms windows from 0.3 s is 227.5, 218.8, 274.3 Hz. The first voiced region rises after a short initial dip, supporting sandhi on the first syllable. Tracking in the second syllable includes unvoiced gaps and octave errors; no exact second-syllable contour is claimed. This is not a phonetic transcription or a quality guarantee.",
+      "listening": "Not performed. Source identification, decoding and acoustic inspection do not establish pronunciation naturalness by listening."
+    }
   }
 ]

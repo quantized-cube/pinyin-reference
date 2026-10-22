@@ -15,7 +15,7 @@ test('contextual recordings ship exact examples, unchanged audio and separate at
   const folder = new URL('public/audio/third-tone/', root);
   const credits: {file:string;word:string;tokens:string[];target:number;form:string;sha256:string;bytes:number;author:string;licenseUrl:string;sourcePage:string}[] = JSON.parse(await readFile(new URL('credits.json', folder), 'utf8'));
   const page = await readFile(new URL('credits.html', folder), 'utf8');
-  assert.equal(thirdToneRecordings.length, 3);
+  assert.equal(thirdToneRecordings.length, 7);
   assert.equal(credits.length, thirdToneRecordings.length);
   assert.deepEqual((await readdir(folder)).filter(f => f.endsWith('.mp3')).sort(), credits.map(c => c.file).sort());
   for (const recording of thirdToneRecordings) {
@@ -36,13 +36,20 @@ test('contextual recordings ship exact examples, unchanged audio and separate at
   }
 });
 
-test('lao uses the isolated recording or the exact complete word for each third-tone form', () => {
+test('recorded targets use the isolated recording or the exact complete word for each third-tone form', () => {
   for (const [form, word, tokens, url] of [
     ['full', '老', ['lao3'], 'audio/syllables/lao3.mp3'],
     ['half', '老师', ['lao3','shi1'], 'audio/third-tone/laoshi.mp3'],
     ['sandhi', '老板', ['lao3','ban3'], 'audio/third-tone/laoban.mp3'],
+    ['full', '水', ['shui3'], 'audio/syllables/shui3.mp3'],
+    ['half', '水平', ['shui3','ping2'], 'audio/third-tone/shuiping.mp3'],
+    ['sandhi', '水果', ['shui3','guo3'], 'audio/third-tone/shuiguo.mp3'],
+    ['full', '准', ['zhun3'], 'audio/syllables/zhun3.mp3'],
+    ['half', '准备', ['zhun3','bei4'], 'audio/third-tone/zhunbei.mp3'],
+    ['sandhi', '准许', ['zhun3','xu3'], 'audio/third-tone/zhunxu.mp3'],
   ] as const) {
-    const playback = resolveDetailPlayback({selected:'lao', tone:3, thirdToneForm:form}, catalog, 'ready');
+    const syllable = parseQuery(tokens[0]).text;
+    const playback = resolveDetailPlayback({selected:syllable, tone:3, thirdToneForm:form}, catalog, 'ready');
     assert.equal(playback.kind, 'recording');
     if (playback.kind !== 'recording') throw new Error('Expected a recording');
     assert.equal(playback.url, url);
@@ -51,7 +58,7 @@ test('lao uses the isolated recording or the exact complete word for each third-
     assert.ok(example);
     assert.deepEqual(example, {text:word, tokens, target:0});
     if (form !== 'full') {
-      assert.equal(thirdToneRecording({...example, tokens:['lao2', tokens[1]]}, form), undefined);
+      assert.equal(thirdToneRecording({...example, tokens:[syllable + '2', tokens[1]]}, form), undefined);
       assert.equal(thirdToneRecording(example, form === 'half' ? 'sandhi' : 'half'), undefined);
     }
   }

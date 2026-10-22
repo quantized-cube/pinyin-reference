@@ -2,6 +2,7 @@ import type {AppState, ExampleCatalog, ExampleState, PronunciationExample} from 
 import {detailExample} from './examples.js';
 import {detailRecording} from './detail-recordings.js';
 import {isUnrecordedTarget} from './syllable-recordings.js';
+import {thirdToneRecording} from './third-tone-recordings.js';
 
 type UnavailableReason = 'recording-missing' | 'reading-unreviewed' | 'example-loading' | 'example-error' | 'example-missing';
 export type DetailPlayback = {readonly example: PronunciationExample | undefined; readonly contextual: boolean} & (
@@ -11,7 +12,8 @@ export type DetailPlayback = {readonly example: PronunciationExample | undefined
 );
 
 // One decision drives the button, label, status and click handler. The approved
-// recording index is independent of the optional, asynchronously loaded examples.
+// isolated recording index is independent of the optional example catalog.
+// Contextual recordings require an exact match with the loaded example.
 export function resolveDetailPlayback(
   state: Pick<AppState, 'selected' | 'tone' | 'thirdToneForm'>,
   catalog: ExampleCatalog | undefined,
@@ -26,7 +28,10 @@ export function resolveDetailPlayback(
     if (url) return {...base, kind: 'recording', url};
     return {...base, kind: 'unavailable', reason: isUnrecordedTarget(selected, tone) ? 'recording-missing' : 'reading-unreviewed'};
   }
-  if (example) return {...base, kind: 'speech', text: example.text};
+  if (example) {
+    const url = tone === 3 ? thirdToneRecording(example, thirdToneForm) : undefined;
+    return url ? {...base, kind: 'recording', url} : {...base, kind: 'speech', text: example.text};
+  }
   return {...base, kind: 'unavailable', reason: exampleState === 'loading' ? 'example-loading' : exampleState === 'error' ? 'example-error' : 'example-missing'};
 }
 

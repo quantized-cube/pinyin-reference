@@ -108,7 +108,8 @@ test('all recorded targets play without a catalog and never substitute for conte
   for(const form of ['half','sandhi'] as const){
     const state={selected:'hao',tone:3 as const,thirdToneForm:form};
     const p=resolveDetailPlayback(state,catalog,'ready');
-    assert.equal(p.kind,'speech');assert.equal(p.contextual,true);
+    assert.equal(p.kind,form==='half'?'recording':'speech');assert.equal(p.contextual,true);
+    if(p.kind==='recording')assert.equal(p.url,'audio/third-tone/haochi.mp3');
     assert.equal(resolveDetailPlayback(state,undefined,'error').kind,'unavailable');
   }
 });

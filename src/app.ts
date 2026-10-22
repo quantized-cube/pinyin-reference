@@ -102,7 +102,7 @@ function updateAudioStatuses(){
   const selectedVoice=voices.find(v=>v.voiceURI===state.voice)??voices[0];
   const playback=playbackFor(),recorded=playback.kind==='recording';
   const unavailable=playback.kind==='unavailable'?unavailablePlaybackMessage(playback.reason):recorded?(!speaker.recordingsSupported?'このブラウザは録音の再生に対応していません。':null):(!speaker.supported?'このブラウザは音声合成に対応していません。':null);
-  const msg=unavailable??(recorded?'単独音の録音を元の速度で再生します。':!voices.length?'音声一覧に普通話が表示されていません。再生ボタンで中国語の再生を試せます。音が出ない場合は下の設定手順をご確認ください。':`中国語TTS · ${selectedVoice?.lang || 'zh'}`);
+  const msg=unavailable??(recorded?`${playback.contextual?'例語全体':'単独音'}の録音を元の速度で再生します。`:!voices.length?'音声一覧に普通話が表示されていません。再生ボタンで中国語の再生を試せます。音が出ない場合は下の設定手順をご確認ください。':`中国語TTS · ${selectedVoice?.lang || 'zh'}`);
   const status=document.querySelector('#voice-status');
   if(status)status.textContent=unavailable??speaker.messageFor(recorded?'detail-recording':'speech')??msg;
   updateComparisonAudio();
@@ -151,7 +151,7 @@ document.addEventListener('click',event=>{
   if(b.id==='reset'||b.hasAttribute('data-reset'))reset();
   if(b.id==='play'){
     const playback=playbackFor();
-    if(playback.kind==='recording')speaker?.playRecording(playback.url,markTone(state.selected,state.tone),'detail-recording');
+    if(playback.kind==='recording')speaker?.playRecording(playback.url,playback.contextual&&playback.example?playback.example.text:markTone(state.selected,state.tone),'detail-recording');
     else if(playback.kind==='speech')speaker?.speak(playback.text,state.voice,state.rate);
   }
   if(b.id==='stop')speaker?.stop();

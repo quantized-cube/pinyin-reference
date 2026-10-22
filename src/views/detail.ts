@@ -32,5 +32,15 @@ export function renderDetail(state: AppState, playback: DetailPlayback, exampleS
   <div class="detail-content"><div class="decomposition"><div><small>声母</small><strong>${s.initial||'∅'}</strong><span class="ipa">${i.ipa?'['+i.ipa+']':'声母なし'}</span></div><span>＋</span><div><small>分析上の韻母</small><strong>${esc(matrixFinalId(s.final))}</strong>${finalContext(s.final)?`<small>${finalContext(s.final)}</small>`:''}<span class="ipa">[${s.rimeIpa}]</span></div></div>${renderInitialArticulation(s.initial)}${rulesFor(s).map(r=>`<p class="rule-note">${r}</p>`).join('')}<p class="tone-note">${esc(f.note)}${state.tone===5?' 軽声のIPAは分節音の目安のみ。母音の弱化を含む細かな変化は省略。':''}</p>
   <hr class="detail-separator"><h3 class="mini-title">辞書上の声調<span>1〜4声・軽声</span></h3><div class="tones" aria-label="声調">${tones.map(t=>`<button class="tone" data-tone="${t.id}" aria-pressed="${state.tone===t.id}" aria-label="${t.label} ${markTone(s.pinyin,t.id)}">${t.id===5?'軽声':t.id+'声'}${contour(t)}<small>${markTone(s.pinyin,t.id)}</small></button>`).join('')}</div>
   ${third?renderThirdToneSelector(state):`<p class="tone-note">${t.id===5?'':t.value+'：'}${t.note}</p>`}${exampleHtml}
-  <div class="play-row"><button id="play" class="primary" disabled>${speakerIcon}<span>${contextual?'例語を聞く':'単独音を聞く'}</span></button><button id="stop" class="stop" aria-label="再生を停止">■</button></div><p id="voice-status" class="voice-status" role="status" aria-live="polite"></p>${contextual?renderVoiceSettings(state):''}<p class="audio-footnote">${!contextual?`${recorded?'表示した音節・声調の単独音を録音で再生します。参考の例語全体は再生しません。':'声調付きのピンインと図は練習用の表示です。'}図とIPAは、録音を測定して作成したものではありません。<a href="audio/syllables/credits.html" target="_blank" rel="noreferrer">出典・ライセンス</a>`:`この例語は端末の中国語TTSで再生します。${third?'半三声・変調を直接指定できないため、図どおりの発音になるとは限りません。':'辞書の読みと異なる場合があります。'}`}</p></div>`;
+  <div class="play-row"><button id="play" class="primary" disabled>${speakerIcon}<span>${contextual?'例語を聞く':'単独音を聞く'}</span></button><button id="stop" class="stop" aria-label="再生を停止">■</button></div><p id="voice-status" class="voice-status" role="status" aria-live="polite"></p>${contextual&&!recorded?renderVoiceSettings(state):''}<p class="audio-footnote">${renderAudioNote(playback,Boolean(third))}</p></div>`;
+}
+
+function renderAudioNote(playback: DetailPlayback, third: boolean): string {
+  if (playback.contextual && playback.kind === 'recording') {
+    return '例語全体の録音を再生します。図とIPAは発音の目安です。<a href="audio/third-tone/credits.html" target="_blank" rel="noreferrer">出典・ライセンス</a>';
+  }
+  if (playback.contextual) {
+    return `この例語は端末の中国語TTSで再生します。${third?'半三声・変調を直接指定できないため、図どおりの発音になるとは限りません。':'辞書の読みと異なる場合があります。'}`;
+  }
+  return `${playback.kind==='recording'?'表示した音節・声調の単独音を録音で再生します。参考の例語全体は再生しません。':'声調付きのピンインと図は練習用の表示です。'}図とIPAは、録音を測定して作成したものではありません。<a href="audio/syllables/credits.html" target="_blank" rel="noreferrer">出典・ライセンス</a>`;
 }

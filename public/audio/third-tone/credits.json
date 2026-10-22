@@ -1,0 +1,31 @@
+[
+  {
+    "file": "haochi.mp3",
+    "word": "好吃",
+    "pinyin": "hǎochī",
+    "tokens": [
+      "hao3",
+      "chi1"
+    ],
+    "target": 0,
+    "form": "half",
+    "author": "Wei Gao, Vion Nicolas",
+    "license": "CC BY 2.0 France",
+    "licenseUrl": "https://creativecommons.org/licenses/by/2.0/fr/",
+    "source": "The Shtooka Project / Wikimedia Commons",
+    "sourcePage": "https://commons.wikimedia.org/wiki/File:Zh-h%C7%8Eoch%C4%AB.ogg",
+    "sourceRevision": "https://commons.wikimedia.org/w/index.php?title=File:Zh-h%C7%8Eoch%C4%AB.ogg&oldid=447924543",
+    "downloadUrl": "https://upload.wikimedia.org/wikipedia/commons/transcoded/5/55/Zh-h%C7%8Eoch%C4%AB.ogg/Zh-h%C7%8Eoch%C4%AB.ogg.mp3",
+    "retrieved": "2026-10-22",
+    "changes": "Wikimedia Commons MP3 transcode, copied without further modification.",
+    "sha256": "704c6ccd294da21321fbad7e3c423ace443e813e4b821b967ee6736858bc0b0e",
+    "bytes": 18867,
+    "duration": 1.149388,
+    "review": {
+      "date": "2026-10-22",
+      "sourceReading": "The source description labels this recording hǎochī (好吃), a male voice from Beijing, recorded 2006-10-29.",
+      "acousticInspection": "Praat autocorrelation at 10 ms steps, 60–400 Hz: median F0 in successive 100 ms windows from 0.2 s is 114.1, 102.1, 98.8, 103.3 Hz. The first voiced region falls and remains low; the second voiced region is about 139–142 Hz. This supports the intended half-third-tone context but is not a phonetic transcription or a quality guarantee.",
+      "listening": "Not performed. Source identification, decoding and acoustic inspection do not establish pronunciation naturalness by listening."
+    }
+  }
+]

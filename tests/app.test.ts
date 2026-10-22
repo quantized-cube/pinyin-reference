@@ -1082,6 +1082,87 @@ test('isolated third-tone recordings stop on form changes and cannot replace con
   assert.equal(s.requestCount(),0);
 });
 
+test('the half-third pilot plays the complete recorded word without TTS support or settings', async t => {
+  for(const recordingsSupported of [true,false]){
+    const s=await setup(t,[],{hash:'#s=hao&t=3&form=half',speechSupported:false,recordingsSupported});
+    assert.equal(s.$('.example-word').textContent,'好吃');
+    assert.equal(s.$('.example-word mark').textContent,'好');
+    assert.equal(s.$('.example-pinyin').textContent,'hǎo chī');
+    assert.equal(s.$('#play span').textContent,'例語を聞く');
+    assert.equal(s.$<HTMLButtonElement>('#play').disabled,!recordingsSupported);
+    assert.equal(s.window.document.querySelector('.voice-settings,#voice-help'),null);
+    assert.equal(s.$('.audio-footnote a').getAttribute('href'),'audio/third-tone/credits.html');
+    assert.doesNotMatch(s.$('.audio-footnote').textContent??'',/TTS/);
+    s.$('#play').click();
+    if(recordingsSupported){
+      const audio=s.lastRecording();
+      assert.equal(audio.src,'audio/third-tone/haochi.mp3');
+      assert.equal(audio.playbackRate,1);
+      audio.onplaying?.();
+      assert.match(s.$('#voice-status').textContent??'',/好吃.*録音を再生中/);
+      audio.onended?.();
+      assert.equal(s.$('#voice-status').textContent,'再生しました。');
+    }else{
+      assert.match(s.$('#voice-status').textContent??'',/録音の再生に対応していません/);
+      assert.equal(s.recordingCount(),0);
+    }
+    assert.equal(s.requestCount(),0);
+  }
+});
+
+test('contextual recordings stop on form changes and restore TTS settings only for TTS examples', async t => {
+  const s=await setupSpeech(t);
+  s.$<HTMLInputElement>('#rate').value='0.6';
+  s.$('#rate').dispatchEvent(new s.window.Event('input',{bubbles:true}));
+  s.input('hao3');
+  s.$('[data-third-tone-form="half"]').click();
+  assert.equal(s.$('#voice-status').textContent,'例語全体の録音を元の速度で再生します。');
+  s.$('#play').click();
+  const contextual=s.lastRecording();
+  assert.equal(contextual.playbackRate,1);
+  s.$('[data-third-tone-form="sandhi"]').click();
+  assert.equal(contextual.paused,true);
+  assert.equal(s.$('.example-word').textContent,'好友');
+  assert.match(s.$('.audio-footnote').textContent??'',/TTS/);
+  assert.equal(s.$<HTMLInputElement>('#rate').value,'0.6');
+  s.$('#play').click();
+  const speech=s.lastRequest();
+  assert.equal(speech.text,'好友');
+  speech.onstart?.();
+  contextual.onerror?.();contextual.onended?.();contextual.onplaying?.();
+  assert.match(s.$('#voice-status').textContent??'',/好友.*再生中/);
+  const cancellations=s.cancellations();
+  s.$('[data-third-tone-form="half"]').click();
+  assert.ok(s.cancellations()>cancellations);
+  assert.equal(s.window.document.querySelector('.voice-settings,#voice-help'),null);
+  s.$('#play').click();s.lastRecording().onplaying?.();
+  speech.onerror?.({error:'network'});speech.onend?.();
+  assert.match(s.$('#voice-status').textContent??'',/好吃.*録音を再生中/);
+  const second=s.lastRecording();
+  s.$('[data-third-tone-form="full"]').click();
+  assert.equal(second.paused,true);
+  assert.equal(s.$('#play span').textContent,'単独音を聞く');
+  s.$('#play').click();
+  assert.equal(s.lastRecording().src,'audio/syllables/hao3.mp3');
+  s.lastRecording().onended?.();
+});
+
+test('contextual recording errors stay explicit and retry without switching to TTS', async t => {
+  const s=await setup(t,[local],{hash:'#s=hao&t=3&form=half'});
+  s.$('#play').click();
+  s.lastRecording().onerror?.();
+  assert.match(s.$('#voice-status').textContent??'',/録音を読み込めません/);
+  s.blockRecordings(true);
+  s.$('#play').click();
+  await new Promise<void>(resolve=>setImmediate(resolve));
+  assert.match(s.$('#voice-status').textContent??'',/録音を再生できません/);
+  assert.equal(s.window.document.querySelector('#voice-help'),null);
+  s.blockRecordings(false);
+  s.$('#play').click();s.lastRecording().onended?.();
+  assert.equal(s.$('#voice-status').textContent,'再生しました。');
+  assert.equal(s.requestCount(),0);
+});
+
 test('changing detail readings cancels playback and ignores callbacks from the old recording', async t => {
   const s=await setup(t,[local],{hash:'#s=fa&t=1'});
   s.$('#play').click();

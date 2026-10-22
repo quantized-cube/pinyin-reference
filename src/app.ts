@@ -147,7 +147,7 @@ document.addEventListener('click',event=>{
   if(b.dataset.tone){select(state.selected,{tone:toTone(b.dataset.tone)});document.querySelector<HTMLElement>(`[data-tone="${state.tone}"]`)?.focus();}
   if(b.dataset.demoTone)select('ma',{tone:toTone(b.dataset.demoTone),scroll:true});
   if(isThirdToneFormId(b.dataset.thirdToneForm)){select(state.selected,{tone:3,form:b.dataset.thirdToneForm});document.querySelector<HTMLElement>(`[data-third-tone-form="${state.thirdToneForm}"]`)?.focus();}
-  if(isThirdToneFormId(b.dataset.thirdDemo))select('hao',{tone:3,form:b.dataset.thirdDemo,scroll:true});
+  if(isThirdToneFormId(b.dataset.thirdDemo))select('lao',{tone:3,form:b.dataset.thirdDemo,scroll:true});
   if(b.id==='reset'||b.hasAttribute('data-reset'))reset();
   if(b.id==='play'){
     const playback=playbackFor();

@@ -618,6 +618,58 @@ test('third tone starts collapsed, preserves an explicit selection and restores 
   assert.match(linked.$('.detail-ipa').textContent??'',/˧˥/);
 });
 
+test('the third-tone guide opens the displayed lao examples and plays recordings without TTS', async t => {
+  const s=await setup(t,[],{hash:'#s=ma&t=4',speechSupported:false});
+  s.$('[data-tab="rules"]').click();
+  const guide=s.$<HTMLDetailsElement>('.third-tone-guide');
+  assert.equal(guide.open,false);
+  guide.open=true;
+  for(const [form,word,label,pinyin,url] of [
+    ['full','老','老 lǎo','lǎo','audio/syllables/lao3.mp3'],
+    ['half','老师','老师 lǎoshī','lǎo shī','audio/third-tone/laoshi.mp3'],
+    ['sandhi','老板','老板 lǎobǎn','lǎo bǎn','audio/third-tone/laoban.mp3'],
+  ] as const){
+    const button=`.third-tone-guide [data-third-demo="${form}"]`;
+    assert.equal(s.$(`${button} small`).textContent,label);
+    s.$(button).click();
+    assert.equal(s.$('#detail h2').textContent,'lǎo');
+    assert.match(s.window.location.hash,/s=lao&t=3/);
+    assert.equal(s.$(`[data-third-tone-form="${form}"]`).getAttribute('aria-pressed'),'true');
+    assert.equal(s.$('.example-word').textContent,word);
+    assert.equal(s.$('.example-pinyin').textContent,pinyin);
+    assert.equal(s.$<HTMLButtonElement>('#play').disabled,false);
+    assert.equal(s.window.document.querySelector('.voice-settings,#voice-help'),null);
+    s.$('#play').click();
+    assert.equal(s.lastRecording().src,url);
+    s.lastRecording().onended?.();
+  }
+  assert.equal(s.requestCount(),0);
+});
+
+test('missing third-tone examples link to lao recordings in the same pronunciation form', async t => {
+  const s=await setup(t,[],{speechSupported:false});
+  for(const [form,word,url] of [
+    ['full','老','audio/syllables/lao3.mp3'],
+    ['half','老师','audio/third-tone/laoshi.mp3'],
+    ['sandhi','老板','audio/third-tone/laoban.mp3'],
+  ] as const){
+    s.input('ê3');
+    s.$(`[data-third-tone-form="${form}"]`).click();
+    assert.equal(s.$<HTMLButtonElement>('#play').disabled,true);
+    const link=s.$('.example-demo');
+    assert.equal(link.textContent,'lǎo の比較例を開く ↗');
+    assert.equal(link.getAttribute('data-third-demo'),form);
+    link.click();
+    assert.equal(s.$('#detail h2').textContent,'lǎo');
+    assert.equal(s.$(`[data-third-tone-form="${form}"]`).getAttribute('aria-pressed'),'true');
+    assert.equal(s.$('.example-word').textContent,word);
+    s.$('#play').click();
+    assert.equal(s.lastRecording().src,url);
+    s.lastRecording().onended?.();
+  }
+  assert.equal(s.requestCount(),0);
+});
+
 test('fixed comparison presets play first-tone recordings and display the shared example characters', async t => {
   const s=await setup(t);s.$('[data-tab="compare"]').click();
   assert.equal(s.$<HTMLInputElement>('#search').disabled,true);

@@ -28,8 +28,8 @@ export function renderVowels(state: AppState): string {
     <p class="vowel-legend"><span>● 普通話の代表的な母音（クリックで詳細）</span>${state.japaneseVowels?'<span>◇ 日本語の代表的な位置</span>':''}</p>
     <section class="rule-card vowel-apical-note" aria-labelledby="vowel-apical-title">
       <h3 id="vowel-apical-title">[ɹ̩]・[ɻ̩] を図に置かない理由</h3>
-      <p>zi・ci・si の i は [ɹ̩]、zhi・chi・shi・ri の i は [ɻ̩] と表しています。教材で「舌尖母音」と呼ばれる音ですが、本アプリでは音節の中心になる接近音として扱います。記号の下の小さな線は、音節の中心になることを示します。</p>
-      <p>舌先や舌の前部で作る狭めが重要で、この母音図の前後・高さだけでは発音を表せません。そのため、図上の点とは分けて説明しています。普通の i [i] とも異なる音です。</p>
+      <p>zi・ci・si の i は [ɹ̩]、zhi・chi・shi・ri の i は [ɻ̩] と表しています。教材で「舌尖母音」と呼ばれる音ですが、本アプリでは音節の中心になる接近音として扱います。記号の下の小さな線は音節の中心になることを示します。</p>
+      <p>これらの音では、舌先や舌の前部で口の中を狭めることが重要です。この母音図が示す舌の前後・高さだけでは発音を表せないため、図の外で説明しています。普通の i [i] とも異なる音です。</p>
       <div class="apical-examples"><button class="text-button" data-pick="zi" data-pick-tone="1">zī [tsɹ̩] の詳細 ↗</button><button class="text-button" data-pick="zhi" data-pick-tone="1">zhī [ʈʂɻ̩] の詳細 ↗</button></div>
       <p><a href="https://phoible.github.io/conventions/#apical-vowels" target="_blank" rel="noreferrer">PHOIBLEの表記方針 ↗</a> · <a href="https://doi.org/10.1017/S0025100314000267" target="_blank" rel="noreferrer">Lee-Kim（2014）：舌尖母音の研究 ↗</a></p>
     </section>

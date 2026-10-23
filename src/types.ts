@@ -19,7 +19,7 @@ export interface ThirdToneForm {
   readonly points: string;
   readonly note: string;
 }
-export type TabId = 'matrix' | 'finals' | 'initials' | 'rules' | 'compare' | 'vowels';
+export type TabId = 'matrix' | 'finals' | 'initials' | 'rules' | 'compare' | 'vowels' | 'erhua';
 export type SearchMode = 'pinyin' | 'ipa';
 export type ExampleState = 'loading' | 'ready' | 'error';
 export type ComparisonSyllables = [string, string] | [string, string, string];
@@ -93,7 +93,7 @@ export function isToneId(value: unknown): value is ToneId {
   return value === 1 || value === 2 || value === 3 || value === 4 || value === 5;
 }
 export function isTabId(value: unknown): value is TabId {
-  return value === 'matrix' || value === 'finals' || value === 'initials' || value === 'rules' || value === 'compare' || value === 'vowels';
+  return value === 'matrix' || value === 'finals' || value === 'initials' || value === 'rules' || value === 'compare' || value === 'vowels' || value === 'erhua';
 }
 export function required<T>(value: T | null | undefined, description: string): T {
   if (value == null) throw new Error(`Missing ${description}`);

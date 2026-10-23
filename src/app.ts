@@ -1,5 +1,6 @@
 import {renderCompare} from './views/compare.js';
 import {renderVowels} from './views/vowels.js';
+import {renderErhua} from './views/erhua.js';
 import {comparisonAudioHint,comparisonPresets,comparisonSequence,getComparisonPreset} from './comparison.js';
 import {renderAbout} from './views/about.js';
 import {createState,save} from './state.js';
@@ -44,6 +45,7 @@ function renderReference(){
   if(state.tab==='rules') $('#reference-body').innerHTML=renderRules();
   if(state.tab==='compare') $('#reference-body').innerHTML=renderCompare(state,loadedExamples()?.isolatedExamples??{},exampleLoad.status,!!speaker?.recordingsSupported,speaker?.messageFor('comparison')??null);
   if(state.tab==='vowels') $('#reference-body').innerHTML=renderVowels(state);
+  if(state.tab==='erhua') $('#reference-body').innerHTML=renderErhua();
   const searchable=['matrix','finals','initials'].includes(state.tab);
   $<HTMLInputElement>('#search').disabled=!searchable;
   $<HTMLSelectElement>('#search-mode').disabled=!searchable;
@@ -136,6 +138,12 @@ document.addEventListener('click',event=>{
   if(!(event.target instanceof Element))return;
   const b=event.target.closest('button');if(!b)return;
   if(isTabId(b.dataset.tab)){speaker?.stop(false);state.tab=b.dataset.tab;renderReference();updateVoices();}
+  if(isTabId(b.dataset.openTab)){
+    speaker?.stop(false);state.tab=b.dataset.openTab;renderReference();updateVoices();
+    const heading=$<HTMLHeadingElement>('#reference-body h2');
+    heading.tabIndex=-1;heading.focus();
+    if(matchMedia('(max-width:800px)').matches)heading.scrollIntoView({behavior:'auto',block:'start'});
+  }
   if(isGroupFilter(b.dataset.group)){state.group=b.dataset.group;renderReference();document.querySelector<HTMLElement>(`[data-group="${state.group}"]`)?.focus();}
   if(b.dataset.syllable)select(b.dataset.syllable);
   if(b.dataset.comparePreset){const preset=comparisonPresets.find(p=>p.id===b.dataset.comparePreset);if(preset){speaker?.stop(false);state.comparePreset=preset.id;renderReference();updateVoices();document.querySelector<HTMLElement>(`[data-compare-preset="${preset.id}"]`)?.focus();}}

@@ -909,6 +909,13 @@ test('vowel map supports Japanese overlay and opens the correct syllable details
     s.$(`.vowel-point[data-pick="${pick}"]`).click();
     assert.equal(s.$('#detail h2').textContent,reading);
   }
+  assert.equal(s.$('.vowel-map').contains(s.$('.vowel-apical-note')),false);
+  for(const [pick,reading] of [['zi','zī'],['zhi','zhī']] as const){
+    s.$('[data-tone="4"]').click();
+    s.$(`.vowel-apical-note [data-pick="${pick}"]`).click();
+    assert.equal(s.$('#detail h2').textContent,reading);
+    assert.equal(s.$('.tone[aria-pressed="true"]').dataset.tone,'1');
+  }
   s.$('[data-tab="finals"]').click();s.$('[data-tab="vowels"]').click();
   assert.equal(s.$<HTMLInputElement>('#japanese-vowels').checked,true);
 });
@@ -967,11 +974,53 @@ test('HTTP and invalid-catalog failures can be retried from the detail view', as
 
 
 test('slash from a non-searchable tab opens the matrix search',async t=>{
-  const s=await setup(t);s.$('[data-tab="vowels"]').click();
-  s.key('body','/');
-  assert.equal(s.$('[data-tab="matrix"]').getAttribute('aria-current'),'page');
-  assert.equal(s.$<HTMLInputElement>('#search').disabled,false);
-  assert.equal(s.window.document.activeElement,s.$('#search'));
+  const s=await setup(t);
+  for(const tab of ['vowels','erhua']){
+    s.$(`[data-tab="${tab}"]`).click();
+    s.key('body','/');
+    assert.equal(s.$('[data-tab="matrix"]').getAttribute('aria-current'),'page');
+    assert.equal(s.$<HTMLInputElement>('#search').disabled,false);
+    assert.equal(s.window.document.activeElement,s.$('#search'));
+  }
+});
+
+test('erhua navigation stops playback and preserves the selected basic syllable',async t=>{
+  const s=await setup(t,[local],{hash:'#s=dian&t=3'});
+  const hash=s.window.location.hash;
+  s.$('#play').click();
+  const recording=s.lastRecording();
+  assert.equal(recording.paused,false);
+  s.$('[data-tab="erhua"]').click();
+  assert.equal(recording.paused,true);
+  assert.equal(s.$('[data-tab="erhua"]').getAttribute('aria-current'),'page');
+  assert.equal(s.$<HTMLInputElement>('#search').disabled,true);
+  assert.equal(s.window.location.hash,hash);
+  assert.equal(s.$('#detail h2').textContent,'diǎn');
+  assert.ok(s.$('.erhua-table'));
+  assert.equal(s.window.document.querySelector('#reference-body [data-play]'),null);
+  assert.equal(s.recordingCount(),1);
+  assert.equal(s.requestCount(),0);
+  s.$('[data-tab="finals"]').click();
+  s.$('#reference-body [data-open-tab="erhua"]').click();
+  assert.equal(s.$('[data-tab="erhua"]').getAttribute('aria-current'),'page');
+  assert.equal(s.window.document.activeElement,s.$('#reference-body h2'));
+  assert.equal(s.window.location.hash,hash);
+});
+
+test('erhua links from relevant details focus and scroll to the guide on mobile',async t=>{
+  const s=await setup(t,[local],{mobile:true});
+  let scrolled: Element | undefined;
+  s.window.HTMLElement.prototype.scrollIntoView=function(){scrolled=this;};
+  for(const query of ['dian3','yuan2','er3']){
+    s.$('[data-tab="matrix"]').click();
+    s.input(query);
+    const hash=s.window.location.hash;
+    s.$('#detail [data-open-tab="erhua"]').click();
+    assert.equal(s.$('[data-tab="erhua"]').getAttribute('aria-current'),'page');
+    assert.equal(s.window.document.activeElement,s.$('#reference-body h2'));
+    assert.equal(scrolled,s.$('#reference-body h2'));
+    assert.equal(s.window.location.hash,hash);
+  }
 });
 
 test('third-tone detail keeps its approved characters and contextual playback rules', async t => {

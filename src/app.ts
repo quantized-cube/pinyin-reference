@@ -186,6 +186,15 @@ document.addEventListener('keydown',event=>{
   if(event.key==='/'&&!event.target.matches('input,textarea,select')&&!$<HTMLDialogElement>('#about-dialog').open){event.preventDefault();if($<HTMLInputElement>('#search').disabled){speaker?.stop(false);state.tab='matrix';renderReference();updateVoices();}$<HTMLInputElement>('#search').focus();}
   if(event.key==='Escape'){speaker?.stop();if(event.target.id==='search')reset();}
   if(event.key==='Enter'&&event.target.id==='search'){
+    // Let the IME confirm text without treating that Enter as a search action.
+    if(event.isComposing||event.keyCode===229)return;
+    const supplement=state.tab==='finals'?document.querySelector<HTMLElement>('#reference-body [data-nasal-search-target]'):null;
+    if(supplement){
+      event.preventDefault();
+      supplement.focus({preventScroll:true});
+      supplement.scrollIntoView({behavior:'auto',block:'start'});
+      return;
+    }
     let pinyin: string | undefined;
     if(state.tab==='matrix')pinyin=findSyllables(state.query,state)[0]?.pinyin;
     // Card views have their own filters and example syllables; use the visible result.

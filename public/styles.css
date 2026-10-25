@@ -122,4 +122,15 @@
 .erhua-notes{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px;margin-bottom:18px}
 .vowel-apical-note{margin:18px 0}
 .apical-examples{display:flex;flex-wrap:wrap;gap:4px 20px}
+.nasal-supplement{margin-top:28px;padding-top:22px;border-top:1px solid var(--line)}
+.nasal-supplement [data-nasal-search-target]{scroll-margin-top:16px}
+.nasal-supplement h3{display:flex;align-items:baseline;flex-wrap:wrap;gap:6px 14px;font-size:15px;color:var(--green);margin:0 0 12px}
+.nasal-supplement h3 small{font-size:11px;font-weight:400;color:var(--muted)}
+.nasal-supplement p{font-size:12px;line-height:1.9;color:var(--muted);margin:10px 0}
+.nasal-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,210px),1fr));gap:12px;margin:16px 0}
+.nasal-card{border-left:3px solid var(--line);padding:5px 14px}
+.nasal-card h4{font-weight:500;font-size:23px;color:var(--green);margin:0 0 5px;display:flex;align-items:baseline;flex-wrap:wrap;gap:6px 12px}
+.nasal-pinyin{font-family:var(--pinyin-font);font-size:21px}
+.nasal-card .ipa{font-family:"Segoe UI",sans-serif;font-size:18px;color:var(--green)}
+.nasal-sources a{text-underline-offset:3px}
 @media(max-width:520px){.erhua-pair{gap:8px}.erhua-pair>div{padding:12px}.erhua-pair span{font-size:20px}.erhua-notes{grid-template-columns:1fr}.erhua-table th,.erhua-table td{padding:10px 7px}.erhua-table tbody th{width:21%}.erhua-table td:last-child{width:34%}.erhua-ipa-pair{font-size:15px;gap:2px 5px}}

@@ -4,6 +4,7 @@ import {orderedFinals,finalSections,matrixFinalId} from '../layout.js';
 import {required} from '../types.js';
 import {esc,groupButtons,empty,renderOrderGuide} from './shared.js';
 import {renderSoundUnitsGuide} from './sound-units.js';
+import {renderNasalSupplement} from './nasal-supplement.js';
 export function renderFinals(state: AppState){
   const text=searchText(state.query,state.searchMode);
   const list=orderedFinals.filter(f=>(state.group==='all'||f.group===state.group)&&(!text||(state.searchMode==='ipa'?f.ipa.includes(text):f.id.includes(text)||syllables.some(s=>s.final===f.id&&s.pinyin.includes(text)))));
@@ -15,5 +16,6 @@ export function renderFinals(state: AppState){
     const context=f.id==='i'?'yi・mi系':f.id==='-i(z)'?'zi系':f.id==='-i(zh)'?'zhi系':'';
     return `<button class="sound-card" data-final="${f.id}" data-pick="${s.pinyin}"><div><span class="card-symbol">${esc(symbol)}</span><span class="ipa">[${f.ipa}]</span>${context?`<span class="card-context">（${context}）</span>`:''}</div><div class="card-spelling">${f.id==='io'?'分析上の韻母：io<br>':''}綴り：${forms.join(' / ')}</div><p class="note">${esc(f.note)}</p><span class="card-foot"><span>例：${s.pinyin}</span><span>詳細・音声 ↗</span></span></button>`;
   }).join('')}</div></section>`).join('');
-  return `<div class="section-heading"><h2>韻母の音と綴り</h2><span>${list.length} / ${finals.length} 欄</span></div>${renderSoundUnitsGuide()}<button class="text-button" data-open-tab="erhua">児化による韻母の変化を見る ↗</button><div class="filters"><span class="filter-label">綴りの系統で絞り込む</span>${groupButtons(state)}</div><p class="tone-note">単韻母の中で i の3種類を比較できるように並べ、ê・er も単韻母に含めています。末尾の補足は yo（分析上の韻母 io）です。カードを選ぶと、その韻母の例音節を表示します。韻母単体の録音ではありません。</p>${list.length?cards:empty()}${renderOrderGuide()}`;
+  const supplement=renderNasalSupplement(state);
+  return `<div class="section-heading"><h2>韻母の音と綴り</h2><span>${list.length} / ${finals.length} 欄</span></div>${renderSoundUnitsGuide()}<button class="text-button" data-open-tab="erhua">児化による韻母の変化を見る ↗</button><div class="filters"><span class="filter-label">綴りの系統で絞り込む</span>${groupButtons(state)}</div><p class="tone-note">単韻母の中で i の3種類を比較できるように並べ、ê・er も単韻母に含めています。40欄には yo（分析上の韻母 io）も含みます。カードを選ぶと、その韻母の例音節を表示します。韻母単体の録音ではありません。末尾では、嗯・哼などの鼻音が中心になる音節を別枠で説明しています。</p>${cards}${!list.length&&!supplement?empty():''}${renderOrderGuide()}${supplement}`;
 }

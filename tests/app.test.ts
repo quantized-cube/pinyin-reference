@@ -512,6 +512,148 @@ test('final cards group all simple finals, distinguish adjacent i sounds and exp
   assert.deepEqual(ids('extra'),['io']);
 });
 
+test('nasal supplement is searchable without changing matrix counts, selection or playback', async t => {
+  const s = await setup(t);
+  const matrixCount=s.window.document.querySelectorAll('[data-syllable]').length;
+  s.$('[data-tab="finals"]').click();
+  const ids=()=>[...s.window.document.querySelectorAll('[data-nasal]')].map(el=>el.getAttribute('data-nasal'));
+  assert.deepEqual(ids(),['m','n','ng','hm','hng']);
+  assert.equal(s.window.document.querySelectorAll('.sound-card').length,40);
+  const hash=s.window.location.hash;
+  const detail=s.$('#detail').textContent;
+  const recordings=s.recordingCount();
+  s.input('hng');
+  assert.deepEqual(ids(),['hng']);
+  assert.equal(s.window.document.querySelector('.empty-state'),null);
+  assert.equal(s.window.document.querySelectorAll('.sound-card').length,0);
+  assert.equal(s.$('.nasal-supplement').querySelector('button, [data-pick]'),null);
+  s.$('[data-nasal="hng"]').click();
+  assert.equal(s.window.location.hash,hash);
+  assert.equal(s.$('#detail').textContent,detail);
+  assert.equal(s.recordingCount(),recordings);
+  assert.equal(s.requestCount(),0);
+  s.input('嗯');
+  assert.deepEqual(ids(),['n','ng']);
+  s.input('ǹg');
+  assert.ok(ids().includes('ng'));
+  s.$<HTMLSelectElement>('#search-mode').value='ipa';
+  s.$('#search-mode').dispatchEvent(new s.window.Event('change',{bubbles:true}));
+  s.input('[hŋ̍]');
+  assert.deepEqual(ids(),['hng']);
+  s.$('[data-group="special"]').click();
+  assert.deepEqual(ids(),['hng']);
+  s.$('[data-group="u"]').click();
+  assert.deepEqual(ids(),[]);
+  assert.ok(s.window.document.querySelector('.empty-state'));
+  s.input('');
+  s.$('[data-group="all"]').click();
+  s.$('[data-tab="matrix"]').click();
+  assert.equal(s.window.document.querySelectorAll('[data-syllable]').length,matrixCount);
+});
+
+test('final search Enter focuses exact nasal supplements without selecting or playing a syllable', async t => {
+  const s=await setup(t,[local],{hash:'#s=xuan&t=3&form=half'});
+  let scrolled: Element | undefined;
+  s.window.HTMLElement.prototype.scrollIntoView=function(){scrolled=this;};
+  s.$('[data-tab="finals"]').click();
+  const hash=s.window.location.hash;
+  const detail=s.$('#detail').textContent;
+  for(const [mode,query,target] of [
+    ['pinyin','ḿ','m'],['pinyin','m2','m'],['pinyin','ń','n'],
+    ['pinyin','ńg','ng'],['pinyin','ng2','ng'],['pinyin','hm','hm'],
+    ['pinyin','hng','hng'],['pinyin','呣','m'],['pinyin','哼','hng'],
+    ['pinyin','嗯',null],['ipa','[m̩]','m'],['ipa','[n̩]','n'],
+    ['ipa','[ŋ̍]','ng'],['ipa','[hm̩]','hm'],['ipa','[hŋ̍]','hng'],
+  ] as const){
+    s.$<HTMLSelectElement>('#search-mode').value=mode;
+    s.$('#search-mode').dispatchEvent(new s.window.Event('change',{bubbles:true}));
+    s.input(query);
+    s.$('#search').focus();
+    scrolled=undefined;
+    s.key('#search','Enter');
+    const heading=s.$(target?`[data-nasal="${target}"] h4`:'#nasal-title');
+    assert.equal(s.window.location.hash,hash,query);
+    assert.ok(s.window.document.activeElement===heading,query);
+    assert.ok(scrolled===heading,query);
+    assert.equal(s.$('#detail').textContent,detail,query);
+    assert.equal(s.recordingPlays.length,0,query);
+    assert.equal(s.requestCount(),0,query);
+  }
+});
+
+test('IME confirmation Enter keeps search focus until a later non-composing Enter', async t => {
+  const s=await setup(t,[local],{hash:'#s=xuan&t=3&form=half'});
+  const scrolled: Element[]=[];
+  s.window.HTMLElement.prototype.scrollIntoView=function(){scrolled.push(this);};
+  s.$('[data-tab="finals"]').click();
+  const search=s.$<HTMLInputElement>('#search');
+  const hash=s.window.location.hash;
+  const detail=s.$('#detail').textContent;
+  for(const flags of [
+    {isComposing:true,keyCode:13},
+    {isComposing:true,keyCode:229},
+    {isComposing:false,keyCode:229},
+  ]){
+    search.focus();
+    search.dispatchEvent(new s.window.CompositionEvent('compositionstart',{bubbles:true}));
+    s.input('嗯');
+    const endComposition=()=>search.dispatchEvent(new s.window.CompositionEvent('compositionend',{data:'嗯',bubbles:true}));
+    if(!flags.isComposing)endComposition();
+    scrolled.length=0;
+    const confirmation=new s.window.KeyboardEvent('keydown',{key:'Enter',...flags,bubbles:true,cancelable:true});
+    search.dispatchEvent(confirmation);
+    assert.equal(confirmation.defaultPrevented,false);
+    assert.ok(s.window.document.activeElement===search);
+    assert.equal(search.value,'嗯');
+    assert.equal(scrolled.length,0);
+    assert.equal(s.window.location.hash,hash);
+    assert.equal(s.$('#detail').textContent,detail);
+    if(flags.isComposing)endComposition();
+    s.key('#search','Enter');
+    const heading=s.$('#nasal-title');
+    assert.ok(s.window.document.activeElement===heading);
+    assert.equal(scrolled.length,1);
+    assert.ok(scrolled[0]===heading);
+    assert.equal(s.window.location.hash,hash);
+    assert.equal(s.$('#detail').textContent,detail);
+    assert.equal(s.recordingPlays.length,0);
+    assert.equal(s.requestCount(),0);
+  }
+});
+
+test('nasal Enter navigation respects visible filters and does not override partial or initial searches', async t => {
+  const s=await setup(t);
+  const scrolls: Element[]=[];
+  s.window.HTMLElement.prototype.scrollIntoView=function(){scrolls.push(this);};
+  s.$('[data-tab="finals"]').click();
+  s.$('[data-group="u"]').click();
+  s.input('ḿ');
+  assert.equal(s.window.document.querySelector('.nasal-supplement'),null);
+  s.$('#search').focus();
+  s.key('#search','Enter');
+  assert.equal(s.$('#detail h2').textContent,'wú');
+  s.input('hng');
+  const hash=s.window.location.hash;
+  s.key('#search','Enter');
+  assert.equal(s.window.location.hash,hash);
+  assert.ok(s.window.document.querySelector('.empty-state'));
+  s.$('[data-group="all"]').click();
+  for(const query of ['h','']){
+    s.input(query);
+    assert.ok(s.window.document.querySelector('.nasal-supplement'));
+    const expected=s.$('.sound-card').dataset.pick;
+    s.$('#search').focus();
+    s.key('#search','Enter');
+    assert.equal(new URLSearchParams(s.window.location.hash.slice(1)).get('s'),expected);
+    assert.equal(s.window.document.activeElement,s.$('#search'));
+  }
+  s.$('[data-tab="initials"]').click();
+  s.input('m4');
+  s.key('#search','Enter');
+  assert.equal(s.$('#detail h2').textContent,'mà');
+  assert.deepEqual(scrolls,[]);
+});
+
 test('one i header lists all three sounds while cells and details keep the correct pronunciation', async t => {
   const s = await setup(t);
   assert.equal(s.window.document.querySelectorAll('.final-heading th').length,38);

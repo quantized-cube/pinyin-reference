@@ -167,10 +167,10 @@ test('initial search Enter uses the visible example despite hidden matrix and fi
 
 test('Enter with no visible list result does not select a match from another reference view', async t => {
   const s = await setup(t);
-  s.$<HTMLSelectElement>('#search-mode').value = 'ipa';
-  s.$('#search-mode').dispatchEvent(new s.window.Event('change', { bubbles: true }));
   for (const [tab, query] of [['initials', 'ɑŋ'], ['finals', 'p']] as const) {
     s.$(`[data-tab="${tab}"]`).click();
+    s.$<HTMLSelectElement>('#search-mode').value = 'ipa';
+    s.$('#search-mode').dispatchEvent(new s.window.Event('change', { bubbles: true }));
     s.input(query);
     assert.equal(s.window.document.querySelector('.sound-card'), null);
     const before = s.$('#detail h2').textContent;
@@ -456,6 +456,7 @@ test('textbook and phonetic names agree in matrix, initial cards, details and al
     s.$(`[data-syllable="${sample}"]`).click();
     assert.equal(s.$('.initial-articulation .articulation-badges>span').textContent,label);
     s.$('[data-tab="initials"]').click();
+    s.input(query);
     const cards=[...s.window.document.querySelectorAll('.sound-card')];
     assert.deepEqual(cards.map(card=>card.querySelector('.card-symbol')?.textContent),initials);
     assert.ok(cards.every(card=>card.querySelector('.articulation-badges>span')?.textContent===label));
@@ -720,6 +721,8 @@ test('search modes keep pinyin pa separate from IPA pa across matrix and cards',
   s.key('#search','Enter');
   assert.equal(s.$('#detail h2').textContent,'bā');
   s.$('[data-tab="initials"]').click();s.input('p');
+  s.$<HTMLSelectElement>('#search-mode').value='ipa';
+  s.$('#search-mode').dispatchEvent(new s.window.Event('change',{bubbles:true}));
   const picks=()=>[...s.window.document.querySelectorAll('.sound-card')].map(el=>el.getAttribute('data-pick'));
   assert.deepEqual(picks(),['ba','pa']);
   s.$<HTMLSelectElement>('#search-mode').value='pinyin';
@@ -730,6 +733,73 @@ test('search modes keep pinyin pa separate from IPA pa across matrix and cards',
   s.$<HTMLSelectElement>('#search-mode').value='ipa';
   s.$('#search-mode').dispatchEvent(new s.window.Event('change',{bubbles:true}));
   assert.equal(s.$('.sound-card').getAttribute('data-final'),'e');
+});
+
+test('each search view restores its controls without reselecting a saved query', async t => {
+  const s=await setup(t);
+  s.input('pa3');
+  s.$('[data-group="plain"]').click();
+  s.$<HTMLSelectElement>('#initial-filter').value='p';
+  s.$('#initial-filter').dispatchEvent(new s.window.Event('change',{bubbles:true}));
+  s.$('#show-rare').click();
+  assert.equal(s.$('#search-label').textContent,'音節を検索');
+  s.$('[data-tab="finals"]').click();
+  assert.equal(s.$<HTMLInputElement>('#search').value,'');
+  assert.equal(s.$('[data-group="all"]').getAttribute('aria-pressed'),'true');
+  assert.equal(s.$('#search-label').textContent,'韻母を検索');
+  assert.equal(s.$('#search-mode [value="pinyin"]').textContent,'ピンイン');
+  s.input('ian');
+  s.$('[data-group="i"]').click();
+  s.$('[data-tab="initials"]').click();
+  s.$<HTMLSelectElement>('#search-mode').value='ipa';
+  s.$('#search-mode').dispatchEvent(new s.window.Event('change',{bubbles:true}));
+  s.input('pʰ');s.key('#search','Enter');
+  assert.equal(s.$('#detail h2').textContent,'pǎ');
+  s.$('.quick-links [data-pick="zhi"]').click();
+  const selected=s.window.location.hash;
+  s.$('[data-tab="matrix"]').click();
+  assert.equal(s.window.location.hash,selected);
+  assert.equal(s.$('#detail h2').textContent,'zhǐ');
+  assert.equal(s.$<HTMLInputElement>('#search').value,'pa3');
+  assert.equal(s.$<HTMLSelectElement>('#search-mode').value,'pinyin');
+  assert.ok(s.window.document.querySelector('[data-syllable="pa"]'));
+  assert.equal(s.window.document.querySelector('[data-syllable="ba"]'),null);
+  assert.equal(s.$<HTMLSelectElement>('#initial-filter').value,'p');
+  assert.equal(s.$<HTMLInputElement>('#show-rare').checked,false);
+  assert.equal(s.$('[data-group="plain"]').getAttribute('aria-pressed'),'true');
+  s.$('[data-tab="finals"]').click();
+  assert.equal(s.$<HTMLInputElement>('#search').value,'ian');
+  assert.equal(s.$('[data-group="i"]').getAttribute('aria-pressed'),'true');
+  s.$('[data-tab="initials"]').click();
+  assert.equal(s.$<HTMLInputElement>('#search').value,'pʰ');
+  assert.equal(s.$<HTMLSelectElement>('#search-mode').value,'ipa');
+  assert.equal(s.$('#search-label').textContent,'声母を検索');
+  assert.equal(s.$('#search').getAttribute('aria-label'),'声母を検索');
+  assert.equal(s.$('#search-mode').getAttribute('aria-label'),'検索方式');
+});
+
+test('reset is local, preserves mode, and non-search tabs cannot reset another view', async t => {
+  const s=await setup(t);
+  s.input('ma4');
+  s.$('[data-tab="finals"]').click();
+  s.$<HTMLSelectElement>('#search-mode').value='ipa';
+  s.$('#search-mode').dispatchEvent(new s.window.Event('change',{bubbles:true}));
+  s.input('jɛn');s.$('[data-group="i"]').click();
+  s.$('#reset').click();
+  assert.equal(s.$<HTMLInputElement>('#search').value,'');
+  assert.equal(s.$<HTMLSelectElement>('#search-mode').value,'ipa');
+  assert.equal(s.$('[data-group="all"]').getAttribute('aria-pressed'),'true');
+  s.$('[data-tab="compare"]').click();
+  assert.equal(s.$<HTMLButtonElement>('#reset').disabled,true);
+  assert.equal(s.$<HTMLInputElement>('#search').value,'');
+  s.$('#reset').click();
+  s.key('body','/');
+  assert.equal(s.window.document.activeElement,s.$('#search'));
+  assert.equal(s.$<HTMLInputElement>('#search').value,'ma4');
+  assert.equal(s.$<HTMLSelectElement>('#search-mode').value,'pinyin');
+  s.$('[data-tab="finals"]').click();
+  assert.equal(s.$<HTMLInputElement>('#search').value,'');
+  assert.equal(s.$<HTMLSelectElement>('#search-mode').value,'ipa');
 });
 
 test('IPA starts on desktop, off on mobile, and the stored choice overrides both', async t => {
@@ -923,6 +993,172 @@ test('detail tone changes do not alter the selected first-tone comparison', asyn
   s.$('[data-compare-play="A"]').click();
   assert.equal(s.lastRecording().src,'audio/syllables/guan1.mp3');
   s.lastRecording().onended?.();
+});
+
+test('comparison detail starts closed and preserves its own selection across reference visits', async t => {
+  const s=await setup(t,[local],{hash:'#s=yan&t=3&form=half'});
+  s.$('[data-tab="compare"]').click();
+  assert.equal(s.$('#detail').hidden,true);
+  assert.equal(s.$('#workspace').classList.contains('detail-hidden'),true);
+  assert.ok(s.$('#play'),'hidden detail DOM remains available to audio updates');
+  s.$('[data-compare-preset="uan-uang"]').click();
+  s.$('[data-side="B"] [data-pick]').click();
+  assert.equal(s.$('#detail').hidden,false);
+  assert.equal(s.window.document.activeElement,s.$('#detail-title'));
+  s.$('[data-tone="3"]').click();
+  s.$('[data-third-tone-form="half"]').click();
+  const comparisonHash=s.window.location.hash;
+  s.$('[data-tab="matrix"]').click();
+  assert.equal(s.$('#detail h2').textContent,'yǎn');
+  assert.equal(new URLSearchParams(s.window.location.hash.slice(1)).get('form'),'half');
+  s.input('ma4');
+  const referenceHash=s.window.location.hash;
+  s.$('[data-tab="compare"]').click();
+  assert.equal(s.$('#detail').hidden,false);
+  assert.equal(s.$('#detail h2').textContent,'guǎng');
+  assert.equal(s.window.location.hash,comparisonHash);
+  assert.equal(s.$('[data-third-tone-form="half"]').getAttribute('aria-pressed'),'true');
+  assert.equal(s.$<HTMLDetailsElement>('.third-tone-panel').open,true);
+  assert.equal(s.$('[data-compare-preset="uan-uang"]').getAttribute('aria-pressed'),'true');
+  assert.equal(s.$('[data-side="B"] h3').textContent,'guāng');
+  assert.equal(s.recordingCount(),0);
+  assert.equal(s.requestCount(),0);
+  s.$('#close-detail').click();
+  assert.equal(s.$('#detail').hidden,true);
+  assert.equal(s.window.location.hash,comparisonHash);
+  assert.equal(s.window.document.activeElement,s.$('[data-side="B"] [data-pick]'));
+  s.$('[data-tab="matrix"]').click();
+  assert.equal(s.window.location.hash,referenceHash);
+  assert.equal(s.$('#detail h2').textContent,'mà');
+  s.$('[data-tab="compare"]').click();
+  assert.equal(s.$('#detail').hidden,true);
+  assert.equal(s.window.location.hash,comparisonHash);
+});
+
+test('comparison preset changes close details, while repeated preset selection keeps them open', async t => {
+  const s=await setup(t);
+  s.$('[data-tab="compare"]').click();
+  s.$('[data-side="A"] [data-pick]').click();
+  const selected=s.window.location.hash;
+  s.$('[data-compare-preset="an-ang"]').click();
+  assert.equal(s.$('#detail').hidden,false);
+  s.$('#close-detail').click();
+  assert.equal(s.window.document.activeElement,s.$('[data-side="A"] [data-pick]'));
+  s.$('[data-side="A"] [data-pick]').click();
+  s.$('[data-compare-preset="si-shi-xi"]').click();
+  assert.equal(s.$('#detail').hidden,true);
+  assert.equal(s.$('#workspace').classList.contains('detail-hidden'),true);
+  assert.equal(s.window.location.hash,selected);
+  s.$('[data-side="C"] [data-pick]').click();
+  assert.equal(s.$('#detail h2').textContent,'xī');
+  s.$('#close-detail').click();
+  assert.equal(s.window.document.activeElement,s.$('[data-side="C"] [data-pick]'));
+});
+
+test('comparison opens from quick links and hash navigation and returns focus and mobile scroll', async t => {
+  const s=await setup(t,[local],{mobile:true});
+  const scrolls: Element[]=[];
+  s.window.HTMLElement.prototype.scrollIntoView=function(){scrolls.push(this);};
+  s.$('[data-tab="compare"]').click();
+  const quick=s.$('.quick-links [data-pick="xuan"]');
+  quick.click();
+  assert.equal(s.$('#detail').hidden,false);
+  assert.equal(s.$('#detail h2').textContent,'xuān');
+  assert.equal(s.window.document.activeElement,s.$('#detail-title'));
+  assert.equal(scrolls.at(-1),s.$('#detail'));
+  s.$('#close-detail').click();
+  assert.equal(s.window.document.activeElement,quick);
+  assert.equal(scrolls.at(-1),quick);
+  s.window.location.hash='#s=lao&t=3&form=sandhi';
+  await new Promise<void>(resolve=>s.window.setTimeout(resolve,0));
+  assert.equal(s.$('#detail').hidden,false);
+  assert.equal(s.$('#detail h2').textContent,'lǎo');
+  assert.equal(s.$('[data-third-tone-form="sandhi"]').getAttribute('aria-pressed'),'true');
+  assert.equal(s.window.document.activeElement,s.$('#detail-title'));
+  const hash=s.window.location.hash;
+  s.$('#close-detail').click();
+  assert.equal(s.window.location.hash,hash);
+  assert.equal(s.window.document.activeElement,s.$('#comparison-title'));
+  assert.equal(scrolls.at(-1),s.$('#comparison-title'));
+  quick.click();quick.remove();s.$('#close-detail').click();
+  assert.equal(s.window.document.activeElement,s.$('#comparison-title'));
+  assert.equal(scrolls.at(-1),s.$('#comparison-title'));
+});
+
+test('ordinary page anchors do not silently alter the selected third-tone form', async t => {
+  const s=await setup(t,[local],{hash:'#s=lao&t=3&form=half'});
+  s.window.location.hash='#workspace';
+  await new Promise<void>(resolve=>s.window.setTimeout(resolve,0));
+  s.$('[data-tab="compare"]').click();
+  assert.equal(s.$('#detail').hidden,true);
+  assert.equal(s.$('[data-third-tone-form="half"]').getAttribute('aria-pressed'),'true');
+  s.$('[data-tab="matrix"]').click();
+  assert.equal(s.$('[data-third-tone-form="half"]').getAttribute('aria-pressed'),'true');
+});
+
+test('desktop detail opening scrolls the whole panel into view when its header is outside the viewport', async t => {
+  const s=await setup(t);
+  const scrolls: Element[]=[];
+  s.window.HTMLElement.prototype.scrollIntoView=function(){scrolls.push(this);};
+  s.$('[data-tab="compare"]').click();
+  s.$('#detail').getBoundingClientRect=()=>new s.window.DOMRect(0,-400,340,900);
+  s.$('[data-side="A"] [data-pick]').click();
+  assert.equal(s.window.document.activeElement,s.$('#detail-title'));
+  assert.equal(scrolls.at(-1),s.$('#detail'));
+  s.$('#close-detail').click();
+  s.$('#detail').getBoundingClientRect=()=>new s.window.DOMRect(0,20,340,900);
+  const before=scrolls.length;
+  s.$('[data-side="A"] [data-pick]').click();
+  assert.equal(scrolls.length,before,'a visible desktop header does not cause an unnecessary scroll');
+});
+
+test('passive example and voice updates do not open comparison detail', async t => {
+  let finish: ((response: ExampleResponse)=>void) | undefined;
+  const s=await setup(t,[local],{fetchExamples:()=>new Promise(resolve=>{finish=resolve;})});
+  s.$('[data-tab="compare"]').click();
+  assert.equal(s.$('#detail').hidden,true);
+  s.setVoices([local,preferred]);
+  assert.equal(s.$('#detail').hidden,true);
+  required(finish,'pending catalog request')({ok:true,json:async()=>catalog});
+  await new Promise<void>(resolve=>setImmediate(resolve));
+  assert.equal(s.$('#detail').hidden,true);
+  assert.equal(s.$('[data-side="A"] .compare-example').textContent,'安');
+  s.$('[data-side="A"] [data-pick]').click();
+  s.$('#close-detail').click();s.setVoices([local]);
+  assert.equal(s.$('#detail').hidden,true);
+});
+
+test('closing comparison detail stops detail audio but leaves comparison playback and its gaps intact', async t => {
+  const s=await setup(t);
+  s.$('[data-tab="compare"]').click();
+  s.$('[data-side="A"] [data-pick]').click();
+  s.$('#play').click();
+  const detail=s.lastRecording();
+  assert.equal(detail.paused,false);
+  s.$('#close-detail').click();
+  assert.equal(detail.paused,true);
+  for(const phase of ['pending','playing','gap']){
+    s.$('[data-side="A"] [data-pick]').click();
+    s.$('[data-compare-play="alternate"]').click();
+    const comparison=s.lastRecording();
+    if(phase!=='pending')comparison.onplaying?.();
+    if(phase==='gap')comparison.onended?.();
+    const cancellations=s.cancellations();
+    s.$('#close-detail').click();
+    assert.equal(comparison.paused,false,phase);
+    assert.equal(s.cancellations(),cancellations,phase);
+    if(phase==='gap'){
+      const plays=s.recordingPlays.length;
+      await new Promise<void>(resolve=>setTimeout(resolve,450));
+      assert.equal(s.recordingPlays.length,plays+1);
+    }
+    s.$('#compare-stop').click();
+  }
+  s.$('.quick-links [data-pick="ma"]').click();s.$('[data-tone="5"]').click();
+  s.$('#play').click();
+  const before=s.cancellations();
+  s.$('#close-detail').click();
+  assert.ok(s.cancellations()>before,'closing also cancels pending detail TTS');
 });
 
 test('a missing example character does not prevent playback of its first-tone recording', async t => {

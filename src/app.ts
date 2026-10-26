@@ -4,6 +4,8 @@ import {renderErhua} from './views/erhua.js';
 import {comparisonAudioHint,comparisonPresets,comparisonSequence,getComparisonPreset} from './comparison.js';
 import {renderAbout} from './views/about.js';
 import {createState,save} from './state.js';
+import {SearchNavigation,searchPresentation} from './search-navigation.js';
+import {ComparisonNavigation} from './comparison-navigation.js';
 import {esc} from './views/shared.js';
 import {renderMatrix} from './views/matrix.js';
 import {renderFinals} from './views/finals.js';
@@ -17,25 +19,85 @@ import {resolveDetailPlayback,unavailablePlaybackMessage} from './detail-playbac
 import {isThirdToneFormId} from './third-tone.js';
 import {neutralToneExamples} from './neutral-tone.js';
 import {isToneId,isTabId,required} from './types.js';
-import type {ExampleCatalog,ToneId,ThirdToneFormId} from './types.js';
+import type {ExampleCatalog,ToneId,ThirdToneFormId,TabId} from './types.js';
 
 function $<T extends HTMLElement = HTMLElement>(selector: string): T { return required(document.querySelector<T>(selector), selector); }
 const state = createState();
+const searches = new SearchNavigation();
+const comparison = new ComparisonNavigation();
+let detailOrigin: {element: HTMLElement; preset?: string; side?: string} | undefined;
+let detailAudioActive = false;
 let exampleLoad: {status: 'loading' | 'error'} | {status: 'ready'; catalog: ExampleCatalog} = {status: 'loading'};
 let exampleRequestPending = false;
 function loadedExamples(){return exampleLoad.status==='ready'?exampleLoad.catalog:undefined;}
 let speaker: Speaker | undefined;
-function readHash(){const h=new URLSearchParams(location.hash.slice(1));const pinyin=h.get('s');if(pinyin&&syllableMap.has(pinyin))state.selected=pinyin;const t=Number(h.get('t'));if(isToneId(t))state.tone=t;const form=h.get('form');state.thirdToneForm=isThirdToneFormId(form)?form:'full';state.thirdToneExpanded=state.tone===3&&state.thirdToneForm!=='full';}
+function readHash(){
+  const h=new URLSearchParams(location.hash.slice(1));
+  const pinyin=h.get('s'),tone=Number(h.get('t'));
+  const validPinyin=!!pinyin&&syllableMap.has(pinyin);
+  if(!validPinyin&&!isToneId(tone))return false;
+  if(validPinyin)state.selected=pinyin;
+  if(isToneId(tone))state.tone=tone;
+  const form=h.get('form');
+  state.thirdToneForm=isThirdToneFormId(form)?form:'full';
+  state.thirdToneExpanded=state.tone===3&&state.thirdToneForm!=='full';
+  return true;
+}
 function updateHash(){history.replaceState(null,'',`#s=${encodeURIComponent(state.selected)}&t=${state.tone}${state.tone===3?'&form='+state.thirdToneForm:''}`);}
 function toTone(value: string): ToneId | null { const tone=Number(value);return isToneId(tone)?tone:null; }
 readHash();
-function select(pinyin: string,{tone,form,scroll=false}: {tone?: ToneId | null; form?: ThirdToneFormId; scroll?: boolean}={}){
+function focusAndScroll(element: HTMLElement){
+  element.focus({preventScroll:true});
+  if(matchMedia('(max-width:800px)').matches)element.scrollIntoView({behavior:'auto',block:'start'});
+}
+function revealDetail(){
+  const panel=$('#detail'),heading=$('#detail-title');
+  heading.focus({preventScroll:true});
+  // Keep both the heading and the close control visible when the card was opened below the fold.
+  if(matchMedia('(max-width:800px)').matches||panel.getBoundingClientRect().top<0||heading.getBoundingClientRect().bottom>window.innerHeight){
+    panel.scrollIntoView({behavior:'auto',block:'start'});
+  }
+}
+function updateDetailVisibility(){
+  const hidden=state.tab==='compare'&&!comparison.detailOpen;
+  $('#detail').hidden=hidden;
+  $('#workspace').classList.toggle('detail-hidden',hidden);
+}
+function closeComparisonDetail(){
+  if(state.tab!=='compare')return;
+  if(detailAudioActive)speaker?.stop(false);
+  comparison.closeDetail();updateDetailVisibility();
+  let origin=detailOrigin?.element.isConnected?detailOrigin.element:undefined;
+  if(!origin&&detailOrigin?.side&&detailOrigin.preset===state.comparePreset){
+    origin=document.querySelector<HTMLElement>(`[data-side="${detailOrigin.side}"] [data-pick]`)??undefined;
+  }
+  focusAndScroll(origin??$('#comparison-title'));
+}
+function navigate(nextTab: TabId,{focusHeading=false}: {focusHeading?: boolean}={}){
+  speaker?.stop(false);
+  const compareTransition=state.tab!==nextTab&&(state.tab==='compare'||nextTab==='compare');
+  searches.transition(state,nextTab);
+  comparison.transition(state,nextTab);
+  state.tab=nextTab;
+  if(compareTransition)updateHash();
+  renderReference();renderDetail();
+  if(focusHeading){const heading=$('#reference-body h2');heading.tabIndex=-1;focusAndScroll(heading);}
+}
+function select(pinyin: string,{tone,form,scroll=false,origin}: {tone?: ToneId | null; form?: ThirdToneFormId; scroll?: boolean; origin?: HTMLElement | null}={}){
   if(!syllableMap.has(pinyin))return;
   speaker?.stop(false);if(pinyin!==state.selected||(tone&&tone!==state.tone))state.thirdToneForm='full';state.selected=pinyin;if(tone)state.tone=tone;if(form){state.thirdToneForm=form;state.thirdToneExpanded=true;}
+  const opening=state.tab==='compare'&&!comparison.detailOpen;
+  const externalOrigin=origin===null||!!origin&&!origin.closest('#detail');
+  if(state.tab==='compare'){
+    comparison.showDetail();
+    if(origin===null)detailOrigin=undefined;
+    else if(origin&&!origin.closest('#detail'))detailOrigin={element:origin,preset:state.comparePreset,side:origin.closest<HTMLElement>('[data-side]')?.dataset.side};
+  }
   updateHash();renderDetail();
   document.querySelectorAll<HTMLElement>('[data-syllable]').forEach(b=>{const selected=b.dataset.syllable===pinyin;b.setAttribute('aria-pressed',String(selected));b.tabIndex=selected?0:-1;});
   ensureGridFocus();$('#announce').textContent=`${markTone(pinyin,state.tone)} を選択しました。`;
-  if(scroll && matchMedia('(max-width:800px)').matches)$('#detail').scrollIntoView({behavior:'auto',block:'start'});
+  if(state.tab==='compare'&&(opening||externalOrigin))revealDetail();
+  else if(scroll && matchMedia('(max-width:800px)').matches)$('#detail').scrollIntoView({behavior:'auto',block:'start'});
 }
 function renderReference(){
   document.querySelectorAll<HTMLElement>('[data-tab]').forEach(b=>{if(b.dataset.tab===state.tab)b.setAttribute('aria-current','page');else b.removeAttribute('aria-current');});
@@ -46,16 +108,25 @@ function renderReference(){
   if(state.tab==='compare') $('#reference-body').innerHTML=renderCompare(state,loadedExamples()?.isolatedExamples??{},exampleLoad.status,!!speaker?.recordingsSupported,speaker?.messageFor('comparison')??null);
   if(state.tab==='vowels') $('#reference-body').innerHTML=renderVowels(state);
   if(state.tab==='erhua') $('#reference-body').innerHTML=renderErhua();
-  const searchable=['matrix','finals','initials'].includes(state.tab);
-  $<HTMLInputElement>('#search').disabled=!searchable;
-  $<HTMLSelectElement>('#search-mode').disabled=!searchable;
+  updateSearchMode();updateDetailVisibility();
   updateComparisonAudio();
   updateNeutralToneAudio();
 }
 function updateSearchMode(){
+  const presentation=searchPresentation(state.tab,state.searchMode);
   const input=$<HTMLInputElement>('#search');
-  input.placeholder=state.searchMode==='ipa'?'IPAで検索… 例：pa / ɕ / ɥɛn':'ピンイン・用語で検索… 例：xuan / nǚ / ma3 / 唇音';
-  input.setAttribute('aria-label',state.searchMode==='ipa'?'IPAを検索':'ピンイン・韻母・発音用語を検索');
+  input.value=presentation.searchable?state.query:'';
+  input.disabled=!presentation.searchable;
+  input.placeholder=presentation.placeholder;
+  input.setAttribute('aria-label',presentation.label);
+  $('#search-label').textContent=presentation.label;
+  $('.search-bar').setAttribute('aria-label',presentation.label);
+  $('#search-mode-label').textContent=presentation.modeLabel;
+  const mode=$<HTMLSelectElement>('#search-mode');
+  mode.value=state.searchMode;mode.disabled=!presentation.searchable;
+  mode.setAttribute('aria-label',presentation.modeLabel);
+  required(mode.querySelector<HTMLOptionElement>('[value="pinyin"]'),'pinyin search option').textContent=presentation.pinyinOption;
+  $<HTMLButtonElement>('#reset').disabled=!presentation.searchable;
 }
 function updateComparisonAudio(){
   if(state.tab!=='compare')return;
@@ -83,7 +154,7 @@ function ensureGridFocus(){if(!document.querySelector('[data-syllable][tabindex=
 function playbackFor(){return resolveDetailPlayback(state,loadedExamples(),exampleLoad.status);}
 
 
-function renderDetail(){ $('#detail').innerHTML=detailView(state,playbackFor(),exampleLoad.status); updateVoices(); }
+function renderDetail(){ $('#detail').innerHTML=detailView(state,playbackFor(),exampleLoad.status);updateDetailVisibility();updateVoices(); }
 function updateVoices(){
   if(!speaker)return;
   const voice=document.querySelector<HTMLSelectElement>('#voice');
@@ -110,7 +181,7 @@ function updateAudioStatuses(){
   updateComparisonAudio();
   updateNeutralToneAudio();
 }
-speaker=new Speaker({onVoices:()=>{if(speaker)updateVoices();},onStatus:(_message,kind,source)=>{updateAudioStatuses();if(kind==='error'&&source==='speech'){const help=document.querySelector<HTMLDetailsElement>('#voice-help');if(help)help.open=true;}}});
+speaker=new Speaker({onVoices:()=>{if(speaker)updateVoices();},onStatus:(_message,kind,source)=>{detailAudioActive=(source==='speech'||source==='detail-recording')&&(kind==='pending'||kind==='playing');updateAudioStatuses();if(kind==='error'&&source==='speech'){const help=document.querySelector<HTMLDetailsElement>('#voice-help');if(help)help.open=true;}}});
 function renderExampleViews(){
   renderDetail();
   if(state.tab==='compare')renderReference();
@@ -132,30 +203,26 @@ async function loadExamples(){
     renderExampleViews();
   }
 }
-function reset(){state.query='';state.group='all';state.initial='all';state.rare=true;$<HTMLInputElement>('#search').value='';renderReference();}
+function reset(){searches.reset(state);renderReference();}
 
 document.addEventListener('click',event=>{
   if(!(event.target instanceof Element))return;
   const b=event.target.closest('button');if(!b)return;
-  if(isTabId(b.dataset.tab)){speaker?.stop(false);state.tab=b.dataset.tab;renderReference();updateVoices();}
-  if(isTabId(b.dataset.openTab)){
-    speaker?.stop(false);state.tab=b.dataset.openTab;renderReference();updateVoices();
-    const heading=$<HTMLHeadingElement>('#reference-body h2');
-    heading.tabIndex=-1;heading.focus();
-    if(matchMedia('(max-width:800px)').matches)heading.scrollIntoView({behavior:'auto',block:'start'});
-  }
+  if(isTabId(b.dataset.tab))navigate(b.dataset.tab);
+  if(isTabId(b.dataset.openTab))navigate(b.dataset.openTab,{focusHeading:true});
   if(isGroupFilter(b.dataset.group)){state.group=b.dataset.group;renderReference();document.querySelector<HTMLElement>(`[data-group="${state.group}"]`)?.focus();}
-  if(b.dataset.syllable)select(b.dataset.syllable);
-  if(b.dataset.comparePreset){const preset=comparisonPresets.find(p=>p.id===b.dataset.comparePreset);if(preset){speaker?.stop(false);state.comparePreset=preset.id;renderReference();updateVoices();document.querySelector<HTMLElement>(`[data-compare-preset="${preset.id}"]`)?.focus();}}
+  if(b.dataset.syllable)select(b.dataset.syllable,{origin:b});
+  if(b.dataset.comparePreset){const preset=comparisonPresets.find(p=>p.id===b.dataset.comparePreset);if(preset){speaker?.stop(false);comparison.selectPreset(state,preset.id);renderReference();updateVoices();document.querySelector<HTMLElement>(`[data-compare-preset="${preset.id}"]`)?.focus();}}
+  if(b.id==='close-detail')closeComparisonDetail();
   if(b.dataset.comparePlay)playComparison(b.dataset.comparePlay);
   if(b.id==='compare-stop')speaker?.stop();
   if(b.dataset.neutralTonePlay){const example=neutralToneExamples.find(item=>String(item.precedingTone)===b.dataset.neutralTonePlay);if(example)speaker?.playRecording(example.audio,example.text);}
   if(b.id==='neutral-tone-stop')speaker?.stop();
-  if(b.dataset.pick)select(b.dataset.pick,{tone:b.dataset.pickTone?toTone(b.dataset.pickTone):undefined,scroll:true});
+  if(b.dataset.pick)select(b.dataset.pick,{tone:b.dataset.pickTone?toTone(b.dataset.pickTone):undefined,scroll:true,origin:b});
   if(b.dataset.tone){select(state.selected,{tone:toTone(b.dataset.tone)});document.querySelector<HTMLElement>(`[data-tone="${state.tone}"]`)?.focus();}
-  if(b.dataset.demoTone)select('ma',{tone:toTone(b.dataset.demoTone),scroll:true});
+  if(b.dataset.demoTone)select('ma',{tone:toTone(b.dataset.demoTone),scroll:true,origin:b});
   if(isThirdToneFormId(b.dataset.thirdToneForm)){select(state.selected,{tone:3,form:b.dataset.thirdToneForm});document.querySelector<HTMLElement>(`[data-third-tone-form="${state.thirdToneForm}"]`)?.focus();}
-  if(isThirdToneFormId(b.dataset.thirdDemo))select('lao',{tone:3,form:b.dataset.thirdDemo,scroll:true});
+  if(isThirdToneFormId(b.dataset.thirdDemo))select('lao',{tone:3,form:b.dataset.thirdDemo,scroll:true,origin:b});
   if(b.id==='reset'||b.hasAttribute('data-reset'))reset();
   if(b.id==='play'){
     const playback=playbackFor();
@@ -183,7 +250,7 @@ $<HTMLInputElement>('#search').addEventListener('input',()=>{state.query=$<HTMLI
 document.addEventListener('input',event=>{if(event.target instanceof HTMLInputElement&&event.target.id==='rate'){speaker?.stop(false);state.rate=Number(event.target.value);updateVoices();save('pinyin.rate',state.rate);$('#rate-value').textContent=state.rate.toFixed(2)+'×';}});
 document.addEventListener('keydown',event=>{
   if(!(event.target instanceof Element))return;
-  if(event.key==='/'&&!event.target.matches('input,textarea,select')&&!$<HTMLDialogElement>('#about-dialog').open){event.preventDefault();if($<HTMLInputElement>('#search').disabled){speaker?.stop(false);state.tab='matrix';renderReference();updateVoices();}$<HTMLInputElement>('#search').focus();}
+  if(event.key==='/'&&!event.target.matches('input,textarea,select')&&!$<HTMLDialogElement>('#about-dialog').open){event.preventDefault();if($<HTMLInputElement>('#search').disabled)navigate('matrix');$<HTMLInputElement>('#search').focus();}
   if(event.key==='Escape'){speaker?.stop();if(event.target.id==='search')reset();}
   if(event.key==='Enter'&&event.target.id==='search'){
     // Let the IME confirm text without treating that Enter as a search action.
@@ -208,7 +275,7 @@ document.addEventListener('keydown',event=>{
   const target=['ArrowLeft','ArrowUp','End'].includes(event.key)?candidates.at(-1):candidates[0];
   if(target){cells.forEach(c=>c.tabIndex=-1);target.tabIndex=0;target.focus();}
 });
-window.addEventListener('hashchange',()=>{readHash();select(state.selected);});
+window.addEventListener('hashchange',()=>{if(readHash())select(state.selected,{origin:null});});
 window.addEventListener('pagehide',()=>speaker?.stop(false));
 window.addEventListener('pageshow',()=>speaker?.refresh());
 window.addEventListener('focus',()=>speaker?.refresh());

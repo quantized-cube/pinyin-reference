@@ -18,10 +18,10 @@ export function renderCompare(state: AppState, examples: ExampleMap, exampleStat
       <div class="compare-example" lang="zh-CN">${exampleState==='ready'&&example?example.text:'—'}</div>
       <p class="tone-note">${exampleState==='loading'?'例字を読み込み中…':exampleState==='error'?'例字を読み込めませんでした。':example?'この読みの例字です。':'この読みの例字は未収録です。'}</p>
       <button class="primary" data-compare-play="${side}" ${playable(side)?'':'disabled'}>${side}を聞く</button>
-      <button class="text-button" data-pick="${pinyin}" data-pick-tone="${preset.tone}">音節の詳細を見る ↗</button>
+      <button class="text-button" data-pick="${pinyin}" data-pick-tone="${preset.tone}" aria-controls="detail">音節の詳細を見る ↗</button>
     </article>`;
   };
-  return `<div class="section-heading"><h2>音を聞き比べる</h2><span>第1声で聞き比べます</span></div>
+  return `<div class="section-heading"><h2 id="comparison-title" tabindex="-1">音を聞き比べる</h2><span>第1声で聞き比べます</span></div>
     <p class="comparison-intro">15組すべて、同じ話者による第1声の録音で聞き比べます。声母・韻母だけを切り出した音声ではありません。</p>
     ${comparisonGroups.map(group=>`<section class="comparison-preset-group">
       <h3>${group.label}</h3>${'description' in group?`<p class="comparison-note">${esc(group.description)}</p>`:''}

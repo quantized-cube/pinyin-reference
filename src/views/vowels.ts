@@ -25,7 +25,7 @@ export function renderVowels(state: AppState): string {
       ${vowels.map(v=>`<button class="vowel-point" style="left:${v.x/640*100}%;top:${v.y/410*100}%" data-pick="${v.pick}" aria-label="${v.pinyin} [${v.ipa}]。${v.note}" title="${v.note}">${v.pinyin}<small>[${v.ipa}]</small></button>`).join('')}
       ${state.japaneseVowels?japanese.map(v=>`<span class="japanese-vowel" style="left:${v.x/640*100}%;top:${v.y/410*100}%">${v.label}</span>`).join(''):''}
     </div>
-    <p class="vowel-legend"><span>● 普通話の代表的な母音（クリックで詳細）</span>${state.japaneseVowels?'<span>◇ 日本語の代表的な位置</span>':''}</p>
+    <p class="vowel-legend"><span>● 普通話の代表的な母音</span>${state.japaneseVowels?'<span>◇ 日本語の代表的な位置</span>':''}</p>
     <section class="rule-card vowel-apical-note" aria-labelledby="vowel-apical-title">
       <h3 id="vowel-apical-title">[ɹ̩]・[ɻ̩] を図に置かない理由</h3>
       <p>zi・ci・si の i は [ɹ̩]、zhi・chi・shi・ri の i は [ɻ̩] と表しています。教材で「舌尖母音」と呼ばれる音ですが、本アプリでは音節の中心になる接近音として扱います。記号の下の小さな線は音節の中心になることを示します。</p>

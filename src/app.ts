@@ -12,7 +12,7 @@ import {renderFinals} from './views/finals.js';
 import {renderInitials} from './views/initials.js';
 import {renderRules} from './views/rules.js';
 import {renderDetail as detailView} from './views/detail.js';
-import {syllables,syllableMap,markTone,parseQuery,findSyllables,isInitialId,isGroupFilter} from './data.js';
+import {syllableMap,markTone,parseQuery,findSyllables,isInitialId,isGroupFilter} from './data.js';
 import {Speaker} from './speech.js';
 import {parseExampleCatalog} from './examples.js';
 import {resolveDetailPlayback,unavailablePlaybackMessage} from './detail-playback.js';
@@ -298,6 +298,5 @@ window.addEventListener('pageshow',()=>speaker?.refresh());
 window.addEventListener('focus',()=>speaker?.refresh());
 document.addEventListener('visibilitychange',()=>{if(!document.hidden)speaker?.refresh();});
 
-$('#total-count').textContent=String(syllables.length);
 $('#about-content').innerHTML=renderAbout();
 renderReference();renderDetail();loadExamples();

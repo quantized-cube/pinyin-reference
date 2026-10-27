@@ -6,6 +6,7 @@ import { SourceTextModule } from 'node:vm';
 import { JSDOM, VirtualConsole } from 'jsdom';
 import { required } from '../src/types.js';
 import { parseExampleCatalog } from '../src/examples.js';
+import { erhuaComparisons } from '../src/erhua-recordings.js';
 
 const html = await readFile(new URL('../../public/index.html', import.meta.url), 'utf8');
 const catalog: unknown = JSON.parse(await readFile(new URL('../../public/examples.json', import.meta.url), 'utf8'));
@@ -1360,6 +1361,74 @@ test('slash from a non-searchable tab opens the matrix search',async t=>{
     assert.equal(s.$<HTMLInputElement>('#search').disabled,false);
     assert.equal(s.window.document.activeElement,s.$('#search'));
   }
+});
+
+test('erhua comparisons live beside their final and play the displayed reading without TTS or a catalog', async t => {
+  const s=await setup(t,[],{hash:'#s=an&t=4',speechSupported:false,fetchExamples:async()=>({ok:false,status:503,json:async()=>null})});
+  s.$('[data-tab="erhua"]').click();
+  const hash=s.window.location.hash,detail=s.$('#detail').textContent;
+  assert.equal(s.window.document.querySelectorAll('[data-erhua-play]').length,27);
+  assert.equal(s.window.document.querySelector('.erhua-recordings'),null);
+  for(const pair of erhuaComparisons){
+    const row=s.$(`[data-erhua-final="${pair.final}"]`);
+    for(const side of ['before','after'] as const){
+      const word=pair[side],button=s.$<HTMLButtonElement>(`[data-erhua-pair="${pair.id}"][data-erhua-play="${side}"]`);
+      assert.equal(button.closest('tr'),row);
+      assert.ok(row.textContent?.includes(word.pinyin));
+      assert.equal(button.disabled,false);
+      button.click();const audio=s.lastRecording();
+      assert.equal(audio.src,word.audio);assert.equal(audio.playbackRate,1);
+      audio.onplaying?.();
+      assert.ok(s.$(`[data-erhua-status="${pair.id}"]`).textContent?.includes(word.text+' '+word.pinyin));
+      audio.onended?.();
+    }
+    assert.equal(s.window.location.hash,hash);assert.equal(s.$('#detail').textContent,detail);
+  }
+  assert.ok(s.$('[data-erhua-final="ia"]').textContent?.includes('録音未収録'));
+  assert.equal(s.requestCount(),0);
+});
+
+test('erhua sequences run before then after, cancel in gaps and keep status in the active row', async t => {
+  const s=await setup(t);s.$('[data-tab="erhua"]').click();
+  s.$('[data-erhua-pair="xian"][data-erhua-play="both"]').click();
+  const first=s.lastRecording();assert.equal(first.src,'audio/syllables/xian4.mp3');
+  first.onplaying?.();first.onended?.();
+  await new Promise(resolve=>setTimeout(resolve,450));
+  assert.equal(s.lastRecording(),first);assert.equal(first.src,'audio/erhua/xianr.mp3');
+  first.onplaying?.();assert.match(s.$('[data-erhua-status="xian"]').textContent??'',/児化後.*馅儿/);
+  s.$('[data-erhua-pair="wan"][data-erhua-play="both"]').click();
+  assert.equal(first.paused,true);assert.equal(s.$('[data-erhua-status="xian"]').textContent,'');
+  const second=s.lastRecording(),stale=second.onended;
+  second.onended?.();s.$('[data-erhua-stop="wan"]').click();
+  await new Promise(resolve=>setTimeout(resolve,450));stale?.();
+  assert.equal(second.paused,true);assert.equal(second.src,'audio/syllables/wan2.mp3');
+  assert.equal(s.$('[data-erhua-status="wan"]').textContent,'再生を停止しました。');
+  s.$('[data-erhua-pair="na"][data-erhua-play="both"]').click();
+  const third=s.lastRecording();third.onended?.();s.$('[data-tab="rules"]').click();
+  await new Promise(resolve=>setTimeout(resolve,450));
+  assert.equal(third.paused,true);assert.equal(third.src,'audio/syllables/na3.mp3');
+  assert.doesNotMatch(s.$('#neutral-tone-status').textContent??'',/哪|停止/);
+  s.$('[data-tab="erhua"]').click();assert.equal(s.$('[data-erhua-status="na"]').textContent,'');
+});
+
+test('erhua playback errors abort the pair and allow retry in the same row', async t => {
+  const s=await setup(t);s.$('[data-tab="erhua"]').click();
+  const button=s.$('[data-erhua-pair="xian"][data-erhua-play="both"]');
+  button.click();const first=s.lastRecording(),stale=first.onplaying;
+  first.onerror?.();assert.match(s.$('[data-erhua-status="xian"]').textContent??'',/録音を読み込めません/);
+  await new Promise(resolve=>setTimeout(resolve,450));assert.equal(s.recordingPlays.length,1);
+  button.click();const second=s.lastRecording();second.onplaying?.();stale?.();
+  assert.match(s.$('[data-erhua-status="xian"]').textContent??'',/児化前.*馅/);
+  s.$('[data-erhua-stop="xian"]').click();assert.equal(second.paused,true);
+  assert.equal(s.requestCount(),0);
+});
+
+test('erhua playback is disabled when recorded audio is unavailable', async t => {
+  const s=await setup(t,[local],{recordingsSupported:false});s.$('[data-tab="erhua"]').click();
+  for(const button of s.window.document.querySelectorAll<HTMLButtonElement>('[data-erhua-play],[data-erhua-stop]'))assert.equal(button.disabled,true);
+  assert.match(s.$('#erhua-support-status').textContent??'',/録音の再生に対応していません/);
+  s.$('[data-erhua-pair="xian"][data-erhua-play="both"]').click();
+  assert.equal(s.recordingPlays.length,0);assert.equal(s.requestCount(),0);
 });
 
 test('erhua navigation stops playback and preserves the selected basic syllable',async t=>{

@@ -18,6 +18,7 @@ import {parseExampleCatalog} from './examples.js';
 import {resolveDetailPlayback,unavailablePlaybackMessage} from './detail-playback.js';
 import {isThirdToneFormId} from './third-tone.js';
 import {neutralToneExamples} from './neutral-tone.js';
+import {erhuaSequence} from './erhua-recordings.js';
 import {isToneId,isTabId,required} from './types.js';
 import type {ExampleCatalog,ToneId,ThirdToneFormId,TabId} from './types.js';
 
@@ -27,6 +28,7 @@ const searches = new SearchNavigation();
 const comparison = new ComparisonNavigation();
 let detailOrigin: {element: HTMLElement; preset?: string; side?: string} | undefined;
 let detailAudioActive = false;
+let erhuaAudioId: string | undefined;
 let exampleLoad: {status: 'loading' | 'error'} | {status: 'ready'; catalog: ExampleCatalog} = {status: 'loading'};
 let exampleRequestPending = false;
 function loadedExamples(){return exampleLoad.status==='ready'?exampleLoad.catalog:undefined;}
@@ -111,6 +113,7 @@ function renderReference(){
   updateSearchMode();updateDetailVisibility();
   updateComparisonAudio();
   updateNeutralToneAudio();
+  updateErhuaAudio();
 }
 function updateSearchMode(){
   const presentation=searchPresentation(state.tab,state.searchMode);
@@ -150,6 +153,17 @@ function updateNeutralToneAudio(){
   const status=document.querySelector('#neutral-tone-status');
   if(status)status.textContent=speaker?.messageFor('recording')??(!speaker?.recordingsSupported?'このブラウザは録音の再生に対応していません。':'話者の録音を元の速度で再生します。');
 }
+function updateErhuaAudio(){
+  if(state.tab!=='erhua')return;
+  const supported=!!speaker?.recordingsSupported;
+  document.querySelectorAll<HTMLButtonElement>('[data-erhua-play]').forEach(button=>{button.disabled=!supported;});
+  document.querySelectorAll<HTMLButtonElement>('[data-erhua-stop]').forEach(button=>{button.disabled=!supported||button.dataset.erhuaStop!==erhuaAudioId||!speaker?.messageFor('erhua');});
+  const support=document.querySelector('#erhua-support-status');
+  if(support)support.textContent=supported?'':'このブラウザは録音の再生に対応していません。';
+  document.querySelectorAll<HTMLElement>('[data-erhua-status]').forEach(status=>{
+    status.textContent=status.dataset.erhuaStatus===erhuaAudioId?speaker?.messageFor('erhua')??'':'';
+  });
+}
 function ensureGridFocus(){if(!document.querySelector('[data-syllable][tabindex="0"]'))document.querySelector('[data-syllable]')?.setAttribute('tabindex','0');}
 function playbackFor(){return resolveDetailPlayback(state,loadedExamples(),exampleLoad.status);}
 
@@ -180,6 +194,7 @@ function updateAudioStatuses(){
   if(status)status.textContent=unavailable??speaker.messageFor(recorded?'detail-recording':'speech')??msg;
   updateComparisonAudio();
   updateNeutralToneAudio();
+  updateErhuaAudio();
 }
 speaker=new Speaker({onVoices:()=>{if(speaker)updateVoices();},onStatus:(_message,kind,source)=>{detailAudioActive=(source==='speech'||source==='detail-recording')&&(kind==='pending'||kind==='playing');updateAudioStatuses();if(kind==='error'&&source==='speech'){const help=document.querySelector<HTMLDetailsElement>('#voice-help');if(help)help.open=true;}}});
 function renderExampleViews(){
@@ -218,6 +233,8 @@ document.addEventListener('click',event=>{
   if(b.id==='compare-stop')speaker?.stop();
   if(b.dataset.neutralTonePlay){const example=neutralToneExamples.find(item=>String(item.precedingTone)===b.dataset.neutralTonePlay);if(example)speaker?.playRecording(example.audio,example.text);}
   if(b.id==='neutral-tone-stop')speaker?.stop();
+  if(b.dataset.erhuaPlay&&b.dataset.erhuaPair){const items=erhuaSequence(b.dataset.erhuaPair,b.dataset.erhuaPlay);if(items){erhuaAudioId=b.dataset.erhuaPair;speaker?.playRecordingSequence(items,'erhua');}}
+  if(b.dataset.erhuaStop&&b.dataset.erhuaStop===erhuaAudioId)speaker?.stop();
   if(b.dataset.pick)select(b.dataset.pick,{tone:b.dataset.pickTone?toTone(b.dataset.pickTone):undefined,scroll:true,origin:b});
   if(b.dataset.tone){select(state.selected,{tone:toTone(b.dataset.tone)});document.querySelector<HTMLElement>(`[data-tone="${state.tone}"]`)?.focus();}
   if(b.dataset.demoTone)select('ma',{tone:toTone(b.dataset.demoTone),scroll:true,origin:b});

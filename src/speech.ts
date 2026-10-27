@@ -1,5 +1,5 @@
 export type SpeechStatus = 'idle' | 'pending' | 'playing' | 'error';
-export type AudioSource = 'speech' | 'recording' | 'comparison' | 'detail-recording';
+export type AudioSource = 'speech' | 'recording' | 'comparison' | 'detail-recording' | 'erhua';
 export interface SpeechRequest {
   readonly text: string;
   readonly voice: SpeechSynthesisVoice | undefined;

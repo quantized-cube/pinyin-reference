@@ -1,17 +1,27 @@
 import type {AppState} from '../types.js';
 import {renderSoundUnitsGuide} from './sound-units.js';
 
-const vowels = [
-  {pinyin:'i', ipa:'i', pick:'yi', x:125, y:80, note:'前舌・狭母音。唇を丸めない。'},
-  {pinyin:'ü', ipa:'y', pick:'yu', x:197, y:80, note:'i と同じく前舌・狭母音。唇を丸める。'},
-  {pinyin:'u', ipa:'u', pick:'wu', x:551, y:80, note:'後舌・狭母音。唇を丸める。'},
-  {pinyin:'e', ipa:'ɤ', pick:'e', x:477, y:170, note:'後舌・半狭母音。唇を丸めない。日本語の「え」とは異なる。'},
-  {pinyin:'o', ipa:'o', pick:'o', x:551, y:170, note:'後舌・半狭母音。唇を丸める。唇音後の渡り音はこの点に含めない。'},
-  {pinyin:'ê', ipa:'ɛ', pick:'ê', x:273, y:253, note:'前舌・半広母音。ie / üe などの主母音の目安にもなる。'},
-  {pinyin:'a', ipa:'a', pick:'a', x:346, y:342, note:'広母音。実際の舌の前後位置は音節・話者により変わる。'},
+const vowelPositions = [
+  {x:125, y:80, vowels:[
+    {pinyin:'i', ipa:'i', pick:'yi', note:'前舌・狭母音。唇を丸めない。'},
+    {pinyin:'ü', ipa:'y', pick:'yu', note:'i と同じく前舌・狭母音。唇を丸める。'},
+  ]},
+  {x:551, y:80, vowels:[
+    {pinyin:'u', ipa:'u', pick:'wu', note:'後舌・狭母音。唇を丸める。'},
+  ]},
+  {x:551, y:170, vowels:[
+    {pinyin:'e', ipa:'ɤ', pick:'e', note:'後舌・半狭母音。唇を丸めない。日本語の「え」とは異なる。'},
+    {pinyin:'o', ipa:'o', pick:'o', note:'後舌・半狭母音。唇を丸める。唇音後の渡り音はこの点に含めない。'},
+  ]},
+  {x:273, y:253, vowels:[
+    {pinyin:'ê', ipa:'ɛ', pick:'ê', note:'前舌・半広母音。ie / üe などの主母音の目安にもなる。'},
+  ]},
+  {x:346, y:342, vowels:[
+    {pinyin:'a', ipa:'a', pick:'a', note:'広母音。実際の舌の前後位置は音節・話者により変わる。'},
+  ]},
 ] as const;
 const japanese = [
-  {label:'い [i]',x:159,y:119}, {label:'う [ɯ̟]',x:420,y:116},
+  {label:'い [i]',x:159,y:119}, {label:'う [ɯ̟]',x:460,y:108},
   {label:'え [e̞]',x:235,y:207}, {label:'お [o̞]',x:516,y:220}, {label:'あ [ä]',x:428,y:319},
 ] as const;
 
@@ -20,11 +30,11 @@ export function renderVowels(state: AppState): string {
     ${renderSoundUnitsGuide()}
     <p class="comparison-intro">上ほど舌が高く、左ほど舌が前にある母音です。i と ü、e と o の横並びは、主に唇を丸めるかどうかの対比を示します。同じ舌位置の非円唇母音と円唇母音は、IPA母音図では左・右の順に並べて表します。</p>
     <label class="vowel-overlay-toggle"><input type="checkbox" id="japanese-vowels" ${state.japaneseVowels?'checked':''}> 日本語の「あいうえお」を重ねる</label>
-    <div class="vowel-map" aria-label="母音四辺形。中国語の母音ボタンから音節詳細へ移動できます。">
-      <svg viewBox="0 0 640 410" aria-hidden="true"><path d="M125 80H551V342H346ZM199 167H551M272 254H551M338 80L448 342" fill="none" stroke="currentColor" stroke-width="1.5"/><g class="vowel-axis"><text x="110" y="30">前</text><text x="328" y="30">中</text><text x="538" y="30">後</text><text x="12" y="85">高（狭）</text><text x="12" y="175">半狭</text><text x="12" y="260">半広</text><text x="12" y="347">低（広）</text></g></svg>
-      ${vowels.map(v=>`<button class="vowel-point" style="left:${v.x/640*100}%;top:${v.y/410*100}%" data-pick="${v.pick}" aria-label="${v.pinyin} [${v.ipa}]。${v.note}" title="${v.note}">${v.pinyin}<small>[${v.ipa}]</small></button>`).join('')}
+    <div class="vowel-map-frame"><div class="vowel-map" aria-label="母音四辺形。中国語の母音ボタンから音節詳細へ移動できます。">
+      <svg viewBox="0 0 640 410" preserveAspectRatio="none" aria-hidden="true"><path d="M125 80H551V342H346ZM199 167H551M272 254H551M338 80L448 342" fill="none" stroke="currentColor" stroke-width="1.5"/><g class="vowel-axis"><text x="110" y="30">前</text><text x="328" y="30">中</text><text x="538" y="30">後</text><text x="12" y="85">高（狭）</text><text x="12" y="175">半狭</text><text x="12" y="260">半広</text><text x="12" y="347">低（広）</text></g></svg>
+      ${vowelPositions.map(position=>`<div class="vowel-position" style="left:${position.x/640*100}%;top:${position.y/410*100}%">${position.vowels.map(v=>`<button class="vowel-point" data-pick="${v.pick}" aria-label="${v.pinyin} [${v.ipa}]。${v.note}" title="${v.note}">${v.pinyin}<small>[${v.ipa}]</small></button>`).join('')}</div>`).join('')}
       ${state.japaneseVowels?japanese.map(v=>`<span class="japanese-vowel" style="left:${v.x/640*100}%;top:${v.y/410*100}%">${v.label}</span>`).join(''):''}
-    </div>
+    </div></div>
     <p class="vowel-legend"><span>● 普通話の代表的な母音</span>${state.japaneseVowels?'<span>◇ 日本語の代表的な位置</span>':''}</p>
     <section class="rule-card vowel-apical-note" aria-labelledby="vowel-apical-title">
       <h3 id="vowel-apical-title">[ɹ̩]・[ɻ̩] を図に置かない理由</h3>

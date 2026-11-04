@@ -12,7 +12,6 @@ import json
 import math
 from pathlib import Path
 import re
-import shutil
 import subprocess
 import sys
 import time
@@ -77,27 +76,31 @@ def probe(path):
 
 def fetch_recording(source, row):
     path = FOLDER / row['file']
-    if path.exists() and 'sha256' in row:
-        verify_bytes(source, row, path.read_bytes())
-        return row
-    if not path.exists():
+    if path.exists():
+        data = path.read_bytes()
+    else:
         # Reuse previously shipped, unchanged recordings before requesting upstream.
         old = [ROOT / 'public/audio' / kind / row['file'] for kind in ('comparison', 'detail')]
         cached = next((p for p in old if p.exists()), None)
         if cached:
-            shutil.copyfile(cached, path)
+            data = cached.read_bytes()
         else:
             for attempt in range(3):
                 try:
                     with urllib.request.urlopen(source_url(source, row), timeout=30) as response:
                         data = response.read()
-                    path.write_bytes(data)
                     break
                 except OSError:
                     if attempt == 2:
                         raise
                     time.sleep(attempt + 1)
-    data = path.read_bytes()
+    if 'sha256' in row:
+        # Restoring a missing file must preserve the identity approved in the manifest.
+        verify_bytes(source, row, data)
+        if not path.exists():
+            path.write_bytes(data)
+        return row
+    path.write_bytes(data)
     result = probe(path)
     updated = {**row, 'sha256': hashlib.sha256(data).hexdigest(), 'bytes': len(data),
                'duration': round(float(result['duration']), 6)}

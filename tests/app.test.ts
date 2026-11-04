@@ -128,6 +128,68 @@ test('search Enter keeps the exact pinyin instead of an earlier IPA substring ma
   }
 });
 
+test('clicking partial pinyin search results applies the same tone as Enter in every search view', async t => {
+  const s = await setup(t);
+  for (const [tab, query, selector, expected] of [
+    ['matrix', 'ian3', '[data-syllable="yan"]', 'yǎn'],
+    ['finals', 'ün3', '#reference-body .sound-card[data-pick="yun"]', 'yǔn'],
+    ['initials', 'sh3', '#reference-body .sound-card[data-pick="shi"]', 'shǐ'],
+    ['matrix', 'ian0', '[data-syllable="yan"]', 'yan'],
+  ] as const) {
+    s.$(`[data-tab="${tab}"]`).click();
+    s.input(query);
+    s.$('[data-tone="1"]').click();
+    s.$(selector).click();
+    assert.equal(s.$('#detail h2').textContent, expected, `${tab}: click`);
+    s.$('[data-tone="1"]').click();
+    s.key('#search', 'Enter');
+    assert.equal(s.$('#detail h2').textContent, expected, `${tab}: Enter`);
+  }
+});
+
+test('search tones do not override unmarked searches, quick links or examples outside the results', async t => {
+  const s = await setup(t);
+  s.input('ian3');
+  s.$('[data-tone="2"]').click();
+  s.$('.quick-links [data-pick="liu"]').click();
+  assert.equal(s.$('#detail h2').textContent, 'liú');
+  s.$('[data-tab="vowels"]').click();
+  s.$('.vowel-point[data-pick="yi"]').click();
+  assert.equal(s.$('#detail h2').textContent, 'yí');
+  s.$('[data-tab="initials"]').click();
+  s.input('sh3');
+  s.$('.aspiration-pairs [data-pick="ba"]').click();
+  assert.equal(s.$('#detail h2').textContent, 'bá');
+  s.$('[data-tab="rules"]').click();
+  s.$('.rule-examples [data-pick="liu"][data-pick-tone="4"]').click();
+  assert.equal(s.$('#detail h2').textContent, 'liù');
+  s.$('[data-tab="matrix"]').click();
+  s.input('ian');
+  s.$('[data-syllable="yan"]').click();
+  assert.equal(s.$('#detail h2').textContent, 'yàn');
+  s.$('[data-tab="finals"]').click();
+  s.input('ün');
+  s.$('.sound-card[data-pick="yun"]').click();
+  assert.equal(s.$('#detail h2').textContent, 'yùn');
+});
+
+test('matrix activation reveals details on mobile while arrow navigation keeps the matrix in place', async t => {
+  for (const mobile of [true, false]) {
+    const s = await setup(t, [local], {mobile});
+    const scrolls: Element[] = [];
+    s.window.HTMLElement.prototype.scrollIntoView = function(){scrolls.push(this);};
+    s.$('[data-syllable="ba"]').focus();
+    s.$('[data-syllable="ba"]').click();
+    assert.equal(s.$('#detail h2').textContent, 'bā');
+    assert.deepEqual(scrolls, mobile ? [s.$('#detail')] : []);
+    scrolls.length = 0;
+    s.key('[data-syllable="ba"]', 'ArrowRight');
+    assert.equal((s.window.document.activeElement as HTMLElement).dataset.syllable, 'bo');
+    assert.equal(s.$('#detail h2').textContent, 'bā');
+    assert.deepEqual(scrolls, []);
+  }
+});
+
 test('final search Enter uses visible cards without hidden matrix initial or rare filters', async t => {
   const s = await setup(t);
   s.$<HTMLSelectElement>('#initial-filter').value = 'b';

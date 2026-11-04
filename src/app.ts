@@ -219,6 +219,7 @@ async function loadExamples(){
   }
 }
 function reset(){searches.reset(state);renderReference();}
+function searchTone(){return state.searchMode==='pinyin'?parseQuery(state.query).tone:undefined;}
 
 document.addEventListener('click',event=>{
   if(!(event.target instanceof Element))return;
@@ -226,7 +227,7 @@ document.addEventListener('click',event=>{
   if(isTabId(b.dataset.tab))navigate(b.dataset.tab);
   if(isTabId(b.dataset.openTab))navigate(b.dataset.openTab,{focusHeading:true});
   if(isGroupFilter(b.dataset.group)){state.group=b.dataset.group;renderReference();document.querySelector<HTMLElement>(`[data-group="${state.group}"]`)?.focus();}
-  if(b.dataset.syllable)select(b.dataset.syllable,{origin:b});
+  if(b.dataset.syllable)select(b.dataset.syllable,{tone:searchTone(),scroll:true,origin:b});
   if(b.dataset.comparePreset){const preset=comparisonPresets.find(p=>p.id===b.dataset.comparePreset);if(preset){speaker?.stop(false);comparison.selectPreset(state,preset.id);renderReference();updateVoices();document.querySelector<HTMLElement>(`[data-compare-preset="${preset.id}"]`)?.focus();}}
   if(b.id==='close-detail')closeComparisonDetail();
   if(b.dataset.comparePlay)playComparison(b.dataset.comparePlay);
@@ -235,7 +236,11 @@ document.addEventListener('click',event=>{
   if(b.id==='neutral-tone-stop')speaker?.stop();
   if(b.dataset.erhuaPlay&&b.dataset.erhuaPair){const items=erhuaSequence(b.dataset.erhuaPair,b.dataset.erhuaPlay);if(items){erhuaAudioId=b.dataset.erhuaPair;speaker?.playRecordingSequence(items,'erhua');}}
   if(b.dataset.erhuaStop&&b.dataset.erhuaStop===erhuaAudioId)speaker?.stop();
-  if(b.dataset.pick)select(b.dataset.pick,{tone:b.dataset.pickTone?toTone(b.dataset.pickTone):undefined,scroll:true,origin:b});
+  if(b.dataset.pick){
+    const searchResult=(state.tab==='finals'||state.tab==='initials')&&b.matches('#reference-body .sound-card');
+    const tone=b.dataset.pickTone?toTone(b.dataset.pickTone):searchResult?searchTone():undefined;
+    select(b.dataset.pick,{tone,scroll:true,origin:b});
+  }
   if(b.dataset.tone){select(state.selected,{tone:toTone(b.dataset.tone)});document.querySelector<HTMLElement>(`[data-tone="${state.tone}"]`)?.focus();}
   if(b.dataset.demoTone)select('ma',{tone:toTone(b.dataset.demoTone),scroll:true,origin:b});
   if(isThirdToneFormId(b.dataset.thirdToneForm)){select(state.selected,{tone:3,form:b.dataset.thirdToneForm});document.querySelector<HTMLElement>(`[data-third-tone-form="${state.thirdToneForm}"]`)?.focus();}
@@ -283,7 +288,7 @@ document.addEventListener('keydown',event=>{
     if(state.tab==='matrix')pinyin=findSyllables(state.query,state)[0]?.pinyin;
     // Card views have their own filters and example syllables; use the visible result.
     else if(state.tab==='finals'||state.tab==='initials')pinyin=document.querySelector<HTMLElement>('#reference-body .sound-card[data-pick]')?.dataset.pick;
-    if(pinyin)select(pinyin,{tone:state.searchMode==='pinyin'?parseQuery(state.query).tone:undefined,scroll:true});
+    if(pinyin)select(pinyin,{tone:searchTone(),scroll:true});
   }
   const b=event.target.closest<HTMLElement>('[data-syllable]');if(!b||!['ArrowRight','ArrowLeft','ArrowUp','ArrowDown','Home','End'].includes(event.key))return;
   event.preventDefault();const row=Number(b.dataset.row),col=Number(b.dataset.col);const cells=[...document.querySelectorAll<HTMLElement>('[data-syllable]')];let candidates: HTMLElement[]=[];

@@ -1701,6 +1701,15 @@ test('contextual recordings play complete words without TTS support or settings'
     ['shui','sandhi','水果','水','shuǐ guǒ','shuiguo'],
     ['zhun','half','准备','准','zhǔn bèi','zhunbei'],
     ['zhun','sandhi','准许','准','zhǔn xǔ','zhunxu'],
+    ['dian','half','点名','点','diǎn míng','dian3-half'],
+    ['dian','sandhi','点火','点','diǎn huǒ','dian3-sandhi'],
+    ['ni','sandhi','你好','你','nǐ hǎo','ni3-sandhi'],
+    ['nü','sandhi','女子','女','nǚ zǐ','nv3-sandhi'],
+    ['fa','half','法国','法','fǎ guó','fa3-half'],
+    ['mai','half','买单','买','mǎi dān','mai3-half'],
+    ['shou','half','手机','手','shǒu jī','shou3-half'],
+    ['wan','half','晚安','晚','wǎn ān','wan3-half'],
+    ['xiao','half','小吃','小','xiǎo chī','xiao3-half'],
   ] as const){
     for(const recordingsSupported of [true,false]){
       const s=await setup(t,[],{hash:`#s=${syllable}&t=3&form=${form}`,speechSupported:false,recordingsSupported});

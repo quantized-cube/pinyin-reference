@@ -11,12 +11,14 @@ import type {PronunciationExample} from '../src/types.js';
 const root = new URL('../../', import.meta.url);
 const catalog = parseExampleCatalog(JSON.parse(await readFile(new URL('public/examples.json', root), 'utf8')));
 
-test('contextual recordings ship exact examples, unchanged audio and separate attribution', async () => {
+test('contextual recordings ship exact examples, verified audio and separate attribution', async () => {
   const folder = new URL('public/audio/third-tone/', root);
-  const credits: {file:string;word:string;tokens:string[];target:number;form:string;sha256:string;bytes:number;author:string;licenseUrl:string;sourcePage:string}[] = JSON.parse(await readFile(new URL('credits.json', folder), 'utf8'));
+  const credits: {file:string;word:string;tokens:string[];target:number;form:string;sha256:string;bytes:number;author:string;licenseUrl:string;sourcePage:string;retrieved:string;changes:string;originalFormat?:string;originalSha256?:string;originalBytes?:number}[] = JSON.parse(await readFile(new URL('credits.json', folder), 'utf8'));
   const page = await readFile(new URL('credits.html', folder), 'utf8');
-  assert.equal(thirdToneRecordings.length, 7);
+  assert.equal(thirdToneRecordings.length, 31);
   assert.equal(credits.length, thirdToneRecordings.length);
+  assert.equal(new Set(thirdToneRecordings.map(recording => recording.url)).size, 31);
+  assert.equal(credits.filter(credit => credit.originalFormat === 'wav').length, 4);
   assert.deepEqual((await readdir(folder)).filter(f => f.endsWith('.mp3')).sort(), credits.map(c => c.file).sort());
   for (const recording of thirdToneRecordings) {
     const credit = credits.find(c => 'audio/third-tone/' + c.file === recording.url);
@@ -26,14 +28,52 @@ test('contextual recordings ship exact examples, unchanged audio and separate at
     const syllable = parseQuery(tokens[target] ?? '');
     assert.equal(syllable.tone, 3);
     assert.deepEqual(detailExample(syllable.text, 3, form, catalog), {text, tokens, target});
+    const playback = resolveDetailPlayback({selected:syllable.text, tone:3, thirdToneForm:form}, catalog, 'ready');
+    assert.deepEqual(playback, {example:{text, tokens, target}, contextual:true, kind:'recording', url:recording.url});
     assert.ok(credit.author.trim());
-    assert.match(credit.licenseUrl, /^https:\/\/creativecommons\.org\/licenses\//);
+    assert.match(credit.licenseUrl, /^https:\/\/creativecommons\.org\/(?:licenses\/|publicdomain\/zero\/)/);
     for (const value of [credit.word, credit.author, credit.licenseUrl, credit.sourcePage]) assert.ok(page.includes(value));
     const audio = await readFile(new URL(credit.file, folder));
     assert.equal(audio.length, credit.bytes);
     assert.equal(createHash('sha256').update(audio).digest('hex'), credit.sha256);
     assert.deepEqual(await readFile(new URL('dist/' + recording.url, root)), audio);
+    if (credit.retrieved === '2026-11-06') {
+      assert.match(credit.originalSha256 ?? '', /^[a-f0-9]{64}$/);
+      assert.ok((credit.originalBytes ?? 0) > 0);
+      if (credit.originalFormat === 'mp3') {
+        assert.equal(credit.originalSha256, credit.sha256);
+        assert.equal(credit.originalBytes, credit.bytes);
+      } else {
+        assert.equal(credit.originalFormat, 'wav');
+        assert.notEqual(credit.originalSha256, credit.sha256);
+        assert.match(credit.changes, /WAV converted to MP3/);
+      }
+    }
   }
+});
+
+test('all curated third-tone contexts use recordings except the ten explicitly unrecorded examples', () => {
+  const unrecorded = new Set(['好友','理科','马匹','买主','女生','使馆','晚点','小雨','有理','早晨']);
+  let recordedCount = 0;
+  let speechCount = 0;
+  for (const [key, forms] of Object.entries(catalog.thirdToneExamples)) {
+    for (const form of ['half','sandhi'] as const) {
+      const example = forms?.[form];
+      if (!example) continue;
+      const playback = resolveDetailPlayback({selected:parseQuery(key).text, tone:3, thirdToneForm:form}, catalog, 'ready');
+      if (unrecorded.has(example.text)) {
+        assert.equal(playback.kind, 'speech', example.text);
+        assert.equal(thirdToneRecording(example, form), undefined);
+        speechCount++;
+      } else {
+        assert.equal(playback.kind, 'recording', example.text);
+        recordedCount++;
+      }
+    }
+  }
+  assert.equal(recordedCount, 31);
+  assert.equal(speechCount, unrecorded.size);
+  assert.equal(thirdToneRecording({text:'早晨', tokens:['zao3','chen5'], target:0}, 'half'), undefined);
 });
 
 test('recorded targets use the isolated recording or the exact complete word for each third-tone form', () => {

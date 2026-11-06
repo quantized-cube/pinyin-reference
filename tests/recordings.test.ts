@@ -10,10 +10,10 @@ import {parseQuery, syllables} from '../src/data.js';
 import {detailRecordingTokens, detailRecording} from '../src/detail-recordings.js';
 import {parseExampleCatalog, detailExample} from '../src/examples.js';
 
-test('every neutral-tone recording is shipped unchanged with its attribution and license', async () => {
+test('the four neutral-tone guide recordings retain their original files and attribution', async () => {
   const root = new URL('../../', import.meta.url);
   const credits: {file:string;word:string;sha256:string;author:string;licenseUrl:string;sourcePage:string}[] = JSON.parse(await readFile(new URL('public/audio/neutral/credits.json', root), 'utf8'));
-  assert.equal(credits.length, neutralToneExamples.length);
+  assert.equal(neutralToneExamples.length, 4);
   for (const example of neutralToneExamples) {
     const credit = credits.find(item=>item.word===example.text);
     assert.ok(credit);

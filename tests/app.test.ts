@@ -115,8 +115,82 @@ async function setup(t: TestContext, initialVoices = [local], options: {
 
 // TTS-specific tests exercise a contextual neutral-tone example after the migration.
 function setupSpeech(t: TestContext, voices = [local], options: Parameters<typeof setup>[2] = {}) {
-  return setup(t, voices, {hash:'#s=ma&t=5', ...options});
+  return setup(t, voices, {hash:'#s=a&t=5', ...options});
 }
+
+test('neutral detail plays exact unchanged and replacement words without TTS, with the correct target and attribution', async t => {
+  const s=await setup(t,[],{hash:'#s=ma&t=5',speechSupported:false});
+  for (const [key,word,target,pinyin,file] of [
+    ['ma5','妈妈','妈','mā ma','mama'],
+    ['hu5','不在乎','乎','bù zài hu','hu5'],
+    ['mu5','大拇指','拇','dà mu zhǐ','mu5'],
+    ['bu5','对不起','不','duì bu qǐ','bu5'],
+    ['duo5','耳朵','朵','ěr duo','duo5'],
+    ['qi5','力气','气','lì qi','qi5'],
+    ['nai5','奶奶','奶','nǎi nai','nainai'],
+    ['ye5','爷爷','爷','yé ye','yeye'],
+  ] as const) {
+    s.input(key);
+    assert.equal(s.$('.example-word').textContent,word);
+    assert.equal(s.$('.example-word mark').textContent,target);
+    assert.equal(s.$('.example-pinyin').textContent,pinyin);
+    assert.equal(s.$('.example-pinyin mark').textContent,key.slice(0,-1));
+    assert.equal(s.$('#play span').textContent,'例語を聞く');
+    assert.equal(s.$<HTMLButtonElement>('#play').disabled,false);
+    assert.equal(s.window.document.querySelector('.voice-settings,#voice-help'),null);
+    assert.equal(s.$('.audio-footnote a').getAttribute('href'),'audio/neutral/credits.html');
+    s.$('#play').click();const audio=s.lastRecording();
+    assert.equal(audio.src,`audio/neutral/${file}.mp3`);
+    assert.equal(audio.playbackRate,1);
+    audio.onplaying?.();assert.match(s.$('#voice-status').textContent??'',new RegExp(word+'.*録音を再生中'));
+    audio.onended?.();assert.equal(s.$('#voice-status').textContent,'再生しました。');
+  }
+  assert.equal(s.requestCount(),0);
+  const dialog=s.$<HTMLDialogElement>('#about-dialog');
+  dialog.showModal=()=>{dialog.open=true;};
+  s.$('#about').click();
+  assert.match(s.$('#about-content').textContent??'',/軽声111例/);
+});
+
+test('neutral recordings stop on context and tab changes, restore TTS settings and ignore stale events', async t => {
+  const s=await setupSpeech(t,[local,preferred]);
+  s.$<HTMLInputElement>('#rate').value='0.6';
+  s.$('#rate').dispatchEvent(new s.window.Event('input',{bubbles:true}));
+  s.$('#play').click();const speech=s.lastRequest();
+  s.input('qi5');
+  s.$('#play').click();const first=s.lastRecording();first.onplaying?.();
+  speech.onerror?.({error:'canceled'});speech.onend?.();
+  assert.match(s.$('#voice-status').textContent??'',/力气.*録音を再生中/);
+  s.input('mu5');assert.equal(first.paused,true);
+  s.$('#play').click();const second=s.lastRecording();second.onplaying?.();
+  first.onerror?.();first.onended?.();
+  assert.match(s.$('#voice-status').textContent??'',/大拇指.*録音を再生中/);
+  s.$('[data-tab="finals"]').click();assert.equal(second.paused,true);
+  s.input('a5');
+  assert.equal(s.$<HTMLInputElement>('#rate').value,'0.6');
+  assert.equal(s.$<HTMLSelectElement>('#voice').value,preferred.voiceURI);
+  s.$('#play').click();s.lastRequest().onstart?.();
+  second.onerror?.();second.onended?.();
+  assert.equal(s.lastRequest().text,'天啊');
+  assert.match(s.$('#voice-status').textContent??'',/天啊.*再生中/);
+});
+
+test('neutral detail recording failures never fall back to TTS', async t => {
+  const unsupported=await setup(t,[local],{hash:'#s=nai&t=5',recordingsSupported:false});
+  assert.equal(unsupported.$<HTMLButtonElement>('#play').disabled,true);
+  assert.match(unsupported.$('#voice-status').textContent??'',/録音の再生に対応していません/);
+  assert.equal(unsupported.window.document.querySelector('#voice-help'),null);
+  assert.equal(unsupported.requestCount(),0);
+  const s=await setup(t,[local],{hash:'#s=qi&t=5'});
+  s.$('#play').click();s.lastRecording().onerror?.();
+  assert.match(s.$('#voice-status').textContent??'',/録音を読み込めません/);
+  s.setVoices([local,preferred]);
+  assert.match(s.$('#voice-status').textContent??'',/録音を読み込めません/);
+  s.blockRecordings(true);s.$('#play').click();
+  await new Promise<void>(resolve=>setImmediate(resolve));
+  assert.match(s.$('#voice-status').textContent??'',/録音を再生できません/);
+  assert.equal(s.requestCount(),0);
+});
 
 test('search Enter keeps the exact pinyin instead of an earlier IPA substring match', async t => {
   const s = await setup(t);
@@ -1555,8 +1629,8 @@ test('third-tone detail keeps its approved characters and contextual playback ru
   s.input('jing5');
   assert.equal(s.$('.example-word').textContent, '眼睛');
   s.$('#play').click();
-  assert.equal(s.lastRequest().text, '眼睛');
-  s.lastRequest().onend?.();
+  assert.equal(s.lastRecording().src, 'audio/neutral/jing5.mp3');
+  s.lastRecording().onended?.();
 });
 
 test('detail shows reference examples while playing only the selected isolated syllable', async t => {
@@ -1618,11 +1692,11 @@ test('recorded detail examples play the selected isolated reading instead of amb
     assert.equal(s.$('#voice-status').textContent,'再生しました。');
   }
   assert.equal(s.requestCount(),0);
-  s.input('ma5');
+  s.input('a5');
   assert.equal(s.$<HTMLInputElement>('#rate').value,'0.6');
   assert.equal(s.$<HTMLSelectElement>('#voice').value,preferred.voiceURI);
   s.$('#play').click();
-  assert.equal(s.lastRequest().text,'妈妈');
+  assert.equal(s.lastRequest().text,'天啊');
   s.lastRequest().onend?.();
 });
 
@@ -1856,11 +1930,11 @@ test('changing detail readings cancels playback and ignores callbacks from the o
   const second=s.lastRecording();second.onplaying?.();
   first.onerror?.();first.onended?.();first.onplaying?.();
   assert.match(s.$('#voice-status').textContent??'',/fà.*録音を再生中/);
-  s.input('ma5');
+  s.input('a5');
   assert.equal(second.paused,true);
   s.$('#play').click();s.lastRequest().onstart?.();
   second.onerror?.();second.onended?.();second.onplaying?.();
-  assert.match(s.$('#voice-status').textContent??'',/妈.*再生中/);
+  assert.match(s.$('#voice-status').textContent??'',/天啊.*再生中/);
   s.lastRequest().onend?.();
 });
 

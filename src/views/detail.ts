@@ -45,7 +45,7 @@ function renderExampleUsage(example: PronunciationExample): string {
 
 function renderAudioNote(playback: DetailPlayback, third: boolean): string {
   if (playback.contextual && playback.kind === 'recording') {
-    return '例語全体の録音を再生します。話者は録音によって異なります。図とIPAは発音の目安です。<a href="audio/third-tone/credits.html" target="_blank" rel="noreferrer">出典・ライセンス</a>';
+    return `例語全体の録音を再生します。話者は録音によって異なります。図とIPAは発音の目安です。<a href="audio/${third?'third-tone':'neutral'}/credits.html" target="_blank" rel="noreferrer">出典・ライセンス</a>`;
   }
   if (playback.contextual) {
     return `この例語は端末の中国語TTSで再生します。${third?'半三声・変調を直接指定できないため、図どおりの発音になるとは限りません。':'辞書の読みと異なる場合があります。'}`;

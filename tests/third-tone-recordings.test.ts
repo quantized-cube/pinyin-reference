@@ -135,7 +135,7 @@ test('only the exact loaded contextual example selects a recording', () => {
   assert.equal(resolveDetailPlayback({...state, thirdToneForm:'full'}, catalog, 'ready').contextual, false);
   assert.equal(resolveDetailPlayback({...state, thirdToneForm:'sandhi'}, catalog, 'ready').kind, 'recording');
   assert.equal(resolveDetailPlayback({...state, selected:'mai', thirdToneForm:'sandhi'}, catalog, 'ready').kind, 'speech');
-  assert.equal(resolveDetailPlayback({...state, selected:'ma', tone:5}, catalog, 'ready').kind, 'speech');
+  assert.equal(resolveDetailPlayback({...state, selected:'a', tone:5}, catalog, 'ready').kind, 'speech');
 });
 
 test('the embassy recording is bound to the second syllable and complete three-syllable word', () => {

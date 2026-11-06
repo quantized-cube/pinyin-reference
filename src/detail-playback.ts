@@ -3,6 +3,7 @@ import {detailExample} from './examples.js';
 import {detailRecording} from './detail-recordings.js';
 import {isUnrecordedTarget} from './syllable-recordings.js';
 import {thirdToneRecording} from './third-tone-recordings.js';
+import {neutralRecording} from './neutral-recordings.js';
 
 type UnavailableReason = 'recording-missing' | 'reading-unreviewed' | 'example-loading' | 'example-error' | 'example-missing';
 export type DetailPlayback = {readonly example: PronunciationExample | undefined; readonly contextual: boolean} & (
@@ -29,7 +30,7 @@ export function resolveDetailPlayback(
     return {...base, kind: 'unavailable', reason: isUnrecordedTarget(selected, tone) ? 'recording-missing' : 'reading-unreviewed'};
   }
   if (example) {
-    const url = tone === 3 ? thirdToneRecording(example, thirdToneForm) : undefined;
+    const url = tone === 3 ? thirdToneRecording(example, thirdToneForm) : neutralRecording(example);
     return url ? {...base, kind: 'recording', url} : {...base, kind: 'speech', text: example.text};
   }
   return {...base, kind: 'unavailable', reason: exampleState === 'loading' ? 'example-loading' : exampleState === 'error' ? 'example-error' : 'example-missing'};

@@ -66,10 +66,14 @@ export interface AppState {
   rate: number;
   settings: boolean;
 }
-export interface PronunciationExample {
+export interface ExamplePhrase {
   readonly text: string;
   readonly tokens: readonly string[];
   readonly target: number;
+}
+export interface PronunciationExample extends ExamplePhrase {
+  readonly usage?: ExamplePhrase;
+  readonly note?: string;
 }
 export type ExampleMap = Readonly<Record<string, PronunciationExample | undefined>>;
 export type ThirdToneExampleMap = Readonly<Record<string, Readonly<Partial<Record<ThirdToneContextId, PronunciationExample>>> | undefined>>;

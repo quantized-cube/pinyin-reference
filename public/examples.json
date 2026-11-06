@@ -7,7 +7,7 @@
     "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
     "retrieved": "2026-10-07",
     "sha256": "00e6c188df0056c42c0448386d0b4f532aa805d9fdd87aef139f72b421ace2f4",
-    "changes": "Selected simplified headwords and readings; definitions omitted; isolated examples selected by reviewed choices or familiar unambiguous characters; contextual and curated third-tone words stored separately."
+    "changes": "Selected simplified headwords and readings; full definitions omitted; isolated examples selected by reviewed choices or familiar unambiguous characters, with reviewed usage phrases and Japanese notes where needed; contextual and curated third-tone words stored separately."
   },
   "isolatedExamples": {
     "ai3": {
@@ -30,6 +30,22 @@
         "an1"
       ],
       "target": 0
+    },
+    "an3": {
+      "text": "铵",
+      "tokens": [
+        "an3"
+      ],
+      "target": 0,
+      "note": "化学用語で、アンモニウムを表す字です。",
+      "usage": {
+        "text": "碳铵",
+        "tokens": [
+          "tan4",
+          "an3"
+        ],
+        "target": 1
+      }
     },
     "ang1": {
       "text": "肮",
@@ -171,6 +187,23 @@
       ],
       "target": 0
     },
+    "beng3": {
+      "text": "绷",
+      "tokens": [
+        "beng3"
+      ],
+      "target": 0,
+      "note": "顔をこわばらせる意味の běng。bēng・bèng と読み分けます。",
+      "usage": {
+        "text": "绷着脸",
+        "tokens": [
+          "beng3",
+          "zhe5",
+          "lian3"
+        ],
+        "target": 0
+      }
+    },
     "bi2": {
       "text": "鼻",
       "tokens": [
@@ -227,6 +260,22 @@
       ],
       "target": 0
     },
+    "bo3": {
+      "text": "跛",
+      "tokens": [
+        "bo3"
+      ],
+      "target": 0,
+      "note": "足を引きずるという意味です。",
+      "usage": {
+        "text": "跛子",
+        "tokens": [
+          "bo3",
+          "zi5"
+        ],
+        "target": 0
+      }
+    },
     "bu3": {
       "text": "补",
       "tokens": [
@@ -240,6 +289,22 @@
         "bu4"
       ],
       "target": 0
+    },
+    "ca3": {
+      "text": "礤",
+      "tokens": [
+        "ca3"
+      ],
+      "target": 0,
+      "note": "野菜をすりおろす道具を表す、使用範囲の狭い字です。",
+      "usage": {
+        "text": "礤床",
+        "tokens": [
+          "ca3",
+          "chuang2"
+        ],
+        "target": 0
+      }
     },
     "cai3": {
       "text": "踩",
@@ -275,6 +340,22 @@
         "cha2"
       ],
       "target": 0
+    },
+    "cha3": {
+      "text": "衩",
+      "tokens": [
+        "cha3"
+      ],
+      "target": 0,
+      "note": "裤衩の chǎ。衣服の切れ目を表す chà と読み分けます。",
+      "usage": {
+        "text": "裤衩",
+        "tokens": [
+          "ku4",
+          "cha3"
+        ],
+        "target": 1
+      }
     },
     "chan3": {
       "text": "产",
@@ -332,6 +413,22 @@
       ],
       "target": 0
     },
+    "cheng3": {
+      "text": "逞",
+      "tokens": [
+        "cheng3"
+      ],
+      "target": 0,
+      "note": "企てを実現する、思うままに振る舞うなどの意味があります。",
+      "usage": {
+        "text": "得逞",
+        "tokens": [
+          "de2",
+          "cheng3"
+        ],
+        "target": 1
+      }
+    },
     "chi1": {
       "text": "吃",
       "tokens": [
@@ -387,6 +484,22 @@
         "chu3"
       ],
       "target": 0
+    },
+    "chuai3": {
+      "text": "揣",
+      "tokens": [
+        "chuai3"
+      ],
+      "target": 0,
+      "note": "推し量る意味の chuǎi。懐に入れる意味の chuāi と読み分けます。",
+      "usage": {
+        "text": "揣想",
+        "tokens": [
+          "chuai3",
+          "xiang3"
+        ],
+        "target": 0
+      }
     },
     "chuan2": {
       "text": "船",
@@ -485,6 +598,38 @@
         "cu4"
       ],
       "target": 0
+    },
+    "cui3": {
+      "text": "璀",
+      "tokens": [
+        "cui3"
+      ],
+      "target": 0,
+      "note": "宝石の輝きを表す字です。",
+      "usage": {
+        "text": "璀璨",
+        "tokens": [
+          "cui3",
+          "can4"
+        ],
+        "target": 0
+      }
+    },
+    "cun3": {
+      "text": "忖",
+      "tokens": [
+        "cun3"
+      ],
+      "target": 0,
+      "note": "考える、推し量るという意味です。",
+      "usage": {
+        "text": "思忖",
+        "tokens": [
+          "si1",
+          "cun3"
+        ],
+        "target": 1
+      }
     },
     "da1": {
       "text": "搭",
@@ -710,6 +855,22 @@
       ],
       "target": 0
     },
+    "e3": {
+      "text": "恶",
+      "tokens": [
+        "e3"
+      ],
+      "target": 0,
+      "note": "恶心で使う ě。è・wù などの読みもあります。",
+      "usage": {
+        "text": "恶心",
+        "tokens": [
+          "e3",
+          "xin1"
+        ],
+        "target": 0
+      }
+    },
     "e4": {
       "text": "饿",
       "tokens": [
@@ -815,6 +976,22 @@
       ],
       "target": 0
     },
+    "fei3": {
+      "text": "匪",
+      "tokens": [
+        "fei3"
+      ],
+      "target": 0,
+      "note": "賊を表す字です。",
+      "usage": {
+        "text": "土匪",
+        "tokens": [
+          "tu3",
+          "fei3"
+        ],
+        "target": 1
+      }
+    },
     "fen3": {
       "text": "粉",
       "tokens": [
@@ -849,6 +1026,14 @@
         "fu3"
       ],
       "target": 0
+    },
+    "ga3": {
+      "text": "嘎",
+      "tokens": [
+        "ga3"
+      ],
+      "target": 0,
+      "note": "方言の補足例。いたずら好き、気難しいなどの意味です。"
     },
     "gai3": {
       "text": "改",
@@ -892,6 +1077,14 @@
       ],
       "target": 0
     },
+    "ge3": {
+      "text": "舸",
+      "tokens": [
+        "ge3"
+      ],
+      "target": 0,
+      "note": "大型の船を表す字です。主に文章で使います。"
+    },
     "gei3": {
       "text": "给",
       "tokens": [
@@ -913,6 +1106,22 @@
       ],
       "target": 0
     },
+    "gong3": {
+      "text": "拱",
+      "tokens": [
+        "gong3"
+      ],
+      "target": 0,
+      "note": "拱桥ではアーチ形を表します。",
+      "usage": {
+        "text": "拱桥",
+        "tokens": [
+          "gong3",
+          "qiao2"
+        ],
+        "target": 0
+      }
+    },
     "gou3": {
       "text": "狗",
       "tokens": [
@@ -926,6 +1135,22 @@
         "gu3"
       ],
       "target": 0
+    },
+    "gua3": {
+      "text": "寡",
+      "tokens": [
+        "gua3"
+      ],
+      "target": 0,
+      "note": "少ない、夫を亡くした、などの意味があります。",
+      "usage": {
+        "text": "寡妇",
+        "tokens": [
+          "gua3",
+          "fu5"
+        ],
+        "target": 0
+      }
     },
     "guai3": {
       "text": "拐",
@@ -1003,6 +1228,23 @@
         "guo3"
       ],
       "target": 0
+    },
+    "ha3": {
+      "text": "哈",
+      "tokens": [
+        "ha3"
+      ],
+      "target": 0,
+      "note": "哈巴狗で使う hǎ。「叱る」という方言の用法もあります。",
+      "usage": {
+        "text": "哈巴狗",
+        "tokens": [
+          "ha3",
+          "ba1",
+          "gou3"
+        ],
+        "target": 0
+      }
     },
     "hai2": {
       "text": "孩",
@@ -1284,6 +1526,23 @@
       ],
       "target": 0
     },
+    "jue3": {
+      "text": "蹶",
+      "tokens": [
+        "jue3"
+      ],
+      "target": 0,
+      "note": "尥蹶子で使う juě。jué と読み分けます。",
+      "usage": {
+        "text": "尥蹶子",
+        "tokens": [
+          "liao4",
+          "jue3",
+          "zi5"
+        ],
+        "target": 1
+      }
+    },
     "jun1": {
       "text": "军",
       "tokens": [
@@ -1311,6 +1570,22 @@
         "kai1"
       ],
       "target": 0
+    },
+    "kai3": {
+      "text": "楷",
+      "tokens": [
+        "kai3"
+      ],
+      "target": 0,
+      "note": "楷書を表す kǎi。樹木名の jiē と読み分けます。",
+      "usage": {
+        "text": "楷书",
+        "tokens": [
+          "kai3",
+          "shu1"
+        ],
+        "target": 0
+      }
     },
     "kan3": {
       "text": "砍",
@@ -1403,6 +1678,22 @@
       ],
       "target": 0
     },
+    "kui3": {
+      "text": "傀",
+      "tokens": [
+        "kui3"
+      ],
+      "target": 0,
+      "note": "傀儡で使う kuǐ です。",
+      "usage": {
+        "text": "傀儡",
+        "tokens": [
+          "kui3",
+          "lei3"
+        ],
+        "target": 0
+      }
+    },
     "kun3": {
       "text": "捆",
       "tokens": [
@@ -1416,6 +1707,22 @@
         "la1"
       ],
       "target": 0
+    },
+    "la3": {
+      "text": "喇",
+      "tokens": [
+        "la3"
+      ],
+      "target": 0,
+      "note": "喇叭で使う lǎ です。",
+      "usage": {
+        "text": "喇叭",
+        "tokens": [
+          "la3",
+          "ba5"
+        ],
+        "target": 0
+      }
     },
     "la4": {
       "text": "辣",
@@ -1472,6 +1779,22 @@
         "lei2"
       ],
       "target": 0
+    },
+    "lei3": {
+      "text": "垒",
+      "tokens": [
+        "lei3"
+      ],
+      "target": 0,
+      "note": "土塁や、積み上げることを表します。",
+      "usage": {
+        "text": "堡垒",
+        "tokens": [
+          "bao3",
+          "lei3"
+        ],
+        "target": 1
+      }
     },
     "lei4": {
       "text": "泪",
@@ -1542,6 +1865,38 @@
         "liao3"
       ],
       "target": 0
+    },
+    "lie3": {
+      "text": "咧",
+      "tokens": [
+        "lie3"
+      ],
+      "target": 0,
+      "note": "口角を横に引く意味の liě です。",
+      "usage": {
+        "text": "咧嘴",
+        "tokens": [
+          "lie3",
+          "zui3"
+        ],
+        "target": 0
+      }
+    },
+    "lin3": {
+      "text": "凛",
+      "tokens": [
+        "lin3"
+      ],
+      "target": 0,
+      "note": "寒さや厳しさを表す字です。",
+      "usage": {
+        "text": "凛冽",
+        "tokens": [
+          "lin3",
+          "lie4"
+        ],
+        "target": 0
+      }
     },
     "ling2": {
       "text": "零",
@@ -1739,12 +2094,44 @@
       ],
       "target": 0
     },
+    "mang3": {
+      "text": "蟒",
+      "tokens": [
+        "mang3"
+      ],
+      "target": 0,
+      "note": "ニシキヘビを表す字です。",
+      "usage": {
+        "text": "蟒蛇",
+        "tokens": [
+          "mang3",
+          "she2"
+        ],
+        "target": 0
+      }
+    },
     "mao1": {
       "text": "猫",
       "tokens": [
         "mao1"
       ],
       "target": 0
+    },
+    "mao3": {
+      "text": "铆",
+      "tokens": [
+        "mao3"
+      ],
+      "target": 0,
+      "note": "リベットで留めるという意味です。",
+      "usage": {
+        "text": "铆钉",
+        "tokens": [
+          "mao3",
+          "ding1"
+        ],
+        "target": 0
+      }
     },
     "mao4": {
       "text": "帽",
@@ -1830,6 +2217,22 @@
       ],
       "target": 0
     },
+    "ming3": {
+      "text": "酩",
+      "tokens": [
+        "ming3"
+      ],
+      "target": 0,
+      "note": "酩酊で使う mǐng です。",
+      "usage": {
+        "text": "酩酊",
+        "tokens": [
+          "ming3",
+          "ding3"
+        ],
+        "target": 0
+      }
+    },
     "mo1": {
       "text": "摸",
       "tokens": [
@@ -1900,12 +2303,60 @@
       ],
       "target": 0
     },
+    "nan3": {
+      "text": "赧",
+      "tokens": [
+        "nan3"
+      ],
+      "target": 0,
+      "note": "恥じて赤くなるという意味です。主に文章で使います。",
+      "usage": {
+        "text": "赧然",
+        "tokens": [
+          "nan3",
+          "ran2"
+        ],
+        "target": 0
+      }
+    },
+    "nang3": {
+      "text": "馕",
+      "tokens": [
+        "nang3"
+      ],
+      "target": 0,
+      "note": "食べ物を口に詰め込む意味の nǎng。パンを表す náng と読み分けます。",
+      "usage": {
+        "text": "馕嗓",
+        "tokens": [
+          "nang3",
+          "sang3"
+        ],
+        "target": 0
+      }
+    },
     "nao3": {
       "text": "脑",
       "tokens": [
         "nao3"
       ],
       "target": 0
+    },
+    "nei3": {
+      "text": "馁",
+      "tokens": [
+        "nei3"
+      ],
+      "target": 0,
+      "note": "气馁では気落ちすることを表します。",
+      "usage": {
+        "text": "气馁",
+        "tokens": [
+          "qi4",
+          "nei3"
+        ],
+        "target": 1
+      }
     },
     "nei4": {
       "text": "内",
@@ -2040,6 +2491,23 @@
       ],
       "target": 0
     },
+    "pai3": {
+      "text": "迫",
+      "tokens": [
+        "pai3"
+      ],
+      "target": 0,
+      "note": "中国大陸では迫击炮の「迫」を pǎi と読みます。通常の pò や、台湾での読みとは異なります。",
+      "usage": {
+        "text": "迫击炮",
+        "tokens": [
+          "pai3",
+          "ji1",
+          "pao4"
+        ],
+        "target": 0
+      }
+    },
     "pao3": {
       "text": "跑",
       "tokens": [
@@ -2109,6 +2577,22 @@
         "ping2"
       ],
       "target": 0
+    },
+    "po3": {
+      "text": "叵",
+      "tokens": [
+        "po3"
+      ],
+      "target": 0,
+      "note": "叵测などの語で使います。",
+      "usage": {
+        "text": "叵测",
+        "tokens": [
+          "po3",
+          "ce4"
+        ],
+        "target": 0
+      }
     },
     "po4": {
       "text": "破",
@@ -2215,6 +2699,22 @@
       ],
       "target": 0
     },
+    "qin3": {
+      "text": "寝",
+      "tokens": [
+        "qin3"
+      ],
+      "target": 0,
+      "note": "寝る、休むという意味です。",
+      "usage": {
+        "text": "就寝",
+        "tokens": [
+          "jiu4",
+          "qin3"
+        ],
+        "target": 1
+      }
+    },
     "qing1": {
       "text": "青",
       "tokens": [
@@ -2243,6 +2743,22 @@
       ],
       "target": 0
     },
+    "qiu3": {
+      "text": "糗",
+      "tokens": [
+        "qiu3"
+      ],
+      "target": 0,
+      "note": "出糗は「恥をかく」という口語表現です。",
+      "usage": {
+        "text": "出糗",
+        "tokens": [
+          "chu1",
+          "qiu3"
+        ],
+        "target": 1
+      }
+    },
     "qu3": {
       "text": "取",
       "tokens": [
@@ -2264,6 +2780,14 @@
       ],
       "target": 0
     },
+    "quan3": {
+      "text": "犬",
+      "tokens": [
+        "quan3"
+      ],
+      "target": 0,
+      "note": "犬を表す字です。文語や熟語で使います。"
+    },
     "qun2": {
       "text": "裙",
       "tokens": [
@@ -2284,6 +2808,22 @@
         "ran3"
       ],
       "target": 0
+    },
+    "rang3": {
+      "text": "壤",
+      "tokens": [
+        "rang3"
+      ],
+      "target": 0,
+      "note": "土を表す字です。",
+      "usage": {
+        "text": "土壤",
+        "tokens": [
+          "tu3",
+          "rang3"
+        ],
+        "target": 1
+      }
     },
     "rao3": {
       "text": "扰",
@@ -2327,6 +2867,22 @@
       ],
       "target": 0
     },
+    "rong3": {
+      "text": "冗",
+      "tokens": [
+        "rong3"
+      ],
+      "target": 0,
+      "note": "余分、冗長などの意味があります。",
+      "usage": {
+        "text": "冗长",
+        "tokens": [
+          "rong3",
+          "chang2"
+        ],
+        "target": 0
+      }
+    },
     "rou4": {
       "text": "肉",
       "tokens": [
@@ -2354,6 +2910,22 @@
         "ruan3"
       ],
       "target": 0
+    },
+    "rui3": {
+      "text": "蕊",
+      "tokens": [
+        "rui3"
+      ],
+      "target": 0,
+      "note": "おしべ・めしべを表す字です。",
+      "usage": {
+        "text": "花蕊",
+        "tokens": [
+          "hua1",
+          "rui3"
+        ],
+        "target": 1
+      }
     },
     "sa3": {
       "text": "撒",
@@ -2403,6 +2975,22 @@
         "sha3"
       ],
       "target": 0
+    },
+    "shai3": {
+      "text": "色",
+      "tokens": [
+        "shai3"
+      ],
+      "target": 0,
+      "note": "色子で使う shǎi は口語の読みです。通常の sè と読み分けます。",
+      "usage": {
+        "text": "色子",
+        "tokens": [
+          "shai3",
+          "zi5"
+        ],
+        "target": 0
+      }
     },
     "shai4": {
       "text": "晒",
@@ -2600,6 +3188,22 @@
       ],
       "target": 0
     },
+    "shun3": {
+      "text": "吮",
+      "tokens": [
+        "shun3"
+      ],
+      "target": 0,
+      "note": "吸うという意味です。",
+      "usage": {
+        "text": "吮吸",
+        "tokens": [
+          "shun3",
+          "xi1"
+        ],
+        "target": 0
+      }
+    },
     "shun4": {
       "text": "顺",
       "tokens": [
@@ -2649,12 +3253,44 @@
       ],
       "target": 0
     },
+    "sou3": {
+      "text": "叟",
+      "tokens": [
+        "sou3"
+      ],
+      "target": 0,
+      "note": "年配の男性を表す字です。主に文章で使います。",
+      "usage": {
+        "text": "老叟",
+        "tokens": [
+          "lao3",
+          "sou3"
+        ],
+        "target": 1
+      }
+    },
     "suan4": {
       "text": "算",
       "tokens": [
         "suan4"
       ],
       "target": 0
+    },
+    "sui3": {
+      "text": "髓",
+      "tokens": [
+        "sui3"
+      ],
+      "target": 0,
+      "note": "骨髄を表す字です。",
+      "usage": {
+        "text": "骨髓",
+        "tokens": [
+          "gu3",
+          "sui3"
+        ],
+        "target": 1
+      }
     },
     "sun3": {
       "text": "损",
@@ -2824,6 +3460,14 @@
       ],
       "target": 0
     },
+    "tun3": {
+      "text": "氽",
+      "tokens": [
+        "tun3"
+      ],
+      "target": 0,
+      "note": "方言の補足例。浮く、油で揚げるという意味です。汆 cuān・吞 tūn とは別の字です。"
+    },
     "tuo3": {
       "text": "妥",
       "tokens": [
@@ -2844,6 +3488,22 @@
         "wa4"
       ],
       "target": 0
+    },
+    "wai3": {
+      "text": "崴",
+      "tokens": [
+        "wai3"
+      ],
+      "target": 0,
+      "note": "足首をくじく意味の wǎi です。",
+      "usage": {
+        "text": "崴脚",
+        "tokens": [
+          "wai3",
+          "jiao3"
+        ],
+        "target": 0
+      }
     },
     "wai4": {
       "text": "外",
@@ -2900,6 +3560,14 @@
         "weng1"
       ],
       "target": 0
+    },
+    "weng3": {
+      "text": "蓊",
+      "tokens": [
+        "weng3"
+      ],
+      "target": 0,
+      "note": "草木が茂るという意味です。主に文章で使います。"
     },
     "wo3": {
       "text": "我",
@@ -3033,6 +3701,22 @@
         "xing4"
       ],
       "target": 0
+    },
+    "xiu3": {
+      "text": "朽",
+      "tokens": [
+        "xiu3"
+      ],
+      "target": 0,
+      "note": "朽ちるという意味です。",
+      "usage": {
+        "text": "腐朽",
+        "tokens": [
+          "fu3",
+          "xiu3"
+        ],
+        "target": 1
+      }
     },
     "xu1": {
       "text": "需",
@@ -3517,6 +4201,30 @@
       ],
       "target": 0
     },
+    "zhua3": {
+      "text": "爪",
+      "tokens": [
+        "zhua3"
+      ],
+      "target": 0,
+      "note": "爪子で使う zhuǎ は口語の読みです。zhǎo と読み分けます。",
+      "usage": {
+        "text": "爪子",
+        "tokens": [
+          "zhua3",
+          "zi5"
+        ],
+        "target": 0
+      }
+    },
+    "zhuai3": {
+      "text": "跩",
+      "tokens": [
+        "zhuai3"
+      ],
+      "target": 0,
+      "note": "方言・口語の補足例。体を揺らして歩く、得意げに振る舞うなどの意味です。"
+    },
     "zhuan3": {
       "text": "转",
       "tokens": [
@@ -3579,6 +4287,22 @@
         "zu3"
       ],
       "target": 0
+    },
+    "zuan3": {
+      "text": "纂",
+      "tokens": [
+        "zuan3"
+      ],
+      "target": 0,
+      "note": "编纂では編集することを表します。",
+      "usage": {
+        "text": "编纂",
+        "tokens": [
+          "bian1",
+          "zuan3"
+        ],
+        "target": 1
+      }
     },
     "zui3": {
       "text": "嘴",

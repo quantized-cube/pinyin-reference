@@ -1,4 +1,4 @@
-import type { ExampleCatalog, ExampleMap, PronunciationExample, ThirdToneContextId, ThirdToneFormId, ToneId } from './types.js';
+import type { ExampleCatalog, ExampleMap, ExamplePhrase, PronunciationExample, ThirdToneContextId, ThirdToneFormId, ToneId } from './types.js';
 import { fitsThirdToneForm, thirdToneExample } from './third-tone.js';
 
 function isRecord(value: unknown): value is Record<string, unknown> {
@@ -10,7 +10,7 @@ function stringField(record: Record<string, unknown>, key: string): string {
   return value;
 }
 
-function parseExample(key: string, example: unknown): PronunciationExample {
+function parsePhrase(key: string, example: unknown): ExamplePhrase {
     if (!/^[a-züê]+[1-5]$/.test(key) || !isRecord(example)) throw new Error(`Invalid example key: ${key}`);
     const { text, tokens, target } = example;
     if (typeof text !== 'string' || !/^[\u4e00-\u9fff]{1,3}$/.test(text)
@@ -21,6 +21,24 @@ function parseExample(key: string, example: unknown): PronunciationExample {
       throw new Error(`Invalid pronunciation example: ${key}`);
     }
     return { text, tokens: [...tokens], target };
+}
+
+function parseExample(key: string, value: unknown): PronunciationExample {
+  const phrase = parsePhrase(key, value);
+  if (!isRecord(value)) throw new Error(`Invalid example: ${key}`);
+  const {note, usage} = value;
+  if (note !== undefined && (typeof note !== 'string' || !note.trim())) {
+    throw new Error(`Invalid example note: ${key}`);
+  }
+  let parsedUsage: ExamplePhrase | undefined;
+  if (usage !== undefined) {
+    parsedUsage = parsePhrase(key, usage);
+    if (phrase.tokens.length !== 1 || parsedUsage.tokens.length < 2
+      || [...parsedUsage.text][parsedUsage.target] !== phrase.text) {
+      throw new Error(`Invalid example usage: ${key}`);
+    }
+  }
+  return {...phrase, ...(note !== undefined ? {note} : {}), ...(parsedUsage ? {usage: parsedUsage} : {})};
 }
 
 // JSON is an external boundary: validate it before using its values in the UI.

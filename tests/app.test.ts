@@ -1871,7 +1871,7 @@ test('a detail recording plays while its example catalog fails, retries and load
 
 test('unrecorded and unreviewed isolated tones never use TTS even when a word is available',async t=>{
   const s=await setup(t);
-  for(const token of ['yo1','ê1','bo3','a2']){
+  for(const token of ['yo1','ê1','eng3','a2']){
     s.input(token);
     assert.equal(s.$<HTMLButtonElement>('#play').disabled,true);
     assert.equal(s.window.document.querySelector('#voice-help,.voice-settings'),null);
@@ -1880,6 +1880,27 @@ test('unrecorded and unreviewed isolated tones never use TTS even when a word is
   assert.equal(s.recordingCount(),0);assert.equal(s.requestCount(),0);
   s.input('yo1');assert.match(s.$('#voice-status').textContent??'',/単独音の録音は未収録/);
   assert.equal(s.$('.example-word').textContent,'哎哟');
+});
+
+test('new third tones show reading conditions and play the isolated recording, not the usage word',async t=>{
+  const s=await setup(t,[],{hash:'#s=e&t=3',speechSupported:false});
+  assert.equal(s.$('.example-word').textContent,'恶');
+  assert.match(s.$('.example-usage').textContent??'',/恶心.*ě xīn/);
+  assert.match(s.$('.example-usage').textContent??'',/è・wù/);
+  s.$('#play').click();
+  assert.equal(s.lastRecording().src,'audio/syllables/e3.mp3');
+  s.lastRecording().onended?.();
+  for(const token of ['ga3','tun3','zhuai3']){
+    s.input(token);
+    assert.match(s.$('.example-usage').textContent??'',/方言.*補足例/);
+    s.$('#play').click();
+    assert.equal(s.lastRecording().src,`audio/syllables/${token}.mp3`);
+    s.lastRecording().onended?.();
+  }
+  s.$('[data-third-tone-form="half"]').click();
+  assert.equal(s.window.document.querySelector('.example-usage'),null);
+  assert.equal(s.$<HTMLButtonElement>('#play').disabled,true);
+  assert.equal(s.requestCount(),0);
 });
 
 test('recording-only detail works while examples are missing, including source spelling aliases',async t=>{

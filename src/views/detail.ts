@@ -1,4 +1,4 @@
-import type {AppState} from '../types.js';
+import type {AppState, PronunciationExample} from '../types.js';
 import {getSyllable,getTone,getFinal,getInitial,parseQuery,markTone,rulesFor,tones} from '../data.js';
 import {getThirdToneForm,thirdToneForms} from '../third-tone.js';
 import {matrixFinalId,finalContext} from '../layout.js';
@@ -32,8 +32,15 @@ export function renderDetail(state: AppState, playback: DetailPlayback, exampleS
   <div class="detail-content"><div class="decomposition"><div><small>声母</small><strong>${s.initial||'∅'}</strong><span class="ipa">${i.ipa?'['+i.ipa+']':'声母なし'}</span></div><span>＋</span><div><small>分析上の韻母</small><strong>${esc(matrixFinalId(s.final))}</strong>${finalContext(s.final)?`<small>${finalContext(s.final)}</small>`:''}<span class="ipa">[${s.rimeIpa}]</span></div></div>${renderInitialArticulation(s.initial)}${rulesFor(s).map(r=>`<p class="rule-note">${r}</p>`).join('')}<p class="tone-note">${esc(f.note)}${state.tone===5?' 軽声のIPAは分節音の目安のみ。母音の弱化を含む細かな変化は省略。':''}</p>
   ${['ian','üan','er'].includes(s.final)?'<button class="text-button" data-open-tab="erhua">児化による韻母の変化・er との違い ↗</button>':''}
   <hr class="detail-separator"><h3 class="mini-title">辞書上の声調<span>1〜4声・軽声</span></h3><div class="tones" aria-label="声調">${tones.map(t=>`<button class="tone" data-tone="${t.id}" aria-pressed="${state.tone===t.id}" aria-label="${t.label} ${markTone(s.pinyin,t.id)}">${t.id===5?'軽声':t.id+'声'}${contour(t)}<small>${markTone(s.pinyin,t.id)}</small></button>`).join('')}</div>
-  ${third?renderThirdToneSelector(state):`<p class="tone-note">${t.id===5?'':t.value+'：'}${t.note}</p>`}${exampleHtml}
+  ${third?renderThirdToneSelector(state):`<p class="tone-note">${t.id===5?'':t.value+'：'}${t.note}</p>`}${exampleHtml}${example?renderExampleUsage(example):''}
   <div class="play-row"><button id="play" class="primary" disabled>${speakerIcon}<span>${contextual?'例語を聞く':'単独音を聞く'}</span></button><button id="stop" class="stop" aria-label="再生を停止">■</button></div><p id="voice-status" class="voice-status" role="status" aria-live="polite"></p>${contextual&&!recorded?renderVoiceSettings(state):''}<p class="audio-footnote">${renderAudioNote(playback,Boolean(third))}</p></div>`;
+}
+
+function renderExampleUsage(example: PronunciationExample): string {
+  const {usage, note} = example;
+  if (!usage && !note) return '';
+  const word = usage ? `<span lang="zh-CN">${esc(usage.text)}</span> ${usage.tokens.map(token=>{const {text,tone}=parseQuery(token);return esc(markTone(text,tone));}).join(' ')}` : '';
+  return `<div class="example-usage">${usage?`<p class="tone-note">用例（辞書の読み）：${word}</p>`:''}${note?`<p class="tone-note">${esc(note)}</p>`:''}</div>`;
 }
 
 function renderAudioNote(playback: DetailPlayback, third: boolean): string {

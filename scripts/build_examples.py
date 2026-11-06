@@ -12,7 +12,7 @@ import json
 import re
 import urllib.request
 
-from example_choices import COMMON, ISOLATED_CHOICES, CONTEXTUAL_CHOICES, THIRD_TONE_CHOICES
+from example_choices import COMMON, ISOLATED_CHOICES, ISOLATED_USAGE, CONTEXTUAL_CHOICES, THIRD_TONE_CHOICES
 
 ROOT = Path(__file__).resolve().parent.parent
 URL = 'https://www.mdbg.net/chinese/export/cedict/cedict_1_0_ts_utf-8_mdbg.txt.gz'
@@ -67,7 +67,8 @@ def verified(entries, key, word, predicate):
 
 
 def generate_examples(raw, *, common=COMMON, isolated_choices=ISOLATED_CHOICES,
-                      contextual_choices=CONTEXTUAL_CHOICES, third_choices=THIRD_TONE_CHOICES):
+                      isolated_usage=ISOLATED_USAGE, contextual_choices=CONTEXTUAL_CHOICES,
+                      third_choices=THIRD_TONE_CHOICES):
     entries = parse_entries(raw)
     rank = {c: i for i, c in enumerate(dict.fromkeys(common))}
     readings = {}
@@ -108,6 +109,19 @@ def generate_examples(raw, *, common=COMMON, isolated_choices=ISOLATED_CHOICES,
         e = verified(entries, key, word, lambda e: e.tokens == (key,))
         isolated[key] = example(e)
         selected_by[key] = 'curated: ' + reason
+
+    # Usage explains the selected character; it never becomes the playback text
+    # or an inferred half-tone/sandhi example.
+    for key, (word, note) in isolated_usage.items():
+        if key not in isolated or not isinstance(note, str) or not note.strip():
+            raise ValueError(f'Invalid isolated usage: {key}')
+        isolated[key]['note'] = note
+        if word is not None:
+            char = isolated[key]['text']
+            e = verified(entries, key, word, lambda e: len(e.tokens) >= 2
+                         and any(c == char and t == key for c, t in zip(e.word, e.tokens)))
+            target = next(n for n, (c, t) in enumerate(zip(e.word, e.tokens)) if c == char and t == key)
+            isolated[key]['usage'] = example(e, target)
 
     contextual = {}
     for key, options in contextual_options.items():
@@ -190,7 +204,7 @@ def main():
     maps, report = generate_examples(gzip.decompress(compressed).decode('utf-8'))
     data = {'schemaVersion': 2, 'meta': {
         **{key: source[key] for key in ('source', 'url', 'license', 'licenseUrl', 'retrieved', 'sha256')},
-        'changes': 'Selected simplified headwords and readings; definitions omitted; isolated examples selected by reviewed choices or familiar unambiguous characters; contextual and curated third-tone words stored separately.',
+        'changes': 'Selected simplified headwords and readings; full definitions omitted; isolated examples selected by reviewed choices or familiar unambiguous characters, with reviewed usage phrases and Japanese notes where needed; contextual and curated third-tone words stored separately.',
     }, **maps}
     if args.check:
         previous = json.loads(output.read_text(encoding='utf-8'))

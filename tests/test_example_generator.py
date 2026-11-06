@@ -13,7 +13,7 @@ from build_examples import generate_examples, load_pinned_source, download_sourc
 
 
 def generate(raw, **overrides):
-    options = dict(common='', isolated_choices={}, contextual_choices={}, third_choices={})
+    options = dict(common='', isolated_choices={}, isolated_usage={}, contextual_choices={}, third_choices={})
     options.update(overrides)
     return generate_examples(raw, **options)
 
@@ -62,6 +62,23 @@ class ExampleGeneratorTests(unittest.TestCase):
         data, _ = generate(raw, common='妈吗', contextual_choices={'ma5': '妈妈'})
         self.assertNotIn('ma5', data['isolatedExamples'])
         self.assertEqual(data['contextualExamples']['ma5'], {'text': '妈妈', 'tokens': ['ma1', 'ma5'], 'target': 1})
+
+    def test_usage_phrases_verify_the_reading_and_character_without_changing_playback_contexts(self):
+        raw = ('惡 恶 [e3] /used in nausea/\n惡心 恶心 [e3 xin1] /nausea/\n'
+               '餓心 饿心 [e3 xin1] /synthetic different character/\n'
+               '惡人 恶人 [e4 ren2] /evil person/')
+        options = {'isolated_choices': {'e3': ('恶', 'Reviewed')},
+                   'isolated_usage': {'e3': ('恶心', '特定の語で使う読み。')}}
+        data, _ = generate(raw, **options)
+        isolated = data['isolatedExamples']['e3']
+        self.assertEqual(isolated['tokens'], ['e3'])
+        self.assertEqual(isolated['usage'], {'text': '恶心', 'tokens': ['e3', 'xin1'], 'target': 0})
+        self.assertEqual(data['thirdToneExamples'], {})
+        for usage in [('恶', 'note'), ('饿心', 'note'), ('恶人', 'note'), ('恶心', '')]:
+            with self.subTest(usage=usage), self.assertRaises(ValueError):
+                generate(raw, **{**options, 'isolated_usage': {'e3': usage}})
+        with self.assertRaises(ValueError):
+            generate(raw, isolated_usage={'e3': (None, 'note')})
 
     def test_third_tone_contexts_must_be_explicit_and_match(self):
         raw = ('好 好 [hao3] /good/\n好吃 好吃 [hao3 chi1] /tasty/\n'

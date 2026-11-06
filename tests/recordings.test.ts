@@ -30,20 +30,27 @@ test('every neutral-tone recording is shipped unchanged with its attribution and
 
 
 const root=new URL('../../',import.meta.url),folder=new URL('public/audio/syllables/',root);
-interface Recording {token:string;sourceToken?:string;file?:string;sha256?:string;bytes?:number;duration?:number;unavailable?:string;metadataNote?:string}
+interface Recording {token:string;sourceToken?:string;file?:string;sha256?:string;bytes?:number;duration?:number;unavailable?:string;metadataNote?:string;retrieved?:string}
 const manifest: {schemaVersion:number;source:{revision:string;directory:string;speaker:string;author:string;license:string;licenseTag:string;licenseUrl:string};records:Recording[]} = JSON.parse(await readFile(new URL('manifest.json',folder),'utf8'));
 const catalog=parseExampleCatalog(JSON.parse(await readFile(new URL('public/examples.json',root),'utf8')));
 
-test('the adopted scope remains the existing 1162 readings, with yo1 explicitly unavailable',()=>{
+test('the adopted scope includes 48 reviewed third tones, with yo1 explicitly unavailable',()=>{
   const expected=new Set<string>();
   for(const s of syllables)for(const tone of [1,2,3,4] as const)if(detailExample(s.pinyin,tone,'full',catalog))expected.add(s.pinyin+tone);
-  assert.equal(expected.size,1162);
-  assert.equal(manifest.records.length,1162);
+  assert.equal(expected.size,1210);
+  assert.equal(manifest.records.length,1210);
   assert.deepEqual(new Set(manifest.records.map(r=>r.token)),expected);
-  assert.equal(detailRecordingTokens.length,1161);
+  assert.equal(detailRecordingTokens.length,1209);
   assert.deepEqual(manifest.records.filter(r=>r.unavailable).map(r=>r.token),['yo1']);
   assert.deepEqual(new Set(manifest.records.filter(r=>r.file).map(r=>r.token)),new Set(detailRecordingTokens));
-  for(const pinyin of ['e','bo','wai'])assert.equal(detailRecording(pinyin,3,'full'),undefined);
+  const additions=manifest.records.filter(r=>r.retrieved==='2026-11-06');
+  assert.equal(additions.length,48);
+  for(const r of additions){
+    assert.ok(r.token.endsWith('3'));
+    assert.ok(catalog.isolatedExamples[r.token]?.note,r.token);
+    assert.equal(detailRecording(r.token.slice(0,-1),3,'full'),'audio/syllables/'+r.file);
+  }
+  for(const pinyin of ['e','bo','wai'])assert.ok(detailRecording(pinyin,3,'full'));
   assert.equal(detailRecording('a',2,'full'),undefined);
 });
 
@@ -100,7 +107,7 @@ test('all recorded targets play without a catalog and never substitute for conte
     assert.equal(detailRecording(text,3,'sandhi'),undefined);
     assert.equal(detailRecording(text,5,'full'),undefined);
   }
-  for(const [selected,tone] of [['yo',1],['ê',1],['bo',3],['a',2]] as const){
+  for(const [selected,tone] of [['yo',1],['ê',1],['eng',3],['a',2]] as const){
     const p=resolveDetailPlayback({selected,tone,thirdToneForm:'full'},catalog,'ready');
     assert.equal(p.kind,'unavailable');
     if(p.kind==='unavailable')assert.equal(p.reason,selected==='yo'?'recording-missing':'reading-unreviewed');

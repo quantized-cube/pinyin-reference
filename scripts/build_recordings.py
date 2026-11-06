@@ -128,7 +128,8 @@ def generated_credits(manifest):
             continue
         url = f"{s['repository']}/blob/{s['revision']}/{s['directory']}/cmn-{r['sourceToken']}.mp3"
         note = '（元音源に発音・話者のID3タグなし。取得したバージョンの配布元情報を参照）' if r.get('metadataNote') else ''
-        rows.append(f'<tr><td>{esc(r["token"])}</td><td><a href="{esc(url)}">{esc(r["sourceToken"])}</a>{note}</td></tr>')
+        retrieved = r.get('retrieved', s['retrieved'])
+        rows.append(f'<tr><td>{esc(r["token"])}</td><td><a href="{esc(url)}">{esc(r["sourceToken"])}</a>{note}</td><td>{esc(retrieved)}</td></tr>')
     return f'''<!doctype html>
 <html lang="ja"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>単独音の録音 — 出典・ライセンス</title>
@@ -138,9 +139,9 @@ def generated_credits(manifest):
 <p>話者：{esc(s['speaker'])}<br>著作者：{esc(s['author'])}<br>
 音源：<a href="{esc(s['repository'])}">{esc(s['name'])}</a><br>
 ライセンス：<a href="{esc(s['licenseUrl'])}">{esc(s['license'])}</a><br>
-取得日：{esc(s['retrieved'])}。MP3の音声・メタデータは改変していません。ファイル名のみアプリの表記に合わせています。</p>
+取得日は各録音の一覧に記載しています。MP3の音声・メタデータは改変していません。ファイル名のみアプリの表記に合わせています。</p>
 <p>取得元のバージョンを固定しています。元ファイル名・SHA-256・サイズ・長さは<a href="manifest.json">音源一覧</a>で確認できます。元のファイルと一致するかを検証しても、すべての録音を聞いて発音を確認したことにはなりません。</p>
-<table><thead><tr><th>アプリの音節・声調</th><th>元の録音</th></tr></thead><tbody>
+<table><thead><tr><th>アプリの音節・声調</th><th>元の録音</th><th>取得日</th></tr></thead><tbody>
 {chr(10).join(rows)}
 </tbody></table></html>
 '''

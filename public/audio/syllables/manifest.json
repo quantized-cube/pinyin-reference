@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "scope": "Existing playable isolated-tone targets on 2026-10-21; no automatic expansion from upstream recordings.",
+  "scope": "Existing playable isolated-tone targets on 2026-10-21 plus 48 reviewed third-tone readings adopted on 2026-11-06; no automatic expansion from upstream recordings.",
   "source": {
     "name": "audio-cmn",
     "repository": "https://github.com/hugolpz/audio-cmn",
@@ -62,6 +62,15 @@
       "sha256": "ef5f094588a6781e02e4f2f16a8230aeb58d6b1a1d54f45e335a2aec787a6ff4",
       "bytes": 9180,
       "duration": 1.032
+    },
+    {
+      "token": "an3",
+      "sourceToken": "an3",
+      "file": "an3.mp3",
+      "sha256": "8457448301911b25ef7dff29a86efe3cb6bd738e16a30184d0887f6e6b4a6aaa",
+      "bytes": 11292,
+      "duration": 1.296,
+      "retrieved": "2026-11-06"
     },
     {
       "token": "an4",
@@ -336,6 +345,15 @@
       "duration": 0.984
     },
     {
+      "token": "beng3",
+      "sourceToken": "beng3",
+      "file": "beng3.mp3",
+      "sha256": "083c32a195eabfe36f1689be65080c52b652d23061b5b0e96632914b8a49e2b3",
+      "bytes": 11296,
+      "duration": 1.296,
+      "retrieved": "2026-11-06"
+    },
+    {
       "token": "beng4",
       "sourceToken": "beng4",
       "file": "beng4.mp3",
@@ -512,6 +530,15 @@
       "duration": 0.936
     },
     {
+      "token": "bo3",
+      "sourceToken": "bo3",
+      "file": "bo3.mp3",
+      "sha256": "35403c37aa980539a7cf99e4544b35bab2cbc6466027dcd3ae1e4a36da13c073",
+      "bytes": 10332,
+      "duration": 1.176,
+      "retrieved": "2026-11-06"
+    },
+    {
       "token": "bo4",
       "sourceToken": "bo4",
       "file": "bo4.mp3",
@@ -558,6 +585,15 @@
       "sha256": "c7ae4fe57c2f70db1fdd9f1df245071618f5e85629d1945aaa73ad9d6c524602",
       "bytes": 9180,
       "duration": 1.032
+    },
+    {
+      "token": "ca3",
+      "sourceToken": "ca3",
+      "file": "ca3.mp3",
+      "sha256": "fcc11104592740c4ede9fe602de187c31541d4a1f23da2909185b109eec4f83a",
+      "bytes": 11676,
+      "duration": 1.344,
+      "retrieved": "2026-11-06"
     },
     {
       "token": "cai1",
@@ -726,6 +762,15 @@
       "sha256": "7f94986a49694342b977be9f4c0d9b6a6b64477840ca4ccd21edd1cb63e1de93",
       "bytes": 10334,
       "duration": 1.176
+    },
+    {
+      "token": "cha3",
+      "sourceToken": "cha3",
+      "file": "cha3.mp3",
+      "sha256": "29ee287a8506fb25a7f06be4e25c075a514248bea854c643de3b54b769089406",
+      "bytes": 10718,
+      "duration": 1.224,
+      "retrieved": "2026-11-06"
     },
     {
       "token": "cha4",
@@ -904,6 +949,15 @@
       "duration": 1.128
     },
     {
+      "token": "cheng3",
+      "sourceToken": "cheng3",
+      "file": "cheng3.mp3",
+      "sha256": "e55a1c42563b1a729a02aeeb96b13ecebe95b52f4864ecfd6f913dd7e1856976",
+      "bytes": 10722,
+      "duration": 1.224,
+      "retrieved": "2026-11-06"
+    },
+    {
       "token": "cheng4",
       "sourceToken": "cheng4",
       "file": "cheng4.mp3",
@@ -1046,6 +1100,15 @@
       "sha256": "fd586de792ebd6d07fc74e52f6d5b8081d6dd17badf8a4f728ded018842f6f9d",
       "bytes": 8034,
       "duration": 0.888
+    },
+    {
+      "token": "chuai3",
+      "sourceToken": "chuai3",
+      "file": "chuai3.mp3",
+      "sha256": "c3b6702e22063aa5506eedc553de70ba3a248b10faf6184f99c5d07824f968af",
+      "bytes": 9954,
+      "duration": 1.128,
+      "retrieved": "2026-11-06"
     },
     {
       "token": "chuai4",
@@ -1288,6 +1351,15 @@
       "duration": 1.176
     },
     {
+      "token": "cui3",
+      "sourceToken": "cui3",
+      "file": "cui3.mp3",
+      "sha256": "99964efebca60b2ee66c10370fdd589341a5611c6ace1a1d62ab3706b2379ecb",
+      "bytes": 12062,
+      "duration": 1.392,
+      "retrieved": "2026-11-06"
+    },
+    {
       "token": "cui4",
       "sourceToken": "cui4",
       "file": "cui4.mp3",
@@ -1310,6 +1382,15 @@
       "sha256": "d3c6efe524f4d16c9decf1bcf6d09e749c59f7f68afff83d2c3ea97fdc0bc8ef",
       "bytes": 10718,
       "duration": 1.224
+    },
+    {
+      "token": "cun3",
+      "sourceToken": "cun3",
+      "file": "cun3.mp3",
+      "sha256": "cca6c7336d76cb62c944509bbd4594411242c60fe6405082eb837eb81b1cead6",
+      "bytes": 11294,
+      "duration": 1.296,
+      "retrieved": "2026-11-06"
     },
     {
       "token": "cun4",
@@ -1840,6 +1921,15 @@
       "duration": 0.984
     },
     {
+      "token": "e3",
+      "sourceToken": "e3",
+      "file": "e3.mp3",
+      "sha256": "6e696c8f3e43fc5b9a8337cc4736fb37a689f9809e3443d9e4d55dec0688b960",
+      "bytes": 10330,
+      "duration": 1.176,
+      "retrieved": "2026-11-06"
+    },
+    {
       "token": "e4",
       "sourceToken": "e4",
       "file": "e4.mp3",
@@ -2008,6 +2098,15 @@
       "duration": 0.984
     },
     {
+      "token": "fei3",
+      "sourceToken": "fei3",
+      "file": "fei3.mp3",
+      "sha256": "d5c0fd0f640252c598b750c7a83899f815fe96ed7af5c424df196e545480a1c6",
+      "bytes": 8798,
+      "duration": 0.984,
+      "retrieved": "2026-11-06"
+    },
+    {
       "token": "fei4",
       "sourceToken": "fei4",
       "file": "fei4.mp3",
@@ -2144,6 +2243,15 @@
       "duration": 0.936
     },
     {
+      "token": "ga3",
+      "sourceToken": "ga3",
+      "file": "ga3.mp3",
+      "sha256": "f55b5bf27a334d4f455003e4ecf7783db5ad445bf53bcb305c7eb4d03be1fb30",
+      "bytes": 11292,
+      "duration": 1.296,
+      "retrieved": "2026-11-06"
+    },
+    {
       "token": "ga4",
       "sourceToken": "ga4",
       "file": "ga4.mp3",
@@ -2264,6 +2372,15 @@
       "duration": 1.08
     },
     {
+      "token": "ge3",
+      "sourceToken": "ge3",
+      "file": "ge3.mp3",
+      "sha256": "b5c3be55f7f472390be2b161683c03b6eb2180f58b7d6ef8fefa7bc8d61ef748",
+      "bytes": 10332,
+      "duration": 1.176,
+      "retrieved": "2026-11-06"
+    },
+    {
       "token": "ge4",
       "sourceToken": "ge4",
       "file": "ge4.mp3",
@@ -2344,6 +2461,15 @@
       "duration": 0.936
     },
     {
+      "token": "gong3",
+      "sourceToken": "gong3",
+      "file": "gong3.mp3",
+      "sha256": "a7c1d21bbb26c6d1915d181406ae37b633fd8c5a36c728eec2a98378d24ce32c",
+      "bytes": 10720,
+      "duration": 1.224,
+      "retrieved": "2026-11-06"
+    },
+    {
       "token": "gong4",
       "sourceToken": "gong4",
       "file": "gong4.mp3",
@@ -2406,6 +2532,15 @@
       "sha256": "6e878176e645e3c6a69209fa77a21e405b09a820644469e57b010a886ad4c1d1",
       "bytes": 9182,
       "duration": 1.032
+    },
+    {
+      "token": "gua3",
+      "sourceToken": "gua3",
+      "file": "gua3.mp3",
+      "sha256": "1b6fe9f7bbf8f952aaa2beb2b636b02487707ddcffa9944cfc44a72161e96a2a",
+      "bytes": 10718,
+      "duration": 1.224,
+      "retrieved": "2026-11-06"
     },
     {
       "token": "gua4",
@@ -2574,6 +2709,15 @@
       "sha256": "c7d53b50b899d6201f61116d1ee8a38b2bbc9abf2230277e0e477727075dfdb6",
       "bytes": 8028,
       "duration": 0.888
+    },
+    {
+      "token": "ha3",
+      "sourceToken": "ha3",
+      "file": "ha3.mp3",
+      "sha256": "4ac9f637ae738ff421011951b9da144a9bc414344343a50b577223b641dd985c",
+      "bytes": 12444,
+      "duration": 1.44,
+      "retrieved": "2026-11-06"
     },
     {
       "token": "ha4",
@@ -3384,6 +3528,15 @@
       "duration": 0.936
     },
     {
+      "token": "jue3",
+      "sourceToken": "jue3",
+      "file": "jue3.mp3",
+      "sha256": "c4a040da4d6d7ee85cdb8005b2af8435b10256cc549f0a2105694dcdb3f2d828",
+      "bytes": 12446,
+      "duration": 1.44,
+      "retrieved": "2026-11-06"
+    },
+    {
       "token": "jue4",
       "sourceToken": "jue4",
       "file": "jue4.mp3",
@@ -3430,6 +3583,15 @@
       "sha256": "2761e0bdeb9efa6871181e2ecdf2519a9e8e3b4870cc5ec9d03f201b750d6434",
       "bytes": 8798,
       "duration": 0.984
+    },
+    {
+      "token": "kai3",
+      "sourceToken": "kai3",
+      "file": "kai3.mp3",
+      "sha256": "9525d63d49010f315f0f1f55d9fd5d4be5ff94ef5f5f764b75cf822121f5a76b",
+      "bytes": 12830,
+      "duration": 1.488,
+      "retrieved": "2026-11-06"
     },
     {
       "token": "kai4",
@@ -3728,6 +3890,15 @@
       "duration": 1.08
     },
     {
+      "token": "kui3",
+      "sourceToken": "kui3",
+      "file": "kui3.mp3",
+      "sha256": "f237a4da0615c68dae9ca1ca20c47c18545699d0bd5543669ded2a16ff0f3bdd",
+      "bytes": 11294,
+      "duration": 1.296,
+      "retrieved": "2026-11-06"
+    },
+    {
       "token": "kui4",
       "sourceToken": "kui4",
       "file": "kui4.mp3",
@@ -3782,6 +3953,15 @@
       "sha256": "a8b9e63566fa9fdd8499c8c4fbd6f55d8342b1e652352a110c33600efd108eb0",
       "bytes": 9564,
       "duration": 1.08
+    },
+    {
+      "token": "la3",
+      "sourceToken": "la3",
+      "file": "la3.mp3",
+      "sha256": "2771c578d82c2436d2fd8d2e95010cd808b14169c4cd36481f0203de77307985",
+      "bytes": 11676,
+      "duration": 1.344,
+      "retrieved": "2026-11-06"
     },
     {
       "token": "la4",
@@ -3918,6 +4098,15 @@
       "sha256": "b8d4c5c78f286af5638123fd17e3a3e6ff6700b184642d002d83f6234d9179f0",
       "bytes": 9950,
       "duration": 1.128
+    },
+    {
+      "token": "lei3",
+      "sourceToken": "lei3",
+      "file": "lei3.mp3",
+      "sha256": "f7f72ff60eff38e7a1ee0f99539dc06eb12767db62cf7fbc05eb141bbbe4795c",
+      "bytes": 12062,
+      "duration": 1.392,
+      "retrieved": "2026-11-06"
     },
     {
       "token": "lei4",
@@ -4072,6 +4261,15 @@
       "duration": 0.936
     },
     {
+      "token": "lie3",
+      "sourceToken": "lie3",
+      "file": "lie3.mp3",
+      "sha256": "9c6d92b1d1ccef63c944980c42d001dc0e6f8f46cd1deb7cfb1b3cce477dd5ec",
+      "bytes": 11294,
+      "duration": 1.296,
+      "retrieved": "2026-11-06"
+    },
+    {
       "token": "lie4",
       "sourceToken": "lie4",
       "file": "lie4.mp3",
@@ -4094,6 +4292,15 @@
       "sha256": "2c381c9d5577ac7e85ef977e4d5e11a999c815b909e15cdd46957677e6f6eee9",
       "bytes": 9950,
       "duration": 1.128
+    },
+    {
+      "token": "lin3",
+      "sourceToken": "lin3",
+      "file": "lin3.mp3",
+      "sha256": "d7c3c27baa606ed8b04626b7255485cf851ee9c9a2c6b40fa358a7e7d7fcc3a8",
+      "bytes": 12062,
+      "duration": 1.392,
+      "retrieved": "2026-11-06"
     },
     {
       "token": "lin4",
@@ -4464,6 +4671,15 @@
       "duration": 1.032
     },
     {
+      "token": "mang3",
+      "sourceToken": "mang3",
+      "file": "mang3.mp3",
+      "sha256": "e186c25e159c4c6945208676c9738e1ff29cf2cdafed0dbb177690512b8bd480",
+      "bytes": 12832,
+      "duration": 1.488,
+      "retrieved": "2026-11-06"
+    },
+    {
       "token": "mao1",
       "sourceToken": "mao1",
       "file": "mao1.mp3",
@@ -4478,6 +4694,15 @@
       "sha256": "bbe2b13fb7013a0c8d2a9795518e93bcf56fd9a87e1277211ec4376d1b7fb647",
       "bytes": 8030,
       "duration": 0.888
+    },
+    {
+      "token": "mao3",
+      "sourceToken": "mao3",
+      "file": "mao3.mp3",
+      "sha256": "153b5f6f68db4fc26957eedddf4651874a2ae1c850c6c2e7d2b529c98f9ff229",
+      "bytes": 11678,
+      "duration": 1.344,
+      "retrieved": "2026-11-06"
     },
     {
       "token": "mao4",
@@ -4688,6 +4913,15 @@
       "duration": 1.032
     },
     {
+      "token": "ming3",
+      "sourceToken": "ming3",
+      "file": "ming3.mp3",
+      "sha256": "c6b55f2f2db8dc92f9d03b9655320e54af997a545d76873d2305df80ef5e2bdc",
+      "bytes": 10336,
+      "duration": 1.176,
+      "retrieved": "2026-11-06"
+    },
+    {
       "token": "ming4",
       "sourceToken": "ming4",
       "file": "ming4.mp3",
@@ -4832,6 +5066,15 @@
       "duration": 1.128
     },
     {
+      "token": "nan3",
+      "sourceToken": "nan3",
+      "file": "nan3.mp3",
+      "sha256": "93b3022984a05708ed570fadac45d0f81f923330344258cfb11526b3b26fa760",
+      "bytes": 10334,
+      "duration": 1.176,
+      "retrieved": "2026-11-06"
+    },
+    {
       "token": "nan4",
       "sourceToken": "nan4",
       "file": "nan4.mp3",
@@ -4854,6 +5097,15 @@
       "sha256": "575653a120ce4f370adcb71972c030d8e245f40fbbf9a7f6783ea8e3faa50f20",
       "bytes": 9952,
       "duration": 1.128
+    },
+    {
+      "token": "nang3",
+      "sourceToken": "nang3",
+      "file": "nang3.mp3",
+      "sha256": "ad203d4145f387d3d394f9ff9b5c91c834d30c8b834d82ec013ba46be71cb0a4",
+      "bytes": 9952,
+      "duration": 1.128,
+      "retrieved": "2026-11-06"
     },
     {
       "token": "nao1",
@@ -4894,6 +5146,15 @@
       "sha256": "c04baafe8adbb7ea76aff83c939af3b012028865fe40aed5dcde1b93f7c72019",
       "bytes": 9180,
       "duration": 1.032
+    },
+    {
+      "token": "nei3",
+      "sourceToken": "nei3",
+      "file": "nei3.mp3",
+      "sha256": "73f02c9790c193336f95715fcf3fcd514fe85661202e44ea7aeac3bbd17c51f8",
+      "bytes": 12062,
+      "duration": 1.392,
+      "retrieved": "2026-11-06"
     },
     {
       "token": "nei4",
@@ -5256,6 +5517,15 @@
       "duration": 1.08
     },
     {
+      "token": "pai3",
+      "sourceToken": "pai3",
+      "file": "pai3.mp3",
+      "sha256": "1be9ae4b3c6447fb20463cc32600072a21114ba5af37adf0e04b5566aefa50ce",
+      "bytes": 12830,
+      "duration": 1.488,
+      "retrieved": "2026-11-06"
+    },
+    {
       "token": "pai4",
       "sourceToken": "pai4",
       "file": "pai4.mp3",
@@ -5593,6 +5863,15 @@
       "duration": 1.128
     },
     {
+      "token": "po3",
+      "sourceToken": "po3",
+      "file": "po3.mp3",
+      "sha256": "6c1bb9a7307ced2b192307ca480f68a257937bed83886a0216237790ae4c2e14",
+      "bytes": 12060,
+      "duration": 1.392,
+      "retrieved": "2026-11-06"
+    },
+    {
       "token": "po4",
       "sourceToken": "po4",
       "file": "po4.mp3",
@@ -5841,6 +6120,15 @@
       "duration": 1.08
     },
     {
+      "token": "qin3",
+      "sourceToken": "qin3",
+      "file": "qin3.mp3",
+      "sha256": "42f57567b7486f278fcadc6be0be3c81d80437549f4bb7bf9ebd25f285ed47e1",
+      "bytes": 12830,
+      "duration": 1.488,
+      "retrieved": "2026-11-06"
+    },
+    {
       "token": "qin4",
       "sourceToken": "qin4",
       "file": "qin4.mp3",
@@ -5905,6 +6193,15 @@
       "duration": 1.08
     },
     {
+      "token": "qiu3",
+      "sourceToken": "qiu3",
+      "file": "qiu3.mp3",
+      "sha256": "3991f9fc339765996eb9f3ec87ac22c9786c4a2717efcfdde5ff8cdc0cfa7839",
+      "bytes": 12446,
+      "duration": 1.44,
+      "retrieved": "2026-11-06"
+    },
+    {
       "token": "qu1",
       "sourceToken": "qu1",
       "file": "qu1.mp3",
@@ -5951,6 +6248,15 @@
       "sha256": "3b821b33bcf4b99212ceaf28a0410e100465c5f75f7985213e4cf5e0ee828117",
       "bytes": 9952,
       "duration": 1.128
+    },
+    {
+      "token": "quan3",
+      "sourceToken": "quan3",
+      "file": "quan3.mp3",
+      "sha256": "9c932d35ffcc423dd3a5a14ab216c508a04f275b5d028316ebeb17256ca60f48",
+      "bytes": 11680,
+      "duration": 1.344,
+      "retrieved": "2026-11-06"
     },
     {
       "token": "quan4",
@@ -6031,6 +6337,15 @@
       "sha256": "25731e9ad6ef20dfaff751fbe2d5f6e12c652eb0f9a90a9fa376097895dc05b7",
       "bytes": 10720,
       "duration": 1.224
+    },
+    {
+      "token": "rang3",
+      "sourceToken": "rang3",
+      "file": "rang3.mp3",
+      "sha256": "ffe7b337717db83fa22dbe24ac5aad54f6acb89fe4001b3d939c50149ac430ce",
+      "bytes": 10336,
+      "duration": 1.176,
+      "retrieved": "2026-11-06"
     },
     {
       "token": "rang4",
@@ -6137,6 +6452,15 @@
       "duration": 0.984
     },
     {
+      "token": "rong3",
+      "sourceToken": "rong3",
+      "file": "rong3.mp3",
+      "sha256": "4b22f78421696452862dfd99d93fb2ad885365bf860cbecaac8dcd068c6d21d4",
+      "bytes": 12064,
+      "duration": 1.392,
+      "retrieved": "2026-11-06"
+    },
+    {
       "token": "rou2",
       "sourceToken": "rou2",
       "file": "rou2.mp3",
@@ -6191,6 +6515,15 @@
       "sha256": "90048bcb55343cd39d2a95b35c09a6aaa9cf3f1a773f6bfd08cf053a6eff4f27",
       "bytes": 8030,
       "duration": 0.888
+    },
+    {
+      "token": "rui3",
+      "sourceToken": "rui3",
+      "file": "rui3.mp3",
+      "sha256": "13c66d83cdac988259a1ec21b4e4e2c600b26b32acfdd2e708a23fee98921725",
+      "bytes": 9950,
+      "duration": 1.128,
+      "retrieved": "2026-11-06"
     },
     {
       "token": "rui4",
@@ -6383,6 +6716,15 @@
       "sha256": "cf064064cff354b06d1d6d50f88dac6e45aa3814026d12f2257b16f7b0aeb615",
       "bytes": 10720,
       "duration": 1.224
+    },
+    {
+      "token": "shai3",
+      "sourceToken": "shai3",
+      "file": "shai3.mp3",
+      "sha256": "33cc1f6ad313a46159a840be9a2303c060a3c7ca2f0eeb031665f9a6e530519c",
+      "bytes": 12448,
+      "duration": 1.44,
+      "retrieved": "2026-11-06"
     },
     {
       "token": "shai4",
@@ -6769,6 +7111,15 @@
       "duration": 1.128
     },
     {
+      "token": "shun3",
+      "sourceToken": "shun3",
+      "file": "shun3.mp3",
+      "sha256": "8930451d97e1a284d451fb8a291f1dc7d975439a445bf65ae6e329029eff9f5d",
+      "bytes": 11296,
+      "duration": 1.296,
+      "retrieved": "2026-11-06"
+    },
+    {
       "token": "shun4",
       "sourceToken": "shun4",
       "file": "shun4.mp3",
@@ -6857,6 +7208,15 @@
       "duration": 1.08
     },
     {
+      "token": "sou3",
+      "sourceToken": "sou3",
+      "file": "sou3.mp3",
+      "sha256": "3bcfb5ea972959f41f5358e1e3acca19206e2fae4a71e9f676e19ef21831706c",
+      "bytes": 12062,
+      "duration": 1.392,
+      "retrieved": "2026-11-06"
+    },
+    {
       "token": "su1",
       "sourceToken": "su1",
       "file": "su1.mp3",
@@ -6911,6 +7271,15 @@
       "sha256": "afbe2e52dfadb54c9cfd578df88ae2db10f958545eb0b046196febb0f1552838",
       "bytes": 9950,
       "duration": 1.128
+    },
+    {
+      "token": "sui3",
+      "sourceToken": "sui3",
+      "file": "sui3.mp3",
+      "sha256": "10ea7757de7225efdbce9e3dd386f363d08b0c72c90c19cb5f2c1598ae389f4c",
+      "bytes": 9950,
+      "duration": 1.128,
+      "retrieved": "2026-11-06"
     },
     {
       "token": "sui4",
@@ -7409,6 +7778,15 @@
       "duration": 1.176
     },
     {
+      "token": "tun3",
+      "sourceToken": "tun3",
+      "file": "tun3.mp3",
+      "sha256": "7c883a4180c2d4939b22748acd19a9e2c4cc89b4b053e7ccfad6afaba617ba3d",
+      "bytes": 11678,
+      "duration": 1.344,
+      "retrieved": "2026-11-06"
+    },
+    {
       "token": "tun4",
       "sourceToken": "tun4",
       "file": "tun4.mp3",
@@ -7487,6 +7865,15 @@
       "sha256": "3fd21621158b2e056a24412966ce51f192c294700bb9e021336fd8d66d39913e",
       "bytes": 8798,
       "duration": 0.984
+    },
+    {
+      "token": "wai3",
+      "sourceToken": "wai3",
+      "file": "wai3.mp3",
+      "sha256": "48ad6502df1277a109f01cb8381d5619b4232075cff1fbae4777f2af92029636",
+      "bytes": 11678,
+      "duration": 1.344,
+      "retrieved": "2026-11-06"
     },
     {
       "token": "wai4",
@@ -7631,6 +8018,15 @@
       "sha256": "db33d4f7c3ad4fdb652c7480a67a84e813af44215ed26231d9a63cd5e9e4c044",
       "bytes": 9952,
       "duration": 1.128
+    },
+    {
+      "token": "weng3",
+      "sourceToken": "weng3",
+      "file": "weng3.mp3",
+      "sha256": "b0cb77f725697d90045012618c66070c8f77589c8a229e1d8324d6c25b18fb7b",
+      "bytes": 12064,
+      "duration": 1.392,
+      "retrieved": "2026-11-06"
     },
     {
       "token": "weng4",
@@ -7951,6 +8347,15 @@
       "sha256": "06cd9aa58d3ac146fdd383d6b13ba98b2432bd8ad66a9d55f1af4bb79244e5bb",
       "bytes": 9950,
       "duration": 1.128
+    },
+    {
+      "token": "xiu3",
+      "sourceToken": "xiu3",
+      "file": "xiu3.mp3",
+      "sha256": "ab3bab7861d7c112d7d05d3fe31320904a892c59ecf59cd952a7ccfb3c682b5d",
+      "bytes": 11294,
+      "duration": 1.296,
+      "retrieved": "2026-11-06"
     },
     {
       "token": "xiu4",
@@ -9045,6 +9450,24 @@
       "duration": 1.128
     },
     {
+      "token": "zhua3",
+      "sourceToken": "zhua3",
+      "file": "zhua3.mp3",
+      "sha256": "ecb9ed10ee1419b1d92e045ea3f558f7ea26f70ee104723b92ee58e8da8e987e",
+      "bytes": 11296,
+      "duration": 1.296,
+      "retrieved": "2026-11-06"
+    },
+    {
+      "token": "zhuai3",
+      "sourceToken": "zhuai3",
+      "file": "zhuai3.mp3",
+      "sha256": "47a59adfcde807c7fbba2c9c3348bce3e370e15e6fd592c110ba40dffaacece9",
+      "bytes": 12450,
+      "duration": 1.44,
+      "retrieved": "2026-11-06"
+    },
+    {
       "token": "zhuai4",
       "sourceToken": "zhuai4",
       "file": "zhuai4.mp3",
@@ -9243,6 +9666,15 @@
       "sha256": "7fc237bb085f4f4965173b27f39a3a4b536fa6d4c6520b2201374a74924f886f",
       "bytes": 10336,
       "duration": 1.176
+    },
+    {
+      "token": "zuan3",
+      "sourceToken": "zuan3",
+      "file": "zuan3.mp3",
+      "sha256": "19afa52d0ef62b4cae5eb7e7f3c2ee63c8ff0a0a3b433338c53b0ce00c98b89e",
+      "bytes": 9952,
+      "duration": 1.128,
+      "retrieved": "2026-11-06"
     },
     {
       "token": "zuan4",

@@ -40,6 +40,26 @@ test('catalog enforces separate isolated and contextual contracts and rejects ob
   ]) assert.throws(() => parseExampleCatalog({ ...catalog, ...change }));
 });
 
+test('usage annotations preserve dictionary readings and must identify the isolated character', () => {
+  const example = {text:'恶', tokens:['e3'], target:0, note:'恶心で使う ě。',
+    usage:{text:'恶心', tokens:['e3','xin1'], target:0}};
+  const parse = (value: unknown) => parseExampleCatalog({...catalog, isolatedExamples:{e3:value}});
+  assert.deepEqual(parse(example).isolatedExamples.e3,example);
+  for(const note of [null, 42, '', ' ']) assert.throws(()=>parse({...example,note}));
+  for(const usage of [null, {}, {text:'恶',tokens:['e3'],target:0},
+    {text:'恶心',tokens:['e4','xin1'],target:0},
+    {text:'恶心',tokens:['e3','xin1'],target:1},
+    {text:'某字',tokens:['e3','zi4'],target:0}]){
+    assert.throws(()=>parse({...example,usage}));
+  }
+  assert.throws(()=>parseExampleCatalog({...catalog,contextualExamples:{e3:{
+    text:'恶心',tokens:['e3','xin1'],target:0,usage:example.usage,
+  }}}));
+  for(const item of Object.values(catalog.isolatedExamples)){
+    if(item?.usage) assert.equal([...item.usage.text][item.usage.target],item.text);
+  }
+});
+
 test('approved isolated characters are shared by detail and comparison at every recorded tone', () => {
   for (const [key, example] of Object.entries(catalog.isolatedExamples)) {
     assert.ok(example);

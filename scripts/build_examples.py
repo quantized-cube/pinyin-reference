@@ -55,6 +55,15 @@ def example(entry, target=0):
     return {'text': entry.word, 'tokens': list(entry.tokens), 'target': target}
 
 
+def fits_third_tone_context(entry, key, form):
+    # Match src/third-tone.ts: a reviewed final pair, optionally preceded by
+    # one non-neutral, non-third-tone syllable. Do not infer longer chains.
+    tokens = entry.tokens
+    return (len(tokens) in (2, 3) and tokens[-2] == key
+            and all(token[-1] in '124' for token in tokens[:-2])
+            and tokens[-1][-1] in ('124' if form == 'half' else '3'))
+
+
 def verified(entries, key, word, predicate):
     matches = [e for e in entries if e.word == word and key in e.tokens and predicate(e)]
     if not matches:
@@ -139,9 +148,8 @@ def generate_examples(raw, *, common=COMMON, isolated_choices=ISOLATED_CHOICES,
         for form, word in choices.items():
             if form not in ('half', 'sandhi'):
                 raise ValueError(f'Invalid contextual third-tone form: {form}')
-            e = verified(entries, key, word, lambda e: len(e.tokens) == 2 and e.tokens[0] == key
-                         and e.tokens[1][-1] in ('124' if form == 'half' else '3'))
-            forms[form] = example(e)
+            e = verified(entries, key, word, lambda e: fits_third_tone_context(e, key, form))
+            forms[form] = example(e, len(e.tokens) - 2)
         third[key] = dict(sorted(forms.items()))
 
     maps = {'isolatedExamples': dict(sorted(isolated.items())),

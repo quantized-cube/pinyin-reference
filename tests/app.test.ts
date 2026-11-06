@@ -1710,12 +1710,21 @@ test('contextual recordings play complete words without TTS support or settings'
     ['shou','half','手机','手','shǒu jī','shou3-half'],
     ['wan','half','晚安','晚','wǎn ān','wan3-half'],
     ['xiao','half','小吃','小','xiǎo chī','xiao3-half'],
+    ['hao','sandhi','好久','好','hǎo jiǔ','hao3-sandhi'],
+    ['li','half','理发','理','lǐ fà','li3-half'],
+    ['ma','sandhi','蚂蚁','蚂','mǎ yǐ','ma3-sandhi'],
+    ['nü','half','女性','女','nǚ xìng','nv3-half'],
+    ['shi','sandhi','大使馆','使','dà shǐ guǎn','shi3-sandhi'],
+    ['xiao','sandhi','小组','小','xiǎo zǔ','xiao3-sandhi'],
+    ['you','sandhi','友好','友','yǒu hǎo','you3-sandhi'],
+    ['zao','half','早期','早','zǎo qī','zao3-half'],
   ] as const){
     for(const recordingsSupported of [true,false]){
       const s=await setup(t,[],{hash:`#s=${syllable}&t=3&form=${form}`,speechSupported:false,recordingsSupported});
       assert.equal(s.$('.example-word').textContent,word);
       assert.equal(s.$('.example-word mark').textContent,target);
       assert.equal(s.$('.example-pinyin').textContent,pinyin);
+      assert.equal(s.$('.example-pinyin mark').textContent,pinyin.split(' ')[word.indexOf(target)]);
       assert.equal(s.$('#play span').textContent,'例語を聞く');
       assert.equal(s.$<HTMLButtonElement>('#play').disabled,!recordingsSupported);
       assert.equal(s.window.document.querySelector('.voice-settings,#voice-help'),null);
@@ -1738,6 +1747,21 @@ test('contextual recordings play complete words without TTS support or settings'
       assert.equal(s.requestCount(),0);
     }
   }
+});
+
+test('a non-initial half-third target uses its actual following tone and exact word', async t => {
+  const original=parseExampleCatalog(catalog);
+  const fixture={...original,thirdToneExamples:{...original.thirdToneExamples,
+    shi3:{...original.thirdToneExamples.shi3,half:{text:'大使团',tokens:['da4','shi3','tuan2'],target:1}},
+  }};
+  const s=await setup(t,[local],{hash:'#s=shi&t=3&form=half',fetchExamples:async()=>({ok:true,json:async()=>fixture})});
+  assert.equal(s.$('.example-word').textContent,'大使团');
+  assert.equal(s.$('.example-word mark').textContent,'使');
+  assert.equal(s.$('.example-pinyin mark').textContent,'shǐ');
+  assert.match(s.$('.example-realization p').textContent??'',/第3声 → 第2声/);
+  s.$('#play').click();
+  assert.equal(s.lastRequest().text,'大使团');
+  assert.equal(s.recordingCount(),0);
 });
 
 test('lao switches among three recorded forms and ignores events from the previous recording', async t => {
@@ -1773,7 +1797,7 @@ test('contextual recordings stop on form changes and restore TTS settings only f
   const s=await setupSpeech(t);
   s.$<HTMLInputElement>('#rate').value='0.6';
   s.$('#rate').dispatchEvent(new s.window.Event('input',{bubbles:true}));
-  s.input('hao3');
+  s.input('mai3');
   s.$('[data-third-tone-form="half"]').click();
   assert.equal(s.$('#voice-status').textContent,'例語全体の録音を元の速度で再生します。');
   s.$('#play').click();
@@ -1781,28 +1805,28 @@ test('contextual recordings stop on form changes and restore TTS settings only f
   assert.equal(contextual.playbackRate,1);
   s.$('[data-third-tone-form="sandhi"]').click();
   assert.equal(contextual.paused,true);
-  assert.equal(s.$('.example-word').textContent,'好友');
+  assert.equal(s.$('.example-word').textContent,'买主');
   assert.match(s.$('.audio-footnote').textContent??'',/TTS/);
   assert.equal(s.$<HTMLInputElement>('#rate').value,'0.6');
   s.$('#play').click();
   const speech=s.lastRequest();
-  assert.equal(speech.text,'好友');
+  assert.equal(speech.text,'买主');
   speech.onstart?.();
   contextual.onerror?.();contextual.onended?.();contextual.onplaying?.();
-  assert.match(s.$('#voice-status').textContent??'',/好友.*再生中/);
+  assert.match(s.$('#voice-status').textContent??'',/买主.*再生中/);
   const cancellations=s.cancellations();
   s.$('[data-third-tone-form="half"]').click();
   assert.ok(s.cancellations()>cancellations);
   assert.equal(s.window.document.querySelector('.voice-settings,#voice-help'),null);
   s.$('#play').click();s.lastRecording().onplaying?.();
   speech.onerror?.({error:'network'});speech.onend?.();
-  assert.match(s.$('#voice-status').textContent??'',/好吃.*録音を再生中/);
+  assert.match(s.$('#voice-status').textContent??'',/买单.*録音を再生中/);
   const second=s.lastRecording();
   s.$('[data-third-tone-form="full"]').click();
   assert.equal(second.paused,true);
   assert.equal(s.$('#play span').textContent,'単独音を聞く');
   s.$('#play').click();
-  assert.equal(s.lastRecording().src,'audio/syllables/hao3.mp3');
+  assert.equal(s.lastRecording().src,'audio/syllables/mai3.mp3');
   s.lastRecording().onended?.();
 });
 

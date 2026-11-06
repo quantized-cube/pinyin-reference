@@ -16470,10 +16470,10 @@
         "target": 0
       },
       "sandhi": {
-        "text": "好友",
+        "text": "好久",
         "tokens": [
           "hao3",
-          "you3"
+          "jiu3"
         ],
         "target": 0
       }
@@ -16516,10 +16516,10 @@
     },
     "li3": {
       "half": {
-        "text": "理科",
+        "text": "理发",
         "tokens": [
           "li3",
-          "ke1"
+          "fa4"
         ],
         "target": 0
       },
@@ -16542,10 +16542,10 @@
         "target": 0
       },
       "sandhi": {
-        "text": "马匹",
+        "text": "蚂蚁",
         "tokens": [
           "ma3",
-          "pi3"
+          "yi3"
         ],
         "target": 0
       }
@@ -16580,10 +16580,10 @@
     },
     "nü3": {
       "half": {
-        "text": "女生",
+        "text": "女性",
         "tokens": [
           "nü3",
-          "sheng1"
+          "xing4"
         ],
         "target": 0
       },
@@ -16606,12 +16606,13 @@
         "target": 0
       },
       "sandhi": {
-        "text": "使馆",
+        "text": "大使馆",
         "tokens": [
+          "da4",
           "shi3",
           "guan3"
         ],
-        "target": 0
+        "target": 1
       }
     },
     "shou3": {
@@ -16696,10 +16697,10 @@
         "target": 0
       },
       "sandhi": {
-        "text": "小雨",
+        "text": "小组",
         "tokens": [
           "xiao3",
-          "yu3"
+          "zu3"
         ],
         "target": 0
       }
@@ -16714,10 +16715,10 @@
         "target": 0
       },
       "sandhi": {
-        "text": "有理",
+        "text": "友好",
         "tokens": [
           "you3",
-          "li3"
+          "hao3"
         ],
         "target": 0
       }
@@ -16742,10 +16743,10 @@
     },
     "zao3": {
       "half": {
-        "text": "早晨",
+        "text": "早期",
         "tokens": [
           "zao3",
-          "chen2"
+          "qi1"
         ],
         "target": 0
       },

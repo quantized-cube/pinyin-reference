@@ -21,7 +21,7 @@ export function renderDetail(state: AppState, playback: DetailPlayback, exampleS
   if(example){
     const chars=[...example.text];
     const context=third?.id==='full'?'丁寧に単独で読む場合。'
-      :third?.id==='half'?`第3声 → 第${parseQuery(example.tokens[1]??'').tone}声。同じまとまりで続けて読む場合。`
+      :third?.id==='half'?`第3声 → 第${parseQuery(example.tokens[example.target+1]??'').tone}声。同じまとまりで続けて読む場合。`
       :'第3声 → 第3声。同じまとまりで読むと、前の音節が上昇形になります。';
     exampleHtml=`<div class="example"><small>${contextual?'例語全体を再生・下線が対象音節':chars.length>1?'参考の例語・下線が対象音節':'参考の例字'}</small><div class="example-word" lang="zh-CN">${chars.map((c,n)=>n===example.target?`<mark>${c}</mark>`:c).join('')}</div><small>辞書の読み</small><div class="example-pinyin">${example.tokens.map((p,n)=>{const {text,tone}=parseQuery(p);const py=esc(markTone(text,tone));return n===example.target?`<mark>${py}</mark>`:py;}).join(' ')}</div>${third&&third.id!=='full'?`<div class="example-realization"><small>対象音の発音の目安</small><strong>${third.label} · ${third.value} <span>[${s.ipa}${third.ipa}]</span></strong><p>${context}</p></div>`:''}</div>`;
   } else {

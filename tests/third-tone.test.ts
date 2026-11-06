@@ -10,7 +10,7 @@ import type { PronunciationExample } from '../src/types.js';
 const catalog = parseExampleCatalog(JSON.parse(await readFile(new URL('../../public/examples.json', import.meta.url), 'utf8')));
 
 test('third-tone examples keep the dictionary tone while selecting three different contours', () => {
-  for (const [form, word, ipa] of [['full', '好', '˨˩˦'], ['half', '好吃', '˨˩'], ['sandhi', '好友', '˧˥']] as const) {
+  for (const [form, word, ipa] of [['full', '好', '˨˩˦'], ['half', '好吃', '˨˩'], ['sandhi', '好久', '˧˥']] as const) {
     const e = required(thirdToneExample('hao', form, catalog.thirdToneExamples, catalog.isolatedExamples), form);
     assert.equal(e.text, word);
     assert.equal(e.tokens[e.target], 'hao3');
@@ -32,7 +32,7 @@ test('every curated word is aligned and fits its explicitly chosen pronunciation
       assert.equal(e.tokens[e.target], key);
       assert.equal(e.tokens.length, [...e.text].length);
       assert.ok(fitsThirdToneForm(form, e), `${key}/${form}`);
-      if (form === 'half') halfFollowers.add(parseQuery(required(e.tokens[1], 'next tone')).tone);
+      if (form === 'half') halfFollowers.add(parseQuery(required(e.tokens[e.target + 1], 'next tone')).tone);
       total++;
     }
   }
@@ -46,12 +46,34 @@ test('neutral followers, longer chains and word-final targets are never automati
     { text: '好的', tokens: ['hao3', 'de5'], target: 0 },
     { text: '你好', tokens: ['ni3', 'hao3'], target: 1 },
     { text: '展览馆', tokens: ['zhan3', 'lan3', 'guan3'], target: 0 },
+    { text: '展览馆', tokens: ['zhan3', 'lan3', 'guan3'], target: 1 },
+    { text: '的使馆', tokens: ['de5', 'shi3', 'guan3'], target: 1 },
+    { text: '大使们', tokens: ['da4', 'shi3', 'men5'], target: 1 },
+    { text: '使馆区', tokens: ['shi3', 'guan3', 'qu1'], target: 0 },
+    { text: '中国使馆', tokens: ['zhong1', 'guo2', 'shi3', 'guan3'], target: 2 },
   ];
   for (const e of ambiguous) {
     for (const form of thirdToneForms) assert.equal(fitsThirdToneForm(form.id, e), false, e.text);
     const key = required(e.tokens[e.target], 'target');
     for (const form of thirdToneForms) assert.equal(thirdToneExample(parseQuery(key).text, form.id, {}, { [key]: e }), undefined);
   }
+});
+
+test('a curated three-syllable word preserves the target in its final pair', () => {
+  const example = {text:'大使馆', tokens:['da4','shi3','guan3'], target:1};
+  assert.deepEqual(thirdToneExample('shi', 'sandhi', catalog.thirdToneExamples, catalog.isolatedExamples), example);
+  assert.equal(fitsThirdToneForm('sandhi', example), true);
+  assert.equal(fitsThirdToneForm('half', example), false);
+  assert.equal(fitsThirdToneForm('full', example), false);
+  assert.equal(fitsThirdToneForm('sandhi', {...example, target:2}), false);
+  assert.equal(fitsThirdToneForm('half', {text:'大使团', tokens:['da4','shi3','tuan2'], target:1}), true);
+  assert.equal(thirdToneExample('shi', 'sandhi', {}, catalog.isolatedExamples), undefined);
+  for (const first of ['da1','da2','da4']) {
+    assert.equal(fitsThirdToneForm('sandhi', {...example, tokens:[first,'shi3','guan3']}), true);
+  }
+  assert.throws(() => parseExampleCatalog({...catalog, thirdToneExamples:{
+    lan3:{sandhi:{text:'展览馆', tokens:['zhan3','lan3','guan3'], target:1}},
+  }}));
 });
 
 test('missing contextual audio never falls back to a single character or an unrelated example', () => {

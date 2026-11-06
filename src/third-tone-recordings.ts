@@ -37,6 +37,14 @@ export const thirdToneRecordings: readonly ThirdToneRecording[] = [
   {text: '早点', tokens: ['zao3', 'dian3'], target: 0, form: 'sandhi', url: 'audio/third-tone/zao3-sandhi.mp3'},
   {text: '主人', tokens: ['zhu3', 'ren2'], target: 0, form: 'half', url: 'audio/third-tone/zhu3-half.mp3'},
   {text: '主体', tokens: ['zhu3', 'ti3'], target: 0, form: 'sandhi', url: 'audio/third-tone/zhu3-sandhi.mp3'},
+  {text: '好久', tokens: ['hao3', 'jiu3'], target: 0, form: 'sandhi', url: 'audio/third-tone/hao3-sandhi.mp3'},
+  {text: '理发', tokens: ['li3', 'fa4'], target: 0, form: 'half', url: 'audio/third-tone/li3-half.mp3'},
+  {text: '蚂蚁', tokens: ['ma3', 'yi3'], target: 0, form: 'sandhi', url: 'audio/third-tone/ma3-sandhi.mp3'},
+  {text: '女性', tokens: ['nü3', 'xing4'], target: 0, form: 'half', url: 'audio/third-tone/nv3-half.mp3'},
+  {text: '大使馆', tokens: ['da4', 'shi3', 'guan3'], target: 1, form: 'sandhi', url: 'audio/third-tone/shi3-sandhi.mp3'},
+  {text: '小组', tokens: ['xiao3', 'zu3'], target: 0, form: 'sandhi', url: 'audio/third-tone/xiao3-sandhi.mp3'},
+  {text: '友好', tokens: ['you3', 'hao3'], target: 0, form: 'sandhi', url: 'audio/third-tone/you3-sandhi.mp3'},
+  {text: '早期', tokens: ['zao3', 'qi1'], target: 0, form: 'half', url: 'audio/third-tone/zao3-half.mp3'},
 ];
 
 // Bind a recording to the complete displayed example, not just its target syllable.

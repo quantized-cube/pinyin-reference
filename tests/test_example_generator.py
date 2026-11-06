@@ -95,6 +95,26 @@ class ExampleGeneratorTests(unittest.TestCase):
         self.assertEqual(generate(raw), generate('\n'.join(reversed(raw.splitlines()))))
         self.assertEqual(generate(raw, common='眼'), generate(raw, common='眼'))
 
+    def test_reviewed_three_syllable_context_targets_the_final_pair(self):
+        raw = ('大使館 大使馆 [da4 shi3 guan3] /embassy/\n'
+               '大使團 大使团 [da4 shi3 tuan2] /delegation fixture/')
+        choices = {'shi3': {'sandhi': '大使馆', 'half': '大使团'}}
+        data, _ = generate(raw, third_choices=choices)
+        self.assertEqual(data['thirdToneExamples']['shi3']['sandhi'],
+                         {'text': '大使馆', 'tokens': ['da4', 'shi3', 'guan3'], 'target': 1})
+        self.assertEqual(data['thirdToneExamples']['shi3']['half']['target'], 1)
+        self.assertEqual(generate(raw)[0]['thirdToneExamples'], {})
+        for word, tokens, key, form in [
+            ('展览馆', 'zhan3 lan3 guan3', 'lan3', 'sandhi'),
+            ('的使馆', 'de5 shi3 guan3', 'shi3', 'sandhi'),
+            ('大使们', 'da4 shi3 men5', 'shi3', 'half'),
+            ('使馆区', 'shi3 guan3 qu1', 'shi3', 'sandhi'),
+            ('中国使馆', 'zhong1 guo2 shi3 guan3', 'shi3', 'sandhi'),
+            ('大使', 'da4 shi3', 'shi3', 'sandhi'),
+        ]:
+            with self.subTest(word=word), self.assertRaises(ValueError):
+                generate(f'{word} {word} [{tokens}] /fixture/', third_choices={key: {form: word}})
+
     def test_ambiguous_curated_readings_fail_but_duplicate_definitions_are_allowed(self):
         raw = '好吃 好吃 [hao3 chi1] /tasty/\n好吃 好吃 [hao3 chi1] /palatable/'
         data, _ = generate(raw, third_choices={'hao3': {'half': '好吃'}})

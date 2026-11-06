@@ -21,10 +21,11 @@ export function getThirdToneForm(id: ThirdToneFormId): ThirdToneForm {
 export function fitsThirdToneForm(form: ThirdToneFormId, example: PronunciationExample): boolean {
   if (!example.tokens[example.target]?.endsWith('3')) return false;
   if (form === 'full') return example.tokens.length === 1 && example.target === 0;
-  // Only curated two-syllable words, with the first syllable as the target.
-  // Neutral tones, phrase boundaries and longer tone-3 chains need separate review.
-  if (example.tokens.length !== 2 || example.target !== 0) return false;
-  const next = example.tokens[1];
+  // Match the generator: a curated final pair, optionally preceded by one
+  // tone-1/2/4 syllable. Longer tone-3 chains and neutral tones stay excluded.
+  if (![2, 3].includes(example.tokens.length) || example.target !== example.tokens.length - 2
+      || !example.tokens.slice(0, example.target).every(token => /[124]$/.test(token))) return false;
+  const next = example.tokens[example.target + 1];
   return form === 'half' ? /[124]$/.test(next ?? '') : next?.endsWith('3') === true;
 }
 export function thirdToneExample(

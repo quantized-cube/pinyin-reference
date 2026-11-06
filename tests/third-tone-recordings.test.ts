@@ -15,9 +15,9 @@ test('contextual recordings ship exact examples, verified audio and separate att
   const folder = new URL('public/audio/third-tone/', root);
   const credits: {file:string;word:string;tokens:string[];target:number;form:string;sha256:string;bytes:number;author:string;licenseUrl:string;sourcePage:string;retrieved:string;changes:string;originalFormat?:string;originalSha256?:string;originalBytes?:number}[] = JSON.parse(await readFile(new URL('credits.json', folder), 'utf8'));
   const page = await readFile(new URL('credits.html', folder), 'utf8');
-  assert.equal(thirdToneRecordings.length, 31);
+  assert.equal(thirdToneRecordings.length, 39);
   assert.equal(credits.length, thirdToneRecordings.length);
-  assert.equal(new Set(thirdToneRecordings.map(recording => recording.url)).size, 31);
+  assert.equal(new Set(thirdToneRecordings.map(recording => recording.url)).size, 39);
   assert.equal(credits.filter(credit => credit.originalFormat === 'wav').length, 4);
   assert.deepEqual((await readdir(folder)).filter(f => f.endsWith('.mp3')).sort(), credits.map(c => c.file).sort());
   for (const recording of thirdToneRecordings) {
@@ -52,8 +52,8 @@ test('contextual recordings ship exact examples, verified audio and separate att
   }
 });
 
-test('all curated third-tone contexts use recordings except the ten explicitly unrecorded examples', () => {
-  const unrecorded = new Set(['好友','理科','马匹','买主','女生','使馆','晚点','小雨','有理','早晨']);
+test('all curated third-tone contexts use recordings except the two explicitly unrecorded examples', () => {
+  const unrecorded = new Set(['买主','晚点']);
   let recordedCount = 0;
   let speechCount = 0;
   for (const [key, forms] of Object.entries(catalog.thirdToneExamples)) {
@@ -71,7 +71,7 @@ test('all curated third-tone contexts use recordings except the ten explicitly u
       }
     }
   }
-  assert.equal(recordedCount, 31);
+  assert.equal(recordedCount, 39);
   assert.equal(speechCount, unrecorded.size);
   assert.equal(thirdToneRecording({text:'早晨', tokens:['zao3','chen5'], target:0}, 'half'), undefined);
 });
@@ -133,6 +133,19 @@ test('only the exact loaded contextual example selects a recording', () => {
     example:other.thirdToneExamples.hao3.half, contextual:true, kind:'speech', text:'好喝',
   });
   assert.equal(resolveDetailPlayback({...state, thirdToneForm:'full'}, catalog, 'ready').contextual, false);
-  assert.equal(resolveDetailPlayback({...state, thirdToneForm:'sandhi'}, catalog, 'ready').kind, 'speech');
+  assert.equal(resolveDetailPlayback({...state, thirdToneForm:'sandhi'}, catalog, 'ready').kind, 'recording');
+  assert.equal(resolveDetailPlayback({...state, selected:'mai', thirdToneForm:'sandhi'}, catalog, 'ready').kind, 'speech');
   assert.equal(resolveDetailPlayback({...state, selected:'ma', tone:5}, catalog, 'ready').kind, 'speech');
+});
+
+test('the embassy recording is bound to the second syllable and complete three-syllable word', () => {
+  const example: PronunciationExample = {text:'大使馆',tokens:['da4','shi3','guan3'],target:1};
+  assert.equal(thirdToneRecording(example,'sandhi'),'audio/third-tone/shi3-sandhi.mp3');
+  for (const changed of [
+    {...example,target:0}, {...example,target:2},
+    {...example,tokens:['da4','shi2','guan3']},
+    {...example,tokens:['da4','shi3','guan4']},
+    {text:'使馆',tokens:['shi3','guan3'],target:0},
+  ]) assert.equal(thirdToneRecording(changed,'sandhi'),undefined);
+  for (const form of ['full','half'] as const) assert.equal(thirdToneRecording(example,form),undefined);
 });

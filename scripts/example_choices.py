@@ -565,27 +565,28 @@ CONTEXTUAL_CHOICES = {
     'zi5': '孩子',
 }
 
-# Only reviewed two-syllable contexts; no neutral followers or inferred chains.
+# Reviewed words with the target in the final pair. A three-syllable word may
+# have a tone-1/2/4 prefix; neutral followers and longer tone-3 chains are excluded.
 THIRD_TONE_CHOICES = {
     'dian3': {'half': '点名', 'sandhi': '点火'},
     'fa3': {'half': '法国', 'sandhi': '法语'},
-    'hao3': {'half': '好吃', 'sandhi': '好友'},
+    'hao3': {'half': '好吃', 'sandhi': '好久'},
     'ke3': {'half': '可惜', 'sandhi': '可以'},
     'lao3': {'half': '老师', 'sandhi': '老板'},
-    'li3': {'half': '理科', 'sandhi': '理解'},
-    'ma3': {'half': '马车', 'sandhi': '马匹'},
+    'li3': {'half': '理发', 'sandhi': '理解'},
+    'ma3': {'half': '马车', 'sandhi': '蚂蚁'},
     'mai3': {'half': '买单', 'sandhi': '买主'},
     'ni3': {'sandhi': '你好'},
-    'nü3': {'half': '女生', 'sandhi': '女子'},
-    'shi3': {'half': '使用', 'sandhi': '使馆'},
+    'nü3': {'half': '女性', 'sandhi': '女子'},
+    'shi3': {'half': '使用', 'sandhi': '大使馆'},
     'shou3': {'half': '手机', 'sandhi': '手表'},
     'shui3': {'half': '水平', 'sandhi': '水果'},
     'wan3': {'half': '晚安', 'sandhi': '晚点'},
     'xiang3': {'half': '想念', 'sandhi': '想法'},
-    'xiao3': {'half': '小吃', 'sandhi': '小雨'},
-    'you3': {'half': '有名', 'sandhi': '有理'},
+    'xiao3': {'half': '小吃', 'sandhi': '小组'},
+    'you3': {'half': '有名', 'sandhi': '友好'},
     'yu3': {'half': '雨衣', 'sandhi': '雨伞'},
-    'zao3': {'half': '早晨', 'sandhi': '早点'},
+    'zao3': {'half': '早期', 'sandhi': '早点'},
     'zhu3': {'half': '主人', 'sandhi': '主体'},
     'zhun3': {'half': '准备', 'sandhi': '准许'},
 }

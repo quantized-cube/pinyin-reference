@@ -12,14 +12,19 @@ import type {PronunciationExample} from '../src/types.js';
 const root = new URL('../../', import.meta.url);
 const catalog = parseExampleCatalog(JSON.parse(await readFile(new URL('public/examples.json', root), 'utf8')));
 
-test('all 111 neutral recordings match their displayed context, attribution, source reading and shipped bytes', async () => {
+test('all 114 neutral recordings match their displayed context, attribution, reading evidence and shipped bytes', async () => {
   const folder = new URL('public/audio/neutral/', root);
-  const credits: {file:string;word:string;pinyin:string;tokens:string[];target:number;sha256:string;bytes:number;author:string;licenseUrl:string;sourcePage:string;retrieved:string;originalSha256?:string;originalBytes?:number;sourceIndexSha256?:string;sourceEntry?:{swac_text:string;swac_pron_phon:string;swac_lang:string}}[] = JSON.parse(await readFile(new URL('credits.json', folder), 'utf8'));
+  const credits: {file:string;word:string;pinyin:string;tokens:string[];target:number;sha256:string;bytes:number;author:string;licenseUrl:string;sourcePage:string;retrieved:string;originalSha256?:string;originalBytes?:number;sourceIndexSha256?:string;sourceEntry?:{swac_text:string;swac_pron_phon:string;swac_lang:string};sourceFileTitle?:string;sourceTranscription?:string;sourceLanguage?:string;sourcePinyin?:string|null;review?:{readingEvidence:string;selectedOn?:string}}[] = JSON.parse(await readFile(new URL('credits.json', folder), 'utf8'));
   const page = await readFile(new URL('credits.html', folder), 'utf8');
-  assert.equal(neutralRecordings.length, 111);
-  assert.equal(credits.length, 111);
-  assert.equal(new Set(neutralRecordings.map(r=>r.url)).size, 111);
-  assert.deepEqual((await readdir(folder)).filter(f=>f.endsWith('.mp3')).sort(), credits.map(c=>c.file).sort());
+  assert.equal(neutralRecordings.length, 114);
+  assert.equal(credits.length, 114);
+  assert.equal(new Set(neutralRecordings.map(r=>r.url)).size, 114);
+  assert.deepEqual((await readdir(folder)).filter(f=>/\.(mp3|wav)$/.test(f)).sort(), credits.map(c=>c.file).sort());
+  const selections: Record<string, {author:string;sha256:string}> = {
+    'peng5.wav': {author:'Fake estate',sha256:'e5634fca29e04aa5975372f34cb37c828344ec4741f991e2b88d4aca100a2c3f'},
+    'yang5.wav': {author:'KhawaChenpo',sha256:'c139f0b884a8fcbbb2e6c0f5b8877ab3d2a7771cb6a2e1dd54e89ce6979fcff6'},
+    'yin5.wav': {author:'Fake estate',sha256:'3e4aff826306c00ef295451ee7164dbcf6bd3fd845bdc46ff9d9003baaba09c2'},
+  };
   const normalize = (value:string) => value.normalize('NFC').replace(/u:|v/g,'ü').replace(/[\s'’·-]/g,'');
   for (const recording of neutralRecordings) {
     const credit = credits.find(c=>'audio/neutral/'+c.file===recording.url);
@@ -49,12 +54,29 @@ test('all 111 neutral recordings match their displayed context, attribution, sou
       assert.equal(credit.sourceEntry?.swac_lang,'cmn');
       assert.equal(normalize(credit.sourceEntry?.swac_pron_phon??''),normalize(pinyin));
     }
+    if (credit.retrieved==='2026-11-08') {
+      const selected=selections[credit.file];assert.ok(selected);
+      assert.equal(credit.author,selected.author);
+      assert.equal(credit.sha256,selected.sha256);
+      assert.equal(credit.originalSha256,credit.sha256);
+      assert.equal(credit.originalBytes,credit.bytes);
+      assert.equal(credit.licenseUrl,'https://creativecommons.org/licenses/by-sa/4.0');
+      assert.equal(credit.sourceFileTitle,`File:LL-Q9192 (cmn)-${selected.author}-${text}.wav`);
+      assert.equal(credit.sourceTranscription,text);
+      assert.equal(credit.sourceLanguage,'cmn');
+      assert.equal(credit.sourcePinyin,null);
+      assert.equal(credit.review?.readingEvidence,'user_selected');
+      assert.equal(credit.review?.selectedOn,'2026-11-08');
+      assert.equal(bytes.toString('ascii',0,4),'RIFF');
+      assert.equal(bytes.toString('ascii',8,12),'WAVE');
+    }
   }
   assert.equal(credits.filter(c=>c.retrieved==='2026-11-07').length,107);
+  assert.equal(credits.filter(c=>c.retrieved==='2026-11-08').length,3);
   for (const guide of neutralToneExamples) assert.ok(neutralRecordings.some(r=>r.text===guide.text && r.url===guide.audio));
 });
 
-test('neutral playback covers 111 of the 228 selectable examples and keeps TTS for the other 117', () => {
+test('neutral playback covers 114 of the 228 selectable examples and keeps TTS for the other 114', () => {
   const counts={recording:0,speech:0};
   for (const s of syllables) {
     if (!catalog.contextualExamples[s.pinyin+'5']) continue;
@@ -63,11 +85,12 @@ test('neutral playback covers 111 of the 228 selectable examples and keeps TTS f
     if (playback.kind==='unavailable') assert.fail(s.pinyin);
     counts[playback.kind]++;
   }
-  assert.deepEqual(counts,{recording:111,speech:117});
+  assert.deepEqual(counts,{recording:114,speech:114});
   const example=catalog.contextualExamples.a5;
   assert.ok(example);
   assert.equal(neutralRecording(example),undefined);
   assert.equal(resolveDetailPlayback({selected:'a',tone:5,thirdToneForm:'full'},catalog,'ready').kind,'speech');
+  assert.equal(resolveDetailPlayback({selected:'tiao',tone:5,thirdToneForm:'full'},catalog,'ready').kind,'speech');
 });
 
 test('the recording follows the whole neutral example, never a substring or a different tone or target', () => {

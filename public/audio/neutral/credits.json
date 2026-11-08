@@ -2815,6 +2815,45 @@
     }
   },
   {
+    "file": "peng5.wav",
+    "word": "帐篷",
+    "pinyin": "zhàngpeng",
+    "tokens": [
+      "zhang4",
+      "peng5"
+    ],
+    "target": 1,
+    "author": "Fake estate",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "source": "Lingua Libre / Wikimedia Commons",
+    "sourcePage": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Fake_estate-%E5%B8%90%E7%AF%B7.wav",
+    "downloadUrl": "https://upload.wikimedia.org/wikipedia/commons/f/fa/LL-Q9192_%28cmn%29-Fake_estate-%E5%B8%90%E7%AF%B7.wav?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+    "retrieved": "2026-11-08",
+    "changes": "Original WAV copied without modification.",
+    "originalFormat": "wav",
+    "originalSha256": "e5634fca29e04aa5975372f34cb37c828344ec4741f991e2b88d4aca100a2c3f",
+    "originalBytes": 101164,
+    "sha256": "e5634fca29e04aa5975372f34cb37c828344ec4741f991e2b88d4aca100a2c3f",
+    "bytes": 101164,
+    "duration": 1.053333,
+    "sourceFileTitle": "File:LL-Q9192 (cmn)-Fake estate-帐篷.wav",
+    "sourcePageId": 124578475,
+    "sourceLanguage": "cmn",
+    "sourceTranscription": "帐篷",
+    "sourcePinyin": null,
+    "review": {
+      "readingEvidence": "user_selected",
+      "selectedOn": "2026-11-08",
+      "selection": "User selected this word and speaker from the research candidates.",
+      "dictionary": "Displayed pinyin matches the pinned CC-CEDICT example; the source page does not supply tone-marked pinyin.",
+      "metadata": "Commons transcription, Mandarin language, speaker and CC BY-SA 4.0 license checked.",
+      "fileIntegrity": "Original file SHA-1 and size match Commons; SHA-256 recorded and full FFmpeg decode completed without errors.",
+      "auditory": "Not independently performed by the agent.",
+      "acoustic": "Not performed."
+    }
+  },
+  {
     "file": "po5.mp3",
     "word": "婆婆",
     "pinyin": "pópo",
@@ -4320,6 +4359,45 @@
     }
   },
   {
+    "file": "yang5.wav",
+    "word": "太阳",
+    "pinyin": "tàiyang",
+    "tokens": [
+      "tai4",
+      "yang5"
+    ],
+    "target": 1,
+    "author": "KhawaChenpo",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "source": "Lingua Libre / Wikimedia Commons",
+    "sourcePage": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-KhawaChenpo-%E5%A4%AA%E9%98%B3.wav",
+    "downloadUrl": "https://upload.wikimedia.org/wikipedia/commons/1/1b/LL-Q9192_%28cmn%29-KhawaChenpo-%E5%A4%AA%E9%98%B3.wav?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+    "retrieved": "2026-11-08",
+    "changes": "Original WAV copied without modification.",
+    "originalFormat": "wav",
+    "originalSha256": "c139f0b884a8fcbbb2e6c0f5b8877ab3d2a7771cb6a2e1dd54e89ce6979fcff6",
+    "originalBytes": 101164,
+    "sha256": "c139f0b884a8fcbbb2e6c0f5b8877ab3d2a7771cb6a2e1dd54e89ce6979fcff6",
+    "bytes": 101164,
+    "duration": 1.053333,
+    "sourceFileTitle": "File:LL-Q9192 (cmn)-KhawaChenpo-太阳.wav",
+    "sourcePageId": 97127800,
+    "sourceLanguage": "cmn",
+    "sourceTranscription": "太阳",
+    "sourcePinyin": null,
+    "review": {
+      "readingEvidence": "user_selected",
+      "selectedOn": "2026-11-08",
+      "selection": "User selected this word and speaker from the research candidates.",
+      "dictionary": "Displayed pinyin matches the pinned CC-CEDICT example; the source page does not supply tone-marked pinyin.",
+      "metadata": "Commons transcription, Mandarin language, speaker and CC BY-SA 4.0 license checked.",
+      "fileIntegrity": "Original file SHA-1 and size match Commons; SHA-256 recorded and full FFmpeg decode completed without errors.",
+      "auditory": "Not independently performed by the agent.",
+      "acoustic": "Not performed."
+    }
+  },
+  {
     "file": "yeye.mp3",
     "word": "爷爷",
     "pinyin": "yéye",
@@ -4379,6 +4457,45 @@
       "metadata": "MP3 title, Mandarin language and attribution tags match the source index.",
       "fileIntegrity": "Full FFmpeg decode completed without errors.",
       "auditory": "Not performed for these newly retrieved recordings.",
+      "acoustic": "Not performed."
+    }
+  },
+  {
+    "file": "yin5.wav",
+    "word": "口音",
+    "pinyin": "kǒuyin",
+    "tokens": [
+      "kou3",
+      "yin5"
+    ],
+    "target": 1,
+    "author": "Fake estate",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "source": "Lingua Libre / Wikimedia Commons",
+    "sourcePage": "https://commons.wikimedia.org/wiki/File:LL-Q9192_(cmn)-Fake_estate-%E5%8F%A3%E9%9F%B3.wav",
+    "downloadUrl": "https://upload.wikimedia.org/wikipedia/commons/b/ba/LL-Q9192_%28cmn%29-Fake_estate-%E5%8F%A3%E9%9F%B3.wav?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+    "retrieved": "2026-11-08",
+    "changes": "Original WAV copied without modification.",
+    "originalFormat": "wav",
+    "originalSha256": "3e4aff826306c00ef295451ee7164dbcf6bd3fd845bdc46ff9d9003baaba09c2",
+    "originalBytes": 92972,
+    "sha256": "3e4aff826306c00ef295451ee7164dbcf6bd3fd845bdc46ff9d9003baaba09c2",
+    "bytes": 92972,
+    "duration": 0.968,
+    "sourceFileTitle": "File:LL-Q9192 (cmn)-Fake estate-口音.wav",
+    "sourcePageId": 124578054,
+    "sourceLanguage": "cmn",
+    "sourceTranscription": "口音",
+    "sourcePinyin": null,
+    "review": {
+      "readingEvidence": "user_selected",
+      "selectedOn": "2026-11-08",
+      "selection": "User selected this word and speaker from the research candidates.",
+      "dictionary": "Displayed pinyin matches the pinned CC-CEDICT example; the source page does not supply tone-marked pinyin.",
+      "metadata": "Commons transcription, Mandarin language, speaker and CC BY-SA 4.0 license checked.",
+      "fileIntegrity": "Original file SHA-1 and size match Commons; SHA-256 recorded and full FFmpeg decode completed without errors.",
+      "auditory": "Not independently performed by the agent.",
       "acoustic": "Not performed."
     }
   },

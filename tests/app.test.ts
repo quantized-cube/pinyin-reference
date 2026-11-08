@@ -121,14 +121,17 @@ function setupSpeech(t: TestContext, voices = [local], options: Parameters<typeo
 test('neutral detail plays exact unchanged and replacement words without TTS, with the correct target and attribution', async t => {
   const s=await setup(t,[],{hash:'#s=ma&t=5',speechSupported:false});
   for (const [key,word,target,pinyin,file] of [
-    ['ma5','妈妈','妈','mā ma','mama'],
-    ['hu5','不在乎','乎','bù zài hu','hu5'],
-    ['mu5','大拇指','拇','dà mu zhǐ','mu5'],
-    ['bu5','对不起','不','duì bu qǐ','bu5'],
-    ['duo5','耳朵','朵','ěr duo','duo5'],
-    ['qi5','力气','气','lì qi','qi5'],
-    ['nai5','奶奶','奶','nǎi nai','nainai'],
-    ['ye5','爷爷','爷','yé ye','yeye'],
+    ['ma5','妈妈','妈','mā ma','mama.mp3'],
+    ['hu5','不在乎','乎','bù zài hu','hu5.mp3'],
+    ['mu5','大拇指','拇','dà mu zhǐ','mu5.mp3'],
+    ['bu5','对不起','不','duì bu qǐ','bu5.mp3'],
+    ['duo5','耳朵','朵','ěr duo','duo5.mp3'],
+    ['qi5','力气','气','lì qi','qi5.mp3'],
+    ['nai5','奶奶','奶','nǎi nai','nainai.mp3'],
+    ['ye5','爷爷','爷','yé ye','yeye.mp3'],
+    ['peng5','帐篷','篷','zhàng peng','peng5.wav'],
+    ['yang5','太阳','阳','tài yang','yang5.wav'],
+    ['yin5','口音','音','kǒu yin','yin5.wav'],
   ] as const) {
     s.input(key);
     assert.equal(s.$('.example-word').textContent,word);
@@ -140,7 +143,7 @@ test('neutral detail plays exact unchanged and replacement words without TTS, wi
     assert.equal(s.window.document.querySelector('.voice-settings,#voice-help'),null);
     assert.equal(s.$('.audio-footnote a').getAttribute('href'),'audio/neutral/credits.html');
     s.$('#play').click();const audio=s.lastRecording();
-    assert.equal(audio.src,`audio/neutral/${file}.mp3`);
+    assert.equal(audio.src,`audio/neutral/${file}`);
     assert.equal(audio.playbackRate,1);
     audio.onplaying?.();assert.match(s.$('#voice-status').textContent??'',new RegExp(word+'.*録音を再生中'));
     audio.onended?.();assert.equal(s.$('#voice-status').textContent,'再生しました。');
@@ -149,7 +152,7 @@ test('neutral detail plays exact unchanged and replacement words without TTS, wi
   const dialog=s.$<HTMLDialogElement>('#about-dialog');
   dialog.showModal=()=>{dialog.open=true;};
   s.$('#about').click();
-  assert.match(s.$('#about-content').textContent??'',/軽声111例/);
+  assert.match(s.$('#about-content').textContent??'',/軽声114例/);
 });
 
 test('neutral recordings stop on context and tab changes, restore TTS settings and ignore stale events', async t => {

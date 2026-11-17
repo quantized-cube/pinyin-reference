@@ -9739,11 +9739,42 @@
     },
     {
       "token": "yan2",
-      "sourceToken": "yan2",
       "file": "yan2.mp3",
-      "sha256": "7e496b7cb91832463465aa67088e728b8d5a667fd3279db7e53e2042c09d1200",
-      "bytes": 9182,
-      "duration": 1.032
+      "sha256": "d898b55a5c2bd3eb70481d60e1bdde606756959d1a6152b3f394fc6131d606f3",
+      "bytes": 9821,
+      "duration": 1.201633,
+      "retrieved": "2026-11-17",
+      "sourceFile": "cmn-3156dfa2.mp3",
+      "sourceId": "cmn-balm-congcong",
+      "sourceText": "盐",
+      "sourcePinyin": "yán",
+      "sourceMetadata": {
+        "swac_text": "盐",
+        "swac_lang": "cmn",
+        "swac_speak_name": "Congcong",
+        "swac_coll_license": "Creative Commons BY 3.0 U.S"
+      },
+      "readingReview": {
+        "text": "盐",
+        "pinyin": "yán",
+        "status": "user-approved",
+        "date": "2026-11-17",
+        "referenceUrl": "https://en.wiktionary.org/wiki/y%C3%A1n#Mandarin"
+      },
+      "review": {
+        "date": "2026-11-17",
+        "selection": "explicit_filename",
+        "listening": "User accepted congcong-yan2.mp3 after listening to the replacement comparison page.",
+        "previousRecording": {
+          "token": "yan2",
+          "sourceToken": "yan2",
+          "file": "yan2.mp3",
+          "sha256": "7e496b7cb91832463465aa67088e728b8d5a667fd3279db7e53e2042c09d1200",
+          "bytes": 9182,
+          "duration": 1.032
+        },
+        "previousIssue": "User reported an unwanted sound inside the vowel perceived as ɛ; cause not determined."
+      }
     },
     {
       "token": "yan3",
@@ -11264,6 +11295,24 @@
       "indexSnapshotSha256": "ebc98a9d6c84a2b247c51f6f7db09bbbdbe4d0f020d60698891d2a6a5cc19f32",
       "indexSnapshotEncoding": "Decoded UTF-8 XML",
       "licenseStatement": "﻿Base Audio Libre De Mots Chinois\n---------------------------------\n\nLa \"Base Audio Libre De Mots Chinois\" est une base de données \nd'enregistrements sonores d'une liste d'environ 1000 mots en \nlangue chinoise. \n\nLe contenu de cette base de données est distribué librement sous \nlicence \"Creative Commons Paternité 2.0\". Vous trouverez\nplus d'informations sur cette licence sur :\n\n\thttp://creativecommons.org/licenses/by/2.0/fr/\n\nL'ensemble de cette base audio est disponible à l'adresse suivante :\n\n \thttp://shtooka.net/audio-base/chi/\n\nL'enregistrement audio a été réalisé à l'aide du programme \"Shtooka\"\ndistribué sous licence GPL et disponible à l'adresse suivante :\n\n\thttp://shtooka.net/soft/shtooka_recorder/\n\n\"Base Audio Libre De Mots Chinois\" - Copyright (c) 2006 Wei Gao, \nVion Nicolas\n"
+    },
+    "cmn-balm-congcong": {
+      "kind": "shtooka",
+      "name": "The Shtooka Project / cmn-balm-congcong",
+      "speaker": "Congcong",
+      "author": "Association Shtooka",
+      "license": "CC BY 3.0 US",
+      "licenseUrl": "https://creativecommons.org/licenses/by/3.0/us/",
+      "sourcePage": "https://www.yojik.eu/audiocollections/detailled/cmn-balm-congcong/readme.txt",
+      "retrieved": "2026-11-17",
+      "downloadBaseUrl": "https://www.yojik.eu/audiocollections/detailled/cmn-balm-congcong/mp3/",
+      "indexUrl": "https://www.yojik.eu/audiocollections/detailled/cmn-balm-congcong/mp3/index.xml",
+      "metadataSpeaker": "Congcong",
+      "metadataLicense": "Creative Commons BY 3.0 U.S",
+      "changes": "Original MP3 copied without modification; only the local filename changed.",
+      "indexSnapshotSha256": "0ec5b703d0fb83be9c6b48ca978c5a6d3faac99bc131e9307dcded643666a803",
+      "indexSnapshotEncoding": "Decoded UTF-8 XML",
+      "licenseStatement": "﻿Base audio libre de mots mandarins\nPaquet \"Congcong, vocabulaire\"\nCopyright(c) 2010 Association Shtooka\n--------------------------------\n\nLe contenu de cette collection est distribué librement sous licence \"Creative\nCommons Attribution 3.0\". Vous trouverez plus d'informations sur cette licence \nà l'adresse suivante :\n\n\thttp://creativecommons.org/licenses/by/3.0/us/\n\nL'ensemble de cette collection audio est disponible peut être téléchargée à \npartir de :\n\n \thttp://swac-collections.org\n\nL'enregistrement audio a été réalisé à l'aide du programme \"Shtooka\nRecorder\" distribué sous licence GPL et disponible à l'adresss suivante :\n\n\thttp://shtooka.net/soft/shtooka_recorder/\n"
     }
   }
 }

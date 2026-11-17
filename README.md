@@ -142,7 +142,7 @@ Cloudflare側で依存関係のインストールとビルドが行われ、`dis
 
 音節詳細の第1・2・4声と全三声には、聞き比べと共通の単独音録音を使います。2026-10-21時点の再生対象1,162組に、確認済みの第3声48組を追加しました。対象1,210組のうち1,190組は録音、19組はTTSで再生します。`yō` は「単独音の録音は未収録」と表示します。録音には単独例字・例語を参考として表示し、例字データを読み込めなくても再生できます。録音の再生時はTTSの音声・速度設定を表示せず、録音の取得・再生に失敗してもTTSへ切り替えません。
 
-2026-11-17に、問題を指摘された単独音のうち、利用者が試聴して承認した64件をThe Shtooka Projectの別話者の録音へ差し替えました。Yue Tanが51件、Wei Gaoが13件です。The Yojik Websiteから取得したMP3を変更せず同梱しています。児化前の `dài` は差し替えた単独音を共用します。
+2026-11-17に、問題を指摘された単独音のうち、利用者が試聴して承認した65件をThe Shtooka Projectの別話者の録音へ差し替えました。Yue Tanが51件、Wei Gaoが13件、Congcongが1件です。The Yojik Websiteから取得したMP3を変更せず同梱しています。児化前の `dài` は差し替えた単独音を共用します。
 
 代わりの録音を採用できていない19組はTTSで再生します。元の録音は配布ファイルから除外しています。3組は登録済みの単独例字を、それ以外の16組は保存済みの辞書データから選んだ例語全体を読み上げます。例語では対象の文字とピンインに下線を引き、ボタンに「例語を聞く」と表示します。TTSは表示した読みと異なる場合があります。録音を使わない19組と読み上げる例は管理ファイルで明示し、索引にも含めるため、例語データの読み込みに失敗しても再生できます。
 
@@ -220,7 +220,7 @@ CC-CEDICT の原著作者は CC-CEDICT contributors（CEDICT 創始者 Paul Deni
 
 半三声・変調の39録音はThe Shtooka ProjectとLingua Libreの音源をWikimedia Commons、The Yojik Website、audio-cmnから取得しました。作者・ライセンスは[各録音の出典一覧](public/audio/third-tone/credits.html)に記載しています。
 
-音節詳細の単独音1,190件のうち、1,126件はaudio-cmnから取得しています。作者はWang Chen, Lopez Hugo, Vion Nicolas、ライセンスは[CC BY-SA 3.0](https://creativecommons.org/licenses/by-sa/3.0/)です。残る64件はThe Shtooka Projectの録音で、Yue Tanによる51件は[CC BY-SA 3.0 US](https://creativecommons.org/licenses/by-sa/3.0/us/)、Wei Gao, Vion Nicolasによる13件は[CC BY 2.0 France](https://creativecommons.org/licenses/by/2.0/fr/)です。聞き比べではaudio-cmnの25件とYue Tanの1件を共用しています。録音の出典・ライセンスも再配布時に維持してください。
+音節詳細の単独音1,190件のうち、1,125件はaudio-cmnから取得しています。作者はWang Chen, Lopez Hugo, Vion Nicolas、ライセンスは[CC BY-SA 3.0](https://creativecommons.org/licenses/by-sa/3.0/)です。残る65件はThe Shtooka Projectの録音で、Yue Tanによる51件は[CC BY-SA 3.0 US](https://creativecommons.org/licenses/by-sa/3.0/us/)、Wei Gao, Vion Nicolasによる13件は[CC BY 2.0 France](https://creativecommons.org/licenses/by/2.0/fr/)、Association Shtooka（話者：Congcong）による1件は[CC BY 3.0 US](https://creativecommons.org/licenses/by/3.0/us/)です。聞き比べではaudio-cmnの25件とYue Tanの1件を共用しています。録音の出典・ライセンスも再配布時に維持してください。
 
 ## ファイル構成
 

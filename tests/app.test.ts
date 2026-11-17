@@ -1766,7 +1766,7 @@ test('rejected isolated recordings use explicit TTS examples and expose their se
   }
   assert.equal(s.recordingCount(),0);
   const requests = s.requestCount();
-  for (const token of ['ma2', 'san1', 'o4', 'zheng1', 'yin1']) {
+  for (const token of ['ma2', 'san1', 'o4', 'zheng1', 'yin1', 'yan2']) {
     s.input(token);
     assert.equal(s.window.document.querySelector('.voice-settings'),null);
     assert.equal(s.$('#play span').textContent,'単独音を聞く');

@@ -146,6 +146,29 @@ class RecordingRestoreTests(unittest.TestCase):
         with self.assertRaisesRegex(ValueError, 'Collection index mismatch'):
             recordings.validate_manifest(changed)
 
+    def test_collection_without_source_pinyin_requires_explicit_reading_review(self):
+        source, row, _ = self.collection_fixture()
+        del row['sourceMetadata']['swac_pron_phon']
+        manifest = {'schemaVersion': 1, 'source': self.source,
+                    'additionalSources': {'fixture': source}, 'records': [row]}
+        with self.assertRaisesRegex(ValueError, 'reading review'):
+            recordings.validate_manifest(manifest)
+        row['readingReview'] = {'text': '啊', 'pinyin': 'ā', 'status': 'user-approved',
+                                'referenceUrl': 'https://example.test/dictionary/a', 'date': '2026-11-17'}
+        recordings.validate_manifest(manifest)
+        for field, value in [('text', '阿'), ('pinyin', 'á'), ('status', 'candidate'),
+                             ('referenceUrl', 'javascript:alert(1)'), ('date', '2026-02-30')]:
+            changed = copy.deepcopy(manifest)
+            changed['records'][0]['readingReview'][field] = value
+            with self.subTest(field=field), self.assertRaises(ValueError):
+                recordings.validate_manifest(changed)
+        row['sourceMetadata']['swac_pron_phon'] = 'á'
+        with self.assertRaises(ValueError):
+            recordings.validate_manifest(manifest)
+        del row['readingReview']
+        with self.assertRaisesRegex(ValueError, 'Collection index mismatch'):
+            recordings.validate_manifest(manifest)
+
     def test_explicit_tts_fallback_requires_a_matching_example_and_no_audio_file(self):
         row = {'token': 'fa4', 'unavailable': 'Rejected',
                'ttsFallback': {'text': '长发', 'tokens': ['chang2', 'fa4'], 'target': 1}}

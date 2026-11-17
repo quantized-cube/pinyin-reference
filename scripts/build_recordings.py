@@ -5,6 +5,7 @@ tokens from upstream filenames. --audit requires ffmpeg and ffprobe on PATH.
 """
 import argparse
 import array
+from datetime import date
 from concurrent.futures import ThreadPoolExecutor, as_completed
 import hashlib
 import html
@@ -16,6 +17,7 @@ import subprocess
 import sys
 import time
 import urllib.request
+from urllib.parse import urlsplit
 import unicodedata
 
 ROOT = Path(__file__).resolve().parent.parent
@@ -85,9 +87,22 @@ def validate_manifest(manifest):
                 raise ValueError(f'Source reading mismatch: {token}')
             if not row['sourceText'] or 'sourceToken' in row or 'metadataNote' in row:
                 raise ValueError(f'Invalid collection metadata: {token}')
-            expected_metadata = {'swac_text': row['sourceText'], 'swac_pron_phon': row['sourcePinyin'],
+            expected_metadata = {'swac_text': row['sourceText'],
                                  'swac_lang': 'cmn', 'swac_speak_name': alternate['metadataSpeaker'],
                                  'swac_coll_license': alternate['metadataLicense']}
+            if 'swac_pron_phon' in row['sourceMetadata']:
+                expected_metadata['swac_pron_phon'] = row['sourcePinyin']
+                if 'readingReview' in row:
+                    raise ValueError(f'Redundant reading review: {token}')
+            else:
+                review = row.get('readingReview', {})
+                reference = urlsplit(review.get('referenceUrl', ''))
+                if (review.get('text') != row['sourceText'] or
+                        review.get('pinyin') != row['sourcePinyin'] or
+                        review.get('status') != 'user-approved' or
+                        reference.scheme != 'https' or not reference.netloc):
+                    raise ValueError(f'Missing or inconsistent reading review: {token}')
+                date.fromisoformat(review.get('date', ''))
             if row['sourceMetadata'] != expected_metadata:
                 raise ValueError(f'Collection index mismatch: {token}')
             if not re.fullmatch(r'[a-f0-9]{64}', row['sha256']):
@@ -104,8 +119,8 @@ def verify_bytes(source, row, data):
         raise ValueError(f"File changed: {row['token']}")
     if source.get('kind') == 'shtooka':
         # These MP3s do not contain SWAC pronunciation tags (some have no ID3
-        # tags at all). The adopted reading is taken from the collection index;
-        # the approved original file is pinned by its size and SHA-256 above.
+        # tags at all). The adopted reading comes from the collection index or
+        # an explicit review when absent there. Size and SHA-256 pin the file.
         return
     # One upstream replacement (peng3) has encoder tags only. Its provenance is
     # the pinned repository and per-file hash, explicitly recorded in the manifest.
@@ -195,6 +210,8 @@ def generated_credits(manifest):
             url = f"{rs['repository']}/blob/{rs['revision']}/{rs['directory']}/cmn-{r['sourceToken']}.mp3"
             label = r['sourceToken']
         note = '（元音源に発音・話者のID3タグなし。取得したバージョンの配布元情報を参照）' if r.get('metadataNote') else ''
+        if r.get('readingReview'):
+            note = f'（配布元の一覧に読みの記載なし。<a href="{esc(r["readingReview"]["referenceUrl"])}">辞書の読み</a>を確認し、利用者の試聴後に採用）'
         retrieved = r.get('retrieved', rs['retrieved'])
         rows.append(f'<tr><td>{esc(r["token"])}</td><td><a href="{esc(url)}">{esc(label)}</a>{note}</td><td>{esc(rs["speaker"])}</td><td><a href="{esc(rs["licenseUrl"])}">{esc(rs["license"])}</a></td><td>{esc(retrieved)}</td></tr>')
     additional = []
@@ -203,7 +220,7 @@ def generated_credits(manifest):
         additional.append(f'<p>話者：{esc(extra["speaker"])}（{count}件）<br>著作者：{esc(extra["author"])}<br>'
                           f'音源：<a href="{esc(extra["sourcePage"])}">{esc(extra["name"])}</a><br>'
                           f'ライセンス：<a href="{esc(extra["licenseUrl"])}">{esc(extra["license"])}</a><br>'
-                          f'<a href="{esc(extra["indexUrl"])}">元の録音と読みの一覧</a></p>')
+                          f'<a href="{esc(extra["indexUrl"])}">配布元の録音一覧</a></p>')
     return f'''<!doctype html>
 <html lang="ja"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>単独音の録音 — 出典・ライセンス</title>
@@ -216,7 +233,7 @@ def generated_credits(manifest):
 ライセンス：<a href="{esc(s['licenseUrl'])}">{esc(s['license'])}</a></p>
 {chr(10).join(additional)}
 <p>取得日は各録音の一覧に記載しています。MP3の音声・メタデータは改変していません。ファイル名のみアプリの表記に合わせています。</p>
-<p>元ファイル名・SHA-256・サイズ・長さ・出典は<a href="manifest.json">音源一覧</a>で確認できます。audio-cmnは取得元のバージョンも固定しています。Shtookaの録音の読みは配布元の一覧で確認しています。元のファイルとの一致は発音の聴取確認とは別です。</p>
+<p>元ファイル名・SHA-256・サイズ・長さ・出典は<a href="manifest.json">音源一覧</a>で確認できます。audio-cmnは取得元のバージョンも固定しています。Shtookaの録音の読みは配布元の一覧で確認しています。読みの記載がない録音は、辞書の読みを確認し、利用者の試聴後に採用しています。元のファイルとの一致は発音の聴取確認とは別です。</p>
 <div class="table-wrap"><table><thead><tr><th>アプリの音節・声調</th><th>元の録音</th><th>話者</th><th>ライセンス</th><th>取得日</th></tr></thead><tbody>
 {chr(10).join(rows)}
 </tbody></table></div></html>

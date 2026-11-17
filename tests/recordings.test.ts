@@ -36,6 +36,7 @@ interface Recording {
   unavailable?:string; metadataNote?:string; retrieved?:string;
   sourceId?:string; sourceFile?:string; sourceText?:string; sourcePinyin?:string;
   sourceMetadata?:Record<string,string>;
+  readingReview?:{text:string;pinyin:string;status:string;referenceUrl:string;date:string};
   ttsFallback?:PronunciationExample;
 }
 interface CollectionSource {
@@ -96,9 +97,16 @@ test('every shared recording preserves its pinned source, metadata and credits t
       assert.equal(r.sourceToken,undefined);
       assert.equal(r.sourcePinyin,markTone(text,tone));
       assert.deepEqual(r.sourceMetadata,{
-        swac_text:r.sourceText,swac_pron_phon:r.sourcePinyin,swac_lang:'cmn',
+        swac_text:r.sourceText,swac_lang:'cmn',
+        ...(r.readingReview?{}:{swac_pron_phon:r.sourcePinyin}),
         swac_speak_name:collection.metadataSpeaker,swac_coll_license:collection.metadataLicense,
       });
+      if(r.readingReview){
+        assert.equal(r.readingReview.text,r.sourceText);
+        assert.equal(r.readingReview.pinyin,r.sourcePinyin);
+        assert.equal(r.readingReview.status,'user-approved');
+        assert.ok(page.includes(r.readingReview.referenceUrl));
+      }
       for(const text of [collection.speaker,collection.author,collection.licenseUrl,collection.sourcePage,collection.indexUrl,collection.downloadBaseUrl+r.sourceFile])assert.ok(page.includes(text),r.token);
       continue;
     }
@@ -110,19 +118,26 @@ test('every shared recording preserves its pinned source, metadata and credits t
   }
 });
 
-test('only the 64 accepted replacements use the reviewed collection sources and explicit file choices',()=>{
+test('only the 65 accepted replacements use the reviewed collection sources and explicit file choices',()=>{
   const expected = [
     ...'bu4 guo4 bang4 guai4 bie1 dan4 da4 fen1 kang4 ti4 bo1 ceng2 ding1 fa2 gang1 huo2 jie4 na4 nen4 nie1 pao1 zha1 zhong4 zhu4 dai4 er4 fan1 kuang4 bi4 dian4 kuo4 ma2 mai4 yue1'.split(' '),
     ...'ceng4 cuo4 gong1 hu2 jiang4 jiao1 lang4 lei1 mao2 men4 mi2 mian4 nong4 o4 piao1 qin1 re4 san1 shou1 ti1 tian2 tu4 yao1 ying4 zhao4 zhe4 zheng1 zhi4 zhuang4'.split(' '),
-    'yin1',
+    'yin1', 'yan2',
   ].sort();
   const replacements=manifest.records.filter(r=>r.sourceId);
   assert.deepEqual(replacements.map(r=>r.token).sort(),expected);
   assert.equal(replacements.filter(r=>r.sourceId==='cmn-caen-tan').length,51);
   assert.equal(replacements.filter(r=>r.sourceId==='cmn-balm-hsk1').length,13);
+  assert.equal(replacements.filter(r=>r.sourceId==='cmn-balm-congcong').length,1);
   assert.equal(replacements.find(r=>r.token==='san1')?.sourceFile,'cmn-76ccfc6b.mp3');
   assert.equal(replacements.find(r=>r.token==='o4')?.sourceFile,'cmn-35b1145d.mp3');
   assert.equal(replacements.find(r=>r.token==='yin1')?.sourceFile,'cmn-140b3b60.mp3');
+  const yan = replacements.find(r=>r.token==='yan2');
+  assert.equal(yan?.sourceId,'cmn-balm-congcong');
+  assert.equal(yan?.sourceFile,'cmn-3156dfa2.mp3');
+  assert.equal(yan?.sha256,'d898b55a5c2bd3eb70481d60e1bdde606756959d1a6152b3f394fc6131d606f3');
+  assert.equal(yan?.sourceMetadata?.swac_pron_phon,undefined);
+  assert.deepEqual(replacements.filter(r=>r.readingReview).map(r=>r.token),['yan2']);
   for(const r of replacements)assert.equal(r.retrieved,'2026-11-17');
   for(const token of comparisonRecordingTokens)assert.equal(manifest.records.find(r=>r.token===token)?.sourceId,token==='yin1'?'cmn-caen-tan':undefined);
 });

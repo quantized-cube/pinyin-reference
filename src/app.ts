@@ -3,6 +3,7 @@ import { renderVowels } from './views/vowels.js';
 import { renderErhua } from './views/erhua.js';
 import {
   comparisonAudioHint,
+  comparisonPlayable,
   comparisonPresets,
   comparisonSequence,
   getComparisonPreset
@@ -193,7 +194,7 @@ function renderReference() {
       state,
       loadedExamples()?.isolatedExamples ?? {},
       exampleLoad.status,
-      !!speaker?.recordingsSupported,
+      comparisonSupport(),
       speaker?.messageFor('comparison') ?? null
     );
   if (state.tab === 'vowels') $('#reference-body').innerHTML = renderVowels(state);
@@ -228,19 +229,24 @@ function updateComparisonAudio() {
   if (state.tab !== 'compare') return;
   const preset = getComparisonPreset(state.comparePreset);
   document.querySelectorAll<HTMLButtonElement>('[data-compare-play]').forEach((button) => {
-    button.disabled =
-      !speaker?.recordingsSupported ||
-      !comparisonSequence(preset.syllables, preset.tone, button.dataset.comparePlay ?? '');
+    button.disabled = !comparisonPlayable(
+      comparisonSequence(preset.syllables, preset.tone, button.dataset.comparePlay ?? ''),
+      comparisonSupport()
+    );
   });
   const status = document.querySelector('#compare-status');
   if (status)
     status.textContent =
-      speaker?.messageFor('comparison') ?? comparisonAudioHint(!!speaker?.recordingsSupported);
+      speaker?.messageFor('comparison') ?? comparisonAudioHint(comparisonSupport(),
+        comparisonSequence(preset.syllables, preset.tone, 'alternate')?.some(item => 'text' in item));
+}
+function comparisonSupport() {
+  return {recording: !!speaker?.recordingsSupported, speech: !!speaker?.supported};
 }
 function playComparison(side: string) {
   const preset = getComparisonPreset(state.comparePreset);
   const items = comparisonSequence(preset.syllables, preset.tone, side);
-  if (items) speaker?.playRecordingSequence(items, 'comparison');
+  if (items) speaker?.playSequence(items, state.voice, state.rate, 'comparison');
 }
 function updateNeutralToneAudio() {
   if (state.tab !== 'rules') return;

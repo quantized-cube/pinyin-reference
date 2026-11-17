@@ -231,3 +231,39 @@ test('late recording play rejections cannot interrupt the next item or a replace
   assert.equal(s.lastAudio().paused,false);
   assert.equal(s.pending.length,3);
 });
+
+test('mixed comparisons preserve order, TTS settings, recording speed and status ownership', t=>{
+  t.mock.timers.enable({apis:['setTimeout']});
+  const s=recordingSetup(t);
+  const items=[{text:'奔',label:'A · bēn'},{url:'beng1.mp3',label:'B · bēng'},{text:'奔',label:'A · bēn'}];
+  assert.equal(s.speaker.playSequence(items,voice.voiceURI,.75),true);
+  const first=s.lastRequest(),audio=s.lastAudio();
+  assert.equal(first.text,'奔');assert.equal(first.voice,voice);assert.equal(first.rate,.75);
+  first.onStart();assert.match(s.speaker.messageFor('comparison')??'',/TTSで再生中/);
+  assert.equal(s.speaker.messageFor('speech'),null);
+  first.onEnd();first.onEnd();t.mock.timers.tick(400);
+  assert.equal(audio.src,'beng1.mp3');assert.equal(audio.playbackRate,1);
+  first.onError('network');assert.equal(s.pending.length,1);
+  audio.onplaying?.();audio.onended?.();t.mock.timers.tick(400);
+  assert.equal(s.requests.length,2);assert.equal(s.lastRequest().text,'奔');
+  s.lastRequest().onEnd();assert.equal(s.speaker.messageFor('comparison'),'再生しました。');
+});
+
+test('mixed comparison cancellation, errors and timeouts never play later items or revive stale callbacks',t=>{
+  t.mock.timers.enable({apis:['setTimeout']});
+  const s=recordingSetup(t);
+  const items=[{text:'奔',label:'A'},{url:'beng1.mp3',label:'B'},{text:'奔',label:'A'}];
+  s.speaker.playSequence(items,'');const cancelled=s.lastRequest();
+  cancelled.onEnd();s.speaker.stop();t.mock.timers.tick(400);
+  assert.equal(s.pending.length,0);cancelled.onStart();cancelled.onError('network');
+  assert.equal(s.speaker.message,'再生を停止しました。');
+  s.speaker.playSequence(items,'');s.lastRequest().onError('network');
+  s.lastRequest().onEnd();t.mock.timers.tick(400);assert.equal(s.pending.length,0);
+  s.speaker.playSequence(items,'');const timeout=s.lastRequest();
+  t.mock.timers.tick(15000);assert.match(s.speaker.message??'',/開始を確認できません/);
+  timeout.onEnd();t.mock.timers.tick(400);assert.equal(s.pending.length,0);
+  s.speaker.playSequence(items,'');s.lastRequest().onEnd();t.mock.timers.tick(400);
+  const count=s.requests.length,audio=s.lastAudio();audio.onerror?.();audio.onended?.();
+  t.mock.timers.tick(400);assert.equal(s.requests.length,count);
+  assert.match(s.speaker.message??'',/録音を読み込めません/);
+});

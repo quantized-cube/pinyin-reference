@@ -16,6 +16,7 @@ import subprocess
 import sys
 import time
 import urllib.request
+import unicodedata
 
 ROOT = Path(__file__).resolve().parent.parent
 FOLDER = ROOT / 'public/audio/syllables'
@@ -23,9 +24,27 @@ MANIFEST = FOLDER / 'manifest.json'
 INDEX = ROOT / 'src/syllable-recording-index.ts'
 
 
+def recording_source(manifest, row):
+    if 'sourceId' not in row:
+        return manifest['source']
+    return manifest['additionalSources'][row['sourceId']]
+
+
 def source_url(source, row):
+    if source.get('kind') == 'shtooka':
+        return source['downloadBaseUrl'] + row['sourceFile']
     return (f"https://raw.githubusercontent.com/hugolpz/audio-cmn/{source['revision']}/"
             f"{source['directory']}/cmn-{row['sourceToken']}.mp3")
+
+
+def reading_token(pinyin):
+    marks = {'\u0304': '1', '\u0301': '2', '\u030c': '3', '\u0300': '4'}
+    decomposed = unicodedata.normalize('NFD', pinyin)
+    tones = [marks[c] for c in decomposed if c in marks]
+    if len(tones) != 1:
+        raise ValueError(f'Expected one tone-marked syllable: {pinyin}')
+    letters = ''.join(c for c in decomposed if c not in marks)
+    return unicodedata.normalize('NFC', letters) + tones[0]
 
 
 def validate_manifest(manifest):
@@ -41,10 +60,39 @@ def validate_manifest(manifest):
         if 'unavailable' in row:
             if not row['unavailable'] or 'file' in row:
                 raise ValueError(f'Invalid unavailable recording: {token}')
+            if 'ttsFallback' in row:
+                example = row['ttsFallback']
+                text, tokens, target = example['text'], example['tokens'], example['target']
+                if (not text or len(text) != len(tokens) or type(target) is not int or
+                        not 0 <= target < len(tokens) or tokens[target] != token or
+                        not all(re.fullmatch(r'[a-züê]+[1-5]', t) for t in tokens) or
+                        not all('\u3400' <= c <= '\u9fff' for c in text)):
+                    raise ValueError(f'Invalid TTS fallback: {token}')
             continue
         if row['file'] != token.replace('ü', 'v') + '.mp3' or row['file'] in files:
             raise ValueError(f'Invalid or duplicate filename: {token}')
         files.add(row['file'])
+        if 'sourceId' in row:
+            alternate = recording_source(manifest, row)
+            if alternate['kind'] != 'shtooka':
+                raise ValueError(f'Unknown source kind: {token}')
+            for field in ('speaker', 'author', 'license', 'licenseUrl', 'sourcePage', 'indexUrl', 'retrieved'):
+                if not alternate[field]:
+                    raise ValueError(f'Missing source attribution: {token}/{field}')
+            if not re.fullmatch(r'cmn-[a-f0-9]{8}\.mp3', row['sourceFile']):
+                raise ValueError(f'Invalid source filename: {token}')
+            if reading_token(row['sourcePinyin']) != token:
+                raise ValueError(f'Source reading mismatch: {token}')
+            if not row['sourceText'] or 'sourceToken' in row or 'metadataNote' in row:
+                raise ValueError(f'Invalid collection metadata: {token}')
+            expected_metadata = {'swac_text': row['sourceText'], 'swac_pron_phon': row['sourcePinyin'],
+                                 'swac_lang': 'cmn', 'swac_speak_name': alternate['metadataSpeaker'],
+                                 'swac_coll_license': alternate['metadataLicense']}
+            if row['sourceMetadata'] != expected_metadata:
+                raise ValueError(f'Collection index mismatch: {token}')
+            if not re.fullmatch(r'[a-f0-9]{64}', row['sha256']):
+                raise ValueError(f'Unpinned collection recording: {token}')
+            continue
         if not re.fullmatch(r'[a-z]+[1-4]', row['sourceToken']):
             raise ValueError(f'Invalid source token: {token}')
         if row['sourceToken'][-1] != token[-1]:
@@ -54,6 +102,11 @@ def validate_manifest(manifest):
 def verify_bytes(source, row, data):
     if len(data) != row['bytes'] or hashlib.sha256(data).hexdigest() != row['sha256']:
         raise ValueError(f"File changed: {row['token']}")
+    if source.get('kind') == 'shtooka':
+        # These MP3s do not contain SWAC pronunciation tags (some have no ID3
+        # tags at all). The adopted reading is taken from the collection index;
+        # the approved original file is pinned by its size and SHA-256 above.
+        return
     # One upstream replacement (peng3) has encoder tags only. Its provenance is
     # the pinned repository and per-file hash, explicitly recorded in the manifest.
     if row.get('metadataNote'):
@@ -81,7 +134,11 @@ def fetch_recording(source, row):
     else:
         # Reuse previously shipped, unchanged recordings before requesting upstream.
         old = [ROOT / 'public/audio' / kind / row['file'] for kind in ('comparison', 'detail')]
-        cached = next((p for p in old if p.exists()), None)
+        # Legacy caches can contain the superseded audio-cmn recording. Reuse
+        # one only when it matches the approved bytes, otherwise fetch the source.
+        cached = next((p for p in old if p.exists() and (
+            source.get('kind') != 'shtooka' or
+            hashlib.sha256(p.read_bytes()).hexdigest() == row['sha256'])), None)
         if cached:
             data = cached.read_bytes()
         else:
@@ -111,12 +168,16 @@ def fetch_recording(source, row):
 def generated_index(manifest):
     available = [r['token'] for r in manifest['records'] if 'file' in r]
     missing = [r['token'] for r in manifest['records'] if 'unavailable' in r]
+    speech = {r['token']: r['ttsFallback'] for r in manifest['records'] if 'ttsFallback' in r}
     def lines(tokens):
         return '\n'.join('  ' + ', '.join(repr(t) for t in tokens[i:i+12]) + ',' for i in range(0, len(tokens), 12))
     return ('// Generated from public/audio/syllables/manifest.json by scripts/build_recordings.py.\n'
             '// Source metadata verifies identity, not an auditory judgment of pronunciation.\n'
+            "import type {PronunciationExample} from './types.js';\n"
             'export const syllableRecordingTokens: readonly string[] = [\n' + lines(available) + '\n];\n'
-            'export const unavailableRecordingTokens: readonly string[] = [\n' + lines(missing) + '\n];\n')
+            'export const unavailableRecordingTokens: readonly string[] = [\n' + lines(missing) + '\n];\n'
+            'export const syllableSpeechExamples: Readonly<Record<string, PronunciationExample>> = '
+            + json.dumps(speech, ensure_ascii=False, indent=2) + ';\n')
 
 
 def generated_credits(manifest):
@@ -126,24 +187,39 @@ def generated_credits(manifest):
     for r in manifest['records']:
         if 'file' not in r:
             continue
-        url = f"{s['repository']}/blob/{s['revision']}/{s['directory']}/cmn-{r['sourceToken']}.mp3"
+        rs = recording_source(manifest, r)
+        if rs.get('kind') == 'shtooka':
+            url = source_url(rs, r)
+            label = f"{r['sourceText']} {r['sourcePinyin']}"
+        else:
+            url = f"{rs['repository']}/blob/{rs['revision']}/{rs['directory']}/cmn-{r['sourceToken']}.mp3"
+            label = r['sourceToken']
         note = '（元音源に発音・話者のID3タグなし。取得したバージョンの配布元情報を参照）' if r.get('metadataNote') else ''
-        retrieved = r.get('retrieved', s['retrieved'])
-        rows.append(f'<tr><td>{esc(r["token"])}</td><td><a href="{esc(url)}">{esc(r["sourceToken"])}</a>{note}</td><td>{esc(retrieved)}</td></tr>')
+        retrieved = r.get('retrieved', rs['retrieved'])
+        rows.append(f'<tr><td>{esc(r["token"])}</td><td><a href="{esc(url)}">{esc(label)}</a>{note}</td><td>{esc(rs["speaker"])}</td><td><a href="{esc(rs["licenseUrl"])}">{esc(rs["license"])}</a></td><td>{esc(retrieved)}</td></tr>')
+    additional = []
+    for sid, extra in manifest.get('additionalSources', {}).items():
+        count = sum(r.get('sourceId') == sid for r in manifest['records'])
+        additional.append(f'<p>話者：{esc(extra["speaker"])}（{count}件）<br>著作者：{esc(extra["author"])}<br>'
+                          f'音源：<a href="{esc(extra["sourcePage"])}">{esc(extra["name"])}</a><br>'
+                          f'ライセンス：<a href="{esc(extra["licenseUrl"])}">{esc(extra["license"])}</a><br>'
+                          f'<a href="{esc(extra["indexUrl"])}">元の録音と読みの一覧</a></p>')
     return f'''<!doctype html>
 <html lang="ja"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>単独音の録音 — 出典・ライセンス</title>
-<style>body{{font:16px/1.8 system-ui,sans-serif;max-width:56rem;margin:3rem auto;padding:0 1rem;color:#233536}}table{{border-collapse:collapse}}td,th{{border-bottom:1px solid #ddd;padding:.3rem 1.5rem .3rem 0;text-align:left}}a{{color:#17625a}}</style>
+<style>body{{font:16px/1.8 system-ui,sans-serif;max-width:64rem;margin:3rem auto;padding:0 1rem;color:#233536}}.table-wrap{{overflow-x:auto}}table{{border-collapse:collapse}}td,th{{border-bottom:1px solid #ddd;padding:.3rem 1.5rem .3rem 0;text-align:left}}a{{color:#17625a}}</style>
 <h1>単独音の録音</h1>
 <p>音節詳細の第1〜4声と聞き比べには、共通の音源を使っています。録音は元の速度で再生します。図とIPAは、録音を測定して作成したものではありません。</p>
-<p>話者：{esc(s['speaker'])}<br>著作者：{esc(s['author'])}<br>
+<p>問題を指摘された録音のうち、代わりの録音を採用できていない{sum('ttsFallback' in r for r in manifest['records'])}組はTTSで再生します。元の録音は配布ファイルから除外しています。</p>
+<p>話者：{esc(s['speaker'])}（{sum('file' in r and 'sourceId' not in r for r in manifest['records'])}件）<br>著作者：{esc(s['author'])}<br>
 音源：<a href="{esc(s['repository'])}">{esc(s['name'])}</a><br>
-ライセンス：<a href="{esc(s['licenseUrl'])}">{esc(s['license'])}</a><br>
-取得日は各録音の一覧に記載しています。MP3の音声・メタデータは改変していません。ファイル名のみアプリの表記に合わせています。</p>
-<p>取得元のバージョンを固定しています。元ファイル名・SHA-256・サイズ・長さは<a href="manifest.json">音源一覧</a>で確認できます。元のファイルと一致するかを検証しても、すべての録音を聞いて発音を確認したことにはなりません。</p>
-<table><thead><tr><th>アプリの音節・声調</th><th>元の録音</th><th>取得日</th></tr></thead><tbody>
+ライセンス：<a href="{esc(s['licenseUrl'])}">{esc(s['license'])}</a></p>
+{chr(10).join(additional)}
+<p>取得日は各録音の一覧に記載しています。MP3の音声・メタデータは改変していません。ファイル名のみアプリの表記に合わせています。</p>
+<p>元ファイル名・SHA-256・サイズ・長さ・出典は<a href="manifest.json">音源一覧</a>で確認できます。audio-cmnは取得元のバージョンも固定しています。Shtookaの録音の読みは配布元の一覧で確認しています。元のファイルとの一致は発音の聴取確認とは別です。</p>
+<div class="table-wrap"><table><thead><tr><th>アプリの音節・声調</th><th>元の録音</th><th>話者</th><th>ライセンス</th><th>取得日</th></tr></thead><tbody>
 {chr(10).join(rows)}
-</tbody></table></html>
+</tbody></table></div></html>
 '''
 
 
@@ -184,7 +260,7 @@ def main():
     if args.fetch:
         updated = {}
         with ThreadPoolExecutor(max_workers=8) as pool:
-            tasks = [pool.submit(fetch_recording, manifest['source'], row) for row in records]
+            tasks = [pool.submit(fetch_recording, recording_source(manifest, row), row) for row in records]
             for i, task in enumerate(as_completed(tasks), 1):
                 row = task.result()
                 updated[row['token']] = row
@@ -194,7 +270,7 @@ def main():
         MANIFEST.write_text(json.dumps(manifest, ensure_ascii=False, indent=2) + '\n', encoding='utf-8')
         records = [r for r in manifest['records'] if 'file' in r]
     for row in records:
-        verify_bytes(manifest['source'], row, (FOLDER / row['file']).read_bytes())
+        verify_bytes(recording_source(manifest, row), row, (FOLDER / row['file']).read_bytes())
     expected = {r['file'] for r in records}
     if expected != {p.name for p in FOLDER.glob('*.mp3')}:
         raise ValueError('Audio files do not match the manifest')

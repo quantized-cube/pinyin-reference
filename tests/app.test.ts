@@ -1035,12 +1035,17 @@ test('fixed comparison presets play first-tone recordings and display the shared
       assert.equal(s.$<HTMLButtonElement>(`[data-compare-play="${side}"]`).disabled,false);
       assert.equal(s.$(`[data-side="${side}"] .compare-example`).textContent,text);
       s.$(`[data-compare-play="${side}"]`).click();
+      if(pinyin==='ben'){
+        assert.equal(s.lastRequest().text,'奔');
+        s.lastRequest().onend?.();
+        continue;
+      }
       assert.equal(s.lastRecording().src,`audio/syllables/${pinyin}1.mp3`);
       assert.equal(s.lastRecording().playbackRate,1);
       s.lastRecording().onended?.();
     }
   }
-  assert.equal(s.requestCount(),0);
+  assert.equal(s.requestCount(),1);
   s.$('[data-tab="matrix"]').click();assert.equal(s.$<HTMLInputElement>('#search').disabled,false);
 });
 
@@ -1329,9 +1334,9 @@ test('changing comparison or leaving its tab cancels playback and stale events',
   first.onended?.();first.onerror?.();
   assert.doesNotMatch(s.$('#compare-status').textContent??'',/再生中|interrupted/);
   s.$('[data-compare-play="A"]').click();
-  const second=s.lastRecording();s.$('[data-tab="vowels"]').click();
-  assert.equal(second.paused,true);
-  second.onplaying?.();assert.doesNotMatch(s.$('#voice-status').textContent??'',/再生中/);
+  const second=s.lastRequest(),cancellations=s.cancellations();s.$('[data-tab="vowels"]').click();
+  assert.ok(s.cancellations()>cancellations);
+  second.onstart?.();second.onend?.();assert.doesNotMatch(s.$('#voice-status').textContent??'',/再生中/);
 });
 
 test('comparisons work without TTS or the character catalog and keep audio statuses separate', async t => {
@@ -1675,7 +1680,7 @@ test('recorded detail examples play the selected isolated reading instead of amb
   s.setVoices([local,preferred]);
   s.$<HTMLInputElement>('#rate').value='0.6';
   s.$('#rate').dispatchEvent(new s.window.Event('input',{bubbles:true}));
-  for(const [token,word,reading] of [['fa1','发','fā'],['fa2','罚','fá'],['fa4','发','fà'],['ka3','卡','kǎ'],['qia3','卡','qiǎ']] as const){
+  for(const [token,word,reading] of [['fa1','发','fā'],['fa2','罚','fá'],['ka3','卡','kǎ'],['qia3','卡','qiǎ']] as const){
     s.input(token);
     assert.equal(s.$('#detail h2').textContent,reading);
     assert.equal(s.$('.example-word').textContent,word);
@@ -1705,13 +1710,13 @@ test('recorded detail examples play the selected isolated reading instead of amb
 
 test('detail recordings work without TTS and are disabled if recorded playback is unavailable', async t => {
   for(const recordingsSupported of [true,false]){
-    const s=await setup(t,[],{hash:'#s=fa&t=4',speechSupported:!recordingsSupported,recordingsSupported});
+    const s=await setup(t,[],{hash:'#s=fa&t=2',speechSupported:!recordingsSupported,recordingsSupported});
     assert.equal(s.$<HTMLButtonElement>('#play').disabled,!recordingsSupported);
     s.setVoices([local,preferred]);
     assert.equal(s.$<HTMLButtonElement>('#play').disabled,!recordingsSupported);
     s.$('#play').click();
     if(recordingsSupported){
-      assert.equal(s.lastRecording().src,'audio/syllables/fa4.mp3');
+      assert.equal(s.lastRecording().src,'audio/syllables/fa2.mp3');
       s.lastRecording().onended?.();
     }else{
       assert.match(s.$('#voice-status').textContent??'',/録音の再生に対応していません/);
@@ -1739,6 +1744,52 @@ test('detail recording failures can be retried without falling back to ambiguous
   s.$('#play').click();s.lastRecording().onended?.();
   assert.equal(s.$('#voice-status').textContent,'再生しました。');
   assert.equal(s.requestCount(),0);
+});
+
+test('rejected isolated recordings use explicit TTS examples and expose their settings without loading the catalog',async t=>{
+  const s=await setup(t,[local,preferred],{fetchExamples:async()=>({ok:false,status:503,json:async()=>null})});
+  for(const [token,text,contextual] of [
+    ['fa4','长发',true],['o1','噢买嘎',true],['sen1','森',false],['feng4','中缝',true],
+    ['ka1','大咖',true],['meng1','蒙蒙黑',true],['ben1','奔',false],['jue4','倔头',true],
+    ['e1','山阿',true],['miu4','谬种',true],
+    ['zhu2','开运竹',true],['nve4','虐',false],
+  ] as const){
+    s.input(token);
+    assert.equal(s.$('.example-word').textContent,text);
+    assert.equal(s.$('#play span').textContent,contextual?'例語を聞く':'単独音を聞く');
+    assert.match(s.$('.audio-footnote').textContent??'',/TTS/);
+    assert.ok(s.$('.voice-settings'));assert.ok(s.$('#voice-help'));
+    assert.equal(s.$<HTMLButtonElement>('#play').disabled,false);
+    s.$('#play').click();assert.equal(s.lastRequest().text,text);
+    assert.equal(s.lastRequest().lang,'zh-CN');assert.equal(s.lastRequest().voice?.voiceURI,preferred.voiceURI);
+    s.lastRequest().onend?.();assert.equal(s.$('#voice-status').textContent,'再生しました。');
+  }
+  assert.equal(s.recordingCount(),0);
+  const requests = s.requestCount();
+  for (const token of ['ma2', 'san1', 'o4', 'zheng1']) {
+    s.input(token);
+    assert.equal(s.window.document.querySelector('.voice-settings'),null);
+    assert.equal(s.$('#play span').textContent,'単独音を聞く');
+    s.$('#play').click();
+    assert.equal(s.lastRecording().src,`audio/syllables/${token}.mp3`);
+    s.lastRecording().onended?.();
+  }
+  assert.equal(s.requestCount(),requests);
+});
+
+test('mixed comparison controls require only the audio capability used by each side',async t=>{
+  for(const [speechSupported,recordingsSupported] of [[false,true],[true,false]] as const){
+    const s=await setup(t,[],{speechSupported,recordingsSupported,hash:'#s=ben&t=1'});
+    assert.equal(s.$<HTMLButtonElement>('#play').disabled,!speechSupported);
+    s.$('[data-tab="compare"]').click();s.$('[data-compare-preset="en-eng"]').click();
+    assert.match(s.$('[data-side="A"]').textContent??'',/TTS/);
+    assert.equal(s.$<HTMLButtonElement>('[data-compare-play="A"]').disabled,!speechSupported);
+    assert.equal(s.$<HTMLButtonElement>('[data-compare-play="B"]').disabled,!recordingsSupported);
+    assert.equal(s.$<HTMLButtonElement>('[data-compare-play="alternate"]').disabled,true);
+    s.$(`[data-compare-play="${speechSupported?'A':'B'}"]`).click();
+    if(speechSupported){assert.equal(s.lastRequest().text,'奔');s.lastRequest().onend?.();}
+    else{assert.equal(s.lastRecording().src,'audio/syllables/beng1.mp3');s.lastRecording().onended?.();}
+  }
 });
 
 test('isolated third-tone recordings stop on form changes and cannot replace contextual examples', async t => {
@@ -1930,13 +1981,14 @@ test('changing detail readings cancels playback and ignores callbacks from the o
   s.$('[data-tone="4"]').click();
   assert.equal(first.paused,true);
   s.$('#play').click();
-  const second=s.lastRecording();second.onplaying?.();
+  const second=s.lastRequest();assert.equal(second.text,'长发');second.onstart?.();
   first.onerror?.();first.onended?.();first.onplaying?.();
-  assert.match(s.$('#voice-status').textContent??'',/fà.*録音を再生中/);
+  assert.match(s.$('#voice-status').textContent??'',/长发.*再生中/);
+  const cancellations=s.cancellations();
   s.input('a5');
-  assert.equal(second.paused,true);
+  assert.ok(s.cancellations()>cancellations);
   s.$('#play').click();s.lastRequest().onstart?.();
-  second.onerror?.();second.onended?.();second.onplaying?.();
+  second.onerror?.({error:'interrupted'});second.onend?.();second.onstart?.();
   assert.match(s.$('#voice-status').textContent??'',/天啊.*再生中/);
   s.lastRequest().onend?.();
 });

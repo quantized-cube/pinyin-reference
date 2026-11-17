@@ -19,7 +19,7 @@ export function renderErhua(): string {
       <h3 id="erhua-changes-title">韻母ごとの主な変化</h3>
       <p class="tone-note">普通話・北京語の代表的な変化をまとめています。すべての語に自由に -r を付けられるわけではなく、児化する語やその発音には地域差があります。</p>
       <p class="tone-note">IPAは韻母だけを示し、声調は省いています。児化後のIPAは広い表記の一例で、話者や分析によって異なります。˞ はrの響き、[ɑ̃] の上の波線は鼻音の響き、[u̯] の下の弧はその音が単独で音節を作らないことを表します。</p>
-      <p class="tone-note">録音のある行では、同じ声調で児化前・児化後を聞き比べられます。「前 → 後」で続けて再生します。前後で話者が異なるため、声質や速さにも違いがあります。<a href="audio/erhua/credits.html" target="_blank" rel="noreferrer">録音の出典・ライセンス ↗</a></p>
+      <p class="tone-note">録音のある行では、同じ声調で児化前・児化後を聞き比べられます。「前 → 後」で続けて再生します。前後で話者が異なる組では、声質や速さにも違いがあります。<a href="audio/erhua/credits.html" target="_blank" rel="noreferrer">録音の出典・ライセンス ↗</a></p>
       <p id="erhua-support-status" class="tone-note" role="status"></p>
       <div class="erhua-table-wrap"><table class="erhua-table">
         <caption>元の韻母と、児化したときの発音の変化</caption>

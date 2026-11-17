@@ -1,5 +1,6 @@
 export type SpeechStatus = 'idle' | 'pending' | 'playing' | 'error';
 export type AudioSource = 'speech' | 'recording' | 'comparison' | 'detail-recording' | 'erhua';
+export type PlaybackItem = ({readonly url: string} | {readonly text: string}) & {readonly label: string};
 export interface SpeechRequest {
   readonly text: string;
   readonly voice: SpeechSynthesisVoice | undefined;
@@ -115,22 +116,35 @@ export class Speaker {
     return this.playRecordingSequence([{url, label}], source);
   }
   playRecordingSequence(items: readonly {url: string; label: string}[], source: Exclude<AudioSource, 'speech'> = 'recording'): boolean {
+    return this.playSequence(items, '', 1, source);
+  }
+  playSequence(items: readonly PlaybackItem[], voiceURI: string, rate = 1, source: Exclude<AudioSource, 'speech'> = 'comparison'): boolean {
     this.stop(false);
     this.source = source;
     if (!items.length) return false;
-    if (!this.recordingsSupported) {
+    const hasRecording = items.some(item => 'url' in item);
+    const hasSpeech = items.some(item => 'text' in item);
+    if (hasRecording && !this.recordingsSupported) {
       this.report('このブラウザは録音の再生に対応していません。', 'error');
       return false;
     }
+    if (hasSpeech && !this.supported) {
+      this.report('このブラウザは音声合成に対応していません。', 'error');
+      return false;
+    }
+    if (hasSpeech) this.refresh();
+    const voice = this.voices.find(v => v.voiceURI === voiceURI) ?? this.voices[0];
     const id = this.serial;
     const sequence = items.map(item => ({...item}));
-    let audio: HTMLAudioElement;
+    let audio: HTMLAudioElement | undefined;
     try {
       // Reuse the element throughout the sequence, including on mobile browsers.
-      audio = new Audio();
-      this.recording = audio;
-      // Preserve the recorded timing, independent of the TTS speed setting.
-      audio.playbackRate = 1;
+      if (hasRecording) {
+        audio = new Audio();
+        this.recording = audio;
+        // Preserve the recorded timing, independent of the TTS speed setting.
+        audio.playbackRate = 1;
+      }
     } catch {
       this.stop(false);
       this.report('録音を再生できませんでした。再試行してください。', 'error');
@@ -147,6 +161,39 @@ export class Speaker {
         this.stop(false);
         this.report(message, 'error');
       };
+      const end = () => {
+        if (!current()) return;
+        finished = true;
+        clearTimeout(this.timer);
+        if (index + 1 < sequence.length) {
+          this.report('次の音を準備中…', 'pending');
+          this.timer = setTimeout(() => { play(index + 1); }, 400);
+        } else {
+          this.recording = undefined;
+          this.report('再生しました。', 'idle');
+        }
+      };
+      if ('text' in item) {
+        try {
+          this.report(`${item.label} · 中国語TTSを準備中…`, 'pending');
+          this.timer = setTimeout(() => fail('音声の開始を確認できませんでした。「音声が出ないとき」を確認し、もう一度再生してください。'), 15000);
+          this.engine.speak({
+            text: item.text, voice, lang: voice?.lang ?? 'zh-CN', rate: Math.max(.6, Math.min(1.2, Number(rate) || 1)),
+            onStart: () => {
+              if (!current()) return;
+              clearTimeout(this.timer);
+              this.report(`${item.label} · 「${item.text}」をTTSで再生中…`, 'playing');
+            },
+            onEnd: end,
+            onError: error => fail(speechErrorMessage(error)),
+          });
+          return true;
+        } catch {
+          fail('音声の開始に失敗しました。「音声が出ないとき」を確認してください。');
+          return false;
+        }
+      }
+      if (!audio) return false;
       try {
         audio.src = item.url;
         audio.onplaying = () => {
@@ -154,18 +201,7 @@ export class Speaker {
           clearTimeout(this.timer);
           this.report(`「${item.label}」の録音を再生中…`, 'playing');
         };
-        audio.onended = () => {
-          if (!current()) return;
-          finished = true;
-          clearTimeout(this.timer);
-          if (index + 1 < sequence.length) {
-            this.report('次の音を準備中…', 'pending');
-            this.timer = setTimeout(() => { play(index + 1); }, 400);
-          } else {
-            this.recording = undefined;
-            this.report('再生しました。', 'idle');
-          }
-        };
+        audio.onended = end;
         audio.onerror = () => fail('録音を読み込めませんでした。通信を確認して再試行してください。');
         this.report('録音を読み込み中…', 'pending');
         this.timer = setTimeout(() => fail('録音の開始を確認できませんでした。再試行してください。'), 15000);

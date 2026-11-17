@@ -8,7 +8,7 @@ import {renderInitialArticulation} from './initials.js';
 import {esc,contour} from './shared.js';
 const speakerIcon='<svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><path d="M11 5 6 9H3v6h3l5 4V5Z M15 8a6 6 0 0 1 0 8 M18 5a10 10 0 0 1 0 14"/></svg>';
 export function renderThirdToneSelector(state: AppState){const form=getThirdToneForm(state.thirdToneForm);return `<details class="third-tone-panel" ${state.thirdToneExpanded?'open':''}><summary>半三声・変調を詳しく見る <span>現在：${form.label}</span></summary><div class="third-tone-options" role="group" aria-label="第3声の発音形">${thirdToneForms.map(item=>`<button data-third-tone-form="${item.id}" aria-pressed="${item.id===form.id}" aria-label="${item.label} ${item.value}"><strong>${item.label}</strong>${contour(item)}<small>${item.value}</small></button>`).join('')}</div><p class="tone-note">${form.note}</p><p class="tone-note">図・IPAは目安です。軽声の前や、第3声が長く続く場合の調形は自動判定しません。</p></details>`;}
-export function renderVoiceHelp(){return `<details id="voice-help" class="voice-help"><summary>音声が出ないとき</summary><p>この例語は端末の読み上げ音声で再生します。音声一覧に表示されなくても、中国語を指定して再生を試せます。無音や別の言語になる場合は、音声データを確認してください。</p><strong>Android・Chrome</strong><ol><li>端末の「設定」で「テキスト読み上げ」を検索します。</li><li>使用中の読み上げエンジンの設定で「音声データをインストール」を開き、「中国語（中国本土）」または「普通話」を追加します。</li><li>Chromeを開き直し、このページを再読み込みしてから再生します。</li></ol><p>項目名は機種・読み上げエンジンにより異なります。<a href="https://support.google.com/accessibility/android/answer/6006983?hl=ja" target="_blank" rel="noreferrer">Googleの設定手順 ↗</a></p><p>ほかの端末でも中国語の読み上げ音声を確認してください。メディア音量・Bluetoothの出力先・通信接続もご確認ください。</p></details>`;}
+export function renderVoiceHelp(){return `<details id="voice-help" class="voice-help"><summary>音声が出ないとき</summary><p>この音声は端末の読み上げ音声で再生します。音声一覧に表示されなくても、中国語を指定して再生を試せます。無音や別の言語になる場合は、音声データを確認してください。</p><strong>Android・Chrome</strong><ol><li>端末の「設定」で「テキスト読み上げ」を検索します。</li><li>使用中の読み上げエンジンの設定で「音声データをインストール」を開き、「中国語（中国本土）」または「普通話」を追加します。</li><li>Chromeを開き直し、このページを再読み込みしてから再生します。</li></ol><p>項目名は機種・読み上げエンジンにより異なります。<a href="https://support.google.com/accessibility/android/answer/6006983?hl=ja" target="_blank" rel="noreferrer">Googleの設定手順 ↗</a></p><p>ほかの端末でも中国語の読み上げ音声を確認してください。メディア音量・Bluetoothの出力先・通信接続もご確認ください。</p></details>`;}
 function renderVoiceSettings(state: AppState){return `<details class="voice-settings" ${state.settings?'open':''}><summary>音声・速度を調整</summary><label>中国語の音声<select id="voice" aria-label="中国語の音声"></select></label><label>読み上げ速度 <span class="speed-control"><input id="rate" type="range" min="0.6" max="1.2" step="0.05" value="${state.rate}" aria-label="読み上げ速度"><output id="rate-value">${state.rate.toFixed(2)}×</output></span></label><button id="refresh-voices" class="text-button">音声を再読み込み</button></details>${renderVoiceHelp()}`;}
 export function renderDetail(state: AppState, playback: DetailPlayback, exampleState: ExampleState){
   const {example,contextual}=playback;
@@ -23,7 +23,7 @@ export function renderDetail(state: AppState, playback: DetailPlayback, exampleS
     const context=third?.id==='full'?'丁寧に単独で読む場合。'
       :third?.id==='half'?`第3声 → 第${parseQuery(example.tokens[example.target+1]??'').tone}声。同じまとまりで続けて読む場合。`
       :'第3声 → 第3声。同じまとまりで読むと、前の音節が上昇形になります。';
-    exampleHtml=`<div class="example"><small>${contextual?'例語全体を再生・下線が対象音節':chars.length>1?'参考の例語・下線が対象音節':'参考の例字'}</small><div class="example-word" lang="zh-CN">${chars.map((c,n)=>n===example.target?`<mark>${c}</mark>`:c).join('')}</div><small>辞書の読み</small><div class="example-pinyin">${example.tokens.map((p,n)=>{const {text,tone}=parseQuery(p);const py=esc(markTone(text,tone));return n===example.target?`<mark>${py}</mark>`:py;}).join(' ')}</div>${third&&third.id!=='full'?`<div class="example-realization"><small>対象音の発音の目安</small><strong>${third.label} · ${third.value} <span>[${s.ipa}${third.ipa}]</span></strong><p>${context}</p></div>`:''}</div>`;
+    exampleHtml=`<div class="example"><small>${contextual?'例語全体を再生・下線が対象音節':playback.kind==='speech'?'読み上げる例字':chars.length>1?'参考の例語・下線が対象音節':'参考の例字'}</small><div class="example-word" lang="zh-CN">${chars.map((c,n)=>n===example.target?`<mark>${c}</mark>`:c).join('')}</div><small>辞書の読み</small><div class="example-pinyin">${example.tokens.map((p,n)=>{const {text,tone}=parseQuery(p);const py=esc(markTone(text,tone));return n===example.target?`<mark>${py}</mark>`:py;}).join(' ')}</div>${third&&third.id!=='full'?`<div class="example-realization"><small>対象音の発音の目安</small><strong>${third.label} · ${third.value} <span>[${s.ipa}${third.ipa}]</span></strong><p>${context}</p></div>`:''}</div>`;
   } else {
     const missing=contextual?'この発音形の例語は未収録です。':'参考の例字・例語は未収録です。';
     exampleHtml=`<div class="example"><small>${exampleState==='loading'?'例語を読み込み中…':exampleState==='error'?'例語データを読み込めませんでした。':missing}</small>${exampleState==='error'?'<button id="retry-examples" class="text-button">再試行</button>':exampleState==='ready'&&third?`<button class="example-demo" data-third-demo="${third.id}">lǎo の比較例を開く ↗</button>`:''}</div>`;
@@ -33,7 +33,7 @@ export function renderDetail(state: AppState, playback: DetailPlayback, exampleS
   ${['ian','üan','er'].includes(s.final)?'<button class="text-button" data-open-tab="erhua">児化による韻母の変化・er との違い ↗</button>':''}
   <hr class="detail-separator"><h3 class="mini-title">辞書上の声調<span>1〜4声・軽声</span></h3><div class="tones" aria-label="声調">${tones.map(t=>`<button class="tone" data-tone="${t.id}" aria-pressed="${state.tone===t.id}" aria-label="${t.label} ${markTone(s.pinyin,t.id)}">${t.id===5?'軽声':t.id+'声'}${contour(t)}<small>${markTone(s.pinyin,t.id)}</small></button>`).join('')}</div>
   ${third?renderThirdToneSelector(state):`<p class="tone-note">${t.id===5?'':t.value+'：'}${t.note}</p>`}${exampleHtml}${example?renderExampleUsage(example):''}
-  <div class="play-row"><button id="play" class="primary" disabled>${speakerIcon}<span>${contextual?'例語を聞く':'単独音を聞く'}</span></button><button id="stop" class="stop" aria-label="再生を停止">■</button></div><p id="voice-status" class="voice-status" role="status" aria-live="polite"></p>${contextual&&!recorded?renderVoiceSettings(state):''}<p class="audio-footnote">${renderAudioNote(playback,Boolean(third))}</p></div>`;
+  <div class="play-row"><button id="play" class="primary" disabled>${speakerIcon}<span>${contextual?'例語を聞く':'単独音を聞く'}</span></button><button id="stop" class="stop" aria-label="再生を停止">■</button></div><p id="voice-status" class="voice-status" role="status" aria-live="polite"></p>${(contextual||playback.kind==='speech')&&!recorded?renderVoiceSettings(state):''}<p class="audio-footnote">${renderAudioNote(playback,Boolean(third))}</p></div>`;
 }
 
 function renderExampleUsage(example: PronunciationExample): string {
@@ -49,6 +49,9 @@ function renderAudioNote(playback: DetailPlayback, third: boolean): string {
   }
   if (playback.contextual) {
     return `この例語は端末の中国語TTSで再生します。${third?'半三声・変調を直接指定できないため、図どおりの発音になるとは限りません。':'辞書の読みと異なる場合があります。'}`;
+  }
+  if (playback.kind === 'speech') {
+    return 'この例字は端末の中国語TTSで再生します。辞書の読みと異なる場合があります。';
   }
   return `${playback.kind==='recording'?'表示した音節・声調の単独音を録音で再生します。参考の例語全体は再生しません。':'声調付きのピンインと図は練習用の表示です。'}図とIPAは、録音を測定して作成したものではありません。<a href="audio/syllables/credits.html" target="_blank" rel="noreferrer">出典・ライセンス</a>`;
 }

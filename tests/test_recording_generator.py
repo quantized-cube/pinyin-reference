@@ -1,5 +1,6 @@
 """Offline checks for restoring recordings against their approved fingerprints."""
 import hashlib
+import copy
 import io
 from pathlib import Path
 import sys
@@ -95,6 +96,73 @@ class RecordingRestoreTests(unittest.TestCase):
         self.assertEqual(self.restore(self.data, row=row), self.row)
         self.assertEqual(row, original)
         self.probe.assert_called_once_with(self.folder / 'a1.mp3')
+
+    def collection_fixture(self):
+        source = {'kind': 'shtooka', 'downloadBaseUrl': 'https://example.test/mp3/',
+                  'speaker': 'Fixture Speaker', 'author': 'Fixture Author',
+                  'license': 'CC BY', 'licenseUrl': 'https://example.test/license',
+                  'sourcePage': 'https://example.test/readme', 'indexUrl': 'https://example.test/index.xml',
+                  'retrieved': '2026-11-17', 'metadataSpeaker': 'Fixture Speaker', 'metadataLicense': 'CC BY'}
+        data = b'original collection MP3 with no SWAC tags'
+        row = {'token': 'a1', 'file': 'a1.mp3', 'sourceId': 'fixture', 'sourceFile': 'cmn-1234abcd.mp3',
+               'sourceText': '啊', 'sourcePinyin': 'ā', 'bytes': len(data),
+               'sha256': hashlib.sha256(data).hexdigest(), 'duration': .8,
+               'sourceMetadata': {'swac_text': '啊', 'swac_pron_phon': 'ā', 'swac_lang': 'cmn',
+                                  'swac_speak_name': 'Fixture Speaker', 'swac_coll_license': 'CC BY'}}
+        return source, row, data
+
+    def test_collection_restore_uses_its_source_and_ignores_superseded_cache(self):
+        source, row, data = self.collection_fixture()
+        cached = self.root / 'public/audio/comparison/a1.mp3'
+        cached.parent.mkdir(parents=True)
+        cached.write_bytes(self.data)
+        self.download.return_value = io.BytesIO(data)
+        self.assertEqual(recordings.fetch_recording(source, row), row)
+        self.download.assert_called_once_with('https://example.test/mp3/cmn-1234abcd.mp3', timeout=30)
+        self.assertEqual((self.folder / row['file']).read_bytes(), data)
+        self.probe.assert_not_called()
+
+    def test_collection_restore_rejects_changed_bytes_before_writing(self):
+        source, row, data = self.collection_fixture()
+        self.download.return_value = io.BytesIO(b'X' + data[1:])
+        with self.assertRaisesRegex(ValueError, 'File changed'):
+            recordings.fetch_recording(source, row)
+        self.assertFalse((self.folder / row['file']).exists())
+
+    def test_collection_manifest_binds_reading_and_metadata_to_source(self):
+        source, row, _ = self.collection_fixture()
+        manifest = {'schemaVersion': 1, 'source': self.source,
+                    'additionalSources': {'fixture': source}, 'records': [row]}
+        recordings.validate_manifest(manifest)
+        self.assertIs(recordings.recording_source(manifest, row), source)
+        for field, wrong in [('sourcePinyin', 'á'), ('sourceFile', '../other.mp3'),
+                             ('sha256', 'unfixed'), ('sourceId', 'unknown')]:
+            changed = copy.deepcopy(manifest)
+            changed['records'][0][field] = wrong
+            with self.subTest(field=field), self.assertRaises((ValueError, KeyError)):
+                recordings.validate_manifest(changed)
+        changed = copy.deepcopy(manifest)
+        changed['records'][0]['sourceMetadata']['swac_speak_name'] = 'Other Speaker'
+        with self.assertRaisesRegex(ValueError, 'Collection index mismatch'):
+            recordings.validate_manifest(changed)
+
+    def test_explicit_tts_fallback_requires_a_matching_example_and_no_audio_file(self):
+        row = {'token': 'fa4', 'unavailable': 'Rejected',
+               'ttsFallback': {'text': '长发', 'tokens': ['chang2', 'fa4'], 'target': 1}}
+        manifest = {'schemaVersion': 1, 'source': self.source, 'records': [row]}
+        recordings.validate_manifest(manifest)
+        index = recordings.generated_index(manifest)
+        self.assertIn('syllableSpeechExamples', index)
+        self.assertIn('长发', index)
+        for field, value in [('text', '发'), ('target', 0), ('tokens', ['chang2', 'fa1'])]:
+            changed = copy.deepcopy(manifest)
+            changed['records'][0]['ttsFallback'][field] = value
+            with self.subTest(field=field), self.assertRaisesRegex(ValueError, 'Invalid TTS fallback'):
+                recordings.validate_manifest(changed)
+        changed = copy.deepcopy(manifest)
+        changed['records'][0]['file'] = 'fa4.mp3'
+        with self.assertRaisesRegex(ValueError, 'Invalid unavailable recording'):
+            recordings.validate_manifest(changed)
 
 
 if __name__ == '__main__':

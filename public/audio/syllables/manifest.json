@@ -242,11 +242,30 @@
     },
     {
       "token": "bang4",
-      "sourceToken": "bang4",
       "file": "bang4.mp3",
-      "sha256": "5044f96d2b9636ec830b535acbf528d95f3b74cea5f07f47d5ead937d157b08f",
-      "bytes": 8032,
-      "duration": 0.888
+      "sha256": "ad3f3b9731c96f34e6980cc0d97ddafd01657635268a2ea4f04a36020973d664",
+      "bytes": 8765,
+      "duration": 0.940408,
+      "sourceId": "cmn-caen-tan",
+      "sourceFile": "cmn-4b1487b2.mp3",
+      "sourceText": "磅",
+      "sourcePinyin": "bàng",
+      "retrieved": "2026-11-17",
+      "sourceMetadata": {
+        "swac_text": "磅",
+        "swac_pron_phon": "bàng",
+        "swac_lang": "cmn",
+        "swac_speak_name": "Tan",
+        "swac_coll_license": "Creative Commons BY-SA 3.0 U.S"
+      },
+      "review": {
+        "date": "2026-11-17",
+        "listening": "User accepted the 34 first-choice replacement candidates after listening.",
+        "previousRecording": {
+          "sourceToken": "bang4",
+          "sha256": "5044f96d2b9636ec830b535acbf528d95f3b74cea5f07f47d5ead937d157b08f"
+        }
+      }
     },
     {
       "token": "bao1",
@@ -306,11 +325,22 @@
     },
     {
       "token": "ben1",
-      "sourceToken": "ben1",
-      "file": "ben1.mp3",
-      "sha256": "234c8f2c5bde868417b1d563ad8cfae860d212aaf7adec46da69972ec295ecbc",
-      "bytes": 8030,
-      "duration": 0.888
+      "unavailable": "Original recording rejected by the user as too short on 2026-11-17; replacement recording not yet accepted.",
+      "ttsFallback": {
+        "text": "奔",
+        "tokens": [
+          "ben1"
+        ],
+        "target": 0
+      },
+      "rejectedRecording": {
+        "token": "ben1",
+        "sourceToken": "ben1",
+        "file": "ben1.mp3",
+        "sha256": "234c8f2c5bde868417b1d563ad8cfae860d212aaf7adec46da69972ec295ecbc",
+        "bytes": 8030,
+        "duration": 0.888
+      }
     },
     {
       "token": "ben3",
@@ -387,11 +417,30 @@
     },
     {
       "token": "bi4",
-      "sourceToken": "bi4",
       "file": "bi4.mp3",
-      "sha256": "ddb0b05e4972c9f749e4fe9db2138d5026919f95e969a51002b207c570d880fd",
-      "bytes": 8028,
-      "duration": 0.888
+      "sha256": "525c1623f2944df75946364e7e5919c8c5f13e8689be8862659e6cb20efa9c76",
+      "bytes": 8765,
+      "duration": 0.940408,
+      "sourceId": "cmn-caen-tan",
+      "sourceFile": "cmn-4ffd97c5.mp3",
+      "sourceText": "壁",
+      "sourcePinyin": "bì",
+      "retrieved": "2026-11-17",
+      "sourceMetadata": {
+        "swac_text": "壁",
+        "swac_pron_phon": "bì",
+        "swac_lang": "cmn",
+        "swac_speak_name": "Tan",
+        "swac_coll_license": "Creative Commons BY-SA 3.0 U.S"
+      },
+      "review": {
+        "date": "2026-11-17",
+        "listening": "User accepted the 34 first-choice replacement candidates after listening.",
+        "previousRecording": {
+          "sourceToken": "bi4",
+          "sha256": "ddb0b05e4972c9f749e4fe9db2138d5026919f95e969a51002b207c570d880fd"
+        }
+      }
     },
     {
       "token": "bian1",
@@ -443,11 +492,30 @@
     },
     {
       "token": "bie1",
-      "sourceToken": "bie1",
       "file": "bie1.mp3",
-      "sha256": "cd6760e6f82472a4e0d2725d269fc27475958aeee8bf3d7f0b81f1c061a66dd1",
-      "bytes": 8030,
-      "duration": 0.888
+      "sha256": "a3c3455ae8cc266f90677be263049637a2f8eb5b44867ff7ac45f236cd365342",
+      "bytes": 9183,
+      "duration": 0.992653,
+      "sourceId": "cmn-caen-tan",
+      "sourceFile": "cmn-459d1065.mp3",
+      "sourceText": "憋",
+      "sourcePinyin": "biē",
+      "retrieved": "2026-11-17",
+      "sourceMetadata": {
+        "swac_text": "憋",
+        "swac_pron_phon": "biē",
+        "swac_lang": "cmn",
+        "swac_speak_name": "Tan",
+        "swac_coll_license": "Creative Commons BY-SA 3.0 U.S"
+      },
+      "review": {
+        "date": "2026-11-17",
+        "listening": "User accepted the 34 first-choice replacement candidates after listening.",
+        "previousRecording": {
+          "sourceToken": "bie1",
+          "sha256": "cd6760e6f82472a4e0d2725d269fc27475958aeee8bf3d7f0b81f1c061a66dd1"
+        }
+      }
     },
     {
       "token": "bie2",
@@ -515,19 +583,51 @@
     },
     {
       "token": "bo1",
-      "sourceToken": "bo1",
       "file": "bo1.mp3",
-      "sha256": "440d76b7ebb1c5a39771f20a2668ff9d97124b5a45531dea312914a5dd66b871",
-      "bytes": 8412,
-      "duration": 0.936
+      "sha256": "e4b94531ffd10c7cd36d567bf0673da6245001fb370a40afecbc720e0f509641",
+      "bytes": 8765,
+      "duration": 0.940408,
+      "sourceId": "cmn-caen-tan",
+      "sourceFile": "cmn-52541f5a.mp3",
+      "sourceText": "拨",
+      "sourcePinyin": "bō",
+      "retrieved": "2026-11-17",
+      "sourceMetadata": {
+        "swac_text": "拨",
+        "swac_pron_phon": "bō",
+        "swac_lang": "cmn",
+        "swac_speak_name": "Tan",
+        "swac_coll_license": "Creative Commons BY-SA 3.0 U.S"
+      },
+      "review": {
+        "date": "2026-11-17",
+        "listening": "User accepted the 34 first-choice replacement candidates after listening.",
+        "previousRecording": {
+          "sourceToken": "bo1",
+          "sha256": "440d76b7ebb1c5a39771f20a2668ff9d97124b5a45531dea312914a5dd66b871"
+        }
+      }
     },
     {
       "token": "bo2",
-      "sourceToken": "bo2",
-      "file": "bo2.mp3",
-      "sha256": "14e1b0cc05796f0685449f1397e99100cd574fbd7f15361278c9cabb274fea87",
-      "bytes": 8412,
-      "duration": 0.936
+      "unavailable": "Recording rejected by the user after listening on 2026-11-17; replacement recording not yet accepted.",
+      "ttsFallback": {
+        "text": "驳面子",
+        "tokens": [
+          "bo2",
+          "mian4",
+          "zi5"
+        ],
+        "target": 0
+      },
+      "rejectedRecording": {
+        "token": "bo2",
+        "sourceToken": "bo2",
+        "file": "bo2.mp3",
+        "sha256": "14e1b0cc05796f0685449f1397e99100cd574fbd7f15361278c9cabb274fea87",
+        "bytes": 8412,
+        "duration": 0.936
+      }
     },
     {
       "token": "bo3",
@@ -572,11 +672,30 @@
     },
     {
       "token": "bu4",
-      "sourceToken": "bu4",
       "file": "bu4.mp3",
-      "sha256": "e1acafa396b42cfbc81ba7952c2577049bd4cd82316953224a4c79b471949916",
-      "bytes": 8028,
-      "duration": 0.888
+      "sha256": "b708b3c13adb179d0d8f9fc49124ce49b9d27e7307aebbc4a9d6a4ff35c3470d",
+      "bytes": 8556,
+      "duration": 0.914286,
+      "sourceId": "cmn-caen-tan",
+      "sourceFile": "cmn-7067fe64.mp3",
+      "sourceText": "埠",
+      "sourcePinyin": "bù",
+      "retrieved": "2026-11-17",
+      "sourceMetadata": {
+        "swac_text": "埠",
+        "swac_pron_phon": "bù",
+        "swac_lang": "cmn",
+        "swac_speak_name": "Tan",
+        "swac_coll_license": "Creative Commons BY-SA 3.0 U.S"
+      },
+      "review": {
+        "date": "2026-11-17",
+        "listening": "User accepted the 34 first-choice replacement candidates after listening.",
+        "previousRecording": {
+          "sourceToken": "bu4",
+          "sha256": "e1acafa396b42cfbc81ba7952c2577049bd4cd82316953224a4c79b471949916"
+        }
+      }
     },
     {
       "token": "ca1",
@@ -733,19 +852,58 @@
     },
     {
       "token": "ceng2",
-      "sourceToken": "ceng2",
       "file": "ceng2.mp3",
-      "sha256": "a42aa4929648863cf4bc1c2c46871dc6eea13c9e10df37da6beb301fcbb92549",
-      "bytes": 8800,
-      "duration": 0.984
+      "sha256": "df27ee6484be8b98c1eb2ffcdf7c38c9eb46315d703450e51e9510046699b4d8",
+      "bytes": 10437,
+      "duration": 1.149388,
+      "sourceId": "cmn-caen-tan",
+      "sourceFile": "cmn-ae00b6ac.mp3",
+      "sourceText": "层",
+      "sourcePinyin": "céng",
+      "retrieved": "2026-11-17",
+      "sourceMetadata": {
+        "swac_text": "层",
+        "swac_pron_phon": "céng",
+        "swac_lang": "cmn",
+        "swac_speak_name": "Tan",
+        "swac_coll_license": "Creative Commons BY-SA 3.0 U.S"
+      },
+      "review": {
+        "date": "2026-11-17",
+        "listening": "User accepted the 34 first-choice replacement candidates after listening.",
+        "previousRecording": {
+          "sourceToken": "ceng2",
+          "sha256": "a42aa4929648863cf4bc1c2c46871dc6eea13c9e10df37da6beb301fcbb92549"
+        }
+      }
     },
     {
       "token": "ceng4",
-      "sourceToken": "ceng4",
       "file": "ceng4.mp3",
-      "sha256": "b78d8abc19b09bf9c4bfab8dc8ed693dd567ff31f2c42863baf52d8de822982b",
-      "bytes": 8416,
-      "duration": 0.936
+      "sha256": "58e9524807eec3d9608536318583fc3fcd58d2cf5df32731ab888a220934c6c0",
+      "bytes": 9183,
+      "duration": 0.992653,
+      "sourceId": "cmn-caen-tan",
+      "sourceFile": "cmn-c5d092ae.mp3",
+      "sourceText": "蹭",
+      "sourcePinyin": "cèng",
+      "retrieved": "2026-11-17",
+      "sourceMetadata": {
+        "swac_text": "蹭",
+        "swac_pron_phon": "cèng",
+        "swac_lang": "cmn",
+        "swac_speak_name": "Tan",
+        "swac_coll_license": "Creative Commons BY-SA 3.0 U.S"
+      },
+      "review": {
+        "date": "2026-11-17",
+        "listening": "User accepted this replacement after listening to the comparison page.",
+        "selection": "first_displayed_candidate",
+        "previousRecording": {
+          "sourceToken": "ceng4",
+          "sha256": "b78d8abc19b09bf9c4bfab8dc8ed693dd567ff31f2c42863baf52d8de822982b"
+        }
+      }
     },
     {
       "token": "cha1",
@@ -1418,11 +1576,31 @@
     },
     {
       "token": "cuo4",
-      "sourceToken": "cuo4",
       "file": "cuo4.mp3",
-      "sha256": "14152910cb4b5b586842fbd025e4f5577620950aa9fda5317a40a4b785706111",
-      "bytes": 8030,
-      "duration": 0.888
+      "sha256": "e445b8dac683da1586d72cefecc54877fdea2819681617e30742c6fb905dade7",
+      "bytes": 9821,
+      "duration": 1.201633,
+      "sourceId": "cmn-balm-hsk1",
+      "sourceFile": "cmn-a7837ff8.mp3",
+      "sourceText": "错",
+      "sourcePinyin": "cuò",
+      "retrieved": "2026-11-17",
+      "sourceMetadata": {
+        "swac_text": "错",
+        "swac_pron_phon": "cuò",
+        "swac_lang": "cmn",
+        "swac_speak_name": "Wei Gao",
+        "swac_coll_license": "Creative Commons BY"
+      },
+      "review": {
+        "date": "2026-11-17",
+        "listening": "User accepted this replacement after listening to the comparison page.",
+        "selection": "first_displayed_candidate",
+        "previousRecording": {
+          "sourceToken": "cuo4",
+          "sha256": "14152910cb4b5b586842fbd025e4f5577620950aa9fda5317a40a4b785706111"
+        }
+      }
     },
     {
       "token": "da1",
@@ -1450,11 +1628,30 @@
     },
     {
       "token": "da4",
-      "sourceToken": "da4",
       "file": "da4.mp3",
-      "sha256": "033350136f17ce98a81fad8bc8a15d26510b0578e2055e8e9ad9c721a81c844e",
-      "bytes": 8028,
-      "duration": 0.888
+      "sha256": "7c0f6bcc1a6f0eef34454dd637c64f23148b7d565e6e1bdc80bfe60a3021f0ec",
+      "bytes": 8765,
+      "duration": 0.940408,
+      "sourceId": "cmn-caen-tan",
+      "sourceFile": "cmn-d2b184ff.mp3",
+      "sourceText": "大",
+      "sourcePinyin": "dà",
+      "retrieved": "2026-11-17",
+      "sourceMetadata": {
+        "swac_text": "大",
+        "swac_pron_phon": "dà",
+        "swac_lang": "cmn",
+        "swac_speak_name": "Tan",
+        "swac_coll_license": "Creative Commons BY-SA 3.0 U.S"
+      },
+      "review": {
+        "date": "2026-11-17",
+        "listening": "User accepted the 34 first-choice replacement candidates after listening.",
+        "previousRecording": {
+          "sourceToken": "da4",
+          "sha256": "033350136f17ce98a81fad8bc8a15d26510b0578e2055e8e9ad9c721a81c844e"
+        }
+      }
     },
     {
       "token": "dai1",
@@ -1474,11 +1671,30 @@
     },
     {
       "token": "dai4",
-      "sourceToken": "dai4",
       "file": "dai4.mp3",
-      "sha256": "4382917121e5b6dabc6406b3c2ba77e1205629a27e4ce27a622cfe3be799fa6e",
-      "bytes": 8030,
-      "duration": 0.888
+      "sha256": "e0d0ad923e1563ad252754ce906eef73bc69c655335221eac08f52036e051574",
+      "bytes": 9183,
+      "duration": 0.992653,
+      "sourceId": "cmn-caen-tan",
+      "sourceFile": "cmn-beebdcc9.mp3",
+      "sourceText": "袋",
+      "sourcePinyin": "dài",
+      "retrieved": "2026-11-17",
+      "sourceMetadata": {
+        "swac_text": "袋",
+        "swac_pron_phon": "dài",
+        "swac_lang": "cmn",
+        "swac_speak_name": "Tan",
+        "swac_coll_license": "Creative Commons BY-SA 3.0 U.S"
+      },
+      "review": {
+        "date": "2026-11-17",
+        "listening": "User accepted the 34 first-choice replacement candidates after listening.",
+        "previousRecording": {
+          "sourceToken": "dai4",
+          "sha256": "4382917121e5b6dabc6406b3c2ba77e1205629a27e4ce27a622cfe3be799fa6e"
+        }
+      }
     },
     {
       "token": "dan1",
@@ -1498,11 +1714,30 @@
     },
     {
       "token": "dan4",
-      "sourceToken": "dan4",
       "file": "dan4.mp3",
-      "sha256": "45adbc3ef7df0aa44c9228dacee1e87dc57d6d6c501d904b382a521157c77104",
-      "bytes": 8030,
-      "duration": 0.888
+      "sha256": "d1fd1d54af450096ef891100ff4f3ea283eeab29fe9993ddd8b46ed7f22a1745",
+      "bytes": 8765,
+      "duration": 0.940408,
+      "sourceId": "cmn-caen-tan",
+      "sourceFile": "cmn-587bde01.mp3",
+      "sourceText": "淡",
+      "sourcePinyin": "dàn",
+      "retrieved": "2026-11-17",
+      "sourceMetadata": {
+        "swac_text": "淡",
+        "swac_pron_phon": "dàn",
+        "swac_lang": "cmn",
+        "swac_speak_name": "Tan",
+        "swac_coll_license": "Creative Commons BY-SA 3.0 U.S"
+      },
+      "review": {
+        "date": "2026-11-17",
+        "listening": "User accepted the 34 first-choice replacement candidates after listening.",
+        "previousRecording": {
+          "sourceToken": "dan4",
+          "sha256": "45adbc3ef7df0aa44c9228dacee1e87dc57d6d6c501d904b382a521157c77104"
+        }
+      }
     },
     {
       "token": "dang1",
@@ -1658,11 +1893,30 @@
     },
     {
       "token": "dian4",
-      "sourceToken": "dian4",
       "file": "dian4.mp3",
-      "sha256": "360d57889f22af8313c3ff2a1d20216cbd71753dcf2b346806e245a414fe0331",
-      "bytes": 8032,
-      "duration": 0.888
+      "sha256": "68720a30e995ce5b33a5080f5ee88861ad721a289c949526d60983a0417ab4f5",
+      "bytes": 8765,
+      "duration": 0.940408,
+      "sourceId": "cmn-caen-tan",
+      "sourceFile": "cmn-20298b8c.mp3",
+      "sourceText": "店",
+      "sourcePinyin": "diàn",
+      "retrieved": "2026-11-17",
+      "sourceMetadata": {
+        "swac_text": "店",
+        "swac_pron_phon": "diàn",
+        "swac_lang": "cmn",
+        "swac_speak_name": "Tan",
+        "swac_coll_license": "Creative Commons BY-SA 3.0 U.S"
+      },
+      "review": {
+        "date": "2026-11-17",
+        "listening": "User accepted the 34 first-choice replacement candidates after listening.",
+        "previousRecording": {
+          "sourceToken": "dian4",
+          "sha256": "360d57889f22af8313c3ff2a1d20216cbd71753dcf2b346806e245a414fe0331"
+        }
+      }
     },
     {
       "token": "diao1",
@@ -1698,11 +1952,30 @@
     },
     {
       "token": "ding1",
-      "sourceToken": "ding1",
       "file": "ding1.mp3",
-      "sha256": "dce9a623258b6885477d828eb4d681269513945f80acbdf4b6dfa26f9aa586ae",
-      "bytes": 8032,
-      "duration": 0.888
+      "sha256": "f11bf66513d862513015fae56978ab91c59a2f023161a220a467ecc261aa2579",
+      "bytes": 10019,
+      "duration": 1.097143,
+      "sourceId": "cmn-caen-tan",
+      "sourceFile": "cmn-8e61e121.mp3",
+      "sourceText": "钉",
+      "sourcePinyin": "dīng",
+      "retrieved": "2026-11-17",
+      "sourceMetadata": {
+        "swac_text": "钉",
+        "swac_pron_phon": "dīng",
+        "swac_lang": "cmn",
+        "swac_speak_name": "Tan",
+        "swac_coll_license": "Creative Commons BY-SA 3.0 U.S"
+      },
+      "review": {
+        "date": "2026-11-17",
+        "listening": "User accepted the 34 first-choice replacement candidates after listening.",
+        "previousRecording": {
+          "sourceToken": "ding1",
+          "sha256": "dce9a623258b6885477d828eb4d681269513945f80acbdf4b6dfa26f9aa586ae"
+        }
+      }
     },
     {
       "token": "ding3",
@@ -1906,11 +2179,23 @@
     },
     {
       "token": "e1",
-      "sourceToken": "e1",
-      "file": "e1.mp3",
-      "sha256": "88ebb65b7e6983701285d171f2a02d7d2a85162214b53fb0d47ae1f9d74443d4",
-      "bytes": 8026,
-      "duration": 0.888
+      "unavailable": "Original recording rejected by the user as too short on 2026-11-17; replacement recording not yet accepted.",
+      "ttsFallback": {
+        "text": "山阿",
+        "tokens": [
+          "shan1",
+          "e1"
+        ],
+        "target": 1
+      },
+      "rejectedRecording": {
+        "token": "e1",
+        "sourceToken": "e1",
+        "file": "e1.mp3",
+        "sha256": "88ebb65b7e6983701285d171f2a02d7d2a85162214b53fb0d47ae1f9d74443d4",
+        "bytes": 8026,
+        "duration": 0.888
+      }
     },
     {
       "token": "e2",
@@ -1979,11 +2264,30 @@
     },
     {
       "token": "er4",
-      "sourceToken": "er4",
       "file": "er4.mp3",
-      "sha256": "708278953eff64ad7da0d5e711bc881744a9bb4fd6e2f622656ced7a0f68302f",
-      "bytes": 8028,
-      "duration": 0.888
+      "sha256": "e4bd4a3a7fb8ad28e7865f225cacdcc743d6ea939c364d9746113c04c10b2a44",
+      "bytes": 6686,
+      "duration": 0.809796,
+      "sourceId": "cmn-balm-hsk1",
+      "sourceFile": "cmn-4eca912c.mp3",
+      "sourceText": "二",
+      "sourcePinyin": "èr",
+      "retrieved": "2026-11-17",
+      "sourceMetadata": {
+        "swac_text": "二",
+        "swac_pron_phon": "èr",
+        "swac_lang": "cmn",
+        "swac_speak_name": "Wei Gao",
+        "swac_coll_license": "Creative Commons BY"
+      },
+      "review": {
+        "date": "2026-11-17",
+        "listening": "User accepted the 34 first-choice replacement candidates after listening.",
+        "previousRecording": {
+          "sourceToken": "er4",
+          "sha256": "708278953eff64ad7da0d5e711bc881744a9bb4fd6e2f622656ced7a0f68302f"
+        }
+      }
     },
     {
       "token": "fa1",
@@ -1995,11 +2299,30 @@
     },
     {
       "token": "fa2",
-      "sourceToken": "fa2",
       "file": "fa2.mp3",
-      "sha256": "bb419b7841260ab989bd53f08e8291f93762d17a8db3823d50a24ce47ed6491e",
-      "bytes": 8028,
-      "duration": 0.888
+      "sha256": "cba60d317d03222c2b0dc6c8c3d906d9ef2e4902124d8648725d88d8720fd41f",
+      "bytes": 9601,
+      "duration": 1.044898,
+      "sourceId": "cmn-caen-tan",
+      "sourceFile": "cmn-e9d5d39e.mp3",
+      "sourceText": "伐",
+      "sourcePinyin": "fá",
+      "retrieved": "2026-11-17",
+      "sourceMetadata": {
+        "swac_text": "伐",
+        "swac_pron_phon": "fá",
+        "swac_lang": "cmn",
+        "swac_speak_name": "Tan",
+        "swac_coll_license": "Creative Commons BY-SA 3.0 U.S"
+      },
+      "review": {
+        "date": "2026-11-17",
+        "listening": "User accepted the 34 first-choice replacement candidates after listening.",
+        "previousRecording": {
+          "sourceToken": "fa2",
+          "sha256": "bb419b7841260ab989bd53f08e8291f93762d17a8db3823d50a24ce47ed6491e"
+        }
+      }
     },
     {
       "token": "fa3",
@@ -2011,19 +2334,50 @@
     },
     {
       "token": "fa4",
-      "sourceToken": "fa4",
-      "file": "fa4.mp3",
-      "sha256": "5a8705cbb08d74f9246c45d8dfe895cc53c07622f77fe56c1cce70f092f6191b",
-      "bytes": 8028,
-      "duration": 0.888
+      "unavailable": "Original recording rejected by the user as too short on 2026-11-17; replacement recording not yet accepted.",
+      "ttsFallback": {
+        "text": "长发",
+        "tokens": [
+          "chang2",
+          "fa4"
+        ],
+        "target": 1
+      },
+      "rejectedRecording": {
+        "token": "fa4",
+        "sourceToken": "fa4",
+        "file": "fa4.mp3",
+        "sha256": "5a8705cbb08d74f9246c45d8dfe895cc53c07622f77fe56c1cce70f092f6191b",
+        "bytes": 8028,
+        "duration": 0.888
+      }
     },
     {
       "token": "fan1",
-      "sourceToken": "fan1",
       "file": "fan1.mp3",
-      "sha256": "f73bbda35ef7df77770f07beb6a00e98e8ba863ad87dbe771c60a4a91f36fad5",
-      "bytes": 8414,
-      "duration": 0.936
+      "sha256": "c05c0bec920ef3a0d5aeafe4af07e4ea78db782eecf82f997f1e8a38ef220bbd",
+      "bytes": 7731,
+      "duration": 0.940408,
+      "sourceId": "cmn-balm-hsk1",
+      "sourceFile": "cmn-8bbf73fc.mp3",
+      "sourceText": "翻",
+      "sourcePinyin": "fān",
+      "retrieved": "2026-11-17",
+      "sourceMetadata": {
+        "swac_text": "翻",
+        "swac_pron_phon": "fān",
+        "swac_lang": "cmn",
+        "swac_speak_name": "Wei Gao",
+        "swac_coll_license": "Creative Commons BY"
+      },
+      "review": {
+        "date": "2026-11-17",
+        "listening": "User accepted the 34 first-choice replacement candidates after listening.",
+        "previousRecording": {
+          "sourceToken": "fan1",
+          "sha256": "f73bbda35ef7df77770f07beb6a00e98e8ba863ad87dbe771c60a4a91f36fad5"
+        }
+      }
     },
     {
       "token": "fan2",
@@ -2116,11 +2470,30 @@
     },
     {
       "token": "fen1",
-      "sourceToken": "fen1",
       "file": "fen1.mp3",
-      "sha256": "3ee92b1018da421224761fd513398dafb93d31b16634437ca8066c7cdc129f13",
-      "bytes": 8030,
-      "duration": 0.888
+      "sha256": "1425168a104da088e83fe685ce78e4f57bd8edb05a8d3c2354c4f5e6c980df40",
+      "bytes": 7522,
+      "duration": 0.914286,
+      "sourceId": "cmn-balm-hsk1",
+      "sourceFile": "cmn-644e8bfd.mp3",
+      "sourceText": "分",
+      "sourcePinyin": "fēn",
+      "retrieved": "2026-11-17",
+      "sourceMetadata": {
+        "swac_text": "分",
+        "swac_pron_phon": "fēn",
+        "swac_lang": "cmn",
+        "swac_speak_name": "Wei Gao",
+        "swac_coll_license": "Creative Commons BY"
+      },
+      "review": {
+        "date": "2026-11-17",
+        "listening": "User accepted the 34 first-choice replacement candidates after listening.",
+        "previousRecording": {
+          "sourceToken": "fen1",
+          "sha256": "3ee92b1018da421224761fd513398dafb93d31b16634437ca8066c7cdc129f13"
+        }
+      }
     },
     {
       "token": "fen2",
@@ -2172,11 +2545,23 @@
     },
     {
       "token": "feng4",
-      "sourceToken": "feng4",
-      "file": "feng4.mp3",
-      "sha256": "125a83824f02c961d44913baf341b7a5de78e37d78663d7cc5a796f14f77aff4",
-      "bytes": 8032,
-      "duration": 0.888
+      "unavailable": "Original recording rejected by the user as too short on 2026-11-17; replacement recording not yet accepted.",
+      "ttsFallback": {
+        "text": "中缝",
+        "tokens": [
+          "zhong1",
+          "feng4"
+        ],
+        "target": 1
+      },
+      "rejectedRecording": {
+        "token": "feng4",
+        "sourceToken": "feng4",
+        "file": "feng4.mp3",
+        "sha256": "125a83824f02c961d44913baf341b7a5de78e37d78663d7cc5a796f14f77aff4",
+        "bytes": 8032,
+        "duration": 0.888
+      }
     },
     {
       "token": "fo2",
@@ -2309,11 +2694,30 @@
     },
     {
       "token": "gang1",
-      "sourceToken": "gang1",
       "file": "gang1.mp3",
-      "sha256": "4a3650b7dbe3f910dbe48340869bb21d08a4db56e581c9775334a9309f88b648",
-      "bytes": 8416,
-      "duration": 0.936
+      "sha256": "f1f2dfade7114f59ac3e63475f001d7ab8800b9b75c78cb908e2ec20aa20779f",
+      "bytes": 7104,
+      "duration": 0.862041,
+      "sourceId": "cmn-balm-hsk1",
+      "sourceFile": "cmn-40007348.mp3",
+      "sourceText": "刚",
+      "sourcePinyin": "gāng",
+      "retrieved": "2026-11-17",
+      "sourceMetadata": {
+        "swac_text": "刚",
+        "swac_pron_phon": "gāng",
+        "swac_lang": "cmn",
+        "swac_speak_name": "Wei Gao",
+        "swac_coll_license": "Creative Commons BY"
+      },
+      "review": {
+        "date": "2026-11-17",
+        "listening": "User accepted the 34 first-choice replacement candidates after listening.",
+        "previousRecording": {
+          "sourceToken": "gang1",
+          "sha256": "4a3650b7dbe3f910dbe48340869bb21d08a4db56e581c9775334a9309f88b648"
+        }
+      }
     },
     {
       "token": "gang3",
@@ -2454,11 +2858,31 @@
     },
     {
       "token": "gong1",
-      "sourceToken": "gong1",
       "file": "gong1.mp3",
-      "sha256": "a53868781fd6b1a0b5daf79e11de1177ff37b8ea1872553da8ad6d10e8596cdf",
-      "bytes": 8416,
-      "duration": 0.936
+      "sha256": "ee7094c73e6676cf511c3e1cc0c8c3452cbe8c4e648f16955caa89feb305601d",
+      "bytes": 9183,
+      "duration": 0.992653,
+      "sourceId": "cmn-caen-tan",
+      "sourceFile": "cmn-5d50a441.mp3",
+      "sourceText": "工",
+      "sourcePinyin": "gōng",
+      "retrieved": "2026-11-17",
+      "sourceMetadata": {
+        "swac_text": "工",
+        "swac_pron_phon": "gōng",
+        "swac_lang": "cmn",
+        "swac_speak_name": "Tan",
+        "swac_coll_license": "Creative Commons BY-SA 3.0 U.S"
+      },
+      "review": {
+        "date": "2026-11-17",
+        "listening": "User accepted this replacement after listening to the comparison page.",
+        "selection": "first_displayed_candidate",
+        "previousRecording": {
+          "sourceToken": "gong1",
+          "sha256": "a53868781fd6b1a0b5daf79e11de1177ff37b8ea1872553da8ad6d10e8596cdf"
+        }
+      }
     },
     {
       "token": "gong3",
@@ -2568,11 +2992,30 @@
     },
     {
       "token": "guai4",
-      "sourceToken": "guai4",
       "file": "guai4.mp3",
-      "sha256": "4a6b6cb0440489afc5959be2d9e99ee3b34b24cd6597bce7a7dfc749bc5adb46",
-      "bytes": 8032,
-      "duration": 0.888
+      "sha256": "de2cbc879bf58af93e0786f06eb4a3635263f8cbff82bd34d94f23122c7e6740",
+      "bytes": 9183,
+      "duration": 0.992653,
+      "sourceId": "cmn-caen-tan",
+      "sourceFile": "cmn-5faea7bd.mp3",
+      "sourceText": "怪",
+      "sourcePinyin": "guài",
+      "retrieved": "2026-11-17",
+      "sourceMetadata": {
+        "swac_text": "怪",
+        "swac_pron_phon": "guài",
+        "swac_lang": "cmn",
+        "swac_speak_name": "Tan",
+        "swac_coll_license": "Creative Commons BY-SA 3.0 U.S"
+      },
+      "review": {
+        "date": "2026-11-17",
+        "listening": "User accepted the 34 first-choice replacement candidates after listening.",
+        "previousRecording": {
+          "sourceToken": "guai4",
+          "sha256": "4a6b6cb0440489afc5959be2d9e99ee3b34b24cd6597bce7a7dfc749bc5adb46"
+        }
+      }
     },
     {
       "token": "guan1",
@@ -2688,11 +3131,30 @@
     },
     {
       "token": "guo4",
-      "sourceToken": "guo4",
       "file": "guo4.mp3",
-      "sha256": "e5061d96406b30d2663e9a330cd4e58124c830eeb378021126e8d78537888080",
-      "bytes": 8414,
-      "duration": 0.936
+      "sha256": "f63457fa2dd131c1f0a3f8bafc987521586f182e9522aaabbf953d0fcac796d9",
+      "bytes": 8765,
+      "duration": 0.940408,
+      "sourceId": "cmn-caen-tan",
+      "sourceFile": "cmn-4831fcfe.mp3",
+      "sourceText": "过",
+      "sourcePinyin": "guò",
+      "retrieved": "2026-11-17",
+      "sourceMetadata": {
+        "swac_text": "过",
+        "swac_pron_phon": "guò",
+        "swac_lang": "cmn",
+        "swac_speak_name": "Tan",
+        "swac_coll_license": "Creative Commons BY-SA 3.0 U.S"
+      },
+      "review": {
+        "date": "2026-11-17",
+        "listening": "User accepted the 34 first-choice replacement candidates after listening.",
+        "previousRecording": {
+          "sourceToken": "guo4",
+          "sha256": "e5061d96406b30d2663e9a330cd4e58124c830eeb378021126e8d78537888080"
+        }
+      }
     },
     {
       "token": "ha1",
@@ -2913,11 +3375,24 @@
     },
     {
       "token": "heng4",
-      "sourceToken": "heng4",
-      "file": "heng4.mp3",
-      "sha256": "8e7b44ec1f57863702987014478ebd0de42fb1590ab972ac8b848a4214863395",
-      "bytes": 8416,
-      "duration": 0.936
+      "unavailable": "Recording rejected by the user after listening on 2026-11-17; replacement recording not yet accepted.",
+      "ttsFallback": {
+        "text": "窝里横",
+        "tokens": [
+          "wo1",
+          "li5",
+          "heng4"
+        ],
+        "target": 2
+      },
+      "rejectedRecording": {
+        "token": "heng4",
+        "sourceToken": "heng4",
+        "file": "heng4.mp3",
+        "sha256": "8e7b44ec1f57863702987014478ebd0de42fb1590ab972ac8b848a4214863395",
+        "bytes": 8416,
+        "duration": 0.936
+      }
     },
     {
       "token": "hong1",
@@ -2985,11 +3460,31 @@
     },
     {
       "token": "hu2",
-      "sourceToken": "hu2",
       "file": "hu2.mp3",
-      "sha256": "b4f4e4c7023bfc61799063c634ad07279f3974f0b8a2934c8b53f4953ceb4194",
-      "bytes": 8412,
-      "duration": 0.936
+      "sha256": "dec5d045cb549c6d8c5ab818384d0bd6a83a5aa20715bda9a836757fc9f8b12a",
+      "bytes": 7731,
+      "duration": 0.940408,
+      "sourceId": "cmn-balm-hsk1",
+      "sourceFile": "cmn-b30a37e7.mp3",
+      "sourceText": "湖",
+      "sourcePinyin": "hú",
+      "retrieved": "2026-11-17",
+      "sourceMetadata": {
+        "swac_text": "湖",
+        "swac_pron_phon": "hú",
+        "swac_lang": "cmn",
+        "swac_speak_name": "Wei Gao",
+        "swac_coll_license": "Creative Commons BY"
+      },
+      "review": {
+        "date": "2026-11-17",
+        "listening": "User accepted this replacement after listening to the comparison page.",
+        "selection": "first_displayed_candidate",
+        "previousRecording": {
+          "sourceToken": "hu2",
+          "sha256": "b4f4e4c7023bfc61799063c634ad07279f3974f0b8a2934c8b53f4953ceb4194"
+        }
+      }
     },
     {
       "token": "hu3",
@@ -3177,11 +3672,30 @@
     },
     {
       "token": "huo2",
-      "sourceToken": "huo2",
       "file": "huo2.mp3",
-      "sha256": "d17609373c12745ecae711555fbc806fb18ae047cadb83dd0e7ebeb8b951261a",
-      "bytes": 8414,
-      "duration": 0.936
+      "sha256": "957ded71a7eddc7677d2aa6d4d7b15d7ab0f290990d7a4c91b8a3f0985a0e221",
+      "bytes": 6686,
+      "duration": 0.809796,
+      "sourceId": "cmn-balm-hsk1",
+      "sourceFile": "cmn-5b7c4762.mp3",
+      "sourceText": "活",
+      "sourcePinyin": "huó",
+      "retrieved": "2026-11-17",
+      "sourceMetadata": {
+        "swac_text": "活",
+        "swac_pron_phon": "huó",
+        "swac_lang": "cmn",
+        "swac_speak_name": "Wei Gao",
+        "swac_coll_license": "Creative Commons BY"
+      },
+      "review": {
+        "date": "2026-11-17",
+        "listening": "User accepted the 34 first-choice replacement candidates after listening.",
+        "previousRecording": {
+          "sourceToken": "huo2",
+          "sha256": "d17609373c12745ecae711555fbc806fb18ae047cadb83dd0e7ebeb8b951261a"
+        }
+      }
     },
     {
       "token": "huo3",
@@ -3305,19 +3819,59 @@
     },
     {
       "token": "jiang4",
-      "sourceToken": "jiang4",
       "file": "jiang4.mp3",
-      "sha256": "c572ea774cee4205155c91c9c65b2f9ca1d710ee883d9e162337b6e85cc60e51",
-      "bytes": 8418,
-      "duration": 0.936
+      "sha256": "9f390241abf1a89a3993c658b3c5afc91dbd799398948830523e02c9e4dcf2c1",
+      "bytes": 8765,
+      "duration": 0.940408,
+      "sourceId": "cmn-caen-tan",
+      "sourceFile": "cmn-a3e0dd29.mp3",
+      "sourceText": "酱",
+      "sourcePinyin": "jiàng",
+      "retrieved": "2026-11-17",
+      "sourceMetadata": {
+        "swac_text": "酱",
+        "swac_pron_phon": "jiàng",
+        "swac_lang": "cmn",
+        "swac_speak_name": "Tan",
+        "swac_coll_license": "Creative Commons BY-SA 3.0 U.S"
+      },
+      "review": {
+        "date": "2026-11-17",
+        "listening": "User accepted this replacement after listening to the comparison page.",
+        "selection": "first_displayed_candidate",
+        "previousRecording": {
+          "sourceToken": "jiang4",
+          "sha256": "c572ea774cee4205155c91c9c65b2f9ca1d710ee883d9e162337b6e85cc60e51"
+        }
+      }
     },
     {
       "token": "jiao1",
-      "sourceToken": "jiao1",
       "file": "jiao1.mp3",
-      "sha256": "ed54d47d156112549e4fdfb9bbc1b3bbbbecd7822964b9888ef7baa836afeb1d",
-      "bytes": 8416,
-      "duration": 0.936
+      "sha256": "fd63a0d9cbb710da13cefb1c6cd8ab55ce50de4dc8b652af6619a4ac22f0f377",
+      "bytes": 8567,
+      "duration": 1.044898,
+      "sourceId": "cmn-balm-hsk1",
+      "sourceFile": "cmn-49265cb9.mp3",
+      "sourceText": "教",
+      "sourcePinyin": "jiāo",
+      "retrieved": "2026-11-17",
+      "sourceMetadata": {
+        "swac_text": "教",
+        "swac_pron_phon": "jiāo",
+        "swac_lang": "cmn",
+        "swac_speak_name": "Wei Gao",
+        "swac_coll_license": "Creative Commons BY"
+      },
+      "review": {
+        "date": "2026-11-17",
+        "listening": "User accepted this replacement after listening to the comparison page.",
+        "selection": "first_displayed_candidate",
+        "previousRecording": {
+          "sourceToken": "jiao1",
+          "sha256": "ed54d47d156112549e4fdfb9bbc1b3bbbbecd7822964b9888ef7baa836afeb1d"
+        }
+      }
     },
     {
       "token": "jiao2",
@@ -3369,11 +3923,30 @@
     },
     {
       "token": "jie4",
-      "sourceToken": "jie4",
       "file": "jie4.mp3",
-      "sha256": "e8fc69f9a637711eecb3a5855f9a2d293781fd3adc34ce0b93f24490c131298a",
-      "bytes": 8030,
-      "duration": 0.888
+      "sha256": "72650cc8d3f5beb42c487892d15ab7608b0b667ef45e0084c37ff2a4d611ca24",
+      "bytes": 9601,
+      "duration": 1.044898,
+      "sourceId": "cmn-caen-tan",
+      "sourceFile": "cmn-a0db3e9e.mp3",
+      "sourceText": "届",
+      "sourcePinyin": "jiè",
+      "retrieved": "2026-11-17",
+      "sourceMetadata": {
+        "swac_text": "届",
+        "swac_pron_phon": "jiè",
+        "swac_lang": "cmn",
+        "swac_speak_name": "Tan",
+        "swac_coll_license": "Creative Commons BY-SA 3.0 U.S"
+      },
+      "review": {
+        "date": "2026-11-17",
+        "listening": "User accepted the 34 first-choice replacement candidates after listening.",
+        "previousRecording": {
+          "sourceToken": "jie4",
+          "sha256": "e8fc69f9a637711eecb3a5855f9a2d293781fd3adc34ce0b93f24490c131298a"
+        }
+      }
     },
     {
       "token": "jin1",
@@ -3538,11 +4111,23 @@
     },
     {
       "token": "jue4",
-      "sourceToken": "jue4",
-      "file": "jue4.mp3",
-      "sha256": "51aec2727dae48846ab017f4122a5f2ef7f27d54f07e9b6d5dbff95d47359044",
-      "bytes": 8030,
-      "duration": 0.888
+      "unavailable": "Original recording rejected by the user as too short on 2026-11-17; replacement recording not yet accepted.",
+      "ttsFallback": {
+        "text": "倔头",
+        "tokens": [
+          "jue4",
+          "tou2"
+        ],
+        "target": 0
+      },
+      "rejectedRecording": {
+        "token": "jue4",
+        "sourceToken": "jue4",
+        "file": "jue4.mp3",
+        "sha256": "51aec2727dae48846ab017f4122a5f2ef7f27d54f07e9b6d5dbff95d47359044",
+        "bytes": 8030,
+        "duration": 0.888
+      }
     },
     {
       "token": "jun1",
@@ -3562,11 +4147,23 @@
     },
     {
       "token": "ka1",
-      "sourceToken": "ka1",
-      "file": "ka1.mp3",
-      "sha256": "685b2e735882cee6802dd532a6692506e029b830425fad79cb1674361243c288",
-      "bytes": 8412,
-      "duration": 0.936
+      "unavailable": "Original recording rejected by the user as too short on 2026-11-17; replacement recording not yet accepted.",
+      "ttsFallback": {
+        "text": "大咖",
+        "tokens": [
+          "da4",
+          "ka1"
+        ],
+        "target": 1
+      },
+      "rejectedRecording": {
+        "token": "ka1",
+        "sourceToken": "ka1",
+        "file": "ka1.mp3",
+        "sha256": "685b2e735882cee6802dd532a6692506e029b830425fad79cb1674361243c288",
+        "bytes": 8412,
+        "duration": 0.936
+      }
     },
     {
       "token": "ka3",
@@ -3603,11 +4200,23 @@
     },
     {
       "token": "kan1",
-      "sourceToken": "kan1",
-      "file": "kan1.mp3",
-      "sha256": "02a20b7900383236f8fd96b5b4c11709d8d3dd4f97c52266609a0c6cb4549851",
-      "bytes": 8030,
-      "duration": 0.888
+      "unavailable": "Recording rejected by the user after listening on 2026-11-17; replacement recording not yet accepted.",
+      "ttsFallback": {
+        "text": "看家",
+        "tokens": [
+          "kan1",
+          "jia1"
+        ],
+        "target": 0
+      },
+      "rejectedRecording": {
+        "token": "kan1",
+        "sourceToken": "kan1",
+        "file": "kan1.mp3",
+        "sha256": "02a20b7900383236f8fd96b5b4c11709d8d3dd4f97c52266609a0c6cb4549851",
+        "bytes": 8030,
+        "duration": 0.888
+      }
     },
     {
       "token": "kan3",
@@ -3643,11 +4252,30 @@
     },
     {
       "token": "kang4",
-      "sourceToken": "kang4",
       "file": "kang4.mp3",
-      "sha256": "55fcd409a6718ca9c678f17f179d49dc7adfdd5f2e26b486828c046740641bc7",
-      "bytes": 8032,
-      "duration": 0.888
+      "sha256": "db79b36fe926cd0dbb83a492f299094b72d424eac11bf22b211b355bbf4a8912",
+      "bytes": 9601,
+      "duration": 1.044898,
+      "sourceId": "cmn-caen-tan",
+      "sourceFile": "cmn-da3c8235.mp3",
+      "sourceText": "炕",
+      "sourcePinyin": "kàng",
+      "retrieved": "2026-11-17",
+      "sourceMetadata": {
+        "swac_text": "炕",
+        "swac_pron_phon": "kàng",
+        "swac_lang": "cmn",
+        "swac_speak_name": "Tan",
+        "swac_coll_license": "Creative Commons BY-SA 3.0 U.S"
+      },
+      "review": {
+        "date": "2026-11-17",
+        "listening": "User accepted the 34 first-choice replacement candidates after listening.",
+        "previousRecording": {
+          "sourceToken": "kang4",
+          "sha256": "55fcd409a6718ca9c678f17f179d49dc7adfdd5f2e26b486828c046740641bc7"
+        }
+      }
     },
     {
       "token": "kao1",
@@ -3867,11 +4495,30 @@
     },
     {
       "token": "kuang4",
-      "sourceToken": "kuang4",
       "file": "kuang4.mp3",
-      "sha256": "ad1bd9eda3f569e293bdc8559d51341d23f7622b1644dcdac3697dfd8b341f2b",
-      "bytes": 8034,
-      "duration": 0.888
+      "sha256": "eaec08183f24215ca3af8726c4c8b99caaf54035ff3b2ff8866cc1f3b703396a",
+      "bytes": 8765,
+      "duration": 0.940408,
+      "sourceId": "cmn-caen-tan",
+      "sourceFile": "cmn-feeb27ff.mp3",
+      "sourceText": "矿",
+      "sourcePinyin": "kuàng",
+      "retrieved": "2026-11-17",
+      "sourceMetadata": {
+        "swac_text": "矿",
+        "swac_pron_phon": "kuàng",
+        "swac_lang": "cmn",
+        "swac_speak_name": "Tan",
+        "swac_coll_license": "Creative Commons BY-SA 3.0 U.S"
+      },
+      "review": {
+        "date": "2026-11-17",
+        "listening": "User accepted the 34 first-choice replacement candidates after listening.",
+        "previousRecording": {
+          "sourceToken": "kuang4",
+          "sha256": "ad1bd9eda3f569e293bdc8559d51341d23f7622b1644dcdac3697dfd8b341f2b"
+        }
+      }
     },
     {
       "token": "kui1",
@@ -3932,11 +4579,30 @@
     },
     {
       "token": "kuo4",
-      "sourceToken": "kuo4",
       "file": "kuo4.mp3",
-      "sha256": "c720bcfd3bd1143943a10e6550db8747c79550701b555e10a462261b60a2ec82",
-      "bytes": 8030,
-      "duration": 0.888
+      "sha256": "58f5e63fbaf01dbe3c0aa2227804f54eaabf4a1c7746fff9f6c8af4d098a9382",
+      "bytes": 8556,
+      "duration": 0.914286,
+      "sourceId": "cmn-caen-tan",
+      "sourceFile": "cmn-17886572.mp3",
+      "sourceText": "阔",
+      "sourcePinyin": "kuò",
+      "retrieved": "2026-11-17",
+      "sourceMetadata": {
+        "swac_text": "阔",
+        "swac_pron_phon": "kuò",
+        "swac_lang": "cmn",
+        "swac_speak_name": "Tan",
+        "swac_coll_license": "Creative Commons BY-SA 3.0 U.S"
+      },
+      "review": {
+        "date": "2026-11-17",
+        "listening": "User accepted the 34 first-choice replacement candidates after listening.",
+        "previousRecording": {
+          "sourceToken": "kuo4",
+          "sha256": "c720bcfd3bd1143943a10e6550db8747c79550701b555e10a462261b60a2ec82"
+        }
+      }
     },
     {
       "token": "la1",
@@ -4037,11 +4703,31 @@
     },
     {
       "token": "lang4",
-      "sourceToken": "lang4",
       "file": "lang4.mp3",
-      "sha256": "db6fe9500f8b4102ab8adf6690bc8013cf73fe04e646e48fbf25289d556547c7",
-      "bytes": 8416,
-      "duration": 0.936
+      "sha256": "f9798af140fe99d1e594a0e28a38992ef8f324763fbfcb282d7492af9ac51200",
+      "bytes": 9183,
+      "duration": 0.992653,
+      "sourceId": "cmn-caen-tan",
+      "sourceFile": "cmn-fd9f650b.mp3",
+      "sourceText": "浪",
+      "sourcePinyin": "làng",
+      "retrieved": "2026-11-17",
+      "sourceMetadata": {
+        "swac_text": "浪",
+        "swac_pron_phon": "làng",
+        "swac_lang": "cmn",
+        "swac_speak_name": "Tan",
+        "swac_coll_license": "Creative Commons BY-SA 3.0 U.S"
+      },
+      "review": {
+        "date": "2026-11-17",
+        "listening": "User accepted this replacement after listening to the comparison page.",
+        "selection": "first_displayed_candidate",
+        "previousRecording": {
+          "sourceToken": "lang4",
+          "sha256": "db6fe9500f8b4102ab8adf6690bc8013cf73fe04e646e48fbf25289d556547c7"
+        }
+      }
     },
     {
       "token": "lao1",
@@ -4085,11 +4771,31 @@
     },
     {
       "token": "lei1",
-      "sourceToken": "lei1",
       "file": "lei1.mp3",
-      "sha256": "1c6e04eecf66d76d37abbb0251142851c4170fc85ccf05d4916b3ac93880ae5b",
-      "bytes": 8414,
-      "duration": 0.936
+      "sha256": "0a1a89f4a02a99eae2ce37fa61a6b787f0ba65e852a51aa3e1bf3846689f4c6f",
+      "bytes": 9183,
+      "duration": 0.992653,
+      "sourceId": "cmn-caen-tan",
+      "sourceFile": "cmn-961e78b1.mp3",
+      "sourceText": "勒",
+      "sourcePinyin": "lēi",
+      "retrieved": "2026-11-17",
+      "sourceMetadata": {
+        "swac_text": "勒",
+        "swac_pron_phon": "lēi",
+        "swac_lang": "cmn",
+        "swac_speak_name": "Tan",
+        "swac_coll_license": "Creative Commons BY-SA 3.0 U.S"
+      },
+      "review": {
+        "date": "2026-11-17",
+        "listening": "User accepted this replacement after listening to the comparison page.",
+        "selection": "first_displayed_candidate",
+        "previousRecording": {
+          "sourceToken": "lei1",
+          "sha256": "1c6e04eecf66d76d37abbb0251142851c4170fc85ccf05d4916b3ac93880ae5b"
+        }
+      }
     },
     {
       "token": "lei2",
@@ -4584,11 +5290,30 @@
     },
     {
       "token": "ma2",
-      "sourceToken": "ma2",
       "file": "ma2.mp3",
-      "sha256": "d5a70e8c3970a93af83d63c64848e387f00f73f0a99f6390fc4b3ed27ee1ad22",
-      "bytes": 8796,
-      "duration": 0.984
+      "sha256": "d5f005ae21f5893760a4aa700916f45acc2149a21a9e9d2fd14484f3e84d4ff0",
+      "bytes": 9601,
+      "duration": 1.044898,
+      "sourceId": "cmn-caen-tan",
+      "sourceFile": "cmn-1beb1e0b.mp3",
+      "sourceText": "麻",
+      "sourcePinyin": "má",
+      "retrieved": "2026-11-17",
+      "sourceMetadata": {
+        "swac_text": "麻",
+        "swac_pron_phon": "má",
+        "swac_lang": "cmn",
+        "swac_speak_name": "Tan",
+        "swac_coll_license": "Creative Commons BY-SA 3.0 U.S"
+      },
+      "review": {
+        "date": "2026-11-17",
+        "listening": "User accepted the 34 first-choice replacement candidates after listening.",
+        "previousRecording": {
+          "sourceToken": "ma2",
+          "sha256": "d5a70e8c3970a93af83d63c64848e387f00f73f0a99f6390fc4b3ed27ee1ad22"
+        }
+      }
     },
     {
       "token": "ma3",
@@ -4624,11 +5349,30 @@
     },
     {
       "token": "mai4",
-      "sourceToken": "mai4",
       "file": "mai4.mp3",
-      "sha256": "67d2bb2f312d05e99da960f096c20e35caec31d0fc3dc63cfd65b41a5ba2fd65",
-      "bytes": 8030,
-      "duration": 0.888
+      "sha256": "53c47f6f94f2bc3c0f8d58a9e3a793767d896e20fdc576a72e7f1ed9d7597b9d",
+      "bytes": 8765,
+      "duration": 0.940408,
+      "sourceId": "cmn-caen-tan",
+      "sourceFile": "cmn-d88ee16f.mp3",
+      "sourceText": "迈",
+      "sourcePinyin": "mài",
+      "retrieved": "2026-11-17",
+      "sourceMetadata": {
+        "swac_text": "迈",
+        "swac_pron_phon": "mài",
+        "swac_lang": "cmn",
+        "swac_speak_name": "Tan",
+        "swac_coll_license": "Creative Commons BY-SA 3.0 U.S"
+      },
+      "review": {
+        "date": "2026-11-17",
+        "listening": "User accepted the 34 first-choice replacement candidates after listening.",
+        "previousRecording": {
+          "sourceToken": "mai4",
+          "sha256": "67d2bb2f312d05e99da960f096c20e35caec31d0fc3dc63cfd65b41a5ba2fd65"
+        }
+      }
     },
     {
       "token": "man2",
@@ -4689,11 +5433,31 @@
     },
     {
       "token": "mao2",
-      "sourceToken": "mao2",
       "file": "mao2.mp3",
-      "sha256": "bbe2b13fb7013a0c8d2a9795518e93bcf56fd9a87e1277211ec4376d1b7fb647",
-      "bytes": 8030,
-      "duration": 0.888
+      "sha256": "2e9467782a96abf88a2adf053dd208d16c34960cb0c7dc32bcc1b8cecf9a7f66",
+      "bytes": 8985,
+      "duration": 1.097143,
+      "sourceId": "cmn-balm-hsk1",
+      "sourceFile": "cmn-17aa6f2a.mp3",
+      "sourceText": "毛",
+      "sourcePinyin": "máo",
+      "retrieved": "2026-11-17",
+      "sourceMetadata": {
+        "swac_text": "毛",
+        "swac_pron_phon": "máo",
+        "swac_lang": "cmn",
+        "swac_speak_name": "Wei Gao",
+        "swac_coll_license": "Creative Commons BY"
+      },
+      "review": {
+        "date": "2026-11-17",
+        "listening": "User accepted this replacement after listening to the comparison page.",
+        "selection": "first_displayed_candidate",
+        "previousRecording": {
+          "sourceToken": "mao2",
+          "sha256": "bbe2b13fb7013a0c8d2a9795518e93bcf56fd9a87e1277211ec4376d1b7fb647"
+        }
+      }
     },
     {
       "token": "mao3",
@@ -4754,19 +5518,52 @@
     },
     {
       "token": "men4",
-      "sourceToken": "men4",
       "file": "men4.mp3",
-      "sha256": "e7ac6265cd07751e1310e782b72bafb49b49c6f1f60ac7d9450cab6076db4c1c",
-      "bytes": 8030,
-      "duration": 0.888
+      "sha256": "d218d74a3a0982808ce882457b2dfdc15cd5453eb60326d785067c696e2f6562",
+      "bytes": 8765,
+      "duration": 0.940408,
+      "sourceId": "cmn-caen-tan",
+      "sourceFile": "cmn-327708cf.mp3",
+      "sourceText": "闷",
+      "sourcePinyin": "mèn",
+      "retrieved": "2026-11-17",
+      "sourceMetadata": {
+        "swac_text": "闷",
+        "swac_pron_phon": "mèn",
+        "swac_lang": "cmn",
+        "swac_speak_name": "Tan",
+        "swac_coll_license": "Creative Commons BY-SA 3.0 U.S"
+      },
+      "review": {
+        "date": "2026-11-17",
+        "listening": "User accepted this replacement after listening to the comparison page.",
+        "selection": "first_displayed_candidate",
+        "previousRecording": {
+          "sourceToken": "men4",
+          "sha256": "e7ac6265cd07751e1310e782b72bafb49b49c6f1f60ac7d9450cab6076db4c1c"
+        }
+      }
     },
     {
       "token": "meng1",
-      "sourceToken": "meng1",
-      "file": "meng1.mp3",
-      "sha256": "d249cefa73fe189720a83f1c66574f7cceefb345e820804ad2a647df37327eb1",
-      "bytes": 8032,
-      "duration": 0.888
+      "unavailable": "Original recording rejected by the user as too short on 2026-11-17; replacement recording not yet accepted.",
+      "ttsFallback": {
+        "text": "蒙蒙黑",
+        "tokens": [
+          "meng1",
+          "meng1",
+          "hei1"
+        ],
+        "target": 0
+      },
+      "rejectedRecording": {
+        "token": "meng1",
+        "sourceToken": "meng1",
+        "file": "meng1.mp3",
+        "sha256": "d249cefa73fe189720a83f1c66574f7cceefb345e820804ad2a647df37327eb1",
+        "bytes": 8032,
+        "duration": 0.888
+      }
     },
     {
       "token": "meng2",
@@ -4802,11 +5599,31 @@
     },
     {
       "token": "mi2",
-      "sourceToken": "mi2",
       "file": "mi2.mp3",
-      "sha256": "1fc609d893ba99dceb4e5b94459f9bfd4b2806090e73d12cbbdb75a7659245bb",
-      "bytes": 8412,
-      "duration": 0.936
+      "sha256": "14cbcd6565158bb2a3e0fe1cf8c5f8c7bf7e8645fc919c2ebf718c53aeab0f53",
+      "bytes": 9601,
+      "duration": 1.044898,
+      "sourceId": "cmn-caen-tan",
+      "sourceFile": "cmn-6ee8cc52.mp3",
+      "sourceText": "迷",
+      "sourcePinyin": "mí",
+      "retrieved": "2026-11-17",
+      "sourceMetadata": {
+        "swac_text": "迷",
+        "swac_pron_phon": "mí",
+        "swac_lang": "cmn",
+        "swac_speak_name": "Tan",
+        "swac_coll_license": "Creative Commons BY-SA 3.0 U.S"
+      },
+      "review": {
+        "date": "2026-11-17",
+        "listening": "User accepted this replacement after listening to the comparison page.",
+        "selection": "first_displayed_candidate",
+        "previousRecording": {
+          "sourceToken": "mi2",
+          "sha256": "1fc609d893ba99dceb4e5b94459f9bfd4b2806090e73d12cbbdb75a7659245bb"
+        }
+      }
     },
     {
       "token": "mi3",
@@ -4842,11 +5659,31 @@
     },
     {
       "token": "mian4",
-      "sourceToken": "mian4",
       "file": "mian4.mp3",
-      "sha256": "9a2c654ce3f824ede94ee026d6b59538c0e5c1fbbc195e176685b4f0cae76d11",
-      "bytes": 8416,
-      "duration": 0.936
+      "sha256": "cebc19bdd43c6da1dbae4b292de45d141cbc370937b6e377fe71c07549e061f9",
+      "bytes": 9183,
+      "duration": 0.992653,
+      "sourceId": "cmn-caen-tan",
+      "sourceFile": "cmn-a54504ae.mp3",
+      "sourceText": "面",
+      "sourcePinyin": "miàn",
+      "retrieved": "2026-11-17",
+      "sourceMetadata": {
+        "swac_text": "面",
+        "swac_pron_phon": "miàn",
+        "swac_lang": "cmn",
+        "swac_speak_name": "Tan",
+        "swac_coll_license": "Creative Commons BY-SA 3.0 U.S"
+      },
+      "review": {
+        "date": "2026-11-17",
+        "listening": "User accepted this replacement after listening to the comparison page.",
+        "selection": "first_displayed_candidate",
+        "previousRecording": {
+          "sourceToken": "mian4",
+          "sha256": "9a2c654ce3f824ede94ee026d6b59538c0e5c1fbbc195e176685b4f0cae76d11"
+        }
+      }
     },
     {
       "token": "miao2",
@@ -4931,11 +5768,23 @@
     },
     {
       "token": "miu4",
-      "sourceToken": "miu4",
-      "file": "miu4.mp3",
-      "sha256": "902dc96cd700fd25bc6fecc920f8ba104056727ac3c45878c0eef4f991a012ac",
-      "bytes": 8414,
-      "duration": 0.936
+      "unavailable": "Original recording rejected by the user as too short on 2026-11-17; replacement recording not yet accepted.",
+      "ttsFallback": {
+        "text": "谬种",
+        "tokens": [
+          "miu4",
+          "zhong3"
+        ],
+        "target": 0
+      },
+      "rejectedRecording": {
+        "token": "miu4",
+        "sourceToken": "miu4",
+        "file": "miu4.mp3",
+        "sha256": "902dc96cd700fd25bc6fecc920f8ba104056727ac3c45878c0eef4f991a012ac",
+        "bytes": 8414,
+        "duration": 0.936
+      }
     },
     {
       "token": "mo1",
@@ -5027,11 +5876,30 @@
     },
     {
       "token": "na4",
-      "sourceToken": "na4",
       "file": "na4.mp3",
-      "sha256": "0d9459c1b75274e3ee29876f7229c3fabcb32d650435c055b2ab63e9706dff77",
-      "bytes": 8028,
-      "duration": 0.888
+      "sha256": "1e6ec8e6c6c8ba7dac9d8fbf742fe225209842f0c9054e0dc98733ab2359859d",
+      "bytes": 7104,
+      "duration": 0.862041,
+      "sourceId": "cmn-balm-hsk1",
+      "sourceFile": "cmn-bbd1025e.mp3",
+      "sourceText": "那",
+      "sourcePinyin": "nà",
+      "retrieved": "2026-11-17",
+      "sourceMetadata": {
+        "swac_text": "那",
+        "swac_pron_phon": "nà",
+        "swac_lang": "cmn",
+        "swac_speak_name": "Wei Gao",
+        "swac_coll_license": "Creative Commons BY"
+      },
+      "review": {
+        "date": "2026-11-17",
+        "listening": "User accepted the 34 first-choice replacement candidates after listening.",
+        "previousRecording": {
+          "sourceToken": "na4",
+          "sha256": "0d9459c1b75274e3ee29876f7229c3fabcb32d650435c055b2ab63e9706dff77"
+        }
+      }
     },
     {
       "token": "nai3",
@@ -5166,11 +6034,30 @@
     },
     {
       "token": "nen4",
-      "sourceToken": "nen4",
       "file": "nen4.mp3",
-      "sha256": "9eb8346ea4a6a8208cddf62b706da35010383fe9906c95bce648a771530487b7",
-      "bytes": 8030,
-      "duration": 0.888
+      "sha256": "f37b1ff10911efeb82a26086d2bf5cff20cbbb82f766c6d47a1b181b98dc520f",
+      "bytes": 9183,
+      "duration": 0.992653,
+      "sourceId": "cmn-caen-tan",
+      "sourceFile": "cmn-b291b537.mp3",
+      "sourceText": "嫩",
+      "sourcePinyin": "nèn",
+      "retrieved": "2026-11-17",
+      "sourceMetadata": {
+        "swac_text": "嫩",
+        "swac_pron_phon": "nèn",
+        "swac_lang": "cmn",
+        "swac_speak_name": "Tan",
+        "swac_coll_license": "Creative Commons BY-SA 3.0 U.S"
+      },
+      "review": {
+        "date": "2026-11-17",
+        "listening": "User accepted the 34 first-choice replacement candidates after listening.",
+        "previousRecording": {
+          "sourceToken": "nen4",
+          "sha256": "9eb8346ea4a6a8208cddf62b706da35010383fe9906c95bce648a771530487b7"
+        }
+      }
     },
     {
       "token": "neng2",
@@ -5270,11 +6157,30 @@
     },
     {
       "token": "nie1",
-      "sourceToken": "nie1",
       "file": "nie1.mp3",
-      "sha256": "c38ff991801f9a388aef419694697888918cb33caac7ac2c8036ea37017d01e4",
-      "bytes": 8030,
-      "duration": 0.888
+      "sha256": "a0a6b0a68934db5d3c98db4ae64a57e87bef76594bfb81ca57eced1a3e7ab3d3",
+      "bytes": 9601,
+      "duration": 1.044898,
+      "sourceId": "cmn-caen-tan",
+      "sourceFile": "cmn-a1040db7.mp3",
+      "sourceText": "捏",
+      "sourcePinyin": "niē",
+      "retrieved": "2026-11-17",
+      "sourceMetadata": {
+        "swac_text": "捏",
+        "swac_pron_phon": "niē",
+        "swac_lang": "cmn",
+        "swac_speak_name": "Tan",
+        "swac_coll_license": "Creative Commons BY-SA 3.0 U.S"
+      },
+      "review": {
+        "date": "2026-11-17",
+        "listening": "User accepted the 34 first-choice replacement candidates after listening.",
+        "previousRecording": {
+          "sourceToken": "nie1",
+          "sha256": "c38ff991801f9a388aef419694697888918cb33caac7ac2c8036ea37017d01e4"
+        }
+      }
     },
     {
       "token": "nie4",
@@ -5358,19 +6264,51 @@
     },
     {
       "token": "nong4",
-      "sourceToken": "nong4",
       "file": "nong4.mp3",
-      "sha256": "959e394fdbe57b8d736c8506269003c23d7cc0f47f3a1731fb8f7e6a1765b55c",
-      "bytes": 8032,
-      "duration": 0.888
+      "sha256": "450ca0fd7f8bcbcdf3c0c637231e7b326431c87b3b1e51f42452836332f95308",
+      "bytes": 8556,
+      "duration": 0.914286,
+      "sourceId": "cmn-caen-tan",
+      "sourceFile": "cmn-f2cd6dd4.mp3",
+      "sourceText": "弄",
+      "sourcePinyin": "nòng",
+      "retrieved": "2026-11-17",
+      "sourceMetadata": {
+        "swac_text": "弄",
+        "swac_pron_phon": "nòng",
+        "swac_lang": "cmn",
+        "swac_speak_name": "Tan",
+        "swac_coll_license": "Creative Commons BY-SA 3.0 U.S"
+      },
+      "review": {
+        "date": "2026-11-17",
+        "listening": "User accepted this replacement after listening to the comparison page.",
+        "selection": "first_displayed_candidate",
+        "previousRecording": {
+          "sourceToken": "nong4",
+          "sha256": "959e394fdbe57b8d736c8506269003c23d7cc0f47f3a1731fb8f7e6a1765b55c"
+        }
+      }
     },
     {
       "token": "nu2",
-      "sourceToken": "nu2",
-      "file": "nu2.mp3",
-      "sha256": "62dc9c174eafa8c5ddb6a3e0ef02186a2fda839978ae260fd537dbd808c59540",
-      "bytes": 8796,
-      "duration": 0.984
+      "unavailable": "Recording rejected by the user after listening on 2026-11-17; replacement recording not yet accepted.",
+      "ttsFallback": {
+        "text": "奴家",
+        "tokens": [
+          "nu2",
+          "jia1"
+        ],
+        "target": 0
+      },
+      "rejectedRecording": {
+        "token": "nu2",
+        "sourceToken": "nu2",
+        "file": "nu2.mp3",
+        "sha256": "62dc9c174eafa8c5ddb6a3e0ef02186a2fda839978ae260fd537dbd808c59540",
+        "bytes": 8796,
+        "duration": 0.984
+      }
     },
     {
       "token": "nu3",
@@ -5422,27 +6360,80 @@
     },
     {
       "token": "nüe4",
-      "sourceToken": "nve4",
-      "file": "nve4.mp3",
-      "sha256": "b59d26b5435790d8dcde50d435eb02d26a9a89761911179d807299199646db70",
-      "bytes": 8414,
-      "duration": 0.936
+      "unavailable": "Recording rejected by the user after listening on 2026-11-17; replacement recording not yet accepted.",
+      "ttsFallback": {
+        "text": "虐",
+        "tokens": [
+          "nüe4"
+        ],
+        "target": 0
+      },
+      "rejectedRecording": {
+        "token": "nüe4",
+        "sourceToken": "nve4",
+        "file": "nve4.mp3",
+        "sha256": "b59d26b5435790d8dcde50d435eb02d26a9a89761911179d807299199646db70",
+        "bytes": 8414,
+        "duration": 0.936
+      }
     },
     {
       "token": "o1",
-      "sourceToken": "o1",
-      "file": "o1.mp3",
-      "sha256": "aa07d81aff4d10bd9383f57044e9e011b97ac286690f0c931e6882beec20329d",
-      "bytes": 8026,
-      "duration": 0.888
+      "unavailable": "Original recording rejected by the user as too short on 2026-11-17; replacement recording not yet accepted.",
+      "ttsFallback": {
+        "text": "噢买嘎",
+        "tokens": [
+          "o1",
+          "mai3",
+          "ga1"
+        ],
+        "target": 0
+      },
+      "rejectedRecording": {
+        "token": "o1",
+        "sourceToken": "o1",
+        "file": "o1.mp3",
+        "sha256": "aa07d81aff4d10bd9383f57044e9e011b97ac286690f0c931e6882beec20329d",
+        "bytes": 8026,
+        "duration": 0.888
+      },
+      "rejectedAlternatives": [
+        {
+          "sourceId": "cmn-caen-tan",
+          "sourceFile": "cmn-c83338ce.mp3",
+          "sha256": "1559b1a4bca77563025a82057a993d59c690c761ac6304ec4be39a69b9f0c323",
+          "date": "2026-11-17",
+          "review": "User rejected this alternative after listening; keep TTS."
+        }
+      ]
     },
     {
       "token": "o4",
-      "sourceToken": "o4",
       "file": "o4.mp3",
-      "sha256": "fea57e5ab1a50e16866ba9dae897ece8f6a84715ebfb334ce8b968d6a09d0969",
-      "bytes": 8026,
-      "duration": 0.888
+      "sha256": "80886db563df02cea5859de170ade8a7592884b8e368fa57d0292918e019c40f",
+      "bytes": 8556,
+      "duration": 0.914286,
+      "sourceId": "cmn-caen-tan",
+      "sourceFile": "cmn-35b1145d.mp3",
+      "sourceText": "哦",
+      "sourcePinyin": "ò",
+      "retrieved": "2026-11-17",
+      "sourceMetadata": {
+        "swac_text": "哦",
+        "swac_pron_phon": "ò",
+        "swac_lang": "cmn",
+        "swac_speak_name": "Tan",
+        "swac_coll_license": "Creative Commons BY-SA 3.0 U.S"
+      },
+      "review": {
+        "date": "2026-11-17",
+        "listening": "User accepted this replacement after listening to the comparison page.",
+        "selection": "explicit_filename",
+        "previousRecording": {
+          "sourceToken": "o4",
+          "sha256": "fea57e5ab1a50e16866ba9dae897ece8f6a84715ebfb334ce8b968d6a09d0969"
+        }
+      }
     },
     {
       "token": "ou1",
@@ -5583,11 +6574,30 @@
     },
     {
       "token": "pao1",
-      "sourceToken": "pao1",
       "file": "pao1.mp3",
-      "sha256": "19b045fba8b9a1c145aec97b7176631698848685ec962eb03a70c550b49d0683",
-      "bytes": 8414,
-      "duration": 0.936
+      "sha256": "c66d4ec19616b17568118c8cd895473beb1ae5b1bbcd196ac3655a2228ca5323",
+      "bytes": 10019,
+      "duration": 1.097143,
+      "sourceId": "cmn-caen-tan",
+      "sourceFile": "cmn-f49f4f0d.mp3",
+      "sourceText": "抛",
+      "sourcePinyin": "pāo",
+      "retrieved": "2026-11-17",
+      "sourceMetadata": {
+        "swac_text": "抛",
+        "swac_pron_phon": "pāo",
+        "swac_lang": "cmn",
+        "swac_speak_name": "Tan",
+        "swac_coll_license": "Creative Commons BY-SA 3.0 U.S"
+      },
+      "review": {
+        "date": "2026-11-17",
+        "listening": "User accepted the 34 first-choice replacement candidates after listening.",
+        "previousRecording": {
+          "sourceToken": "pao1",
+          "sha256": "19b045fba8b9a1c145aec97b7176631698848685ec962eb03a70c550b49d0683"
+        }
+      }
     },
     {
       "token": "pao2",
@@ -5752,11 +6762,31 @@
     },
     {
       "token": "piao1",
-      "sourceToken": "piao1",
       "file": "piao1.mp3",
-      "sha256": "913f198687f02ef0357323f6d126d60119502c59b62f33e3f4f869b646ce6f41",
-      "bytes": 8032,
-      "duration": 0.888
+      "sha256": "851af9248fff6dd78329855743a939c9edb7c2296c46c338d86c556d9fefb61d",
+      "bytes": 10019,
+      "duration": 1.097143,
+      "sourceId": "cmn-caen-tan",
+      "sourceFile": "cmn-19e876b8.mp3",
+      "sourceText": "漂",
+      "sourcePinyin": "piāo",
+      "retrieved": "2026-11-17",
+      "sourceMetadata": {
+        "swac_text": "漂",
+        "swac_pron_phon": "piāo",
+        "swac_lang": "cmn",
+        "swac_speak_name": "Tan",
+        "swac_coll_license": "Creative Commons BY-SA 3.0 U.S"
+      },
+      "review": {
+        "date": "2026-11-17",
+        "listening": "User accepted this replacement after listening to the comparison page.",
+        "selection": "first_displayed_candidate",
+        "previousRecording": {
+          "sourceToken": "piao1",
+          "sha256": "913f198687f02ef0357323f6d126d60119502c59b62f33e3f4f869b646ce6f41"
+        }
+      }
     },
     {
       "token": "piao2",
@@ -6105,11 +7135,31 @@
     },
     {
       "token": "qin1",
-      "sourceToken": "qin1",
       "file": "qin1.mp3",
-      "sha256": "cbfdfd6dbdb508b7ad7c2613e96192f3f906eb43a0d514d1bae34b0880e797d3",
-      "bytes": 8798,
-      "duration": 0.984
+      "sha256": "6105a3b1c138ace088c7198fb1c57bee35373a222e24e5fffbb1c7f1752a5322",
+      "bytes": 10437,
+      "duration": 1.149388,
+      "sourceId": "cmn-caen-tan",
+      "sourceFile": "cmn-6aef35fc.mp3",
+      "sourceText": "亲",
+      "sourcePinyin": "qīn",
+      "retrieved": "2026-11-17",
+      "sourceMetadata": {
+        "swac_text": "亲",
+        "swac_pron_phon": "qīn",
+        "swac_lang": "cmn",
+        "swac_speak_name": "Tan",
+        "swac_coll_license": "Creative Commons BY-SA 3.0 U.S"
+      },
+      "review": {
+        "date": "2026-11-17",
+        "listening": "User accepted this replacement after listening to the comparison page.",
+        "selection": "first_displayed_candidate",
+        "previousRecording": {
+          "sourceToken": "qin1",
+          "sha256": "cbfdfd6dbdb508b7ad7c2613e96192f3f906eb43a0d514d1bae34b0880e797d3"
+        }
+      }
     },
     {
       "token": "qin2",
@@ -6389,11 +7439,31 @@
     },
     {
       "token": "re4",
-      "sourceToken": "re4",
       "file": "re4.mp3",
-      "sha256": "af58b4e77c29acbaa5e56ef0a68f3565034a3e3d21cfc1990c7e1febfdd5e042",
-      "bytes": 8412,
-      "duration": 0.936
+      "sha256": "0bb8e1783b565d824c715a7619213ce7da0e671ed4dcbc7473cbb4e2c3447b2d",
+      "bytes": 8149,
+      "duration": 0.992653,
+      "sourceId": "cmn-balm-hsk1",
+      "sourceFile": "cmn-8465c6e1.mp3",
+      "sourceText": "热",
+      "sourcePinyin": "rè",
+      "retrieved": "2026-11-17",
+      "sourceMetadata": {
+        "swac_text": "热",
+        "swac_pron_phon": "rè",
+        "swac_lang": "cmn",
+        "swac_speak_name": "Wei Gao",
+        "swac_coll_license": "Creative Commons BY"
+      },
+      "review": {
+        "date": "2026-11-17",
+        "listening": "User accepted this replacement after listening to the comparison page.",
+        "selection": "first_displayed_candidate",
+        "previousRecording": {
+          "sourceToken": "re4",
+          "sha256": "af58b4e77c29acbaa5e56ef0a68f3565034a3e3d21cfc1990c7e1febfdd5e042"
+        }
+      }
     },
     {
       "token": "ren2",
@@ -6510,11 +7580,23 @@
     },
     {
       "token": "rui2",
-      "sourceToken": "rui2",
-      "file": "rui2.mp3",
-      "sha256": "90048bcb55343cd39d2a95b35c09a6aaa9cf3f1a773f6bfd08cf053a6eff4f27",
-      "bytes": 8030,
-      "duration": 0.888
+      "unavailable": "Recording rejected by the user after listening on 2026-11-17; replacement recording not yet accepted.",
+      "ttsFallback": {
+        "text": "萎蕤",
+        "tokens": [
+          "wei3",
+          "rui2"
+        ],
+        "target": 1
+      },
+      "rejectedRecording": {
+        "token": "rui2",
+        "sourceToken": "rui2",
+        "file": "rui2.mp3",
+        "sha256": "90048bcb55343cd39d2a95b35c09a6aaa9cf3f1a773f6bfd08cf053a6eff4f27",
+        "bytes": 8030,
+        "duration": 0.888
+      }
     },
     {
       "token": "rui3",
@@ -6591,11 +7673,31 @@
     },
     {
       "token": "san1",
-      "sourceToken": "san1",
       "file": "san1.mp3",
-      "sha256": "c4251f33b5e34a8d8aa5e6f9cf8e8ff0639828d9f14fcde3dd6be75426fe19a1",
-      "bytes": 10334,
-      "duration": 1.176
+      "sha256": "9c2828dfd9d248c93959e292df530075e971590c82bf45d6dedf02a50acaef77",
+      "bytes": 14825,
+      "duration": 1.697959,
+      "sourceId": "cmn-caen-tan",
+      "sourceFile": "cmn-76ccfc6b.mp3",
+      "sourceText": "叁",
+      "sourcePinyin": "sān",
+      "retrieved": "2026-11-17",
+      "sourceMetadata": {
+        "swac_text": "叁",
+        "swac_pron_phon": "sān",
+        "swac_lang": "cmn",
+        "swac_speak_name": "Tan",
+        "swac_coll_license": "Creative Commons BY-SA 3.0 U.S"
+      },
+      "review": {
+        "date": "2026-11-17",
+        "listening": "User accepted this replacement after listening to the comparison page.",
+        "selection": "explicit_filename",
+        "previousRecording": {
+          "sourceToken": "san1",
+          "sha256": "c4251f33b5e34a8d8aa5e6f9cf8e8ff0639828d9f14fcde3dd6be75426fe19a1"
+        }
+      }
     },
     {
       "token": "san3",
@@ -6671,11 +7773,22 @@
     },
     {
       "token": "sen1",
-      "sourceToken": "sen1",
-      "file": "sen1.mp3",
-      "sha256": "50e047a2c647faa29cb06e2147178b81af7819b9c197e121223d2d2bacc1a399",
-      "bytes": 8798,
-      "duration": 0.984
+      "unavailable": "Original recording rejected by the user as too short on 2026-11-17; replacement recording not yet accepted.",
+      "ttsFallback": {
+        "text": "森",
+        "tokens": [
+          "sen1"
+        ],
+        "target": 0
+      },
+      "rejectedRecording": {
+        "token": "sen1",
+        "sourceToken": "sen1",
+        "file": "sen1.mp3",
+        "sha256": "50e047a2c647faa29cb06e2147178b81af7819b9c197e121223d2d2bacc1a399",
+        "bytes": 8798,
+        "duration": 0.984
+      }
     },
     {
       "token": "seng1",
@@ -6952,11 +8065,31 @@
     },
     {
       "token": "shou1",
-      "sourceToken": "shou1",
       "file": "shou1.mp3",
-      "sha256": "7228deb20d3fe98188dfc5f5585a23ae2410692625f59a82484cb562a9e653bc",
-      "bytes": 8800,
-      "duration": 0.984
+      "sha256": "ad76733f5588e94794ee109441ef59f7398f2ef78a3a0702f86c79033a3ceba7",
+      "bytes": 7104,
+      "duration": 0.862041,
+      "sourceId": "cmn-balm-hsk1",
+      "sourceFile": "cmn-39205b85.mp3",
+      "sourceText": "收",
+      "sourcePinyin": "shōu",
+      "retrieved": "2026-11-17",
+      "sourceMetadata": {
+        "swac_text": "收",
+        "swac_pron_phon": "shōu",
+        "swac_lang": "cmn",
+        "swac_speak_name": "Wei Gao",
+        "swac_coll_license": "Creative Commons BY"
+      },
+      "review": {
+        "date": "2026-11-17",
+        "listening": "User accepted this replacement after listening to the comparison page.",
+        "selection": "first_displayed_candidate",
+        "previousRecording": {
+          "sourceToken": "shou1",
+          "sha256": "7228deb20d3fe98188dfc5f5585a23ae2410692625f59a82484cb562a9e653bc"
+        }
+      }
     },
     {
       "token": "shou2",
@@ -7483,11 +8616,31 @@
     },
     {
       "token": "ti1",
-      "sourceToken": "ti1",
       "file": "ti1.mp3",
-      "sha256": "3e46cf731665663fcb33a0bdeb7705a57f2a6f959d473b29e760461d8df7f872",
-      "bytes": 8796,
-      "duration": 0.984
+      "sha256": "5878a71e7780951345d8859271b43d3432c2f27394201dfdfa5b05ce42bbf578",
+      "bytes": 7104,
+      "duration": 0.862041,
+      "sourceId": "cmn-balm-hsk1",
+      "sourceFile": "cmn-4c056d78.mp3",
+      "sourceText": "踢",
+      "sourcePinyin": "tī",
+      "retrieved": "2026-11-17",
+      "sourceMetadata": {
+        "swac_text": "踢",
+        "swac_pron_phon": "tī",
+        "swac_lang": "cmn",
+        "swac_speak_name": "Wei Gao",
+        "swac_coll_license": "Creative Commons BY"
+      },
+      "review": {
+        "date": "2026-11-17",
+        "listening": "User accepted this replacement after listening to the comparison page.",
+        "selection": "first_displayed_candidate",
+        "previousRecording": {
+          "sourceToken": "ti1",
+          "sha256": "3e46cf731665663fcb33a0bdeb7705a57f2a6f959d473b29e760461d8df7f872"
+        }
+      }
     },
     {
       "token": "ti2",
@@ -7507,11 +8660,30 @@
     },
     {
       "token": "ti4",
-      "sourceToken": "ti4",
       "file": "ti4.mp3",
-      "sha256": "23bec624de95b3bf6d2259d049f9e2685d1e552987eab4bf09b5e394233dee45",
-      "bytes": 8028,
-      "duration": 0.888
+      "sha256": "162e65a1c11967fe4ce29f8387612c22c561556a6169dc6b2add7cc61d8178f7",
+      "bytes": 9183,
+      "duration": 0.992653,
+      "sourceId": "cmn-caen-tan",
+      "sourceFile": "cmn-ce983ac1.mp3",
+      "sourceText": "剃",
+      "sourcePinyin": "tì",
+      "retrieved": "2026-11-17",
+      "sourceMetadata": {
+        "swac_text": "剃",
+        "swac_pron_phon": "tì",
+        "swac_lang": "cmn",
+        "swac_speak_name": "Tan",
+        "swac_coll_license": "Creative Commons BY-SA 3.0 U.S"
+      },
+      "review": {
+        "date": "2026-11-17",
+        "listening": "User accepted the 34 first-choice replacement candidates after listening.",
+        "previousRecording": {
+          "sourceToken": "ti4",
+          "sha256": "23bec624de95b3bf6d2259d049f9e2685d1e552987eab4bf09b5e394233dee45"
+        }
+      }
     },
     {
       "token": "tian1",
@@ -7523,11 +8695,31 @@
     },
     {
       "token": "tian2",
-      "sourceToken": "tian2",
       "file": "tian2.mp3",
-      "sha256": "ec5a7c95487f089a2c6db4436e3ad25ca7c797fb33451a55608129c5fe0998d0",
-      "bytes": 8416,
-      "duration": 0.936
+      "sha256": "7799d32ff9097ccfd59c6f4f6df904015a958c0dc10551f146107b8a7c8f5f68",
+      "bytes": 10019,
+      "duration": 1.097143,
+      "sourceId": "cmn-caen-tan",
+      "sourceFile": "cmn-8da0e3a5.mp3",
+      "sourceText": "田",
+      "sourcePinyin": "tián",
+      "retrieved": "2026-11-17",
+      "sourceMetadata": {
+        "swac_text": "田",
+        "swac_pron_phon": "tián",
+        "swac_lang": "cmn",
+        "swac_speak_name": "Tan",
+        "swac_coll_license": "Creative Commons BY-SA 3.0 U.S"
+      },
+      "review": {
+        "date": "2026-11-17",
+        "listening": "User accepted this replacement after listening to the comparison page.",
+        "selection": "first_displayed_candidate",
+        "previousRecording": {
+          "sourceToken": "tian2",
+          "sha256": "ec5a7c95487f089a2c6db4436e3ad25ca7c797fb33451a55608129c5fe0998d0"
+        }
+      }
     },
     {
       "token": "tian3",
@@ -7699,11 +8891,31 @@
     },
     {
       "token": "tu4",
-      "sourceToken": "tu4",
       "file": "tu4.mp3",
-      "sha256": "f653d08102d3702c4068a16e761abc76154a2a491c433e229e52a85fea608abb",
-      "bytes": 8028,
-      "duration": 0.888
+      "sha256": "85b6d471c3e8900ee16247d467a5a2702b68bbed7045abdbebaf84dbb5ec6893",
+      "bytes": 8556,
+      "duration": 0.914286,
+      "sourceId": "cmn-caen-tan",
+      "sourceFile": "cmn-d126d207.mp3",
+      "sourceText": "吐",
+      "sourcePinyin": "tù",
+      "retrieved": "2026-11-17",
+      "sourceMetadata": {
+        "swac_text": "吐",
+        "swac_pron_phon": "tù",
+        "swac_lang": "cmn",
+        "swac_speak_name": "Tan",
+        "swac_coll_license": "Creative Commons BY-SA 3.0 U.S"
+      },
+      "review": {
+        "date": "2026-11-17",
+        "listening": "User accepted this replacement after listening to the comparison page.",
+        "selection": "first_displayed_candidate",
+        "previousRecording": {
+          "sourceToken": "tu4",
+          "sha256": "f653d08102d3702c4068a16e761abc76154a2a491c433e229e52a85fea608abb"
+        }
+      }
     },
     {
       "token": "tuan1",
@@ -8583,11 +9795,31 @@
     },
     {
       "token": "yao1",
-      "sourceToken": "yao1",
       "file": "yao1.mp3",
-      "sha256": "92cd4ce24e1c074ce98295a940360504b64f4bb573430c7472d102729ff8e31f",
-      "bytes": 8414,
-      "duration": 0.936
+      "sha256": "35c47da2380c9b4820f8d51be0e4b9f8a1c72407e5f903775a7a451cf14915fb",
+      "bytes": 9183,
+      "duration": 0.992653,
+      "sourceId": "cmn-caen-tan",
+      "sourceFile": "cmn-d5258788.mp3",
+      "sourceText": "腰",
+      "sourcePinyin": "yāo",
+      "retrieved": "2026-11-17",
+      "sourceMetadata": {
+        "swac_text": "腰",
+        "swac_pron_phon": "yāo",
+        "swac_lang": "cmn",
+        "swac_speak_name": "Tan",
+        "swac_coll_license": "Creative Commons BY-SA 3.0 U.S"
+      },
+      "review": {
+        "date": "2026-11-17",
+        "listening": "User accepted this replacement after listening to the comparison page.",
+        "selection": "first_displayed_candidate",
+        "previousRecording": {
+          "sourceToken": "yao1",
+          "sha256": "92cd4ce24e1c074ce98295a940360504b64f4bb573430c7472d102729ff8e31f"
+        }
+      }
     },
     {
       "token": "yao2",
@@ -8735,11 +9967,31 @@
     },
     {
       "token": "ying4",
-      "sourceToken": "ying4",
       "file": "ying4.mp3",
-      "sha256": "7bd13cd6d3ac85cc6ae81450ce4182d8ae2ecc72675a1e1d11f508d1bb20855f",
-      "bytes": 8800,
-      "duration": 0.984
+      "sha256": "ecf8e19566598b24550866edcef948997d4eb55fc61722f40db054fe519d0532",
+      "bytes": 8556,
+      "duration": 0.914286,
+      "sourceId": "cmn-caen-tan",
+      "sourceFile": "cmn-3d60d6fa.mp3",
+      "sourceText": "映",
+      "sourcePinyin": "yìng",
+      "retrieved": "2026-11-17",
+      "sourceMetadata": {
+        "swac_text": "映",
+        "swac_pron_phon": "yìng",
+        "swac_lang": "cmn",
+        "swac_speak_name": "Tan",
+        "swac_coll_license": "Creative Commons BY-SA 3.0 U.S"
+      },
+      "review": {
+        "date": "2026-11-17",
+        "listening": "User accepted this replacement after listening to the comparison page.",
+        "selection": "first_displayed_candidate",
+        "previousRecording": {
+          "sourceToken": "ying4",
+          "sha256": "7bd13cd6d3ac85cc6ae81450ce4182d8ae2ecc72675a1e1d11f508d1bb20855f"
+        }
+      }
     },
     {
       "token": "yo1",
@@ -8875,11 +10127,30 @@
     },
     {
       "token": "yue1",
-      "sourceToken": "yue1",
       "file": "yue1.mp3",
-      "sha256": "3c286e8f3501f2470f1e5a34b45aef01274292ead2777d985982c8aaf3499010",
-      "bytes": 8414,
-      "duration": 0.936
+      "sha256": "303163edc7e37fd83cff0544b7878b086a92a9faa98027d3fd86ab40a26cff40",
+      "bytes": 8765,
+      "duration": 0.940408,
+      "sourceId": "cmn-caen-tan",
+      "sourceFile": "cmn-72735fd8.mp3",
+      "sourceText": "约",
+      "sourcePinyin": "yuē",
+      "retrieved": "2026-11-17",
+      "sourceMetadata": {
+        "swac_text": "约",
+        "swac_pron_phon": "yuē",
+        "swac_lang": "cmn",
+        "swac_speak_name": "Tan",
+        "swac_coll_license": "Creative Commons BY-SA 3.0 U.S"
+      },
+      "review": {
+        "date": "2026-11-17",
+        "listening": "User accepted the 34 first-choice replacement candidates after listening.",
+        "previousRecording": {
+          "sourceToken": "yue1",
+          "sha256": "3c286e8f3501f2470f1e5a34b45aef01274292ead2777d985982c8aaf3499010"
+        }
+      }
     },
     {
       "token": "yue4",
@@ -8963,11 +10234,23 @@
     },
     {
       "token": "zan1",
-      "sourceToken": "zan1",
-      "file": "zan1.mp3",
-      "sha256": "9f1d712c7105375e4e12f790f1b0d96cdc2d6c253c5d3bfa5fbaef607f65572b",
-      "bytes": 8414,
-      "duration": 0.936
+      "unavailable": "Recording rejected by the user after listening on 2026-11-17; replacement recording not yet accepted.",
+      "ttsFallback": {
+        "text": "发簪",
+        "tokens": [
+          "fa4",
+          "zan1"
+        ],
+        "target": 1
+      },
+      "rejectedRecording": {
+        "token": "zan1",
+        "sourceToken": "zan1",
+        "file": "zan1.mp3",
+        "sha256": "9f1d712c7105375e4e12f790f1b0d96cdc2d6c253c5d3bfa5fbaef607f65572b",
+        "bytes": 8414,
+        "duration": 0.936
+      }
     },
     {
       "token": "zan2",
@@ -9091,19 +10374,51 @@
     },
     {
       "token": "zeng4",
-      "sourceToken": "zeng4",
-      "file": "zeng4.mp3",
-      "sha256": "bdf7069b9782a3d7c0b925d5d21b8fe1ffed15a0f06a6e530aac1d996f559827",
-      "bytes": 8032,
-      "duration": 0.888
+      "unavailable": "Recording rejected by the user after listening on 2026-11-17; replacement recording not yet accepted.",
+      "ttsFallback": {
+        "text": "赠与者",
+        "tokens": [
+          "zeng4",
+          "yu3",
+          "zhe3"
+        ],
+        "target": 0
+      },
+      "rejectedRecording": {
+        "token": "zeng4",
+        "sourceToken": "zeng4",
+        "file": "zeng4.mp3",
+        "sha256": "bdf7069b9782a3d7c0b925d5d21b8fe1ffed15a0f06a6e530aac1d996f559827",
+        "bytes": 8032,
+        "duration": 0.888
+      }
     },
     {
       "token": "zha1",
-      "sourceToken": "zha1",
       "file": "zha1.mp3",
-      "sha256": "ebf392deff004b44a6b4170fcfdf810fbc19b6b45c1f146788fde5aa3b00bbb2",
-      "bytes": 8030,
-      "duration": 0.888
+      "sha256": "ca8ab1df98c2944425aaf0c67fc859b4068b7eaf7f169ba2316a9a4df2fc3a09",
+      "bytes": 9183,
+      "duration": 0.992653,
+      "sourceId": "cmn-caen-tan",
+      "sourceFile": "cmn-b26ff825.mp3",
+      "sourceText": "扎",
+      "sourcePinyin": "zhā",
+      "retrieved": "2026-11-17",
+      "sourceMetadata": {
+        "swac_text": "扎",
+        "swac_pron_phon": "zhā",
+        "swac_lang": "cmn",
+        "swac_speak_name": "Tan",
+        "swac_coll_license": "Creative Commons BY-SA 3.0 U.S"
+      },
+      "review": {
+        "date": "2026-11-17",
+        "listening": "User accepted the 34 first-choice replacement candidates after listening.",
+        "previousRecording": {
+          "sourceToken": "zha1",
+          "sha256": "ebf392deff004b44a6b4170fcfdf810fbc19b6b45c1f146788fde5aa3b00bbb2"
+        }
+      }
     },
     {
       "token": "zha2",
@@ -9235,11 +10550,31 @@
     },
     {
       "token": "zhao4",
-      "sourceToken": "zhao4",
       "file": "zhao4.mp3",
-      "sha256": "d1c786fcf2957f33479da1427d82e53d04df69a2ab25d0939efe0ab9a8b5bd16",
-      "bytes": 8032,
-      "duration": 0.888
+      "sha256": "750c6e535742f799b30393fda87beb706f7b73f95b90fce7bc2e85fb32b9ebec",
+      "bytes": 9183,
+      "duration": 0.992653,
+      "sourceId": "cmn-caen-tan",
+      "sourceFile": "cmn-5daa4572.mp3",
+      "sourceText": "照",
+      "sourcePinyin": "zhào",
+      "retrieved": "2026-11-17",
+      "sourceMetadata": {
+        "swac_text": "照",
+        "swac_pron_phon": "zhào",
+        "swac_lang": "cmn",
+        "swac_speak_name": "Tan",
+        "swac_coll_license": "Creative Commons BY-SA 3.0 U.S"
+      },
+      "review": {
+        "date": "2026-11-17",
+        "listening": "User accepted this replacement after listening to the comparison page.",
+        "selection": "first_displayed_candidate",
+        "previousRecording": {
+          "sourceToken": "zhao4",
+          "sha256": "d1c786fcf2957f33479da1427d82e53d04df69a2ab25d0939efe0ab9a8b5bd16"
+        }
+      }
     },
     {
       "token": "zhe1",
@@ -9267,11 +10602,31 @@
     },
     {
       "token": "zhe4",
-      "sourceToken": "zhe4",
       "file": "zhe4.mp3",
-      "sha256": "91ae6950815bff8dfa3f233414441e8046fba4bba86aa49e2005456baa32bec9",
-      "bytes": 8414,
-      "duration": 0.936
+      "sha256": "55f6d00c9ca868db2db390910c83b157ebc908729df2059096079090dbfc5371",
+      "bytes": 8765,
+      "duration": 0.940408,
+      "sourceId": "cmn-caen-tan",
+      "sourceFile": "cmn-b23ec19d.mp3",
+      "sourceText": "这",
+      "sourcePinyin": "zhè",
+      "retrieved": "2026-11-17",
+      "sourceMetadata": {
+        "swac_text": "这",
+        "swac_pron_phon": "zhè",
+        "swac_lang": "cmn",
+        "swac_speak_name": "Tan",
+        "swac_coll_license": "Creative Commons BY-SA 3.0 U.S"
+      },
+      "review": {
+        "date": "2026-11-17",
+        "listening": "User accepted this replacement after listening to the comparison page.",
+        "selection": "first_displayed_candidate",
+        "previousRecording": {
+          "sourceToken": "zhe4",
+          "sha256": "91ae6950815bff8dfa3f233414441e8046fba4bba86aa49e2005456baa32bec9"
+        }
+      }
     },
     {
       "token": "zhen1",
@@ -9299,11 +10654,31 @@
     },
     {
       "token": "zheng1",
-      "sourceToken": "zheng1",
       "file": "zheng1.mp3",
-      "sha256": "f85f66dc46a01d58f9ff84f262741d1693abb8a48aaa9b8a8c697ce344e12076",
-      "bytes": 8418,
-      "duration": 0.936
+      "sha256": "13cd65ec25aa237be1305d4f8fd9b17adf8321f2f0ce93b7e31d2815cb680df1",
+      "bytes": 9601,
+      "duration": 1.044898,
+      "sourceId": "cmn-caen-tan",
+      "sourceFile": "cmn-0dbc58d6.mp3",
+      "sourceText": "睁",
+      "sourcePinyin": "zhēng",
+      "retrieved": "2026-11-17",
+      "sourceMetadata": {
+        "swac_text": "睁",
+        "swac_pron_phon": "zhēng",
+        "swac_lang": "cmn",
+        "swac_speak_name": "Tan",
+        "swac_coll_license": "Creative Commons BY-SA 3.0 U.S"
+      },
+      "review": {
+        "date": "2026-11-17",
+        "listening": "User accepted this replacement after listening to the comparison page.",
+        "selection": "first_displayed_candidate",
+        "previousRecording": {
+          "sourceToken": "zheng1",
+          "sha256": "f85f66dc46a01d58f9ff84f262741d1693abb8a48aaa9b8a8c697ce344e12076"
+        }
+      }
     },
     {
       "token": "zheng3",
@@ -9347,11 +10722,31 @@
     },
     {
       "token": "zhi4",
-      "sourceToken": "zhi4",
       "file": "zhi4.mp3",
-      "sha256": "3a347d288f7082a5564d4f405104fe9fc92b4d5dbf2505f3d383ab9c4c4e80ff",
-      "bytes": 8414,
-      "duration": 0.936
+      "sha256": "864477b9185609a49beab7653a4ffd708309ef53034f08b921406eb59e591e15",
+      "bytes": 8765,
+      "duration": 0.940408,
+      "sourceId": "cmn-caen-tan",
+      "sourceFile": "cmn-e07e2113.mp3",
+      "sourceText": "致",
+      "sourcePinyin": "zhì",
+      "retrieved": "2026-11-17",
+      "sourceMetadata": {
+        "swac_text": "致",
+        "swac_pron_phon": "zhì",
+        "swac_lang": "cmn",
+        "swac_speak_name": "Tan",
+        "swac_coll_license": "Creative Commons BY-SA 3.0 U.S"
+      },
+      "review": {
+        "date": "2026-11-17",
+        "listening": "User accepted this replacement after listening to the comparison page.",
+        "selection": "first_displayed_candidate",
+        "previousRecording": {
+          "sourceToken": "zhi4",
+          "sha256": "3a347d288f7082a5564d4f405104fe9fc92b4d5dbf2505f3d383ab9c4c4e80ff"
+        }
+      }
     },
     {
       "token": "zhong1",
@@ -9371,11 +10766,30 @@
     },
     {
       "token": "zhong4",
-      "sourceToken": "zhong4",
       "file": "zhong4.mp3",
-      "sha256": "abfd6830066db41a11104ad811b8e9df63fe5081ee9113952012d5fa9de351fd",
-      "bytes": 8418,
-      "duration": 0.936
+      "sha256": "a692645713ab4a50867c5103662eec35171d4a844012d884fc64921a75b3dc97",
+      "bytes": 9183,
+      "duration": 0.992653,
+      "sourceId": "cmn-caen-tan",
+      "sourceFile": "cmn-beb9c32c.mp3",
+      "sourceText": "重",
+      "sourcePinyin": "zhòng",
+      "retrieved": "2026-11-17",
+      "sourceMetadata": {
+        "swac_text": "重",
+        "swac_pron_phon": "zhòng",
+        "swac_lang": "cmn",
+        "swac_speak_name": "Tan",
+        "swac_coll_license": "Creative Commons BY-SA 3.0 U.S"
+      },
+      "review": {
+        "date": "2026-11-17",
+        "listening": "User accepted the 34 first-choice replacement candidates after listening.",
+        "previousRecording": {
+          "sourceToken": "zhong4",
+          "sha256": "abfd6830066db41a11104ad811b8e9df63fe5081ee9113952012d5fa9de351fd"
+        }
+      }
     },
     {
       "token": "zhou1",
@@ -9419,11 +10833,24 @@
     },
     {
       "token": "zhu2",
-      "sourceToken": "zhu2",
-      "file": "zhu2.mp3",
-      "sha256": "1ae2395c48b0422dfa53aa2d49daf59305a7e3ffe48ded54d7d6abe011f1883b",
-      "bytes": 8798,
-      "duration": 0.984
+      "unavailable": "Recording rejected by the user after listening on 2026-11-17; replacement recording not yet accepted.",
+      "ttsFallback": {
+        "text": "开运竹",
+        "tokens": [
+          "kai1",
+          "yun4",
+          "zhu2"
+        ],
+        "target": 2
+      },
+      "rejectedRecording": {
+        "token": "zhu2",
+        "sourceToken": "zhu2",
+        "file": "zhu2.mp3",
+        "sha256": "1ae2395c48b0422dfa53aa2d49daf59305a7e3ffe48ded54d7d6abe011f1883b",
+        "bytes": 8798,
+        "duration": 0.984
+      }
     },
     {
       "token": "zhu3",
@@ -9435,11 +10862,30 @@
     },
     {
       "token": "zhu4",
-      "sourceToken": "zhu4",
       "file": "zhu4.mp3",
-      "sha256": "164a9a9055e11a5709abc406d42bd83a1a24110a44e59804cd2ae172f57a9b2c",
-      "bytes": 8030,
-      "duration": 0.888
+      "sha256": "41619b6db36afe891e6f085a9e345497dad71604237a153e37ad07a5beff5a7a",
+      "bytes": 8765,
+      "duration": 0.940408,
+      "sourceId": "cmn-caen-tan",
+      "sourceFile": "cmn-5e81e5b6.mp3",
+      "sourceText": "著",
+      "sourcePinyin": "zhù",
+      "retrieved": "2026-11-17",
+      "sourceMetadata": {
+        "swac_text": "著",
+        "swac_pron_phon": "zhù",
+        "swac_lang": "cmn",
+        "swac_speak_name": "Tan",
+        "swac_coll_license": "Creative Commons BY-SA 3.0 U.S"
+      },
+      "review": {
+        "date": "2026-11-17",
+        "listening": "User accepted the 34 first-choice replacement candidates after listening.",
+        "previousRecording": {
+          "sourceToken": "zhu4",
+          "sha256": "164a9a9055e11a5709abc406d42bd83a1a24110a44e59804cd2ae172f57a9b2c"
+        }
+      }
     },
     {
       "token": "zhua1",
@@ -9509,11 +10955,31 @@
     },
     {
       "token": "zhuang4",
-      "sourceToken": "zhuang4",
       "file": "zhuang4.mp3",
-      "sha256": "75946a26dafd5eefe02be19633532f4d2807a75db965bdf8cab07f4471548584",
-      "bytes": 8420,
-      "duration": 0.936
+      "sha256": "ae0204e15ea9d3150a50b4729d691893f87667555f7b9ba54b26b2c748efb046",
+      "bytes": 9183,
+      "duration": 0.992653,
+      "sourceId": "cmn-caen-tan",
+      "sourceFile": "cmn-06ee23db.mp3",
+      "sourceText": "撞",
+      "sourcePinyin": "zhuàng",
+      "retrieved": "2026-11-17",
+      "sourceMetadata": {
+        "swac_text": "撞",
+        "swac_pron_phon": "zhuàng",
+        "swac_lang": "cmn",
+        "swac_speak_name": "Tan",
+        "swac_coll_license": "Creative Commons BY-SA 3.0 U.S"
+      },
+      "review": {
+        "date": "2026-11-17",
+        "listening": "User accepted this replacement after listening to the comparison page.",
+        "selection": "first_displayed_candidate",
+        "previousRecording": {
+          "sourceToken": "zhuang4",
+          "sha256": "75946a26dafd5eefe02be19633532f4d2807a75db965bdf8cab07f4471548584"
+        }
+      }
     },
     {
       "token": "zhui1",
@@ -9740,5 +11206,43 @@
       "bytes": 8798,
       "duration": 0.984
     }
-  ]
+  ],
+  "additionalSources": {
+    "cmn-caen-tan": {
+      "kind": "shtooka",
+      "name": "The Shtooka Project / cmn-caen-tan",
+      "speaker": "Yue Tan",
+      "author": "Yue Tan",
+      "license": "CC BY-SA 3.0 US",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0/us/",
+      "sourcePage": "https://www.yojik.eu/audiocollections/detailled/cmn-caen-tan/readme.txt",
+      "downloadBaseUrl": "https://www.yojik.eu/audiocollections/detailled/cmn-caen-tan/mp3/",
+      "indexUrl": "https://www.yojik.eu/audiocollections/detailled/cmn-caen-tan/mp3/index.xml",
+      "metadataSpeaker": "Tan",
+      "metadataLicense": "Creative Commons BY-SA 3.0 U.S",
+      "retrieved": "2026-11-17",
+      "changes": "Original MP3 copied without modification; only the local filename changed.",
+      "indexSnapshotSha256": "34f049c7bfe0893e8349e5983b53d14666c20b5f95387067f352d9c6c1c46f0d",
+      "indexSnapshotEncoding": "Decoded UTF-8 XML",
+      "licenseStatement": "Collection audio libre de mots chinois (mandarins)\nenregistrée par l'université de Caen\n\nCopyright (c) 2009 Yue Tan\n----------------------------------------\n\nLe contenu de cette collection est distribué librement sous \nlicence \"Creative Commons Attribution Share Alike 3.0 United States\". \nVous trouverez plus d'informations sur cette licence sur :\n\n        http://creativecommons.org/licenses/by-sa/3.0/us/\n\nL'ensemble de cette base audio est disponible à l'adresse suivante :\n\n        http://swac-collections.org\n\nL'enregistrement audio a été réalisé à l'aide du programme \"Shtooka\nRecorder\" distribué sous licence GPL et disponible à l'adresse \nsuivante :\n\n        http://shtooka.net/soft/shtooka_recorder/\n"
+    },
+    "cmn-balm-hsk1": {
+      "kind": "shtooka",
+      "name": "The Shtooka Project / cmn-balm-hsk1",
+      "speaker": "Wei Gao",
+      "author": "Wei Gao, Vion Nicolas",
+      "license": "CC BY 2.0 FR",
+      "licenseUrl": "https://creativecommons.org/licenses/by/2.0/fr/",
+      "sourcePage": "https://www.yojik.eu/audiocollections/detailled/cmn-balm-hsk1/readme.txt",
+      "downloadBaseUrl": "https://www.yojik.eu/audiocollections/detailled/cmn-balm-hsk1/mp3/",
+      "indexUrl": "https://www.yojik.eu/audiocollections/detailled/cmn-balm-hsk1/mp3/index.xml",
+      "metadataSpeaker": "Wei Gao",
+      "metadataLicense": "Creative Commons BY",
+      "retrieved": "2026-11-17",
+      "changes": "Original MP3 copied without modification; only the local filename changed.",
+      "indexSnapshotSha256": "ebc98a9d6c84a2b247c51f6f7db09bbbdbe4d0f020d60698891d2a6a5cc19f32",
+      "indexSnapshotEncoding": "Decoded UTF-8 XML",
+      "licenseStatement": "﻿Base Audio Libre De Mots Chinois\n---------------------------------\n\nLa \"Base Audio Libre De Mots Chinois\" est une base de données \nd'enregistrements sonores d'une liste d'environ 1000 mots en \nlangue chinoise. \n\nLe contenu de cette base de données est distribué librement sous \nlicence \"Creative Commons Paternité 2.0\". Vous trouverez\nplus d'informations sur cette licence sur :\n\n\thttp://creativecommons.org/licenses/by/2.0/fr/\n\nL'ensemble de cette base audio est disponible à l'adresse suivante :\n\n \thttp://shtooka.net/audio-base/chi/\n\nL'enregistrement audio a été réalisé à l'aide du programme \"Shtooka\"\ndistribué sous licence GPL et disponible à l'adresse suivante :\n\n\thttp://shtooka.net/soft/shtooka_recorder/\n\n\"Base Audio Libre De Mots Chinois\" - Copyright (c) 2006 Wei Gao, \nVion Nicolas\n"
+    }
+  }
 }

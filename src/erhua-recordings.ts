@@ -18,7 +18,7 @@ function pair(id: string, text: string, tone: ToneId): {id:string;final:FinalId;
 }
 
 // Both sides are complete single syllables at the same lexical tone, with no splicing.
-// The basic recordings and these erhua recordings have different speakers.
+// Speakers can differ between the basic and erhua recordings.
 export const erhuaComparisons = [
   pair('xian','馅',4), pair('wan','玩',2), pair('na','哪',3),
   pair('hua','画',4), pair('dai','带',4), pair('dou','兜',1),

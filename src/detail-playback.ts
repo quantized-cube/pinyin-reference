@@ -1,7 +1,7 @@
 import type {AppState, ExampleCatalog, ExampleState, PronunciationExample} from './types.js';
 import {detailExample} from './examples.js';
 import {detailRecording} from './detail-recordings.js';
-import {isUnrecordedTarget} from './syllable-recordings.js';
+import {isUnrecordedTarget, syllableSpeechExample} from './syllable-recordings.js';
 import {thirdToneRecording} from './third-tone-recordings.js';
 import {neutralRecording} from './neutral-recordings.js';
 
@@ -27,6 +27,8 @@ export function resolveDetailPlayback(
   if (!contextual) {
     const url = detailRecording(selected, tone, thirdToneForm);
     if (url) return {...base, kind: 'recording', url};
+    const fallback = syllableSpeechExample(selected, tone);
+    if (fallback) return {example: fallback, contextual: fallback.tokens.length > 1, kind: 'speech', text: fallback.text};
     return {...base, kind: 'unavailable', reason: isUnrecordedTarget(selected, tone) ? 'recording-missing' : 'reading-unreviewed'};
   }
   if (example) {

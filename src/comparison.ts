@@ -2,7 +2,8 @@ import type {ComparisonSyllables, ExampleMap, PronunciationExample, ToneId} from
 import {required} from './types.js';
 import {markTone} from './data.js';
 import {isolatedExample} from './examples.js';
-import {comparisonRecording} from './comparison-recordings.js';
+import {comparisonRecording, comparisonSpeechExample} from './comparison-recordings.js';
+import type {PlaybackItem} from './speech.js';
 
 export const comparisonGroups = [
   {id:'nasal-finals', label:'鼻韻母の比較（-n / -ng）'},
@@ -53,22 +54,33 @@ export function comparisonOrder(syllables: Readonly<ComparisonSyllables>, select
 }
 
 export function comparisonExample(pinyin: string, tone: ToneId, examples: ExampleMap): PronunciationExample | undefined {
-  return isolatedExample(pinyin, tone, examples);
+  return comparisonSpeechExample(pinyin, tone) ?? isolatedExample(pinyin, tone, examples);
 }
 
 // Recording availability is independent of the example characters shown on the cards.
 export function comparisonSequence(syllables: Readonly<ComparisonSyllables>, tone: ToneId, selection: string) {
   const order=comparisonOrder(syllables,selection);
   if(!order.length)return undefined;
-  const items: {url: string;label: string}[]=[];
+  const items: PlaybackItem[]=[];
   for(const {side,pinyin} of order){
     const url=comparisonRecording(pinyin,tone);
-    if(!url)return undefined;
-    items.push({url,label:`${side} · ${markTone(pinyin,tone)}`});
+    const speech=comparisonSpeechExample(pinyin,tone);
+    const label=`${side} · ${markTone(pinyin,tone)}`;
+    if(url)items.push({url,label});
+    else if(speech)items.push({text:speech.text,label});
+    else return undefined;
   }
   return items;
 }
 
-export function comparisonAudioHint(supported: boolean): string {
-  return supported?'話者の録音を元の速度で再生します。':'このブラウザは録音の再生に対応していません。';
+export interface ComparisonAudioSupport {recording: boolean; speech: boolean}
+
+export function comparisonPlayable(items: readonly PlaybackItem[] | undefined, support: ComparisonAudioSupport): boolean {
+  return !!items?.length && items.every(item=>'url' in item ? support.recording : support.speech);
+}
+
+export function comparisonAudioHint(support: ComparisonAudioSupport, usesSpeech = false): string {
+  if (usesSpeech && !support.speech) return 'このブラウザは音声合成に対応していません。';
+  if (!support.recording) return 'このブラウザは録音の再生に対応していません。';
+  return usesSpeech?'bēn はTTS、bēng は録音で再生します。':'話者の録音を元の速度で再生します。';
 }

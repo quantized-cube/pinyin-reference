@@ -70,7 +70,7 @@ Cloudflare側で依存関係のインストールとビルドが行われ、`dis
 
 ## 聞き比べと母音図
 
-聞き比べでは15組の固定プリセットから選び、第1声の音節を再生します。`bēn` は「奔」のTTS、それ以外の26音節は同じ話者の録音です。音節・音数・声調の自由設定はありません。鼻韻母の比較例は、`an ↔ ang` が `ān ↔ āng`、`en ↔ eng` が `bēn ↔ bēng`、`ian ↔ iang` が `xiān ↔ xiāng`、`in ↔ ing` が `yīn ↔ yīng`、`uan ↔ uang` が `guān ↔ guāng`、`uen ↔ ueng` が `wēn ↔ wēng` の6組です。声母や韻母だけを切り出した音声ではありません。例字データを読み込めない場合も再生できます。軽声の音声は文脈が必要なため、単語全体で確認します。「表記と声調」の高さの目安では話者録音を使います。詳細欄の軽声は114例を録音で再生し、それ以外はTTSを使います。
+聞き比べでは15組の固定プリセットから選び、第1声の音節を再生します。`bēn` は「奔」のTTS、それ以外の26音節は録音です。`yīn` と `yīng` は話者が異なります。音節・音数・声調の自由設定はありません。鼻韻母の比較例は、`an ↔ ang` が `ān ↔ āng`、`en ↔ eng` が `bēn ↔ bēng`、`ian ↔ iang` が `xiān ↔ xiāng`、`in ↔ ing` が `yīn ↔ yīng`、`uan ↔ uang` が `guān ↔ guāng`、`uen ↔ ueng` が `wēn ↔ wēng` の6組です。声母や韻母だけを切り出した音声ではありません。例字データを読み込めない場合も再生できます。軽声の音声は文脈が必要なため、単語全体で確認します。「表記と声調」の高さの目安では話者録音を使います。詳細欄の軽声は114例を録音で再生し、それ以外はTTSを使います。
 
 3音比較は `sī / shī / xī`（思・诗・西）、`zī / zhī / jī`（资・知・鸡）、`cī / chī / qī`（疵・吃・七）を第1声で比較します。s / sh / x、z / zh / j、c / ch / q の声母に加え、後続する i も異なる音なので、カードには声母と韻母のIPAをそれぞれ表示します。声母だけの分離録音ではありません。PCの広い画面では3列、狭い画面では縦に並べます。
 
@@ -130,7 +130,7 @@ Cloudflare側で依存関係のインストールとビルドが行われ、`dis
 
 ## 音声について
 
-聞き比べにはChen Wang 王琛による第1声の26音節の録音を収録しています。[audio-cmn](https://github.com/hugolpz/audio-cmn)のMP3を変更せず同梱し、ファイル内のピンイン・声調・話者・ライセンス情報を照合しています。録音は原速で再生し、例字データや端末の中国語TTSがなくても使えます。録音を読み込めないときはエラーを表示して停止し、TTSへは切り替えません。`bēn` だけは最初からTTSを使い、音節詳細の音声・速度設定を適用します。交互再生でもTTSと録音を順番に再生し、停止やエラーで残りの再生を取り消します。[録音の出典・ライセンス](public/audio/syllables/credits.html)と[取得情報・ハッシュ値](public/audio/syllables/manifest.json)を同梱しています。
+聞き比べには第1声の26音節の録音を収録しています。25件はChen Wang 王琛による[audio-cmn](https://github.com/hugolpz/audio-cmn)、`yīn` はYue TanによるThe Shtooka Projectの録音です。MP3を変更せず同梱し、出典・読み・話者・ライセンス情報を照合しています。録音は原速で再生し、例字データや端末の中国語TTSがなくても使えます。録音を読み込めないときはエラーを表示して停止し、TTSへは切り替えません。`bēn` は最初からTTSを使い、音節詳細の音声・速度設定を適用します。交互再生でもTTSと録音を順番に再生し、停止やエラーで残りの再生を取り消します。[録音の出典・ライセンス](public/audio/syllables/credits.html)と[取得情報・ハッシュ値](public/audio/syllables/manifest.json)を同梱しています。
 
 「表記と声調」の軽声の4例（妈妈・爷爷・奶奶・爸爸）には、中国出身の話者による録音を収録しています。元の長さ・高さを保つため原速で再生し、TTSの音声・速度設定は適用しません。中国語の読み上げ音声がない端末でも再生できます。録音の取得・再生に失敗したときはエラーを表示し、TTSでは代用しません。[録音の出典・ライセンス](public/audio/neutral/credits.html)と[取得情報・ハッシュ値](public/audio/neutral/credits.json)を同梱しています。
 
@@ -142,7 +142,7 @@ Cloudflare側で依存関係のインストールとビルドが行われ、`dis
 
 音節詳細の第1・2・4声と全三声には、聞き比べと共通の単独音録音を使います。2026-10-21時点の再生対象1,162組に、確認済みの第3声48組を追加しました。対象1,210組のうち1,190組は録音、19組はTTSで再生します。`yō` は「単独音の録音は未収録」と表示します。録音には単独例字・例語を参考として表示し、例字データを読み込めなくても再生できます。録音の再生時はTTSの音声・速度設定を表示せず、録音の取得・再生に失敗してもTTSへ切り替えません。
 
-2026-11-17に、問題を指摘された単独音のうち、利用者が試聴して承認した63件をThe Shtooka Projectの別話者の録音へ差し替えました。Yue Tanが50件、Wei Gaoが13件です。The Yojik Websiteから取得したMP3を変更せず同梱しています。児化前の `dài` は差し替えた単独音を共用します。
+2026-11-17に、問題を指摘された単独音のうち、利用者が試聴して承認した64件をThe Shtooka Projectの別話者の録音へ差し替えました。Yue Tanが51件、Wei Gaoが13件です。The Yojik Websiteから取得したMP3を変更せず同梱しています。児化前の `dài` は差し替えた単独音を共用します。
 
 代わりの録音を採用できていない19組はTTSで再生します。元の録音は配布ファイルから除外しています。3組は登録済みの単独例字を、それ以外の16組は保存済みの辞書データから選んだ例語全体を読み上げます。例語では対象の文字とピンインに下線を引き、ボタンに「例語を聞く」と表示します。TTSは表示した読みと異なる場合があります。録音を使わない19組と読み上げる例は管理ファイルで明示し、索引にも含めるため、例語データの読み込みに失敗しても再生できます。
 
@@ -220,7 +220,7 @@ CC-CEDICT の原著作者は CC-CEDICT contributors（CEDICT 創始者 Paul Deni
 
 半三声・変調の39録音はThe Shtooka ProjectとLingua Libreの音源をWikimedia Commons、The Yojik Website、audio-cmnから取得しました。作者・ライセンスは[各録音の出典一覧](public/audio/third-tone/credits.html)に記載しています。
 
-音節詳細の単独音1,190件のうち、1,127件はaudio-cmnから取得しています。作者はWang Chen, Lopez Hugo, Vion Nicolas、ライセンスは[CC BY-SA 3.0](https://creativecommons.org/licenses/by-sa/3.0/)です。残る63件はThe Shtooka Projectの録音で、Yue Tanによる50件は[CC BY-SA 3.0 US](https://creativecommons.org/licenses/by-sa/3.0/us/)、Wei Gao, Vion Nicolasによる13件は[CC BY 2.0 France](https://creativecommons.org/licenses/by/2.0/fr/)です。聞き比べではaudio-cmnの26件を共用しています。録音の出典・ライセンスも再配布時に維持してください。
+音節詳細の単独音1,190件のうち、1,126件はaudio-cmnから取得しています。作者はWang Chen, Lopez Hugo, Vion Nicolas、ライセンスは[CC BY-SA 3.0](https://creativecommons.org/licenses/by-sa/3.0/)です。残る64件はThe Shtooka Projectの録音で、Yue Tanによる51件は[CC BY-SA 3.0 US](https://creativecommons.org/licenses/by-sa/3.0/us/)、Wei Gao, Vion Nicolasによる13件は[CC BY 2.0 France](https://creativecommons.org/licenses/by/2.0/fr/)です。聞き比べではaudio-cmnの25件とYue Tanの1件を共用しています。録音の出典・ライセンスも再配布時に維持してください。
 
 ## ファイル構成
 

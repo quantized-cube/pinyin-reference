@@ -237,8 +237,7 @@ function updateComparisonAudio() {
   const status = document.querySelector('#compare-status');
   if (status)
     status.textContent =
-      speaker?.messageFor('comparison') ?? comparisonAudioHint(comparisonSupport(),
-        comparisonSequence(preset.syllables, preset.tone, 'alternate')?.some(item => 'text' in item));
+      speaker?.messageFor('comparison') ?? comparisonAudioHint(comparisonSupport(), preset.syllables, preset.tone);
 }
 function comparisonSupport() {
   return {recording: !!speaker?.recordingsSupported, speech: !!speaker?.supported};

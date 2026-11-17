@@ -27,7 +27,7 @@ export const comparisonPresets = [
   {id:'an-ang', label:'an ↔ ang', group:'nasal-finals', syllables:['an','ang'], tone:1, note:'-n は舌先で口の中の息の通り道を閉じ、-ng は舌の奥で閉じます。母音の [a] と [ɑ] の違いにも注目。'},
   {id:'en-eng', label:'en ↔ eng', group:'nasal-finals', syllables:['ben','beng'], tone:1, note:'同じ声母 b と第1声で、鼻音の終わり方を比較します。'},
   {id:'ian-iang', label:'ian ↔ iang', group:'nasal-finals', syllables:['xian','xiang'], tone:1, note:'ian の母音は [ɛ] 系、iang は [ɑ] 系。末尾だけでなく母音も変わります。'},
-  {id:'in-ing', label:'in ↔ ing', group:'nasal-finals', syllables:['yin','ying'], tone:1, note:'-n と -ng で、口の中の息の通り道を閉じる場所を比べます。ing は話者によって [iəŋ] 系にもなります。'},
+  {id:'in-ing', label:'in ↔ ing', group:'nasal-finals', syllables:['yin','ying'], tone:1, note:'-n と -ng で、口の中の息の通り道を閉じる場所を比べます。ing は話者によって [iəŋ] 系にもなります。yīn と yīng は話者が異なります。'},
   {id:'uan-uang', label:'uan ↔ uang', group:'nasal-finals', syllables:['guan','guang'], tone:1, note:'同じ声母 g と第1声で比較します。末尾の -n / -ng に加え、母音の [a] / [ɑ] の違いにも注目。'},
   {id:'uen-ueng', label:'uen ↔ ueng', group:'nasal-finals', syllables:['wen','weng'], tone:1, note:'声母なしでは uen → wen、ueng → weng と綴ります。同じ第1声で、末尾の -n と -ng を比べます。'},
   {id:'b-p', label:'b ↔ p', group:'aspiration', syllables:['ba','pa'], tone:1, note:'両唇の無気音と有気音。同じ声調で、開放後の息を比べます。'},
@@ -79,8 +79,12 @@ export function comparisonPlayable(items: readonly PlaybackItem[] | undefined, s
   return !!items?.length && items.every(item=>'url' in item ? support.recording : support.speech);
 }
 
-export function comparisonAudioHint(support: ComparisonAudioSupport, usesSpeech = false): string {
-  if (usesSpeech && !support.speech) return 'このブラウザは音声合成に対応していません。';
-  if (!support.recording) return 'このブラウザは録音の再生に対応していません。';
-  return usesSpeech?'bēn はTTS、bēng は録音で再生します。':'話者の録音を元の速度で再生します。';
+export function comparisonAudioHint(support: ComparisonAudioSupport, syllables: Readonly<ComparisonSyllables>, tone: ToneId): string {
+  const spoken = syllables.filter(pinyin => comparisonSpeechExample(pinyin, tone));
+  const recorded = syllables.filter(pinyin => comparisonRecording(pinyin, tone));
+  if (spoken.length && !support.speech) return 'このブラウザは音声合成に対応していません。';
+  if (recorded.length && !support.recording) return 'このブラウザは録音の再生に対応していません。';
+  if (!spoken.length) return '話者の録音を元の速度で再生します。';
+  const names = (values: readonly string[]) => values.map(pinyin => markTone(pinyin, tone)).join('・');
+  return `${names(spoken)} はTTS${recorded.length ? `、${names(recorded)} は録音` : ''}で再生します。`;
 }

@@ -5,7 +5,7 @@ import {readFile, readdir} from 'node:fs/promises';
 import {createHash} from 'node:crypto';
 import {neutralToneExamples} from '../src/neutral-tone.js';
 import {comparisonSyllableTokens, comparisonRecordingTokens, comparisonRecording} from '../src/comparison-recordings.js';
-import {comparisonPresets, comparisonSequence} from '../src/comparison.js';
+import {comparisonAudioHint, comparisonPresets, comparisonSequence} from '../src/comparison.js';
 import {markTone, parseQuery, syllables} from '../src/data.js';
 import {detailRecordingTokens, detailRecording} from '../src/detail-recordings.js';
 import {parseExampleCatalog, detailExample} from '../src/examples.js';
@@ -110,19 +110,21 @@ test('every shared recording preserves its pinned source, metadata and credits t
   }
 });
 
-test('only the 63 accepted replacements use the reviewed collection sources and explicit file choices',()=>{
+test('only the 64 accepted replacements use the reviewed collection sources and explicit file choices',()=>{
   const expected = [
     ...'bu4 guo4 bang4 guai4 bie1 dan4 da4 fen1 kang4 ti4 bo1 ceng2 ding1 fa2 gang1 huo2 jie4 na4 nen4 nie1 pao1 zha1 zhong4 zhu4 dai4 er4 fan1 kuang4 bi4 dian4 kuo4 ma2 mai4 yue1'.split(' '),
     ...'ceng4 cuo4 gong1 hu2 jiang4 jiao1 lang4 lei1 mao2 men4 mi2 mian4 nong4 o4 piao1 qin1 re4 san1 shou1 ti1 tian2 tu4 yao1 ying4 zhao4 zhe4 zheng1 zhi4 zhuang4'.split(' '),
+    'yin1',
   ].sort();
   const replacements=manifest.records.filter(r=>r.sourceId);
   assert.deepEqual(replacements.map(r=>r.token).sort(),expected);
-  assert.equal(replacements.filter(r=>r.sourceId==='cmn-caen-tan').length,50);
+  assert.equal(replacements.filter(r=>r.sourceId==='cmn-caen-tan').length,51);
   assert.equal(replacements.filter(r=>r.sourceId==='cmn-balm-hsk1').length,13);
   assert.equal(replacements.find(r=>r.token==='san1')?.sourceFile,'cmn-76ccfc6b.mp3');
   assert.equal(replacements.find(r=>r.token==='o4')?.sourceFile,'cmn-35b1145d.mp3');
+  assert.equal(replacements.find(r=>r.token==='yin1')?.sourceFile,'cmn-140b3b60.mp3');
   for(const r of replacements)assert.equal(r.retrieved,'2026-11-17');
-  for(const token of comparisonRecordingTokens)assert.equal(manifest.records.find(r=>r.token===token)?.sourceId,undefined);
+  for(const token of comparisonRecordingTokens)assert.equal(manifest.records.find(r=>r.token===token)?.sourceId,token==='yin1'?'cmn-caen-tan':undefined);
 });
 
 test('all 15 comparisons reuse 26 recordings and the explicit ben TTS example',()=>{
@@ -135,6 +137,13 @@ test('all 15 comparisons reuse 26 recordings and the explicit ben TTS example',(
   assert.deepEqual(comparisonSequence(['ben','beng'],1,'alternate'),[
     {text:'奔',label:'A · bēn'},{url:'audio/syllables/beng1.mp3',label:'B · bēng'},
     {text:'奔',label:'A · bēn'},{url:'audio/syllables/beng1.mp3',label:'B · bēng'},
+  ]);
+  assert.equal(comparisonRecording('yin',1),'audio/syllables/yin1.mp3');
+  assert.equal(comparisonAudioHint({speech:true,recording:true},['yin','ying'],1),'話者の録音を元の速度で再生します。');
+  assert.equal(comparisonAudioHint({speech:true,recording:true},['ben','beng'],1),'bēn はTTS、bēng は録音で再生します。');
+  assert.deepEqual(comparisonSequence(['yin','ying'],1,'alternate'),[
+    {url:'audio/syllables/yin1.mp3',label:'A · yīn'},{url:'audio/syllables/ying1.mp3',label:'B · yīng'},
+    {url:'audio/syllables/yin1.mp3',label:'A · yīn'},{url:'audio/syllables/ying1.mp3',label:'B · yīng'},
   ]);
   for(const p of comparisonPresets)assert.equal(comparisonSequence(p.syllables,1,'alternate')?.length,p.syllables.length*2);
   assert.equal(comparisonRecording('si',2),undefined);

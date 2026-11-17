@@ -9911,11 +9911,32 @@
     },
     {
       "token": "yin1",
-      "sourceToken": "yin1",
       "file": "yin1.mp3",
-      "sha256": "463215358d04f52a2b51b7b85d71433460e749a045c951453d13175d66a5e32d",
-      "bytes": 9182,
-      "duration": 1.032
+      "sha256": "916ebd70af7016698b18e30bc49d88d607131ca79b977ed44a00a0619ab018ba",
+      "bytes": 9601,
+      "duration": 1.044898,
+      "sourceId": "cmn-caen-tan",
+      "sourceFile": "cmn-140b3b60.mp3",
+      "sourceText": "因",
+      "sourcePinyin": "yīn",
+      "retrieved": "2026-11-17",
+      "sourceMetadata": {
+        "swac_text": "因",
+        "swac_pron_phon": "yīn",
+        "swac_lang": "cmn",
+        "swac_speak_name": "Tan",
+        "swac_coll_license": "Creative Commons BY-SA 3.0 U.S"
+      },
+      "review": {
+        "date": "2026-11-17",
+        "listening": "User accepted cmn-140b3b60.mp3 after listening to the replacement comparison page.",
+        "selection": "explicit_filename",
+        "previousRecording": {
+          "sourceToken": "yin1",
+          "sha256": "463215358d04f52a2b51b7b85d71433460e749a045c951453d13175d66a5e32d"
+        },
+        "previousIssue": "User reported an audible abrupt cut/click; cause not determined."
+      }
     },
     {
       "token": "yin2",

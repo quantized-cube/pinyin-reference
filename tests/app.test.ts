@@ -1022,7 +1022,7 @@ test('missing third-tone examples link to lao recordings in the same pronunciati
   assert.equal(s.requestCount(),0);
 });
 
-test('fixed comparison presets play first-tone recordings and display the shared example characters', async t => {
+test('fixed comparison presets play first-tone recordings or explicit TTS and display the shared example characters', async t => {
   const s=await setup(t);s.$('[data-tab="compare"]').click();
   assert.equal(s.$<HTMLInputElement>('#search').disabled,true);
   assert.equal(s.window.document.querySelectorAll('[data-compare-preset]').length,15);
@@ -1036,7 +1036,7 @@ test('fixed comparison presets play first-tone recordings and display the shared
       assert.equal(s.$(`[data-side="${side}"] .compare-example`).textContent,text);
       s.$(`[data-compare-play="${side}"]`).click();
       if(pinyin==='ben'){
-        assert.equal(s.lastRequest().text,'奔');
+        assert.equal(s.lastRequest().text,text);
         s.lastRequest().onend?.();
         continue;
       }
@@ -1766,7 +1766,7 @@ test('rejected isolated recordings use explicit TTS examples and expose their se
   }
   assert.equal(s.recordingCount(),0);
   const requests = s.requestCount();
-  for (const token of ['ma2', 'san1', 'o4', 'zheng1']) {
+  for (const token of ['ma2', 'san1', 'o4', 'zheng1', 'yin1']) {
     s.input(token);
     assert.equal(s.window.document.querySelector('.voice-settings'),null);
     assert.equal(s.$('#play span').textContent,'単独音を聞く');

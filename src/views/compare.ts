@@ -26,7 +26,7 @@ export function renderCompare(state: AppState, examples: ExampleMap, exampleStat
     </article>`;
   };
   return `<div class="section-heading"><h2 id="comparison-title" tabindex="-1">音を聞き比べる</h2><span>第1声で聞き比べます</span></div>
-    <p class="comparison-intro">15組のプリセットを第1声で聞き比べます。bēn はTTS、それ以外は同じ話者の録音を使います。</p>
+    <p class="comparison-intro">15組のプリセットを第1声で聞き比べます。bēn はTTS、それ以外は話者の録音を使います。</p>
     ${comparisonGroups.map(group=>`<section class="comparison-preset-group">
       <h3>${group.label}</h3>${'description' in group?`<p class="comparison-note">${esc(group.description)}</p>`:''}
       <div class="comparison-presets" role="group" aria-label="${group.label}">${comparisonPresets.filter(p=>p.group===group.id).map(p=>`<button data-compare-preset="${p.id}" aria-pressed="${preset===p}" ${preset===p?'aria-describedby="comparison-selection-note"':''}>${p.label}</button>`).join('')}</div>
@@ -34,7 +34,7 @@ export function renderCompare(state: AppState, examples: ExampleMap, exampleStat
     </section>`).join('')}
     <div class="comparison-grid${triple?' comparison-grid--three':''}">${entries.map(card).join('')}</div>
     <div class="compare-actions"><button class="primary" data-compare-play="alternate" ${playable('alternate')?'':'disabled'}>${triple?'順番に聞く':'交互に聞く'} <small>${comparisonOrder(preset.syllables,'alternate').map(entry=>entry.side).join(' → ')}</small></button><button class="stop" id="compare-stop">停止</button></div>
-    <p id="compare-status" role="status" aria-live="polite">${esc(message??comparisonAudioHint(support,usesSpeech))}</p>
+    <p id="compare-status" role="status" aria-live="polite">${esc(message??comparisonAudioHint(support,preset.syllables,preset.tone))}</p>
     ${usesSpeech?'<p class="tone-note">TTSは辞書の読みと異なる場合があります。音節詳細の音声・速度設定を使います。</p>':''}
     ${exampleState==='error'?'<button id="retry-examples" class="text-button">例字の読み込みを再試行</button>':''}
     <p class="tone-note">音節詳細の音声・速度設定は、録音には適用されません。<a href="audio/syllables/credits.html" target="_blank" rel="noreferrer">録音の出典・ライセンス</a>。他の声調や軽声は、音節の詳細で確認できます。</p>`;
